@@ -1,0 +1,838 @@
+EESchema Schematic File Version 2
+LIBS:pluto-rescue
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:65xx
+LIBS:4000-ic
+LIBS:7400-ic
+LIBS:analog-ic
+LIBS:avr-mcu
+LIBS:bluegiga
+LIBS:connector
+LIBS:diode-inc-ic
+LIBS:freescale-ic
+LIBS:ftdi-ic
+LIBS:led
+LIBS:maxim-ic
+LIBS:micrel-ic
+LIBS:microchip-ic
+LIBS:nxp-ic
+LIBS:on-semi-ic
+LIBS:regulator
+LIBS:rohm
+LIBS:sharp-relay
+LIBS:sparkfun
+LIBS:standard
+LIBS:stmicro-mcu
+LIBS:ti-ic
+LIBS:transistor
+LIBS:uln-ic
+LIBS:+1.8V
+LIBS:+3.3V
+LIBS:+5V
+LIBS:+9V
+LIBS:25AA02EXXX-XOT
+LIBS:74LVC8T245
+LIBS:4021
+LIBS:7408
+LIBS:74125
+LIBS:74138
+LIBS:74148
+LIBS:74151
+LIBS:74157
+LIBS:74541
+LIBS:ANT
+LIBS:AP6502
+LIBS:AUDIO-JACK-3
+LIBS:AUDIO-JACK-6
+LIBS:BATTERY
+LIBS:BELFUSE-08B0-1X1T-06-F
+LIBS:C
+LIBS:CP
+LIBS:CRYSTAL
+LIBS:CRYSTAL-14
+LIBS:CVAR
+LIBS:DIODE
+LIBS:DIODES-AP3211
+LIBS:DIODESCH
+LIBS:DIODEZENER
+LIBS:DMMT5401
+LIBS:EDISON-BULB-E10
+LIBS:EDISON-SOCKET-E10
+LIBS:ENC28J60
+LIBS:FTDI-PLUG
+LIBS:GNDPWR
+LIBS:~GNDPWR
+LIBS:INDUCTOR
+LIBS:INTEL-EDISON-COMPUTE-MODULE
+LIBS:IS31AP4066D
+LIBS:JTAG
+LIBS:JTAG10
+LIBS:LATTICE-LC4256
+LIBS:LED
+LIBS:LED-BI
+LIBS:LED-BI-COMMON-CATHODE
+LIBS:LM324
+LIBS:LM1875
+LIBS:MAX3221
+LIBS:MC33926
+LIBS:MC34063A
+LIBS:MCP49X1
+LIBS:MCP3204
+LIBS:MECH
+LIBS:MIC2039
+LIBS:MIC2288
+LIBS:MICROSD-AMPHENOL-114-00841-68
+LIBS:MOSFET-N
+LIBS:MOSFET-N-123
+LIBS:MOSFET-N-134
+LIBS:MOSFET-P
+LIBS:NPN
+LIBS:nRF8001
+LIBS:NXPUDA1334ATS
+LIBS:OPAMP-DUAL
+LIBS:P01
+LIBS:P02
+LIBS:P03
+LIBS:P05
+LIBS:P06
+LIBS:P06-MOTOR
+LIBS:P08
+LIBS:P10
+LIBS:P22
+LIBS:P24
+LIBS:PHOTO_TRANSISTOR
+LIBS:PIEZO
+LIBS:PNP
+LIBS:POLYFUSE
+LIBS:POT
+LIBS:PWR_FLAG
+LIBS:QRE1113
+LIBS:R
+LIBS:RASPBERRYPI
+LIBS:RASPBERRYPI2
+LIBS:RBUS8
+LIBS:RN4020
+LIBS:ROBOT-P10-IO
+LIBS:RS-232-DB-9-DTE
+LIBS:SEN-SHT3x-DIS
+LIBS:SERVO
+LIBS:SI4737-C40-GM
+LIBS:SI4737-GU
+LIBS:SKYWORKS-AAT1217-3.3
+LIBS:SPDT
+LIBS:SPST
+LIBS:SPST-4PIN
+LIBS:SST25VF032B-S2A
+LIBS:SST26VF032B
+LIBS:ST-LIS3MDL
+LIBS:STM32-32PIN
+LIBS:STM32-48PIN
+LIBS:STM32-64PIN
+LIBS:STM32SWDUART
+LIBS:ST-SWD
+LIBS:ST-TDA7266
+LIBS:SWD
+LIBS:TCS3472
+LIBS:TI-ADS7866
+LIBS:TICC3000
+LIBS:TIREF30XX
+LIBS:TP
+LIBS:TS5A623157
+LIBS:TSV631
+LIBS:TVS-DIODE
+LIBS:TXB0108-PW
+LIBS:USBAB
+LIBS:Vcc
+LIBS:Vdd
+LIBS:VIN
+LIBS:VREG
+LIBS:VREG_VOUTCENTER
+LIBS:74xgxx
+LIBS:ac-dc
+LIBS:actel
+LIBS:allegro
+LIBS:Altera
+LIBS:analog_devices
+LIBS:battery_management
+LIBS:bbd
+LIBS:bosch
+LIBS:brooktre
+LIBS:cmos_ieee
+LIBS:dc-dc
+LIBS:diode
+LIBS:elec-unifil
+LIBS:ESD_Protection
+LIBS:ftdi
+LIBS:gennum
+LIBS:graphic
+LIBS:hc11
+LIBS:intersil
+LIBS:ir
+LIBS:Lattice
+LIBS:leds
+LIBS:LEM
+LIBS:logo
+LIBS:maxim
+LIBS:mechanical
+LIBS:microchip_dspic33dsc
+LIBS:microchip_pic10mcu
+LIBS:microchip_pic12mcu
+LIBS:microchip_pic16mcu
+LIBS:microchip_pic18mcu
+LIBS:microchip_pic24mcu
+LIBS:microchip_pic32mcu
+LIBS:modules
+LIBS:motor_drivers
+LIBS:motors
+LIBS:msp430
+LIBS:nordicsemi
+LIBS:nxp
+LIBS:nxp_armmcu
+LIBS:onsemi
+LIBS:Oscillators
+LIBS:powerint
+LIBS:Power_Management
+LIBS:pspice
+LIBS:references
+LIBS:relays
+LIBS:rfcom
+LIBS:RFSolutions
+LIBS:sensors
+LIBS:silabs
+LIBS:stm8
+LIBS:stm32
+LIBS:supertex
+LIBS:switches
+LIBS:transf
+LIBS:triac_thyristor
+LIBS:ttl_ieee
+LIBS:video
+LIBS:wiznet
+LIBS:Worldsemi
+LIBS:Xicor
+LIBS:zetex
+LIBS:Zilog
+LIBS:pluto
+LIBS:pluto-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 4 8
+Title "Clock, pullups and decoding logic"
+Date "2017-03-25"
+Rev "0.1"
+Comp "Linux Grotto"
+Comment1 "The decoding logic is a slightly modied version of Daryl Rictor's SBC-2 v2.5"
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L R_Network07 RN2
+U 1 1 58D6C524
+P 1975 1475
+F 0 "RN2" V 1575 1475 50  0000 C CNN
+F 1 "3.3 kOhm" V 2375 1475 50  0000 C CNN
+F 2 "Resistors_THT:R_Array_SIP8" V 2450 1475 50  0001 C CNN
+F 3 "" H 1975 1475 50  0001 C CNN
+	1    1975 1475
+	1    0    0    -1  
+$EndComp
+$Comp
+L CXO_DIP8 X1
+U 1 1 58D6C921
+P 4350 6450
+F 0 "X1" H 4150 6700 50  0000 L CNN
+F 1 "8 MHz" H 4400 6200 50  0000 L CNN
+F 2 "Oscillators:Oscillator_DIP-8" H 4800 6100 50  0001 C CNN
+F 3 "" H 4250 6450 50  0001 C CNN
+	1    4350 6450
+	1    0    0    -1  
+$EndComp
+$Comp
+L VCC #PWR021
+U 1 1 58D6CEDE
+P 4350 6050
+F 0 "#PWR021" H 4350 5900 50  0001 C CNN
+F 1 "VCC" H 4350 6200 50  0000 C CNN
+F 2 "" H 4350 6050 50  0001 C CNN
+F 3 "" H 4350 6050 50  0001 C CNN
+	1    4350 6050
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR022
+U 1 1 58D6CF02
+P 4350 6925
+F 0 "#PWR022" H 4350 6675 50  0001 C CNN
+F 1 "GND" H 4350 6775 50  0000 C CNN
+F 2 "" H 4350 6925 50  0001 C CNN
+F 3 "" H 4350 6925 50  0001 C CNN
+	1    4350 6925
+	1    0    0    -1  
+$EndComp
+$Comp
+L Q_NPN_EBC Q1
+U 1 1 58D6D190
+P 1775 3250
+F 0 "Q1" H 1675 3075 50  0000 L CNN
+F 1 "DS1813" H 1450 3425 50  0000 L CNN
+F 2 "TO_SOT_Packages_THT:TO-92_Inline_Narrow_Oval" H 1975 3350 50  0001 C CNN
+F 3 "" H 1775 3250 50  0001 C CNN
+	1    1775 3250
+	-1   0    0    1   
+$EndComp
+$Comp
+L VCC #PWR023
+U 1 1 58D6D2F3
+P 1975 3250
+F 0 "#PWR023" H 1975 3100 50  0001 C CNN
+F 1 "VCC" H 1975 3400 50  0000 C CNN
+F 2 "" H 1975 3250 50  0001 C CNN
+F 3 "" H 1975 3250 50  0001 C CNN
+	1    1975 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_Push SW1
+U 1 1 58D6D3A4
+P 1025 3050
+F 0 "SW1" H 950 2950 50  0000 L CNN
+F 1 "RESET" H 1025 3225 50  0000 C CNN
+F 2 "Buttons_Switches_ThroughHole:SW_PUSH_6mm_h4.3mm" H 1025 3250 50  0001 C CNN
+F 3 "" H 1025 3250 50  0001 C CNN
+	1    1025 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR024
+U 1 1 58D6D657
+P 1675 3625
+F 0 "#PWR024" H 1675 3375 50  0001 C CNN
+F 1 "GND" H 1675 3475 50  0000 C CNN
+F 2 "" H 1675 3625 50  0001 C CNN
+F 3 "" H 1675 3625 50  0001 C CNN
+	1    1675 3625
+	1    0    0    -1  
+$EndComp
+Text Label 6450 6250 2    60   ~ 0
+CLK
+Text HLabel 6475 6250 2    60   Output ~ 0
+CLK
+Entry Wire Line
+	4650 1475 4750 1375
+Entry Wire Line
+	4650 1675 4750 1575
+Entry Wire Line
+	4650 1775 4750 1675
+Entry Wire Line
+	4650 1875 4750 1775
+Entry Wire Line
+	4650 2075 4750 1975
+Entry Wire Line
+	4650 2175 4750 2075
+Entry Wire Line
+	4650 2275 4750 2175
+Entry Wire Line
+	4650 2375 4750 2275
+Text Label 4150 1475 0    60   ~ 0
+A[0..15]
+Text HLabel 4150 1475 0    60   Input ~ 0
+A[0..15]
+Text HLabel 5250 1475 0    60   Output ~ 0
+~MRD
+Text HLabel 5250 1275 0    60   Output ~ 0
+~MWR
+Text HLabel 5250 2775 0    60   Output ~ 0
+~ROMSEL
+Text HLabel 7600 2775 2    60   Output ~ 0
+~RAMSEL
+Text HLabel 5250 3025 0    60   Input ~ 0
+CLK
+Text HLabel 5250 2675 0    60   Input ~ 0
+R/~W
+Text HLabel 2600 1875 2    60   BiDi ~ 0
+~IRQ
+Text HLabel 2600 2050 2    60   BiDi ~ 0
+~NMI
+Text HLabel 2600 2200 2    60   Output ~ 0
+BE
+Text HLabel 2600 2350 2    60   Output ~ 0
+~PWR
+Text HLabel 2600 2500 2    60   Output ~ 0
+RDY
+Text HLabel 2600 2800 2    60   Output ~ 0
+~RES
+Text HLabel 5250 2575 0    60   Output ~ 0
+~7F6X
+Text HLabel 7600 1275 2    60   Output ~ 0
+~7F8X
+Text HLabel 7600 2575 2    60   Output ~ 0
+~7FAX
+Text HLabel 7600 1475 2    60   Output ~ 0
+~7FCX
+Text HLabel 7600 1875 2    60   Output ~ 0
+~7FEX
+Text HLabel 2600 2650 2    60   Output ~ 0
+~KS
+$Comp
+L R_Network07 RN1
+U 1 1 594C05A8
+P 1350 6000
+F 0 "RN1" V 950 6000 50  0000 C CNN
+F 1 "3.3 kOhm" V 1750 6000 50  0000 C CNN
+F 2 "Resistors_THT:R_Array_SIP8" V 1825 6000 50  0001 C CNN
+F 3 "" H 1350 6000 50  0001 C CNN
+	1    1350 6000
+	1    0    0    -1  
+$EndComp
+$Comp
+L VCC #PWR025
+U 1 1 594C0808
+P 1050 5800
+F 0 "#PWR025" H 1050 5650 50  0001 C CNN
+F 1 "VCC" H 1050 5950 50  0000 C CNN
+F 2 "" H 1050 5800 50  0001 C CNN
+F 3 "" H 1050 5800 50  0001 C CNN
+	1    1050 5800
+	1    0    0    -1  
+$EndComp
+Text HLabel 1975 6400 2    60   Output ~ 0
+~SO
+$Comp
+L VCC #PWR026
+U 1 1 594C1459
+P 1675 1100
+F 0 "#PWR026" H 1675 950 50  0001 C CNN
+F 1 "VCC" H 1675 1250 50  0000 C CNN
+F 2 "" H 1675 1100 50  0001 C CNN
+F 3 "" H 1675 1100 50  0001 C CNN
+	1    1675 1100
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR027
+U 1 1 595DE156
+P 2650 7025
+F 0 "#PWR027" H 2650 6775 50  0001 C CNN
+F 1 "GND" H 2650 6875 50  0000 C CNN
+F 2 "" H 2650 7025 50  0001 C CNN
+F 3 "" H 2650 7025 50  0001 C CNN
+	1    2650 7025
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3850 6150
+NoConn ~ 3850 6550
+NoConn ~ 4050 6450
+Text HLabel 5250 1875 0    60   Output ~ 0
+RES
+$Comp
+L 74HC74 U8
+U 2 1 59EC7963
+P 5500 6450
+F 0 "U8" H 5650 6750 50  0000 C CNN
+F 1 "74HC74" H 5800 6155 50  0000 C CNN
+F 2 "Housings_DIP:DIP-14_W7.62mm_Socket" H 5500 6450 50  0001 C CNN
+F 3 "" H 5500 6450 50  0001 C CNN
+	2    5500 6450
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74HC74 U8
+U 1 1 59EC7994
+P 3250 6350
+F 0 "U8" H 3400 6650 50  0000 C CNN
+F 1 "74HC74" H 3550 6055 50  0000 C CNN
+F 2 "Housings_DIP:DIP-14_W7.62mm_Socket" H 3250 6350 50  0001 C CNN
+F 3 "" H 3250 6350 50  0001 C CNN
+	1    3250 6350
+	1    0    0    -1  
+$EndComp
+$Comp
+L ispMACH4A5 U7
+U 1 1 59F0F447
+P 6425 2150
+F 0 "U7" H 6000 3275 60  0000 C CNN
+F 1 "ispMACH4A5" V 6425 1775 60  0000 C CNN
+F 2 "Housings_LCC:PLCC-44_THT-Socket" H 6100 2125 60  0001 C CNN
+F 3 "" H 6100 2125 60  0001 C CNN
+	1    6425 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR028
+U 1 1 59F107DB
+P 6425 4050
+F 0 "#PWR028" H 6425 3800 50  0001 C CNN
+F 1 "GND" H 6425 3900 50  0000 C CNN
+F 2 "" H 6425 4050 50  0001 C CNN
+F 3 "" H 6425 4050 50  0001 C CNN
+	1    6425 4050
+	1    0    0    -1  
+$EndComp
+Text Label 2600 2800 2    60   ~ 0
+~RES
+Text Label 7600 1375 2    60   ~ 0
+~RES
+Text Label 5250 1875 0    60   ~ 0
+RESET
+Text Label 4750 2475 0    60   ~ 0
+A5
+Text Label 4750 2375 0    60   ~ 0
+A6
+Text Label 4750 2275 0    60   ~ 0
+A7
+Text Label 4750 2175 0    60   ~ 0
+A8
+Text Label 4750 2075 0    60   ~ 0
+A9
+Text Label 4750 1975 0    60   ~ 0
+A10
+Text Label 4750 1775 0    60   ~ 0
+A11
+Text Label 4750 1675 0    60   ~ 0
+A12
+Text Label 4750 1575 0    60   ~ 0
+A13
+Text Label 4750 1375 0    60   ~ 0
+A14
+Text Label 4750 3125 0    60   ~ 0
+A15
+Text Label 7600 1875 2    60   ~ 0
+~7FEX
+Text Label 7600 1275 2    60   ~ 0
+~7F8X
+Text Label 7600 2775 2    60   ~ 0
+~RAMSEL
+Text Label 5250 2775 0    60   ~ 0
+~ROMSEL
+Text Label 5250 1275 0    60   ~ 0
+~MWR
+Text Label 7600 1475 2    60   ~ 0
+~7FCX
+Text Label 7600 2575 2    60   ~ 0
+~7FAX
+Text Label 5250 2575 0    60   ~ 0
+~7F6X
+Text Label 5250 1475 0    60   ~ 0
+~MRD
+Text Label 5250 2675 0    60   ~ 0
+R/~W
+Text Label 5250 3025 0    60   ~ 0
+CLK
+Wire Wire Line
+	2275 1675 2275 1875
+Wire Wire Line
+	2275 1875 2600 1875
+Wire Wire Line
+	2175 1675 2175 2050
+Wire Wire Line
+	2175 2050 2600 2050
+Wire Wire Line
+	2075 1675 2075 2200
+Wire Wire Line
+	2075 2200 2600 2200
+Wire Wire Line
+	1975 1675 1975 2350
+Wire Wire Line
+	1975 2350 2600 2350
+Wire Wire Line
+	1875 1675 1875 2500
+Wire Wire Line
+	1875 2500 2600 2500
+Wire Wire Line
+	1675 1275 1675 1100
+Wire Wire Line
+	1675 1675 1675 3050
+Wire Wire Line
+	4650 6450 4900 6450
+Wire Wire Line
+	1675 3450 1675 3625
+Wire Wire Line
+	1675 3625 825  3625
+Wire Wire Line
+	825  3625 825  3050
+Wire Wire Line
+	1675 3050 1225 3050
+Wire Wire Line
+	4350 6750 4350 6925
+Wire Wire Line
+	4350 6150 4350 6050
+Wire Wire Line
+	4750 7000 5500 7000
+Wire Wire Line
+	4750 5900 4750 7000
+Wire Wire Line
+	4750 6150 4350 6150
+Wire Wire Line
+	5500 5900 4750 5900
+Connection ~ 4750 6150
+Wire Wire Line
+	4900 6250 4900 5800
+Wire Wire Line
+	4900 5800 6200 5800
+Wire Wire Line
+	6200 5800 6200 6650
+Wire Wire Line
+	6200 6650 6100 6650
+Wire Wire Line
+	6100 6250 6475 6250
+Wire Bus Line
+	4650 1475 4650 3225
+Wire Bus Line
+	4650 1475 4150 1475
+Wire Wire Line
+	3250 5800 2650 5800
+Wire Wire Line
+	2650 5800 2650 7025
+Connection ~ 2650 6150
+Connection ~ 2650 6350
+Wire Wire Line
+	3250 6900 2650 6900
+Connection ~ 2650 6900
+Wire Wire Line
+	1775 1675 1775 2650
+Wire Wire Line
+	1775 2650 2600 2650
+Wire Wire Line
+	1675 2800 2600 2800
+Connection ~ 1675 2800
+Wire Wire Line
+	1650 6200 1650 6400
+Wire Wire Line
+	1650 6400 1975 6400
+Wire Wire Line
+	5700 1275 5250 1275
+Wire Wire Line
+	4750 1375 5700 1375
+Wire Wire Line
+	5700 1475 5250 1475
+Wire Wire Line
+	4750 1575 5700 1575
+Wire Wire Line
+	4750 1675 5700 1675
+Wire Wire Line
+	4750 1775 5700 1775
+Wire Wire Line
+	5700 1875 5250 1875
+Wire Wire Line
+	4750 1975 5700 1975
+Wire Wire Line
+	4750 2075 5700 2075
+Wire Wire Line
+	4750 2175 5700 2175
+Wire Wire Line
+	4750 2275 5700 2275
+Wire Wire Line
+	4750 2375 5700 2375
+Wire Wire Line
+	4750 2475 5700 2475
+Wire Wire Line
+	5700 2575 5250 2575
+Wire Wire Line
+	5700 2675 5250 2675
+Wire Wire Line
+	5700 2775 5250 2775
+Wire Wire Line
+	5250 3025 5700 3025
+Wire Wire Line
+	4750 3125 5700 3125
+Wire Wire Line
+	7150 1275 7600 1275
+Wire Wire Line
+	7150 1375 7600 1375
+Wire Wire Line
+	7150 1475 7600 1475
+Wire Wire Line
+	7150 1875 7600 1875
+Wire Wire Line
+	7150 2575 7600 2575
+Wire Wire Line
+	7150 2775 7600 2775
+Entry Wire Line
+	4650 2475 4750 2375
+Entry Wire Line
+	4650 3225 4750 3125
+Text HLabel 7600 3225 2    60   Input ~ 0
+TDI
+Text HLabel 7600 3325 2    60   Output ~ 0
+TDO
+Text HLabel 7600 3025 2    60   Input ~ 0
+TCK
+Text HLabel 7600 3125 2    60   Input ~ 0
+TMS
+NoConn ~ 7150 1575
+NoConn ~ 7150 1675
+NoConn ~ 7150 1775
+NoConn ~ 7150 1975
+NoConn ~ 7150 2075
+NoConn ~ 7150 2175
+NoConn ~ 7150 2275
+NoConn ~ 7150 2375
+NoConn ~ 7150 2475
+NoConn ~ 7150 2675
+NoConn ~ 1050 6200
+NoConn ~ 1150 6200
+Wire Wire Line
+	7150 3025 7600 3025
+Wire Wire Line
+	7150 3125 7600 3125
+Wire Wire Line
+	7150 3225 7600 3225
+Wire Wire Line
+	7150 3325 7600 3325
+Entry Wire Line
+	4650 2575 4750 2475
+$Comp
+L VCC #PWR029
+U 1 1 59F10359
+P 6375 700
+F 0 "#PWR029" H 6375 550 50  0001 C CNN
+F 1 "VCC" H 6250 775 50  0000 C CNN
+F 2 "" H 6375 700 50  0001 C CNN
+F 3 "" H 6375 700 50  0001 C CNN
+	1    6375 700 
+	1    0    0    -1  
+$EndComp
+$Comp
+L VCC #PWR030
+U 1 1 59F43AD4
+P 6475 700
+F 0 "#PWR030" H 6475 550 50  0001 C CNN
+F 1 "VCC" H 6600 775 50  0000 C CNN
+F 2 "" H 6475 700 50  0001 C CNN
+F 3 "" H 6475 700 50  0001 C CNN
+	1    6475 700 
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR031
+U 1 1 59F43B3B
+P 6600 4050
+F 0 "#PWR031" H 6600 3800 50  0001 C CNN
+F 1 "GND" H 6600 3900 50  0000 C CNN
+F 2 "" H 6600 4050 50  0001 C CNN
+F 3 "" H 6600 4050 50  0001 C CNN
+	1    6600 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR032
+U 1 1 59F43B5E
+P 6250 4050
+F 0 "#PWR032" H 6250 3800 50  0001 C CNN
+F 1 "GND" H 6250 3900 50  0000 C CNN
+F 2 "" H 6250 4050 50  0001 C CNN
+F 3 "" H 6250 4050 50  0001 C CNN
+	1    6250 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6375 3825 6500 3825
+Wire Wire Line
+	6425 4050 6425 3825
+Connection ~ 6425 3825
+Wire Wire Line
+	6250 3825 6250 4050
+Wire Wire Line
+	6600 3825 6600 4050
+$Comp
+L C_Small C22
+U 1 1 59F44526
+P 7100 3950
+F 0 "C22" V 6975 3900 50  0000 L CNN
+F 1 "0.1uF" V 7225 3850 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Disc_D4.7mm_W2.5mm_P5.00mm" H 7100 3950 50  0001 C CNN
+F 3 "" H 7100 3950 50  0001 C CNN
+	1    7100 3950
+	0    1    1    0   
+$EndComp
+$Comp
+L C_Small C21
+U 1 1 59F44553
+P 5900 3950
+F 0 "C21" V 5775 3900 50  0000 L CNN
+F 1 "0.1uF" V 6025 3825 50  0000 L CNN
+F 2 "Capacitors_ThroughHole:C_Disc_D4.7mm_W2.5mm_P5.00mm" H 5900 3950 50  0001 C CNN
+F 3 "" H 5900 3950 50  0001 C CNN
+	1    5900 3950
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	7000 3950 6600 3950
+Connection ~ 6600 3950
+Wire Wire Line
+	7200 3950 8150 3950
+Wire Wire Line
+	8150 3950 8150 800 
+Wire Wire Line
+	6000 3950 6250 3950
+Connection ~ 6250 3950
+Wire Wire Line
+	5800 3950 4575 3950
+Wire Wire Line
+	4575 3950 4575 800 
+Wire Wire Line
+	6475 700  6475 900 
+Wire Wire Line
+	6375 700  6375 900 
+Wire Wire Line
+	4575 800  6375 800 
+Connection ~ 6375 800 
+Wire Wire Line
+	8150 800  6475 800 
+Connection ~ 6475 800 
+Text HLabel 1975 6725 2    60   Input ~ 0
+TDI
+Text HLabel 1975 6825 2    60   Output ~ 0
+TDO
+Text HLabel 1975 6525 2    60   Input ~ 0
+TCK
+Text HLabel 1975 6625 2    60   Input ~ 0
+TMS
+Wire Wire Line
+	1975 6525 1550 6525
+Wire Wire Line
+	1550 6525 1550 6200
+Wire Wire Line
+	1450 6200 1450 6625
+Wire Wire Line
+	1450 6625 1975 6625
+Wire Wire Line
+	1975 6725 1350 6725
+Wire Wire Line
+	1350 6725 1350 6200
+Wire Wire Line
+	1250 6200 1250 6825
+Wire Wire Line
+	1250 6825 1975 6825
+$EndSCHEMATC

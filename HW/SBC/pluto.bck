@@ -1,0 +1,34 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP AS6C62256A
+D 32768 x 8bit static CMOS RAM 70ns 
+$ENDCMP
+#
+$CMP MAX238
+D +5V-Powered, Multichannel RS-232 Drivers/Receivers
+K RS232 uart transceiver line-driver
+F https://datasheets.maximintegrated.com/en/ds/MAX220-MAX249.pdf
+$ENDCMP
+#
+$CMP SC26C92
+D NXP SC26C92 (PLCC44)
+K DUART
+$ENDCMP
+#
+$CMP SC28L92
+D NXP SC28L92 (PLCC44)
+K DUART
+$ENDCMP
+#
+$CMP SC28L92PLCC44
+D NXP SC28L92 (PLCC44)
+K DUART
+F http://pdf1.alldatasheet.com/datasheet-pdf/view/19117/PHILIPS/SC28L92.html
+$ENDCMP
+#
+$CMP ispMACH4A5
+D Lattice ispMACH 4A5 PLCC44
+K 4A5
+$ENDCMP
+#
+#End Doc Library
