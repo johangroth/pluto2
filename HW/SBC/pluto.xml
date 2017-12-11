@@ -2,7 +2,7 @@
 <export version="D">
   <design>
     <source>/home/jgroth/dev/repos_github/PLUTO2/HW/SBC/pluto.sch</source>
-    <date>Thu 26 Oct 2017 23:24:51 BST</date>
+    <date>Tue 14 Nov 2017 06:48:06 GMT</date>
     <tool>Eeschema 4.0.7-e2-6376~58~ubuntu16.04.1</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -1554,38 +1554,38 @@
     </libpart>
   </libparts>
   <libraries>
+    <library logical="conn">
+      <uri>/home/jgroth/C64/KiCadLibraries/kicad-library/library/conn.lib</uri>
+    </library>
+    <library logical="pluto-rescue">
+      <uri>/home/jgroth/dev/repos_github/PLUTO2/HW/SBC/pluto-rescue.lib</uri>
+    </library>
     <library logical="device">
       <uri>/home/jgroth/C64/KiCadLibraries/kicad-library/library/device.lib</uri>
     </library>
+    <library logical="linear">
+      <uri>/home/jgroth/C64/KiCadLibraries/kicad-library/library/linear.lib</uri>
+    </library>
     <library logical="74xx">
       <uri>/home/jgroth/C64/KiCadLibraries/kicad-library/library/74xx.lib</uri>
+    </library>
+    <library logical="65xx">
+      <uri>/home/jgroth/C64/KiCadLibraries/65xx_Library/KiCad/65xx.lib</uri>
+    </library>
+    <library logical="mechanical">
+      <uri>/home/jgroth/C64/KiCadLibraries/kicad-library/library/mechanical.lib</uri>
+    </library>
+    <library logical="Oscillators">
+      <uri>/home/jgroth/C64/KiCadLibraries/kicad-library/library/Oscillators.lib</uri>
+    </library>
+    <library logical="switches">
+      <uri>/home/jgroth/C64/KiCadLibraries/kicad-library/library/switches.lib</uri>
     </library>
     <library logical="pluto">
       <uri>/home/jgroth/dev/repos_github/PLUTO2/HW/SBC/pluto.lib</uri>
     </library>
     <library logical="pluto-cache">
       <uri>/home/jgroth/dev/repos_github/PLUTO2/HW/SBC/pluto-cache.lib</uri>
-    </library>
-    <library logical="switches">
-      <uri>/home/jgroth/C64/KiCadLibraries/kicad-library/library/switches.lib</uri>
-    </library>
-    <library logical="mechanical">
-      <uri>/home/jgroth/C64/KiCadLibraries/kicad-library/library/mechanical.lib</uri>
-    </library>
-    <library logical="65xx">
-      <uri>/home/jgroth/C64/KiCadLibraries/65xx_Library/KiCad/65xx.lib</uri>
-    </library>
-    <library logical="conn">
-      <uri>/home/jgroth/C64/KiCadLibraries/kicad-library/library/conn.lib</uri>
-    </library>
-    <library logical="Oscillators">
-      <uri>/home/jgroth/C64/KiCadLibraries/kicad-library/library/Oscillators.lib</uri>
-    </library>
-    <library logical="pluto-rescue">
-      <uri>/home/jgroth/dev/repos_github/PLUTO2/HW/SBC/pluto-rescue.lib</uri>
-    </library>
-    <library logical="linear">
-      <uri>/home/jgroth/C64/KiCadLibraries/kicad-library/library/linear.lib</uri>
     </library>
   </libraries>
   <nets>
