@@ -54,6 +54,72 @@ LIBS:stmicro-mcu
 LIBS:ti-ic
 LIBS:transistor
 LIBS:uln-ic
+LIBS:74xgxx
+LIBS:ac-dc
+LIBS:actel
+LIBS:allegro
+LIBS:Altera
+LIBS:analog_devices
+LIBS:battery_management
+LIBS:bbd
+LIBS:bosch
+LIBS:brooktre
+LIBS:cmos_ieee
+LIBS:dc-dc
+LIBS:diode
+LIBS:elec-unifil
+LIBS:ESD_Protection
+LIBS:ftdi
+LIBS:gennum
+LIBS:graphic
+LIBS:hc11
+LIBS:intersil
+LIBS:ir
+LIBS:Lattice
+LIBS:leds
+LIBS:LEM
+LIBS:logo
+LIBS:maxim
+LIBS:mechanical
+LIBS:microchip_dspic33dsc
+LIBS:microchip_pic10mcu
+LIBS:microchip_pic12mcu
+LIBS:microchip_pic16mcu
+LIBS:microchip_pic18mcu
+LIBS:microchip_pic24mcu
+LIBS:microchip_pic32mcu
+LIBS:modules
+LIBS:motor_drivers
+LIBS:motors
+LIBS:msp430
+LIBS:nordicsemi
+LIBS:nxp
+LIBS:nxp_armmcu
+LIBS:onsemi
+LIBS:Oscillators
+LIBS:powerint
+LIBS:Power_Management
+LIBS:pspice
+LIBS:references
+LIBS:relays
+LIBS:rfcom
+LIBS:RFSolutions
+LIBS:sensors
+LIBS:silabs
+LIBS:stm8
+LIBS:stm32
+LIBS:supertex
+LIBS:switches
+LIBS:transf
+LIBS:triac_thyristor
+LIBS:ttl_ieee
+LIBS:video
+LIBS:wiznet
+LIBS:Worldsemi
+LIBS:Xicor
+LIBS:zetex
+LIBS:Zilog
+LIBS:pluto
 LIBS:+1.8V
 LIBS:+3.3V
 LIBS:+5V
@@ -175,72 +241,6 @@ LIBS:Vdd
 LIBS:VIN
 LIBS:VREG
 LIBS:VREG_VOUTCENTER
-LIBS:74xgxx
-LIBS:ac-dc
-LIBS:actel
-LIBS:allegro
-LIBS:Altera
-LIBS:analog_devices
-LIBS:battery_management
-LIBS:bbd
-LIBS:bosch
-LIBS:brooktre
-LIBS:cmos_ieee
-LIBS:dc-dc
-LIBS:diode
-LIBS:elec-unifil
-LIBS:ESD_Protection
-LIBS:ftdi
-LIBS:gennum
-LIBS:graphic
-LIBS:hc11
-LIBS:intersil
-LIBS:ir
-LIBS:Lattice
-LIBS:leds
-LIBS:LEM
-LIBS:logo
-LIBS:maxim
-LIBS:mechanical
-LIBS:microchip_dspic33dsc
-LIBS:microchip_pic10mcu
-LIBS:microchip_pic12mcu
-LIBS:microchip_pic16mcu
-LIBS:microchip_pic18mcu
-LIBS:microchip_pic24mcu
-LIBS:microchip_pic32mcu
-LIBS:modules
-LIBS:motor_drivers
-LIBS:motors
-LIBS:msp430
-LIBS:nordicsemi
-LIBS:nxp
-LIBS:nxp_armmcu
-LIBS:onsemi
-LIBS:Oscillators
-LIBS:powerint
-LIBS:Power_Management
-LIBS:pspice
-LIBS:references
-LIBS:relays
-LIBS:rfcom
-LIBS:RFSolutions
-LIBS:sensors
-LIBS:silabs
-LIBS:stm8
-LIBS:stm32
-LIBS:supertex
-LIBS:switches
-LIBS:transf
-LIBS:triac_thyristor
-LIBS:ttl_ieee
-LIBS:video
-LIBS:wiznet
-LIBS:Worldsemi
-LIBS:Xicor
-LIBS:zetex
-LIBS:Zilog
-LIBS:pluto
 LIBS:pluto-cache
 EELAYER 25 0
 EELAYER END
@@ -323,10 +323,10 @@ F 3 "" H 9750 5850 50  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L VCC #PWR043
+L VCC #PWR039
 U 1 1 5932FB32
 P 9500 5250
-F 0 "#PWR043" H 9500 5100 50  0001 C CNN
+F 0 "#PWR039" H 9500 5100 50  0001 C CNN
 F 1 "VCC" H 9500 5400 50  0000 C CNN
 F 2 "" H 9500 5250 50  0000 C CNN
 F 3 "" H 9500 5250 50  0000 C CNN
@@ -882,10 +882,10 @@ D[0..7]
 Text HLabel 3225 6775 0    60   BiDi ~ 0
 D[0..7]
 $Comp
-L GND #PWR044
+L GND #PWR040
 U 1 1 5933B988
 P 11050 1875
-F 0 "#PWR044" H 11050 1625 50  0001 C CNN
+F 0 "#PWR040" H 11050 1625 50  0001 C CNN
 F 1 "GND" H 11050 1725 50  0000 C CNN
 F 2 "" H 11050 1875 50  0001 C CNN
 F 3 "" H 11050 1875 50  0001 C CNN
@@ -893,10 +893,10 @@ F 3 "" H 11050 1875 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR045
+L GND #PWR041
 U 1 1 5933C0BC
 P 9650 2775
-F 0 "#PWR045" H 9650 2525 50  0001 C CNN
+F 0 "#PWR041" H 9650 2525 50  0001 C CNN
 F 1 "GND" H 9650 2625 50  0000 C CNN
 F 2 "" H 9650 2775 50  0001 C CNN
 F 3 "" H 9650 2775 50  0001 C CNN
@@ -912,10 +912,10 @@ Text HLabel 8975 1650 0    60   Input ~ 0
 Text HLabel 8975 3375 0    60   Output ~ 0
 ~IRQ
 $Comp
-L GND #PWR046
+L GND #PWR042
 U 1 1 5934CB71
 P 11325 3775
-F 0 "#PWR046" H 11325 3525 50  0001 C CNN
+F 0 "#PWR042" H 11325 3525 50  0001 C CNN
 F 1 "GND" H 11325 3625 50  0000 C CNN
 F 2 "" H 11325 3775 50  0001 C CNN
 F 3 "" H 11325 3775 50  0001 C CNN
