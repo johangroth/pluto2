@@ -1,4 +1,4 @@
-update=Mon 11 Dec 2017 20:00:44 GMT
+update=Wed 20 Dec 2017 22:30:58 GMT
 version=1
 last_client=kicad
 [pcbnew]
@@ -37,7 +37,7 @@ SpiceUseNetNumbers=0
 LabSize=60
 [eeschema]
 version=1
-LibDir=../SBC;../../../../../C64/KiCadLibraries/65xx_Library/KiCad;../../../../../C64/KiCadLibraries/kicad-library/library;../../../../../C64/KiCadLibraries/kicad-lib/components;../../../../../C64/KiCadLibraries/kicad-library2/libs
+LibDir=../SBC
 [eeschema/libraries]
 LibName1=pluto-rescue
 LibName2=power
@@ -310,3 +310,4 @@ LibName268=/home/jgroth/C64/KiCadLibraries/kicad-library2/libs/Vdd
 LibName269=/home/jgroth/C64/KiCadLibraries/kicad-library2/libs/VIN
 LibName270=/home/jgroth/C64/KiCadLibraries/kicad-library2/libs/VREG
 LibName271=/home/jgroth/C64/KiCadLibraries/kicad-library2/libs/VREG_VOUTCENTER
+LibName272=/home/jgroth/dev/repos_github/Saturn/HW/saturn
