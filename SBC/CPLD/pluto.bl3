@@ -1,0 +1,88 @@
+#$ TOOL ispLEVER Classic 2.0.00.17.20.15
+#$ DATE Sun Dec 24 17:23:21 2017
+#$ TITLE Address decoding
+#$ MODULE pluto
+#$ JEDECFILE address_decoding
+#$ PINS 21 A5:40 A6:38 A7:36 A8:31 A9:29 A10:27 A11:18 A12:16 A13:14 A14:9 A15:33 CLK:11 \
+#  RW:7 MRD:41 MWR:43 RAMSEL:15 ROMSEL:21 ACIA:3 IO1:8 IO2:2 RTC:6
+.model address_decoding
+.inputs A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+A7.BLIF A6.BLIF A5.BLIF RW.BLIF CLK.BLIF
+.outputs MRD MWR RAMSEL ROMSEL ACIA IO1 IO2 RTC
+.names RW.BLIF MRD
+0 1
+1 0
+.names RW.BLIF CLK.BLIF MWR
+1- 1
+-0 1
+01 0
+.names A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+RAMSEL
+-1111111 1
+1------- 1
+0-----0- 0
+0----0-- 0
+0---0--- 0
+0--0---- 0
+0-0----- 0
+00------ 0
+0------0 0
+.names A15.BLIF ROMSEL
+0 1
+1 0
+.names A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+A7.BLIF A6.BLIF A5.BLIF ACIA
+---------0- 1
+--------0-- 1
+-------0--- 1
+------0---- 1
+-----0----- 1
+----0------ 1
+---0------- 1
+--0-------- 1
+-0--------- 1
+1---------- 1
+----------0 1
+01111111111 0
+.names A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+A7.BLIF A6.BLIF IO1
+--------0- 1
+-------0-- 1
+------0--- 1
+-----0---- 1
+----0----- 1
+---0------ 1
+--0------- 1
+-0-------- 1
+1--------- 1
+---------0 1
+0111111111 0
+.names A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+A7.BLIF A6.BLIF A5.BLIF IO2
+---------1- 1
+--------0-- 1
+-------0--- 1
+------0---- 1
+-----0----- 1
+----0------ 1
+---0------- 1
+--0-------- 1
+-0--------- 1
+1---------- 1
+----------0 1
+01111111101 0
+.names A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+A7.BLIF A6.BLIF A5.BLIF RTC
+---------1- 1
+--------0-- 1
+-------0--- 1
+------0---- 1
+-----0----- 1
+----0------ 1
+---0------- 1
+--0-------- 1
+-0--------- 1
+1---------- 1
+----------1 1
+01111111100 0
+.end
