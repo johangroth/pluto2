@@ -1,17 +1,27 @@
 MODULE address_decoding
 
 TITLE 'Address decoding'
-	A5..A15 pin 40,38,36,31,29,27,18,16,14,9,33; " 65C02 Address bus
-	CLK	pin 11;				     " Clock in
-	RW	pin 7;				     " R/W signal from 65C02
-	MRD	pin 41 istype 'com';		     " Read 
-	MWR	pin 43 istype 'com';		     " Write
-	RAMSEL	pin 15 istype 'com';		     " Select RAM
-	ROMSEL	pin 21 istype 'com';		     " Select ROM
-	ACIA	pin 3  istype 'com';		     " $7FEX
-	IO1	pin 8  istype 'com';		     " $7FCX
-	IO2	pin 2  istype 'com';		     " $7FAX
-	RTC	pin 6  istype 'com';		     " $7F8X
+	A5..A15   pin 40,38,36,31,29,27,18,16,14,9,33; " 65C02 Address bus
+	CLK	  pin 11;			       " Clock in
+	RW	  pin 7;			       " R/W signal from 65C02
+	MRD	  pin 41 istype 'com';		       " Read 
+	MWR	  pin 43 istype 'com';		       " Write
+	RAMSEL	  pin 15 istype 'com';		       " Select RAM
+	ROMSEL	  pin 21 istype 'com';		       " Select ROM
+	ACIA	  pin 3  istype 'com';		       " $7FEX
+	IO1	  pin 8  istype 'com';		       " $7FCX
+	IO2	  pin 2  istype 'com';		       " $7FAX
+	RTC	  pin 6  istype 'com';		       " $7F8X
+	"A3	  pin 5;
+	"FROM_OE	  pin 24	istype 'com';
+	"FROM_CLK  pin 17	istype 'com';
+	"TO_OE     pin 26	istype 'com';
+	"TO_CLK    pin 30	istype 'com';
+	"OBT_OE    pin 20	istype 'com';
+	"OBT_DIR   pin 28	istype 'com';
+	"DIOR      pin 39	istype 'com';
+	"DIOW      pin 25	istype 'com';
+	"IDE_CS0   pin 19	istype 'com';
 	H,L,X	= 1,0,.X.;
 	Address = [A15,A14,A13,A12, A11,A10,A9,A8, A7,A6,A5,X, X,X,X,X];
 
@@ -24,7 +34,6 @@ EQUATIONS
 	!RTC	= (Address >= ^h7F80) & (Address <= ^h7F9F);
 	!MWR	= !RW & CLK;
 	!MRD	= RW;
- 	
 
 TEST_VECTORS
 	(Address -> [ ROMSEL,	ACIA,	IO1,	IO2,	RTC,	RAMSEL	])

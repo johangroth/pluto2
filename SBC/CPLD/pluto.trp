@@ -1,0 +1,115 @@
+
+Timing Report for STAMP
+
+//  Project = pluto
+//  Family  = mach4a
+//  Device  = M4A5-64/32
+//  Speed   = -10
+//  Voltage = 5.0
+//  Operating Condition = COM
+//  Data sheet version  = RevD-8/2000
+
+//  Pass Bidirection = OFF
+//  Pass S/R = OFF
+//  Pass Latch = OFF
+//  T_SU Endpoints D/T inputs = ON
+//  T_SU Endpoints CE inputs = OFF
+//  T_SU Endpoints S/R inputs = OFF
+//  T_SU Endpoints RAM gated = ON
+//  Fmax of CE = ON
+//  Fmax of RAM = ON
+
+//  Location(From => To)
+//    Pin number: numeric number preceded by "p", BGA number as is
+//    Macrocell number: Segment#,GLB#,Macrocell#
+//                      Segment#: starts from 0 (if applicable)
+//                      GLB#: starts from A..Z, AA..ZZ
+//                      Macrocell#: starts from 0 to 31
+
+
+Section IO
+  //DESTINATION NODES;
+  ACIA [out]
+  IO1 [out]
+  IO2 [out]
+  MRD [out]
+  MWR [out]
+  RAMSEL [out]
+  ROMSEL [out]
+  RTC [out]
+
+  //SOURCE NODES;
+  A5 [in]
+  A6 [in]
+  A7 [in]
+  A8 [in]
+  A9 [in]
+  A10 [in]
+  A11 [in]
+  A12 [in]
+  A13 [in]
+  A14 [in]
+  A15 [in]
+  CLK [in]
+  RW [in]
+
+
+Section tPD
+
+   Delay         Level   Location(From => To)    Source                        Destination
+  =====         =====   ====================    ======                        ===========
+   10.0           1     p40       => p3         A5                            ACIA
+   10.0           1     p40       => p2         A5                            IO2
+   10.0           1     p40       => p6         A5                            RTC
+   10.0           1     p38       => p3         A6                            ACIA
+   10.0           1     p38       => p8         A6                            IO1
+   10.0           1     p38       => p2         A6                            IO2
+   10.0           1     p38       => p6         A6                            RTC
+   10.0           1     p36       => p3         A7                            ACIA
+   10.0           1     p36       => p8         A7                            IO1
+   10.0           1     p36       => p2         A7                            IO2
+   10.0           1     p36       => p6         A7                            RTC
+   10.0           1     p31       => p3         A8                            ACIA
+   10.0           1     p31       => p8         A8                            IO1
+   10.0           1     p31       => p2         A8                            IO2
+   10.0           1     p31       => p15        A8                            RAMSEL
+   10.0           1     p31       => p6         A8                            RTC
+   10.0           1     p29       => p3         A9                            ACIA
+   10.0           1     p29       => p8         A9                            IO1
+   10.0           1     p29       => p2         A9                            IO2
+   10.0           1     p29       => p15        A9                            RAMSEL
+   10.0           1     p29       => p6         A9                            RTC
+   10.0           1     p27       => p3         A10                           ACIA
+   10.0           1     p27       => p8         A10                           IO1
+   10.0           1     p27       => p2         A10                           IO2
+   10.0           1     p27       => p15        A10                           RAMSEL
+   10.0           1     p27       => p6         A10                           RTC
+   10.0           1     p18       => p3         A11                           ACIA
+   10.0           1     p18       => p8         A11                           IO1
+   10.0           1     p18       => p2         A11                           IO2
+   10.0           1     p18       => p15        A11                           RAMSEL
+   10.0           1     p18       => p6         A11                           RTC
+   10.0           1     p16       => p3         A12                           ACIA
+   10.0           1     p16       => p8         A12                           IO1
+   10.0           1     p16       => p2         A12                           IO2
+   10.0           1     p16       => p15        A12                           RAMSEL
+   10.0           1     p16       => p6         A12                           RTC
+   10.0           1     p14       => p3         A13                           ACIA
+   10.0           1     p14       => p8         A13                           IO1
+   10.0           1     p14       => p2         A13                           IO2
+   10.0           1     p14       => p15        A13                           RAMSEL
+   10.0           1     p14       => p6         A13                           RTC
+   10.0           1     p9        => p3         A14                           ACIA
+   10.0           1     p9        => p8         A14                           IO1
+   10.0           1     p9        => p2         A14                           IO2
+   10.0           1     p9        => p15        A14                           RAMSEL
+   10.0           1     p9        => p6         A14                           RTC
+   10.0           1     p33       => p3         A15                           ACIA
+   10.0           1     p33       => p8         A15                           IO1
+   10.0           1     p33       => p2         A15                           IO2
+   10.0           1     p33       => p15        A15                           RAMSEL
+   10.0           1     p33       => p21        A15                           ROMSEL
+   10.0           1     p33       => p6         A15                           RTC
+   10.0           1     p11       => p43        CLK                           MWR
+   10.0           1     p7        => p41        RW                            MRD
+   10.0           1     p7        => p43        RW                            MWR

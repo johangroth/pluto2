@@ -1,0 +1,587 @@
+MODELDATA
+MODELDATA_VERSION "1.0";
+DESIGN "pluto";
+DATE "Sun Dec 24 17:47:53 2017";
+VENDOR "Lattice Semiconductor Corporation";
+PROGRAM "STAMP Model Generator";
+
+/* port drive, max transition and max capacitance */
+PORTDATA
+A5: MAXTRANS(0.0);
+A6: MAXTRANS(0.0);
+A7: MAXTRANS(0.0);
+A8: MAXTRANS(0.0);
+A9: MAXTRANS(0.0);
+A10: MAXTRANS(0.0);
+A11: MAXTRANS(0.0);
+A12: MAXTRANS(0.0);
+A13: MAXTRANS(0.0);
+A14: MAXTRANS(0.0);
+A15: MAXTRANS(0.0);
+CLK: MAXTRANS(0.0);
+RW: MAXTRANS(0.0);
+ACIA: MAXTRANS(0.0);
+IO1: MAXTRANS(0.0);
+IO2: MAXTRANS(0.0);
+MRD: MAXTRANS(0.0);
+MWR: MAXTRANS(0.0);
+RAMSEL: MAXTRANS(0.0);
+ROMSEL: MAXTRANS(0.0);
+RTC: MAXTRANS(0.0);
+ENDPORTDATA
+
+/* timing arc data */
+TIMINGDATA
+
+ARCDATA
+A5_ACIA_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A5_IO2_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A5_RTC_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A6_ACIA_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A6_IO1_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A6_IO2_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A6_RTC_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A7_ACIA_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A7_IO1_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A7_IO2_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A7_RTC_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A8_ACIA_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A8_IO1_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A8_IO2_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A8_RAMSEL_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A8_RTC_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A9_ACIA_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A9_IO1_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A9_IO2_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A9_RAMSEL_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A9_RTC_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A10_ACIA_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A10_IO1_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A10_IO2_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A10_RAMSEL_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A10_RTC_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A11_ACIA_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A11_IO1_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A11_IO2_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A11_RAMSEL_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A11_RTC_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A12_ACIA_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A12_IO1_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A12_IO2_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A12_RAMSEL_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A12_RTC_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A13_ACIA_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A13_IO1_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A13_IO2_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A13_RAMSEL_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A13_RTC_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A14_ACIA_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A14_IO1_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A14_IO2_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A14_RAMSEL_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A14_RTC_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A15_ACIA_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A15_IO1_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A15_IO2_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A15_RAMSEL_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A15_ROMSEL_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+A15_RTC_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+CLK_MWR_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+RW_MRD_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ARCDATA
+RW_MWR_delay:
+CELL_RISE(scalar) {
+VALUES(10.0);
+}
+CELL_FALL(scalar) {
+VALUES(10.0);
+}
+ENDARCDATA
+
+ENDTIMINGDATA
+ENDMODELDATA
