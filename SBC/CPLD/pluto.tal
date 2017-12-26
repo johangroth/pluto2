@@ -36,7 +36,7 @@ SIGNAL NAME       min  max  min  max  min  max  min  max
              MWR  ..   ..   ..   ..    1    1   ..   ..   
           RAMSEL  ..   ..   ..   ..    1    1   ..   ..   
           ROMSEL  ..   ..   ..   ..    1    1   ..   ..   
-            ACIA  ..   ..   ..   ..    1    1   ..   ..   
+           DUART  ..   ..   ..   ..    1    1   ..   ..   
              IO1  ..   ..   ..   ..    1    1   ..   ..   
              IO2  ..   ..   ..   ..    1    1   ..   ..   
              RTC  ..   ..   ..   ..    1    1   ..   ..   

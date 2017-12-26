@@ -2,7 +2,7 @@
 Copyright(C), 1992-2015, Lattice Semiconductor Corp.
 All Rights Reserved.
 
-Design address_decoding created  Sun Dec 24 23:23:58 2017
+Design address_decoding created  Mon Dec 25 21:18:49 2017
 
 Title:  Address decoding
 
@@ -12,8 +12,8 @@ Title:  Address decoding
    1          2        1    Pin   MWR- 
    2          8        1    Pin   RAMSEL 
    1          1        1    Pin   ROMSEL 
-   1         11        1    Pin   ACIA- 
-   1         10        1    Pin   IO1- 
+   1         11        1    Pin   DUART- 
+   1         11        1    Pin   IO1- 
    1         11        1    Pin   IO2- 
    1         11        1    Pin   RTC- 
 =========
@@ -34,9 +34,9 @@ RAMSEL = (A15
 
 ROMSEL = (!A15);
 
-!ACIA = (!A15 & A14 & A13 & A12 & A11 & A10 & A9 & A8 & A7 & A6 & A5);
+!DUART = (!A15 & A14 & A13 & A12 & A11 & A10 & A9 & A8 & A7 & A6 & A5);
 
-!IO1 = (!A15 & A14 & A13 & A12 & A11 & A10 & A9 & A8 & A7 & A6);
+!IO1 = (!A15 & A14 & A13 & A12 & A11 & A10 & A9 & A8 & A7 & A6 & !A5);
 
 !IO2 = (!A15 & A14 & A13 & A12 & A11 & A10 & A9 & A8 & A7 & !A6 & A5);
 

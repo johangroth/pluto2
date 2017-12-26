@@ -2,7 +2,7 @@
 (DELAYFILE
   (SDFVERSION "2.1")
   (DESIGN "pluto")
-  (DATE "12/24/2017 17:47:37")
+  (DATE "12/25/2017 21:22:28")
   (VENDOR "Lattice Semiconductor")
   (PROGRAM "SDF Generator")
   (VERSION "2.0.00.17.20.15 Data sheet version: RevD-8/2000")
@@ -49,7 +49,7 @@
   )
   (CELL
     (CELLTYPE "OBUF")
-    (INSTANCE OUT_ACIA_I_1)
+    (INSTANCE OUT_DUART_I_1)
     (DELAY
       (ABSOLUTE
         (IOPATH I0 O (30:30:30) (30:30:30) )
@@ -127,7 +127,7 @@
   )
   (CELL
     (CELLTYPE "INV")
-    (INSTANCE GATE_ACIA_I_1)
+    (INSTANCE GATE_DUART_I_1)
     (DELAY
       (ABSOLUTE
         (PORT I0 (0:0:0) (0:0:0) )

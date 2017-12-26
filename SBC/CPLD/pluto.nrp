@@ -10,7 +10,7 @@ Reading library information ...
 Mapping to combinational gates 
 Mapping to netlist view.
 Utilization Estimate
-    Combinational Macros:         32
+    Combinational Macros:         33
     Flip-Flop and Latch Macros:    0
     I/O Pads:                     21
 Elapsed time: 1 seconds

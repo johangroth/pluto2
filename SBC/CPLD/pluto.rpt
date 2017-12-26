@@ -12,7 +12,7 @@ Project_Summary
 
 Project Name :          pluto
 Project Path :          Z:\Pluto2\SBC\CPLD
-Project Fitted on :     Sun Dec 24 23:24:01 2017
+Project Fitted on :     Mon Dec 25 21:21:46 2017
 
 Device :                M4A5-64/32
 Package :               44PLCC
@@ -165,7 +165,7 @@ Pin No| Type |Pad |Pin     | Signal name
 ---------------------------------------------------------------
     1 |  GND |    |        |
     2 |  I_O | A7 |   *    |IO2
-3     |  I_O | A6 |   *    |ACIA
+3     |  I_O | A6 |   *    |DUART
 4     |  I_O | A5 |        |
 5     |  I_O | A4 |        |
 6     |  I_O | A3 |   *    |RTC
@@ -255,7 +255,7 @@ Output_Signal_List
             Pin  r e O   Output 
 Pin Blk PTs Type e s E   Fanout Pwr Slew      Signal 
 ----------------------------------------------------------------------
-  3  A   1  COM          ----    Hi Fast      ACIA   
+  3  A   1  COM          ----    Hi Fast      DUART   
   8  A   1  COM          ----    Hi Fast      IO1   
   2  A   1  COM          ----    Hi Fast      IO2   
  41  D   1  COM          ----    Hi Fast      MRD   
@@ -307,26 +307,27 @@ Signals_Fanout_List
 ~~~~~~~~~~~~~~~~~~~
 Signal Source  :    Fanout List
 -----------------------------------------------------------------------------
-         A5{ E}:           ACIA{ A}            IO2{ A}            RTC{ A}
-         A6{ E}:           ACIA{ A}            IO1{ A}            IO2{ A}
+         A5{ E}:          DUART{ A}            IO1{ A}            IO2{ A}
                :            RTC{ A}
-         A7{ E}:           ACIA{ A}            IO1{ A}            IO2{ A}
+         A6{ E}:          DUART{ A}            IO1{ A}            IO2{ A}
                :            RTC{ A}
-         A8{ D}:         RAMSEL{ B}           ACIA{ A}            IO1{ A}
+         A7{ E}:          DUART{ A}            IO1{ A}            IO2{ A}
+               :            RTC{ A}
+         A8{ D}:         RAMSEL{ B}          DUART{ A}            IO1{ A}
                :            IO2{ A}            RTC{ A}
-         A9{ D}:         RAMSEL{ B}           ACIA{ A}            IO1{ A}
+         A9{ D}:         RAMSEL{ B}          DUART{ A}            IO1{ A}
                :            IO2{ A}            RTC{ A}
-        A10{ D}:         RAMSEL{ B}           ACIA{ A}            IO1{ A}
+        A10{ D}:         RAMSEL{ B}          DUART{ A}            IO1{ A}
                :            IO2{ A}            RTC{ A}
-        A11{ C}:         RAMSEL{ B}           ACIA{ A}            IO1{ A}
+        A11{ C}:         RAMSEL{ B}          DUART{ A}            IO1{ A}
                :            IO2{ A}            RTC{ A}
-        A12{ C}:         RAMSEL{ B}           ACIA{ A}            IO1{ A}
+        A12{ C}:         RAMSEL{ B}          DUART{ A}            IO1{ A}
                :            IO2{ A}            RTC{ A}
-        A13{ C}:         RAMSEL{ B}           ACIA{ A}            IO1{ A}
+        A13{ C}:         RAMSEL{ B}          DUART{ A}            IO1{ A}
                :            IO2{ A}            RTC{ A}
-        A14{ B}:         RAMSEL{ B}           ACIA{ A}            IO1{ A}
+        A14{ B}:         RAMSEL{ B}          DUART{ A}            IO1{ A}
                :            IO2{ A}            RTC{ A}
-        A15{. }:         RAMSEL{ B}         ROMSEL{ B}           ACIA{ A}
+        A15{. }:         RAMSEL{ B}         ROMSEL{ B}          DUART{ A}
                :            IO1{ A}            IO2{ A}            RTC{ A}
         CLK{. }:            MWR{ D}
          RW{ B}:            MRD{ D}            MWR{ D}
@@ -347,7 +348,7 @@ Equations :
 +-----+-----+-----+-----+------------------------
 |     |     |     |     | IO1
 |     |     |     |     | RTC
-|     |     |     |     | ACIA
+|     |     |     |     | DUART
 |     |     |     |     | IO2
 |     |     |     |     | A14
 |     |     |     |     | RW
@@ -491,8 +492,8 @@ Title:  Address decoding
    1          2        1    Pin   MWR- 
    2          8        1    Pin   RAMSEL 
    1          1        1    Pin   ROMSEL 
-   1         11        1    Pin   ACIA- 
-   1         10        1    Pin   IO1- 
+   1         11        1    Pin   DUART- 
+   1         11        1    Pin   IO1- 
    1         11        1    Pin   IO2- 
    1         11        1    Pin   RTC- 
 =========
@@ -513,9 +514,9 @@ RAMSEL = (A15
 
 ROMSEL = (!A15);
 
-!ACIA = (!A15 & A14 & A13 & A12 & A11 & A10 & A9 & A8 & A7 & A6 & A5);
+!DUART = (!A15 & A14 & A13 & A12 & A11 & A10 & A9 & A8 & A7 & A6 & A5);
 
-!IO1 = (!A15 & A14 & A13 & A12 & A11 & A10 & A9 & A8 & A7 & A6);
+!IO1 = (!A15 & A14 & A13 & A12 & A11 & A10 & A9 & A8 & A7 & A6 & !A5);
 
 !IO2 = (!A15 & A14 & A13 & A12 & A11 & A10 & A9 & A8 & A7 & !A6 & A5);
 

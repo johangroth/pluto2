@@ -8,7 +8,7 @@
 ; Source file pluto.tt4
 ; FITTER-generated Placements.
 ; DEVICE   mach463a
-; DATE     Sun Dec 24 23:24:01 2017
+; DATE     Mon Dec 25 21:21:46 2017
 
 
 Pin   40  A5
@@ -28,7 +28,7 @@ Pin   41  MRD Comb ; S6=1  S9=1  Pair 135
 Pin   43  MWR Comb ; S6=1  S9=1  Pair 117
 Pin   15  RAMSEL Comb ; S6=1  S9=1  Pair 75
 Pin   21  ROMSEL Comb ; S6=1  S9=1  Pair 69
-Pin   3  ACIA Comb ; S6=1  S9=1  Pair 45
+Pin   3  DUART Comb ; S6=1  S9=1  Pair 45
 Pin   8  IO1 Comb ; S6=1  S9=1  Pair 51
 Pin   2  IO2 Comb ; S6=1  S9=1  Pair 47
 Pin   6  RTC Comb ; S6=1  S9=1  Pair 57
