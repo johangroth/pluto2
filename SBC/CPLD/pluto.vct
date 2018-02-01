@@ -135,6 +135,7 @@ DUART = input,3,-,-;
 IO1 = input,8,-,-;
 IO2 = input,2,-,-;
 RTC = input,6,-,-;
+A3 = input,5,-,-;
 
 [GROUP ASSIGNMENT]
 Layer = OFF;

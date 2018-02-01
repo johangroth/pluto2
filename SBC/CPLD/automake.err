@@ -1,0 +1,14 @@
+AHDL2BLF  ABEL-HDL Processor
+ispLEVER Classic 2.0 Copyright(C), 1992-2005, Lattice Semiconductor Corporation. All rights reserved
+Portions Copyright(c), 1992-1999, Vantis Corporation
+Portions Copyright(C), 1993-1998, Data I/O Corporation
+Portions Copyright(C), 1997-1998, MINC Washington Corporation
+Portions Copyright(C), Alan Phillips, Lancaster University Computer Centre 1992-1998
+
+0030 |	iIDE  INTERFACE(A3,MRD,MWR,CLK,IDE -> FROM_OE, FROM_CLK, TO_OE, TO_CLK, OBT_CLK, OBT_DIR, DIOR, DIOW, IDE_CS0)
+                                             ^
+Syntax Error 1094: In "address_decoding.abl":30:No operators supported in this context.
+
+0030 |	iIDE  INTERFACE(A3,MRD,MWR,CLK,IDE -> FROM_OE, FROM_CLK, TO_OE, TO_CLK, OBT_CLK, OBT_DIR, DIOR, DIOW, IDE_CS0)
+                                             ^
+Syntax Error 1094: In "address_decoding.abl":30:No operators supported in this context.

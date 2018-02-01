@@ -2,13 +2,13 @@
 Copyright(C), 1992-2015, Lattice Semiconductor Corp.
 All Rights Reserved.
 
-Design address_decoding created  Mon Dec 25 21:18:49 2017
+Design address_decoding created  Wed Jan 31 20:46:57 2018
 
 Title:  Address decoding
 
  P-Terms   Fan-in  Fan-out  Type  Name (attributes)
 ---------  ------  -------  ----  -----------------
-   1          1        1    Pin   MRD 
+   1          2        1    Pin   MRD- 
    1          2        1    Pin   MWR- 
    2          8        1    Pin   RAMSEL 
    1          1        1    Pin   ROMSEL 
@@ -18,14 +18,14 @@ Title:  Address decoding
    1         11        1    Pin   RTC- 
 =========
    9                 P-Term Total: 9
-                       Total Pins: 21
+                       Total Pins: 22
                       Total Nodes: 0
             Average P-Term/Output: 1
 
 
 Equations:
 
-MRD = (!RW);
+!MRD = (RW & CLK);
 
 !MWR = (!RW & CLK);
 

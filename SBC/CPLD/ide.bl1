@@ -1,0 +1,95 @@
+#$ TOOL ispLEVER Classic 2.0.00.17.20.15
+#$ DATE Wed Jan 31 23:03:24 2018
+#$ TITLE ide.bls 
+#$ MODULE ide
+#$ PINS 14 OBT_OE'o'  IDE_CS0'o'  OBT_DIR'o'  DIOR'o'  TO_CLK'o'  FROM_CLK'o'  FROM_OE'o'  TO_OE'o'  IDE DIOW'o'  \
+#  MWR MRD CLK A3
+#$ NODES 23 N7 N6 NC5 NC4 NC3 NC2 NC1 N_17 N_7 N_9 N_10'o'  N_11'o'  N_12'o'  N_13'o'  N_14'o'  N_15'o'  N_16'o'  \
+#  N_5'o'  N_6'o'  N_4'o'  N_1'o'  N_2'o'  N_3'o' 
+#$ INTERFACE v74139  14 A0'i'  A1'i'  B0'i'  B1'i'  ENA'i'  ENB'i'  YA0'o'  YA1'o'  YA2'o'  YA3'o'  YB0'o'  YB1'o'  YB2'o'  YB3'o' 
+#$ INSTANCE I1 v74139 14 N_5 N6 N_5 N7 N_4 N_12 N_9 N_17 NC1 NC2 NC3 N_7 NC4 NC5
+.model ide
+.inputs N_15.BLIF N_2.BLIF N_11.BLIF N_3.BLIF N_1.BLIF N_5.BLIF N_12.BLIF \
+N_16.BLIF N_14.BLIF CLK.BLIF N_13.BLIF N_4.BLIF MWR.BLIF IDE.BLIF MRD.BLIF \
+A3.BLIF N_6.BLIF N_10.BLIF N_9.BLIF N_17.BLIF N_7.BLIF
+.outputs N_1 N_2 N_6 N_10 N_12 N_4 N_13 N_3.D N_3.C N_11.D N_11.C N_16 N_15 \
+N_14 N_5 IDE_CS0 OBT_DIR DIOW DIOR FROM_OE FROM_CLK OBT_OE TO_OE TO_CLK
+.names N_15.BLIF N_2.BLIF N_1
+11 1
+0- 0
+-0 0
+.names N_11.BLIF N_3.BLIF N_2
+11 1
+0- 0
+-0 0
+.names N_1.BLIF N_5.BLIF N_6
+1- 1
+-1 1
+00 0
+.names N_12.BLIF N_11.BLIF N_10
+1- 1
+-1 1
+00 0
+.names N_16.BLIF N_15.BLIF N_12
+1- 1
+-1 1
+00 0
+.names N_15.BLIF N_14.BLIF N_4
+1- 1
+-1 1
+00 0
+.names CLK.BLIF N_13
+1 1
+0 0
+.names N_4.BLIF N_3.D
+1 1
+0 0
+.names N_13.BLIF N_3.C
+1 1
+0 0
+.names N_12.BLIF N_11.D
+1 1
+0 0
+.names N_13.BLIF N_11.C
+1 1
+0 0
+.names MWR.BLIF N_16
+1 1
+0 0
+.names IDE.BLIF N_15
+1 1
+0 0
+.names MRD.BLIF N_14
+1 1
+0 0
+.names A3.BLIF N_5
+1 1
+0 0
+.names N_6.BLIF IDE_CS0
+1 1
+0 0
+.names N_3.BLIF OBT_DIR
+1 1
+0 0
+.names N_10.BLIF DIOW
+1 1
+0 0
+.names N_3.BLIF DIOR
+1 1
+0 0
+.names N_9.BLIF FROM_OE
+1 1
+0 0
+.names N_17.BLIF FROM_CLK
+1 1
+0 0
+.names N_2.BLIF OBT_OE
+1 1
+0 0
+.names N_11.BLIF TO_OE
+1 1
+0 0
+.names N_7.BLIF TO_CLK
+1 1
+0 0
+.end

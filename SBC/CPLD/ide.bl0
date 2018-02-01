@@ -1,0 +1,108 @@
+#$ TOOL ispLEVER Classic 2.0.00.17.20.15
+#$ DATE Wed Jan 31 23:03:24 2018
+#$ TITLE ide.bls 
+#$ MODULE ide
+#$ PINS 14 OBT_OE'o'  IDE_CS0'o'  OBT_DIR'o'  DIOR'o'  TO_CLK'o'  FROM_CLK'o'  FROM_OE'o'  TO_OE'o'  IDE DIOW'o'  \
+#  MWR MRD CLK A3
+#$ NODES 23 N7 N6 NC5 NC4 NC3 NC2 NC1 N_17 N_7 N_9 N_10'o'  N_11'o'  N_12'o'  N_13'o'  N_14'o'  N_15'o'  N_16'o'  \
+#  N_5'o'  N_6'o'  N_4'o'  N_1'o'  N_2'o'  N_3'o' 
+#$ INTERFACE v74139  14 A0'i'  A1'i'  B0'i'  B1'i'  ENA'i'  ENB'i'  YA0'o'  YA1'o'  YA2'o'  YA3'o'  YB0'o'  YB1'o'  YB2'o'  YB3'o' 
+#$ INSTANCE I1 v74139 14 N_5 N6 N_5 N7 N_4 N_12 N_9 N_17 NC1 NC2 NC3 N_7 NC4 NC5
+.model ide
+.inputs N_15.BLIF N_2.BLIF N_11.BLIF N_3.BLIF N_1.BLIF N_5.BLIF N_12.BLIF \
+N_16.BLIF N_14.BLIF CLK.BLIF N_13.BLIF N_4.BLIF MWR.BLIF IDE.BLIF MRD.BLIF \
+A3.BLIF N_6.BLIF N_10.BLIF N_9.BLIF N_17.BLIF N_7.BLIF
+.outputs N_1 N_2 N_6 N_10 N_12 N_4 N_13 N_3.D N_3.C N_11.D N_11.C N_16 N_15 \
+N_14 N_5 IDE_CS0 OBT_DIR DIOW DIOR FROM_OE FROM_CLK OBT_OE TO_OE TO_CLK
+
+.subckt g_2and A.BLIF=N_15.BLIF B.BLIF=N_2.BLIF Y=N_1
+
+.subckt g_2and A.BLIF=N_11.BLIF B.BLIF=N_3.BLIF Y=N_2
+
+.subckt g_2or A.BLIF=N_1.BLIF B.BLIF=N_5.BLIF Y=N_6
+
+.subckt g_2or A.BLIF=N_12.BLIF B.BLIF=N_11.BLIF Y=N_10
+
+.subckt g_2or A.BLIF=N_16.BLIF B.BLIF=N_15.BLIF Y=N_12
+
+.subckt g_2or A.BLIF=N_15.BLIF B.BLIF=N_14.BLIF Y=N_4
+
+.subckt g_clkbuf I.BLIF=CLK.BLIF O=N_13
+
+.subckt g_d CLK.BLIF=N_13.BLIF D.BLIF=N_4.BLIF Q.D=N_3.D Q.C=N_3.C
+
+.subckt g_d CLK.BLIF=N_13.BLIF D.BLIF=N_12.BLIF Q.D=N_11.D Q.C=N_11.C
+
+.subckt g_input I.BLIF=MWR.BLIF O=N_16
+
+.subckt g_input I.BLIF=IDE.BLIF O=N_15
+
+.subckt g_input I.BLIF=MRD.BLIF O=N_14
+
+.subckt g_input I.BLIF=A3.BLIF O=N_5
+
+.subckt g_output I.BLIF=N_6.BLIF O=IDE_CS0
+
+.subckt g_output I.BLIF=N_3.BLIF O=OBT_DIR
+
+.subckt g_output I.BLIF=N_10.BLIF O=DIOW
+
+.subckt g_output I.BLIF=N_3.BLIF O=DIOR
+
+.subckt g_output I.BLIF=N_9.BLIF O=FROM_OE
+
+.subckt g_output I.BLIF=N_17.BLIF O=FROM_CLK
+
+.subckt g_output I.BLIF=N_2.BLIF O=OBT_OE
+
+.subckt g_output I.BLIF=N_11.BLIF O=TO_OE
+
+.subckt g_output I.BLIF=N_7.BLIF O=TO_CLK
+.end
+.model g_2and
+.inputs A.BLIF B.BLIF
+.outputs Y
+.names A.BLIF B.BLIF Y
+11 1
+0- 0
+-0 0
+.end
+.model g_2or
+.inputs A.BLIF B.BLIF
+.outputs Y
+.names A.BLIF B.BLIF Y
+1- 1
+-1 1
+00 0
+.end
+.model g_clkbuf
+.inputs I.BLIF
+.outputs O
+.names I.BLIF O
+1 1
+0 0
+.end
+.model g_d
+.inputs D.BLIF CLK.BLIF
+.outputs Q.D Q.C
+.names D.BLIF Q.D
+1 1
+0 0
+.names CLK.BLIF Q.C
+1 1
+0 0
+.end
+.model g_input
+.inputs I.BLIF
+.outputs O
+.names I.BLIF O
+1 1
+0 0
+.end
+.model g_output
+.inputs I.BLIF
+.outputs O
+.names I.BLIF O
+1 1
+0 0
+.end

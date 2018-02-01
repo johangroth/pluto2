@@ -1,9 +1,9 @@
 #$ TOOL ispLEVER Classic 2.0.00.17.20.15
-#$ DATE Mon Dec 25 21:18:49 2017
+#$ DATE Wed Jan 31 20:46:57 2018
 #$ TITLE Address decoding
 #$ MODULE pluto
 #$ JEDECFILE address_decoding
-#$ PINS 21 A5 A6 A7 A8 A9 A10 A11 A12 A13 A14 A15 CLK RW MRD MWR RAMSEL ROMSEL DUART IO1 IO2 RTC 
+#$ PINS 22 A5 A6 A7 A8 A9 A10 A11 A12 A13 A14 A15 CLK RW MRD MWR RAMSEL ROMSEL DUART IO1 IO2 RTC A3 
 .type fr
 .i 13
 .o 8
@@ -27,7 +27,7 @@
 ----------0-- ~~~~1~1~
 -----------1- ~1~~~~~~
 -----------0- 1~~~~~~~
-------------0 ~1~~~~~~
+------------0 11~~~~~~
 1------------ ~~~0~~~~
 00----------- ~~0~~~~~
 0-0---------- ~~0~~~~~
@@ -40,6 +40,6 @@
 01111111101-- ~~~~~~0~
 01111111110-- ~~~~~0~~
 01111111100-- ~~~~~~~0
------------1- 0~~~~~~~
+-----------11 0~~~~~~~
 -----------01 ~0~~~~~~
 .end

@@ -4,6 +4,8 @@ PROJECT Pluto
 DESIGN pluto Normal
 DEVKIT M4A5-64/32-10JC
 ENTRY ABEL/Schematic
+MODULE ide.sch
+MODSTYLE ide Normal
 MODULE address_decoding.abl
 MODSTYLE address_decoding Normal
 SYNTHESIS_TOOL Synplify

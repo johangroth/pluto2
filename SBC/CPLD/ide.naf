@@ -1,0 +1,14 @@
+A3  i
+CLK  i
+MRD  i
+IDE  i
+MWR  i
+FROM_OE  o
+FROM_CLK  o
+TO_CLK  o
+OBT_OE  o
+IDE_CS0  o
+TO_OE  o
+DIOR  o
+DIOW  o
+OBT_DIR  o

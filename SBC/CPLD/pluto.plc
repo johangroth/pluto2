@@ -8,7 +8,7 @@
 ; Source file pluto.tt4
 ; FITTER-generated Placements.
 ; DEVICE   mach463a
-; DATE     Mon Dec 25 21:21:46 2017
+; DATE     Thu Feb 01 00:49:10 2018
 
 
 Pin   40  A5
@@ -33,4 +33,4 @@ Pin   8  IO1 Comb ; S6=1  S9=1  Pair 51
 Pin   2  IO2 Comb ; S6=1  S9=1  Pair 47
 Pin   6  RTC Comb ; S6=1  S9=1  Pair 57
 ; Unused Pins & Nodes
-; -> None Found.
+; A3 

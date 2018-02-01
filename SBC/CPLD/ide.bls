@@ -1,0 +1,42 @@
+#$ TOOL SCH2BLF 2.0.00.17 
+#$ TITLE ide.bls 
+#$ MODULE ide 
+#$ PINS 14  OBT_OE IDE_CS0 OBT_DIR DIOR TO_CLK FROM_CLK FROM_OE TO_OE \
+#   IDE DIOW MWR MRD CLK A3
+#$ NODES 23 N7 N6 NC5 NC4 NC3 NC2 NC1 N_17 N_7 N_9 N_10 N_11 N_12  \
+#  N_13 N_14 N_15 N_16 N_5 N_6 N_4 N_1 N_2 N_3 
+#$ INTERFACE g_2and 3 A'i' B'i' Y'o'
+#$ INTERFACE g_2or 3 A'i' B'i' Y'o'
+#$ INTERFACE g_clkbuf 2 I'i' O'o'
+#$ INTERFACE g_d 3 CLK'i' D'i' Q'o'
+#$ INTERFACE g_input 2 I'i' O'o'
+#$ INTERFACE g_output 2 I'i' O'o'
+#$ INTERFACE v74139 14 A0'i' A1'i' B0'i' B1'i' ENA'i' ENB'i' YA0'o' \
+#   YA1'o' YA2'o' YA3'o' YB0'o' YB1'o' YB2'o' YB3'o'
+#$ PRIMITIVE I8 g_2and 3 N_15 N_2 N_1
+#$ PRIMITIVE I9 g_2and 3 N_11 N_3 N_2
+#$ PRIMITIVE I2 g_2or 3 N_1 N_5 N_6
+#$ PRIMITIVE I3 g_2or 3 N_12 N_11 N_10
+#$ PRIMITIVE I4 g_2or 3 N_16 N_15 N_12
+#$ PRIMITIVE I5 g_2or 3 N_15 N_14 N_4
+#$ PRIMITIVE I14 g_clkbuf 2 CLK N_13
+#$ PRIMITIVE I6 g_d 3 N_13 N_4 N_3
+#$ PRIMITIVE I7 g_d 3 N_13 N_12 N_11
+#$ PRIMITIVE I10 g_input 2 MWR N_16
+#$ PRIMITIVE I11 g_input 2 IDE N_15
+#$ PRIMITIVE I12 g_input 2 MRD N_14
+#$ PRIMITIVE I13 g_input 2 A3 N_5
+#$ PRIMITIVE I15 g_output 2 N_6 IDE_CS0
+#$ PRIMITIVE I16 g_output 2 N_3 OBT_DIR
+#$ PRIMITIVE I17 g_output 2 N_10 DIOW
+#$ PRIMITIVE I18 g_output 2 N_3 DIOR
+#$ PRIMITIVE I19 g_output 2 N_9 FROM_OE
+#$ PRIMITIVE I20 g_output 2 N_17 FROM_CLK
+#$ PRIMITIVE I21 g_output 2 N_2 OBT_OE
+#$ PRIMITIVE I22 g_output 2 N_11 TO_OE
+#$ PRIMITIVE I23 g_output 2 N_7 TO_CLK
+#$ INSTANCE I1 v74139 14 N_5 N6 N_5 N7 N_4 N_12 N_9 N_17 NC1 NC2 NC3 \
+#   N_7 NC4 NC5
+.model ide
+
+.end

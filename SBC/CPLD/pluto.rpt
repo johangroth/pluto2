@@ -12,7 +12,7 @@ Project_Summary
 
 Project Name :          pluto
 Project Path :          Z:\Pluto2\SBC\CPLD
-Project Fitted on :     Mon Dec 25 21:21:46 2017
+Project Fitted on :     Thu Feb 01 00:49:10 2018
 
 Device :                M4A5-64/32
 Package :               44PLCC
@@ -329,7 +329,7 @@ Signal Source  :    Fanout List
                :            IO2{ A}            RTC{ A}
         A15{. }:         RAMSEL{ B}         ROMSEL{ B}          DUART{ A}
                :            IO1{ A}            IO2{ A}            RTC{ A}
-        CLK{. }:            MWR{ D}
+        CLK{. }:            MRD{ D}            MWR{ D}
          RW{ B}:            MRD{ D}            MWR{ D}
 -----------------------------------------------------------------------------
 
@@ -488,7 +488,7 @@ Title:  Address decoding
 
  P-Terms   Fan-in  Fan-out  Type  Name (attributes)
 ---------  ------  -------  ----  -----------------
-   1          1        1    Pin   MRD 
+   1          2        1    Pin   MRD- 
    1          2        1    Pin   MWR- 
    2          8        1    Pin   RAMSEL 
    1          1        1    Pin   ROMSEL 
@@ -498,14 +498,14 @@ Title:  Address decoding
    1         11        1    Pin   RTC- 
 =========
    9                 P-Term Total: 9
-                       Total Pins: 21
+                       Total Pins: 22
                       Total Nodes: 0
             Average P-Term/Output: 1
 
 
 Equations:
 
-MRD = (!RW);
+!MRD = (RW & CLK);
 
 !MWR = (!RW & CLK);
 
