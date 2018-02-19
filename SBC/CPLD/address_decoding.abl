@@ -12,22 +12,11 @@ TITLE 'Address decoding'
 	IO1	  pin 8  istype 'com';		       " $7FCX
 	IO2	  pin 2  istype 'com';		       " $7FAX
 	RTC	  pin 6  istype 'com';		       " $7F8X
-	A3	  pin 5;
-	FROM_OE	  pin 24	istype 'com';
-	FROM_CLK  pin 17	istype 'com';
-	TO_OE     pin 26	istype 'com';
-	TO_CLK    pin 30	istype 'com';
-	OBT_OE    pin 20	istype 'com';
-	OBT_DIR   pin 28	istype 'com';
-	DIOR      pin 39	istype 'com';
-	DIOW      pin 25	istype 'com';
-	IDE_CS0   pin 19	istype 'com';
+
 	H,L,X	= 1,0,.X.;
 	Address = [A15,A14,A13,A12, A11,A10,A9,A8, A7,A6,A5,X, X,X,X,X];
 	ReadWrite = [RW, CLK];
-	IDE = !A15 # A14 # A13 # A12 # A11 # A10 # A9 # A8 # !A7 # A6 # A5;
 
-	iIDE  INTERFACE(A3,MRD,MWR,CLK,IDE -> FROM_OE, FROM_CLK, TO_OE, TO_CLK, OBT_CLK, OBT_DIR, DIOR, DIOW, IDE_CS0)
 
 EQUATIONS
 	!RAMSEL	= (Address <= ^h7EFF);
@@ -38,7 +27,6 @@ EQUATIONS
 	!RTC	= (Address >= ^h7F80) & (Address <= ^h7F9F);
 	!MWR	= !RW & CLK;
 	!MRD	= RW & CLK;
-	!IDE_CS0	= A3 
 
 TEST_VECTORS
 	(Address -> [ ROMSEL,	DUART,	IO1,	IO2,	RTC,	RAMSEL	])
