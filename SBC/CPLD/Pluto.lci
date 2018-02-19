@@ -7,11 +7,13 @@ PartType = M4A5-64/32;
 Speed = -10;
 Operating_condition = COM;
 Status = Production;
+EN_PinGLB = Yes;
+EN_PinMacrocell = Yes;
 
 [Revision]
 Parent = m4a5.lci;
-DATE = 2002;
-TIME = 0:00:00;
+DATE = 02/19/2018;
+TIME = 20:36:14;
 Source_Format = ABEL_Schematic;
 Synthesis = Synplify;
 
@@ -25,28 +27,40 @@ Synthesis = Synplify;
 
 [Location Assignments]
 layer = OFF;
-A5 = pin, 40, -, -, -;
-A6 = pin, 38, -, -, -;
-A7 = pin, 36, -, -, -;
-A8 = pin, 31, -, -, -;
-A9 = pin, 29, -, -, -;
-A10 = pin, 27, -, -, -;
-A11 = pin, 18, -, -, -;
-A12 = pin, 16, -, -, -;
-A13 = pin, 14, -, -, -;
-A14 = pin, 9, -, -, -;
-A15 = pin, 33, -, -, -;
-CLK = pin, 11, -, -, -;
-RW = pin, 7, -, -, -;
-MRD = pin, 41, -, -, -;
-MWR = pin, 43, -, -, -;
-RAMSEL = pin, 15, -, -, -;
-ROMSEL = pin, 21, -, -, -;
-DUART = pin, 3, -, -, -;
-IO1 = pin, 8, -, -, -;
-IO2 = pin, 2, -, -, -;
-RTC = pin, 6, -, -, -;
-A3 = pin, 5, -, -, -;
+A6 = Pin, 38, -, -, -;
+A7 = Pin, 36, -, -, -;
+A8 = Pin, 31, -, -, -;
+A9 = Pin, 29, -, -, -;
+A10 = Pin, 27, -, -, -;
+A11 = Pin, 18, -, -, -;
+A12 = Pin, 16, -, -, -;
+A13 = Pin, 14, -, -, -;
+A14 = Pin, 9, -, -, -;
+A15 = Pin, 33, -, -, -;
+CLK = Pin, 11, -, -, -;
+RW = Pin, 7, -, -, -;
+MRD = Pin, 41, -, -, -;
+MWR = Pin, 43, -, -, -;
+RAMSEL = Pin, 15, -, -, -;
+ROMSEL = Pin, 21, -, -, -;
+A3 = Pin, 5, -, -, -;
+A5 = Pin, 40, -, D, -;
+DIOR = Pin, 39, -, D, -;
+DIOW = Pin, 25, -, C, -;
+FROM_CLK = Pin, 17, -, B, -;
+FROM_OE = Pin, 24, -, C, -;
+IDE_CS0 = Pin, 19, -, B, -;
+IO7FEX = Pin, 3, -, A, -;
+IO7FCX = Pin, 8, -, A, -;
+IO7FAX = Pin, 2, -, A, -;
+IO7F8X = Pin, 6, -, A, -;
+OBT_DIR = Pin, 28, -, C, -;
+OBT_OE = Pin, 20, -, B, -;
+TO_CLK = Pin, 30, -, C, -;
+TO_OE = Pin, 26, -, C, -;
+IO7F0X = Pin, 37, -, D, -;
+IO7F2X = Pin, 4, -, A, -;
+IO7F4X = Pin, 42, -, D, -;
 
 [Group Assignments]
 layer = OFF;
@@ -126,3 +140,15 @@ layer = OFF;
 [verilog synplify constraints list]
 
 [verilog spectrum constraints list]
+
+[Constraint Version]
+version = 1.0;
+
+[ORP ASSIGNMENTS]
+layer = OFF;
+
+[Node attribute]
+layer = OFF;
+
+[SYMBOL/MODULE attribute]
+layer = OFF;

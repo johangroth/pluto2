@@ -1,8 +1,5 @@
 A3  i
 CLK  i
-MRD  i
-IDE  i
-MWR  i
 RW  i
 A15  i
 A14  i
@@ -24,6 +21,8 @@ TO_OE  o
 DIOR  o
 DIOW  o
 OBT_DIR  o
+MRD  o
+MWR  o
 ROMSEL  o
 RAMSEL  o
 IO7F0X  o
@@ -32,4 +31,4 @@ IO7F4X  o
 IO7F8X  o
 IO7FAX  o
 IO7FCX  o
-IO7FE6  o
+IO7FEX  o

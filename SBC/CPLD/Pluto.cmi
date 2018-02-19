@@ -1,5 +1,6 @@
 [Pin Attributes]
-Type=42,no
+sort_column_-1=Signal/Group Name
+Type=108,no
 Signal/Group Name=134,no
 Group Members=111,no
 GLB=36,no
