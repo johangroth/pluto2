@@ -1,4 +1,4 @@
-        .include "inc/duart_sc28l92.inc"
+        .include "include/duart_sc28l92.inc"
 
 ;;;
 ;; Initialise DUART

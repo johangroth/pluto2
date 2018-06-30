@@ -73,7 +73,7 @@ input:  .proc
 ;;                       Derived work from "6502 ASSEMBLY LANGUAGE SUBROUTINES", ISBN: 0-931988-59-4
 ;;                       Input is filtered so when hex input is set only hex characters will be allowed.
 ;;                       If a disallowed character is pressed, a bell sound will be sent to console.
-;;                       The filter is active for all but 1 input modes ASCII text where all characters are allowed.
+;;                       The filter is active for all but 1 input modes which is ASCII text where all characters are allowed.
 ;;                       READ_LINE recognises BS and CR and CTRL-X.
 ;;                       BS - deletes the previous character
 ;;                       CTRL-X - deletes all characters
@@ -645,7 +645,8 @@ l2:
         sta soft_vector_table-1,x
         dex
         bne l2
-        jsr acia_init
+        ; jsr acia_init
+        jsr duart_init
         jsr rtc_init
         jsr via_init
         cli
@@ -735,7 +736,8 @@ brk_irq: .block
         .bend
 
 rtc_irq: .block
-        jmp (acia_soft_vector)          ;Jump to next ISR
+        ; jmp (acia_soft_vector)          ;Jump to next ISR
+        jmp (duart_soft_vector)
         .bend
 
 via1_irq: .block
@@ -754,23 +756,23 @@ via2_irq:  .block
 b_input_hex:    jmp input_hex           ;Binary number in number_buffer
 b_input_dec:    jmp input_dec           ;Binary number in number_buffer
 b_read_char:    jmp read_character      ;Read character and convert to uppercase.
-b_read_line:    jmp read_line
-b_chin_no_wait: jmp chin_no_wait        ;Used by XMODEM
-b_bin_to_asc:   jmp binary_to_ascii
-b_dollar:       jmp dollar
-b_colon:        jmp colon
-b_chout:        jmp chout
-b_chin:         jmp chin
-b_crout:        jmp crout
-b_cr2:          jmp cr2
-b_prout:        jmp prout
-b_bell:         jmp bell
-b_space:        jmp space
-b_space2:       jmp space2
-b_space4:       jmp space4
-b_spacex:       jmp spacex
-b_hex_byte:     jmp hex_byte          ;Print a hex byte with leading zeroes. Byte should be stored in temp1.
-b_hex_address:  jmp hex_address       ;Print a hex address with leading zeroes. Address should be stored in index_low and index_high.
+b_read_line:    jmp read_line           ;Read .X number of characters
+b_chin_no_wait: jmp chin_no_wait        ;Read character but don't wait for input. Used by XMODEM
+b_bin_to_asc:   jmp binary_to_ascii     ;Convert a binary to ASCII
+b_dollar:       jmp dollar              ;Print '$'.
+b_colon:        jmp colon               ;Print ':'
+b_chout:        jmp chout               ;Send content .A to console
+b_chin:         jmp chin                ;Read datum from console. Value will be in .A.
+b_crout:        jmp crout               ;Send CR/LF to console
+b_cr2:          jmp cr2                 ;Send two CR/LF to console
+b_prout:        jmp prout               ;Send a zero terminated string to console
+b_bell:         jmp bell                ;Send BELL to console
+b_space:        jmp space               ;Send space character to console
+b_space2:       jmp space2              ;Send two space character to console
+b_space4:       jmp space4              ;Send four character to console
+b_spacex:       jmp spacex              ;Send .X space character to console
+b_hex_byte:     jmp hex_byte            ;Print a hex byte with leading zeroes. Byte should be stored in temp1.
+b_hex_address:  jmp hex_address         ;Print a hex address with leading zeroes. Address should be stored in index_low and index_high.
 
         * = $fffa
         .word   nmi         ;NMI

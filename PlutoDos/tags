@@ -105,26 +105,26 @@ again	monitor.asm	/^again:$/;"	l
 alarm	rtc.asm	/^alarm:  .proc$/;"	l
 arnd	bcd_bin_utils.asm	/^arnd:$/;"	l
 ascii_to_bin	ascii_to_bin.asm	/^ascii_to_bin: .proc$/;"	l
-b_bell	bios.asm	/^b_bell:         jmp bell$/;"	l
-b_bin_to_asc	bios.asm	/^b_bin_to_asc:   jmp binary_to_ascii$/;"	l
-b_chin	bios.asm	/^b_chin:         jmp chin$/;"	l
-b_chin_no_wait	bios.asm	/^b_chin_no_wait: jmp chin_no_wait        ;Used by XMODEM$/;"	l
-b_chout	bios.asm	/^b_chout:        jmp chout$/;"	l
-b_colon	bios.asm	/^b_colon:        jmp colon$/;"	l
-b_cr2	bios.asm	/^b_cr2:          jmp cr2$/;"	l
-b_crout	bios.asm	/^b_crout:        jmp crout$/;"	l
-b_dollar	bios.asm	/^b_dollar:       jmp dollar$/;"	l
-b_hex_address	bios.asm	/^b_hex_address:  jmp hex_address       ;Print a hex address with leading zeroes. Address should be stored in index_low and index_high.$/;"	l
-b_hex_byte	bios.asm	/^b_hex_byte:     jmp hex_byte          ;Print a hex byte with leading zeroes. Byte should be stored in temp1.$/;"	l
+b_bell	bios.asm	/^b_bell:         jmp bell                ;Send BELL to console$/;"	l
+b_bin_to_asc	bios.asm	/^b_bin_to_asc:   jmp binary_to_ascii     ;Convert a binary to ASCII$/;"	l
+b_chin	bios.asm	/^b_chin:         jmp chin                ;Read datum from console. Value will be in .A.$/;"	l
+b_chin_no_wait	bios.asm	/^b_chin_no_wait: jmp chin_no_wait        ;Read character but don't wait for input. Used by XMODEM$/;"	l
+b_chout	bios.asm	/^b_chout:        jmp chout               ;Send content .A to console$/;"	l
+b_colon	bios.asm	/^b_colon:        jmp colon               ;Print ':'$/;"	l
+b_cr2	bios.asm	/^b_cr2:          jmp cr2                 ;Send two CR\/LF to console$/;"	l
+b_crout	bios.asm	/^b_crout:        jmp crout               ;Send CR\/LF to console$/;"	l
+b_dollar	bios.asm	/^b_dollar:       jmp dollar              ;Print '$'.$/;"	l
+b_hex_address	bios.asm	/^b_hex_address:  jmp hex_address         ;Print a hex address with leading zeroes. Address should be stored in index_low and index_high.$/;"	l
+b_hex_byte	bios.asm	/^b_hex_byte:     jmp hex_byte            ;Print a hex byte with leading zeroes. Byte should be stored in temp1.$/;"	l
 b_input_dec	bios.asm	/^b_input_dec:    jmp input_dec           ;Binary number in number_buffer$/;"	l
 b_input_hex	bios.asm	/^b_input_hex:    jmp input_hex           ;Binary number in number_buffer$/;"	l
-b_prout	bios.asm	/^b_prout:        jmp prout$/;"	l
+b_prout	bios.asm	/^b_prout:        jmp prout               ;Send a zero terminated string to console$/;"	l
 b_read_char	bios.asm	/^b_read_char:    jmp read_character      ;Read character and convert to uppercase.$/;"	l
-b_read_line	bios.asm	/^b_read_line:    jmp read_line$/;"	l
-b_space	bios.asm	/^b_space:        jmp space$/;"	l
-b_space2	bios.asm	/^b_space2:       jmp space2$/;"	l
-b_space4	bios.asm	/^b_space4:       jmp space4$/;"	l
-b_spacex	bios.asm	/^b_spacex:       jmp spacex$/;"	l
+b_read_line	bios.asm	/^b_read_line:    jmp read_line           ;Read .X number of characters$/;"	l
+b_space	bios.asm	/^b_space:        jmp space               ;Send space character to console$/;"	l
+b_space2	bios.asm	/^b_space2:       jmp space2              ;Send two space character to console$/;"	l
+b_space4	bios.asm	/^b_space4:       jmp space4              ;Send four character to console$/;"	l
+b_spacex	bios.asm	/^b_spacex:       jmp spacex              ;Send .X space character to console$/;"	l
 back	bcd_bin_utils.asm	/^back:$/;"	l
 backspace	bios.asm	/^backspace: .proc$/;"	l
 basetab	ascii_to_bin.asm	/^basetab: .byte 16,10,2                  ;number bases per radix, HEX, DEC, BIN$/;"	l
@@ -174,6 +174,8 @@ done	ide_routines.asm	/^done:$/;"	l
 done	monitor.asm	/^done:$/;"	l
 dont_echo	monitor.asm	/^dont_echo:$/;"	l
 download	xmodem.asm	/^download: .proc$/;"	l
+duart_init	duart_sc28l92.asm	/^duart_init: .proc$/;"	l
+duart_irq	duart_sc28l92.asm	/^duart_irq: .block$/;"	l
 dump_as_ascii	monitor.asm	/^dump_as_ascii: .proc$/;"	l
 dump_memory	monitor.asm	/^dump_memory: .proc$/;"	l
 error	ide_routines.asm	/^error:$/;"	l

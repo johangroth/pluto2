@@ -22,7 +22,7 @@
         duart_stopcc    = duart_base + %1111    ;stop counter command
 
         ;Write operation registers
-        duart_mra       = duart_base + %        ;Mode Register A (MR0A, MR1A, MR2A)
+        ; duart_mra       = duart_base + %        ;Mode Register A (MR0A, MR1A, MR2A)
         duart_csra      = duart_base + %0001    ;Clock Select Register A (CSRA)
         duart_cra       = duart_base + %0010    ;Command Register A (CRA)
         duart_txfifoa   = duart_base + %0011    ;Tx Holding Register A (TxFIFOA)
@@ -30,7 +30,7 @@
         duart_imr       = duart_base + %0101    ;Interrupt Mask Register (IMR)
         duart_ctpu      = duart_base + %0110    ;C/T Upper Preset Register (CTPU)
         duart_ctpl      = duart_base + %0111    ;C/T Lower Preset Register (CTPL)
-        duart_mrb       = duart_base + %1000    ;Mode Register B (MR0B, MR1B, MR2B)
+        duart_mrb_W     = duart_base + %1000    ;Mode Register B (MR0B, MR1B, MR2B)
         duart_csrb      = duart_base + %1001    ;Clock Select Register B (CSRB)
         duart_crb       = duart_base + %1010    ;Command Register B (CRB)
         duart_txfifob   = duart_base + %1011    ;Tx Holding Register B (TxFIFOB)

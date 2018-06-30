@@ -35,8 +35,12 @@
 .include "bin_to_ascii.asm"
 
 ; =============================================================================
-; acia subroutines
-.include "acia.asm"
+; ACIA 65C51 subroutines
+; .include "acia.asm"
+
+; =============================================================================
+; DUART subroutines
+.include "duart_sc28l92.asm"
 
 ; =============================================================================
 ; via subroutines
