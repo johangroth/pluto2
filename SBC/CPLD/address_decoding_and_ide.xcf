@@ -1,10 +1,11 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <!DOCTYPE		ispXCF	SYSTEM	"IspXCF.dtd" >
-<ispXCF version="18.1">
+<ispXCF version="3.9.0">
 	<Comment></Comment>
 	<Chain>
 		<Comm>JTAG</Comm>
 		<Device>
+			<SelectedProg value="TRUE"/>
 			<Pos>1</Pos>
 			<Ref>Address decoding and IDE interface</Ref>
 			<Vendor>Vantis</Vendor>
@@ -12,7 +13,7 @@
 			<Name>iM4A5-64/32</Name>
 			<IDCode>0x17482157</IDCode>
 			<Package>44-pin PLCC</Package>
-			<PON>M4A5-64/32-XXJC</PON>
+			<PON>M4A5-64/32</PON>
 			<Bypass>
 				<InstrLen>6</InstrLen>
 				<InstrVal>010001</InstrVal>
@@ -22,16 +23,18 @@
 			<File>Z:\Pluto2\SBC\CPLD\pluto.jed</File>
 			<FileTime>12/25/17 20:25:48</FileTime>
 			<JedecChecksum>0x4283</JedecChecksum>
-			<Operation>Erase,Program,Verify</Operation>
+			<Operation>Bypass</Operation>
 			<Option>
 				<SVFVendor>JTAG STANDARD</SVFVendor>
 				<IOState>HighZ</IOState>
+				<PreloadLength>98</PreloadLength>
 				<IOVectorData>0x0000000000000000000000000</IOVectorData>
 				<Reinitialize value="TRUE"/>
 				<OverideUES value="TRUE"/>
 				<TCKFrequency>1.000000 MHz</TCKFrequency>
 				<SVFProcessor>SVF Processor</SVFProcessor>
 				<Usercode>0x00000000</Usercode>
+				<AccessMode>JTAG</AccessMode>
 			</Option>
 		</Device>
 	</Chain>
@@ -43,12 +46,18 @@
 		<EndTAP>TLR</EndTAP>
 		<DeGlitch value="TRUE"/>
 		<VerifyUsercode value="TRUE"/>
-		<PinSetting>
+		<TCKDelay>1</TCKDelay>
+	</ProjectOptions>
+	<CableOptions>
+		<CableName>USB</CableName>
+		<PortAdd>EzUSB-0</PortAdd>
+		<USBID>\\?\usb#vid_1134&amp;amp;pid_8001#6&amp;amp;23d3471c&amp;amp;0&amp;amp;1#</USBID>
+		<JTAGPinSetting>
 			TMS	LOW;
 			TCK	LOW;
 			TDI	LOW;
 			TDO	LOW;
 			CableEN	HIGH;
-		</PinSetting>
-	</ProjectOptions>
+		</JTAGPinSetting>
+	</CableOptions>
 </ispXCF>

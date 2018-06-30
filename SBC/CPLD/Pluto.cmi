@@ -1,5 +1,5 @@
 [Pin Attributes]
-sort_column_-1=Signal/Group Name
+sort_column_1=Type
 Type=108,no
 Signal/Group Name=134,no
 Group Members=111,no
@@ -21,7 +21,7 @@ State=43,no
 MAIN_WINDOW_POSITION=0,0,1920,1080
 LEFT_PANE_WIDTH=634
 CHILD_FRAME_STATE=Maximal
-CHILD_WINDOW_SIZE=1920,732
+CHILD_WINDOW_SIZE=1920,672
 CHILD_WINDOW_POS=-8,-30
 [GUI SETTING]
 Remember_Setting=1
