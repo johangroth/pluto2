@@ -265,10 +265,9 @@ done:
 ;; SPACEX subroutine: Send X space characters to terminal.
 ;;;
 spacex: .proc
-loop:
         jsr space
         dex
-        bne loop
+        bne spacex
         rts
         .pend
 
