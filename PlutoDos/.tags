@@ -110,8 +110,6 @@ idebufwt	/home/jgroth/dev/repos_github/pluto2/PlutoDos/ide_routines.asm	/^idebuf
 ide_setup_lba	/home/jgroth/dev/repos_github/pluto2/PlutoDos/ide_routines.asm	/^ide_setup_lba:	.proc$/;"	label	line:270
 master_slave_select	/home/jgroth/dev/repos_github/pluto2/PlutoDos/ide_routines.asm	/^master_slave_select: .proc$/;"	label	line:290
 ide_mast	/home/jgroth/dev/repos_github/pluto2/PlutoDos/ide_routines.asm	/^ide_mast:$/;"	label	line:294
-duart_init	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^duart_init: .proc$/;"	label	line:13
-duart_irq	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^duart_irq: .block$/;"	label	line:28
 bin_to_bcd8	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bcd_bin_utils.asm	/^bin_to_bcd8:	.proc$/;"	label	line:8
 convert_bit	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bcd_bin_utils.asm	/^convert_bit:$/;"	label	line:15
 table1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bcd_bin_utils.asm	/^table1: .byte  $01$/;"	label	line:31
@@ -337,8 +335,6 @@ idebufwt	/home/jgroth/dev/repos_github/pluto2/PlutoDos/ide_core_v4_20_org_z80_co
 ide_setup_lba	/home/jgroth/dev/repos_github/pluto2/PlutoDos/ide_core_v4_20_org_z80_code.asm	/^ide_setup_lba$/;"	label	line:208
 master_slave_select	/home/jgroth/dev/repos_github/pluto2/PlutoDos/ide_core_v4_20_org_z80_code.asm	/^master_slave_select$/;"	label	line:231
 ide_mast	/home/jgroth/dev/repos_github/pluto2/PlutoDos/ide_core_v4_20_org_z80_code.asm	/^ide_mast:	pop hl$/;"	label	line:238
-INCLUDE_SRCS	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^INCLUDE_SRCS = include\/*.inc$/;"	macro	line:1
-ASM_SRCS	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^ASM_SRCS = *.asm$/;"	macro	line:2
 input_dec	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^input_dec: .proc$/;"	label	line:21
 input_hex	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^input_hex:  .proc$/;"	label	line:43
 input	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^input:  .proc$/;"	label	line:64
@@ -419,3 +415,7 @@ b_space4	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_space4:     
 b_spacex	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_spacex:       jmp spacex              ;Send .X space character to console$/;"	label	line:772
 b_hex_byte	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_hex_byte:     jmp hex_byte            ;Print a hex byte with leading zeroes. Byte should be stored in temp1.$/;"	label	line:773
 b_hex_address	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_hex_address:  jmp hex_address         ;Print a hex address with leading zeroes. Address should be stored in index_low and index_high.$/;"	label	line:774
+INCLUDE_SRCS	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^INCLUDE_SRCS = include\/*.inc$/;"	macro	line:1
+ASM_SRCS	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^ASM_SRCS = *.asm$/;"	macro	line:2
+duart_init	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^duart_init: .proc$/;"	label	line:13
+duart_irq	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^duart_irq: .block$/;"	label	line:28
