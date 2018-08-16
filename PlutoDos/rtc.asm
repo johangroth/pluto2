@@ -59,11 +59,7 @@ l10:
         sta  io_rtc,x
         dey
         bpl  l10
-        lda  #$5            ;a delay of 366us is needed
-        sta  delay_high
-        lda  #$b8
-        sta  delay_low      ;to ensure a user register update
-        jsr  delay          ;$5b8 will be a ~366µs delay if system clock is 4MHz
+        #delay 366  ;To ensure a user register update a delay is needed. Datasheet says a ~366µs delay is enough
         rts
        .pend
 ;;;
@@ -177,14 +173,6 @@ alarm:  .proc
 ;
 ;================================================================================
 ;
-;constime: SET CONSOLE TIME
-;
-set_console_time: .proc
-        .pend
-
-;
-;================================================================================
-;
 ;GET_DATE_AND_TIME: READ RTC DATE & TIME REGISTERS
 ;
 ;
@@ -271,7 +259,6 @@ l2:
 set_date_and_time:  .proc
         pha
         phx
-        phy             ;delay routine use y so preserve it
         lda  crb_rtc    ;load control register b
         pha             ;preserve control register b
         and  #d11sumsk  ;turn off update of registers
@@ -290,12 +277,7 @@ l2:
         bpl  l1         ;take care of next register
         pla             ;restore control register b
         sta  crb_rtc    ;turn on update of registers
-        lda  #$b8       ;a delay of 366us is needed
-        sta  delay_low  ;to ensure a user register update
-        lda  #$5
-        sta  delay_high
-        jsr  delay      ;$5b8 in delay_high/low will be a 366us delay
-        ply
+        #delay 366      ;To ensure a user register update takes place a delay is needed. Datasheet says a ~366µs delay is enough
         plx
         pla
         rts
@@ -358,5 +340,5 @@ get_system_up_time: .proc
 ;             jsr utdelay
 ;
 ;
-utdelay: .proc
+user_time_delay: .proc
         .pend

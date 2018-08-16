@@ -1,1 +1,1 @@
-        monitor_start = $0380
+        monitor_start_vector = $0380

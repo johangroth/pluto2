@@ -637,17 +637,17 @@ l1:
         dex
         bne  l1
         dex                     ;effectively ldx #$ff
-        txs
+        txs                     ;Initialise stack register
         ldx  #n_soft_vectors    ;Initialise IRQ ISR soft vector table
 l2:
         lda initial_soft_vectors-1,x
         sta soft_vector_table-1,x
         dex
         bne l2
-        ; jsr acia_init
-        jsr duart_init
-        jsr rtc_init
-        jsr via_init
+        ; jsr acia_init         ;Deprecated (ACIA was a 65C51)
+        jsr duart_init          ;Initialise 28L92
+        jsr rtc_init            ;Initialise real time clock
+        ; jsr via_init          ;No VIA on Pluto v2
         cli
 
 ;;;
@@ -736,15 +736,7 @@ brk_irq: .block
 
 rtc_irq: .block
         ; jmp (acia_soft_vector)          ;Jump to next ISR
-        jmp (duart_soft_vector)
-        .bend
-
-via1_irq: .block
-        jmp (via2_soft_vector)          ;Jump to next ISR
-        .bend
-
-via2_irq:  .block
-        jmp irq_end                     ;Jump to the end of ISR
+        jmp (duart_soft_vector)         ;Jump to DUART ISR
         .bend
 
         * = $ff00

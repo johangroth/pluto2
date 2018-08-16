@@ -43,14 +43,6 @@
 .include "duart_sc28l92.asm"
 
 ; =============================================================================
-; via subroutines
-.include "via.asm"
-
-; =============================================================================
-; sound subroutines
-.include "sound.asm"
-
-; =============================================================================
 ; utils subroutines (bcd->bin->bcd and out)
 .include "bcd_bin_utils.asm"
 

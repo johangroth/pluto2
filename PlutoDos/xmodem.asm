@@ -94,9 +94,8 @@ ESC    =    $1b                        ; ESC to exit
 
 upload: .proc
         jsr    PrintMsg                 ; send prompt and info
-        lda    #$00                     ;
-        sta    errcnt                   ; error counter set to 0
-        sta    lastblk                  ; set flag to false
+        stz    errcnt                   ; error counter set to 0
+        stz    lastblk                  ; set flag to false
         lda    #$01                     ;
         sta    blkno                    ; set block # to 1
 Wait4CRC:
@@ -329,8 +328,8 @@ RDone:
 ;
 ;
 GetByte: .proc
-        lda    #$00                     ; wait for chr input and cycle timing loop
-        sta    retry                    ; set low value of timing loop
+        ; wait for chr input and cycle timing loop
+        stz    retry                    ; set low value of timing loop
 StartCrcLp:
         jsr    b_chin_no_wait           ; get chr from serial port, don't wait
         bcs    GetByte1                 ; got one, so exit
