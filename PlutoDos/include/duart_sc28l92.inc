@@ -38,63 +38,57 @@
         duart_sopr      = %1110    ;Set Output Port Bits Command (SOPR)
         duart_ropr      = %1111    ;Reset output Port Bits Command (ROPR)
 
+;DUART absolute addresses
+        stop_cc = duart_base + duart_stopcc
+
         nxx1freq =3686400              ;X1 clock frequency in Hz
         nxctscal =nxx1freq/2           ;C/T scaled clock
 ;
 ;
 ;   ACR — auxiliary control register
 ;
-        duart_arbrt =%01100000            ;...
+        duart_arbrt = %00110000            ;...
 ;
-;   a) Use baud rate table #1 —— see data sheet.
-;   b) C/T acts as a timer.
-;   c) C/T clock source is scaled to X1 ÷ 1.
-;
-;
-;   CR — command register...
-;
-         duart_crrxe =%00000001            ;enable receiver
-         duart_crrxd =%00000010            ;disable receiver
-         duart_crtxe =%00000100            ;enable transmitter
-         duart_crtxd =%00001000            ;disable transmitter
-         duart_crmr1 =%00010000            ;select MR1
-         duart_crrxr =%00100000            ;reset receiver
-         duart_crtxr =%00110000            ;reset transmitter
-         duart_cresr =%01000000            ;reset error status
-         duart_crbir =%01010000            ;reset received break change IRQ
-         duart_crbks =%01100000            ;start break
-         duart_crbke =%01110000            ;stop break
-         duart_crrsa =%10000000            ;assert request to send
-         duart_crrsd =%10010000            ;deassert request to send
-         duart_crtme =%10100000            ;select C/T timer mode
-         duart_crmr0 =%10110000            ;select MR0
-         duart_crtmd =%11000000            ;select C/T counter mode
-         duart_crpde =%11100000            ;enable power-down mode — CRA only
-         duart_crpdd =%11110000            ;disable power-down mode — CRA only
-;
-;   ————————————————————————————————————————————————————————————————————————
-;   duart_CRPDD & duart_CRPDE apply to the 26C92 & are reserved in the 28L92 & the
-;   28C94.  These parameters should not be used in any setup function.  They
-;   are listed here only for reference purposes.  A hard reset automatically
-;   brings the device out of power-down mode.
-;   ————————————————————————————————————————————————————————————————————————
+;   a) Use baud rate table #5 —— see data sheet.
+;   b) C/T acts as a counter.
+;   c) C/T clock source is scaled to X1 ÷ 16.
 ;
 ;
+;   CR — command register commands
+;
+         duart_crrxe = %00000001            ;enable receiver
+         duart_crrxd = %00000010            ;disable receiver
+         duart_crtxe = %00000100            ;enable transmitter
+         duart_crtxd = %00001000            ;disable transmitter
+         duart_crmr1 = %00010000            ;select MR1
+         duart_crrxr = %00100000            ;reset receiver
+         duart_crtxr = %00110000            ;reset transmitter
+         duart_cresr = %01000000            ;reset error status
+         duart_crbir = %01010000            ;reset received break change IRQ
+         duart_crbks = %01100000            ;start break
+         duart_crbke = %01110000            ;stop break
+         duart_crrsa = %10000000            ;assert request to send
+         duart_crrsd = %10010000            ;deassert request to send
+         duart_crtme = %10100000            ;select C/T timer mode
+         duart_crmr0 = %10110000            ;select MR0
+         duart_crtmd = %11000000            ;Disable time out mode.
+         duart_crpwd = %11100000            ;Power down mode on (used on 28L92?)
+         duart_crpwu = %11110000            ;Power up DUART (used on 28L92?)
+;
+;
+;   ACR[7] = 0 and MR0[2] = 1 (Extended mode II), see table 35 (p. 33) in datasheet.
 ;   CSR — clock select register...
 ;
-        duart_csdef =%01100110            ;RxD & TxD at 115.2 Kbps...
-;
-;   ————————————————————————————————————————————————————————————————
-;   The above data rate is based upon the value of duart_ARBRT (above).
-;   ————————————————————————————————————————————————————————————————
+        duart_csdef = %01100110             ;RxD & TxD at 115.2 Kbps...
 ;
 ;
 ;   CT — counter/timer...
-;
+;   These definitions is only here for reference if a jiffy timer
+;   running at 100 Hz is enabled.
         hz = 100
-        duart_ctdef =nxctscal/hz          ;HZ underflows per second
-        duart_ctdlo =<duart_ctdef            ;underflows/sec LSB
-        duart_ctdhi =>duart_ctdef            ;underflows/sec MSB
+        duart_ctdef =nxctscal/hz            ;HZ underflows per second
+        duart_ctdlo =<duart_ctdef           ;underflows/sec LSB
+        duart_ctdhi =>duart_ctdef           ;underflows/sec MSB
 ;
 ;
 ;   MR0 — mode 0 register...
@@ -111,17 +105,17 @@
 ;
 ;   IMR = Interrupt Mask Register
 ;
-        duart_irqmask =%00111011
+        duart_irqmask =%00001011
 ;
-;   00111011
+;   00001011
 ;   ||||||||
 ;   |||||||+———> TxA interrupt enabled
 ;   ||||||+————> RxA interrupt enabled
 ;   |||||+—————> Channel A change in break disabled
 ;   ||||+——————> Counter ready enabled
-;   |||+———————> TxB interrupt enabled
-;   ||+————————> RxB interrupt enabled
-;   |+—————————> Channel A change in break disabled
+;   |||+———————> TxB interrupt disabled
+;   ||+————————> RxB interrupt disabled
+;   |+—————————> Channel B change in break disabled
 ;   +——————————> Input port change disabled
 ;
 ;
@@ -198,7 +192,7 @@ duart_sutab:
         .byte duart_cra, duart_crtxr    ;CRA
         .byte duart_cra, duart_crrxr    ;CRA
         .byte duart_cra, duart_crrsd    ;CRA
-        .byte duart_cra, duart_crpdd    ;CRA
+        .byte duart_cra, duart_crpwd    ;CRA
         .byte duart_imr, 0         ;IMR (disable IRQs)
 
         s_duart_tab = * - duart_sutab

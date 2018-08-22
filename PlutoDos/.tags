@@ -321,11 +321,6 @@ CalcCRC	/home/jgroth/dev/repos_github/pluto2/PlutoDos/xmodem.asm	/^CalcCRC: .pro
 CalcCRC1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/xmodem.asm	/^CalcCRC1:$/;"	label	line:399
 crclo	/home/jgroth/dev/repos_github/pluto2/PlutoDos/xmodem.asm	/^crclo:$/;"	label	line:456
 crchi	/home/jgroth/dev/repos_github/pluto2/PlutoDos/xmodem.asm	/^crchi:$/;"	label	line:476
-duart_init	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^duart_init: .proc$/;"	label	line:12
-l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^l1:$/;"	label	line:14
-duart_irq	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^duart_irq: .block$/;"	label	line:38
-delay	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^delay: .macro$/;"	label	line:46
-delay_counter	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^delay_counter:$/;"	label	line:47
 rtcreg	/home/jgroth/dev/repos_github/pluto2/PlutoDos/rtc.asm	/^rtcreg: .byte wr_crb          ;control B               $0f$/;"	label	line:19
 n_rtcreg	/home/jgroth/dev/repos_github/pluto2/PlutoDos/rtc.asm	/^n_rtcreg =*-rtcreg$/;"	label	line:27
 rtc_init	/home/jgroth/dev/repos_github/pluto2/PlutoDos/rtc.asm	/^rtc_init: .proc$/;"	label	line:53
@@ -419,3 +414,9 @@ b_space4	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_space4:     
 b_spacex	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_spacex:       jmp spacex              ;Send .X space character to console$/;"	label	line:764
 b_hex_byte	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_hex_byte:     jmp hex_byte            ;Print a hex byte with leading zeroes. Byte should be stored in temp1.$/;"	label	line:765
 b_hex_address	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_hex_address:  jmp hex_address         ;Print a hex address with leading zeroes. Address should be stored in index_low and index_high.$/;"	label	line:766
+duart_init	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^duart_init: .proc$/;"	label	line:12
+l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^l1:$/;"	label	line:14
+duart_irq	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^duart_irq: .block$/;"	label	line:40
+done	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^done:$/;"	label	line:50
+delay	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^delay: .macro$/;"	label	line:58
+delay_counter	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^delay_counter:$/;"	label	line:59

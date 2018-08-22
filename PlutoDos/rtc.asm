@@ -16,7 +16,8 @@
 ;
 ;       registers...
 ;
-rtcreg: .byte wr_crb          ;control B               $0f
+rtcreg:
+        .byte wr_crb          ;control B               $0f
         .byte wr_secalarm     ;alarm sec               $08
         .byte wr_minalarm     ;alarm min               $09
         .byte wr_hrsalarm     ;alarm hour              $0a
@@ -29,7 +30,8 @@ n_rtcreg =*-rtcreg
 ;
 ;       parameters...
 ;
-rtcparm:.byte wr_irqoff         ;updates on & WDT IRQs off   %10000000
+rtcparm:
+        .byte wr_irqoff         ;updates on & WDT IRQs off   %10000000
         .byte wr_secap          ;no alarm secs IRQ           %00000000
         .byte wr_minap          ;no alarm min IRQ            %00000000
         .byte wr_hrsap          ;no alarm hour IRQ           %00000000

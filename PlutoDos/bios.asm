@@ -609,7 +609,7 @@ chout:   .proc
         phy                         ; Preserve Y register
 out_buffer_full:
         ldy out_buffer_counter      ; Get number of characters in buffer
-        bmi out_buffer_full         ; Loop back if buffer is full (ACIA ISR will empty buffer)
+        bmi out_buffer_full         ; Loop back if buffer is full (DUART ISR will empty buffer)
         ldy out_buffer_tail         ; Get buffer tail pointer
         sta out_buffer,y            ; and store it in buffer
         inc out_buffer_tail         ; Increment the buffer index
@@ -644,8 +644,8 @@ l2:
         sta soft_vector_table-1,x
         dex
         bne l2
-        ; jsr acia_init         ;Deprecated (ACIA was a 65C51)
-        jsr duart_init          ;Initialise 28L92
+        ; jsr acia_init         ;Deprecated (ACIA was a CDP/Rockwell 65C51 at 4 MHz)
+        jsr duart_init          ;Initialise 28L92 (DUART at 4 MHz initially)
         jsr rtc_init            ;Initialise real time clock
         ; jsr via_init          ;No VIA on Pluto v2
         cli

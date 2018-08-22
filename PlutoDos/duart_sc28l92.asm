@@ -28,7 +28,9 @@ l1:
 ;;;
 ;;  duart_irq: DUART ISR
 ;;   This block is responsible for receving and transmitting characters using
-;;   two fixed 128 byte buffers.
+;;   two fixed 128 byte buffers (right now just channel A). It is also responsible
+;;   for handling the counter. It will stop the counter if it has triggered an
+;;   interrupt and sets a delay flag to indicate the counter has reached zero.
 ;;   The block is part of the ISR (interrupt service routine) so no registers are preserved here.
 ;;   They have already been pushed to the stack by the main ISR.
 ;;
@@ -36,7 +38,17 @@ l1:
 ;;
 ;;;
 duart_irq: .block
-        rts
+        lda duart_isr
+        and duart_imr
+        beq done
+
+        ;Stop the counter by first disable timout out mode
+        ;and then stop the counter.
+        lda #duart_crtmd        ;Disable
+        sta duart_cra           ;time out mode
+        lda stop_cc             ;Stop counter command
+done:
+        jmp irq_end
         .bend
 
 ;;;
