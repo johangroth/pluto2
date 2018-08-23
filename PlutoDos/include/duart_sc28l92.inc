@@ -38,8 +38,43 @@
         duart_sopr      = %1110    ;Set Output Port Bits Command (SOPR)
         duart_ropr      = %1111    ;Reset output Port Bits Command (ROPR)
 
-;DUART absolute addresses
-        stop_cc = duart_base + duart_stopcc
+;
+;
+;DUART read absolute register addresses
+;
+        mra_duart       = duart_base + duart_mra        ;Mode Register A (MR0A, MR1A, MR2A)
+        sra_duart       = duart_base + duart_sra        ;Status Register A (SRA)
+        rxfifoa_duart   = duart_base + duart_rxfifoa    ;Rx Holding Register A (RxFIFOA)
+        ipcr_duart      = duart_base + duart_ipcr       ;Input Port Change Register (IPCR)
+        isr_duart       = duart_base + duart_isr        ;Interrupt Status Register (ISR)
+        ctu_duart       = duart_base + duart_ctu        ;Counter/Timer Upper (CTU)
+        ctl_duart       = duart_base + duart_ctl        ;Counter/Timer Lower (CTL)
+        mrb_duart       = duart_base + duart_mrb        ;Mode Register B (MR0B, MR1B, MR2B)
+        srb_duart       = duart_base + duart_srb        ;Status Register B (SRB)
+        rxfifob_duart   = duart_base + duart_rxfifob    ;Rx Holding Register B (RxFIFOB)
+        ipr_duart       = duart_base + duart_ipr        ;Input Port Register (IPR)
+        startcc_duart   = duart_base + duart_startcc    ;Start counter command
+        stopcc_duart    = duart_base + duart_stopcc     ;Stop counter command
+
+;
+;
+;DUART write absolute register addresses
+;
+        csra_duart      = duart_base + duart_csra       ;Clock Select Register A (CSRA)
+        cra_duart       = duart_base + duart_cra        ;Command Register A (CRA)
+        txfifoa_duart   = duart_base + duart_txfifoa    ;Tx Holding Register A (TxFIFOA)
+        acr_duart       = duart_base + duart_acr        ;Auxiliary Control Register (ACR)
+        imr_duart       = duart_base + duart_imr        ;Interrupt Mask Register (IMR)
+        ctpu_duart      = duart_base + duart_ctpu       ;C/T Upper Preset Register (CTPU)
+        ctpl_duart      = duart_base + duart_ctpl       ;C/T Lower Preset Register (CTPL)
+        mrb_w_duart     = duart_base + duart_mrb_w      ;Mode Register B (MR0B, MR1B, MR2B)
+        csrb_duart      = duart_base + duart_csrb       ;Clock Select Register B (CSRB)
+        crb_duart       = duart_base + duart_crb        ;Command Register B (CRB)
+        txfifob_duart   = duart_base + duart_txfifob    ;Tx Holding Register B (TxFIFOB)
+        opcr_duart      = duart_base + duart_opcr       ;Output Port Configuration Register (OPCR)
+        sopr_duart      = duart_base + duart_sopr       ;Set Output Port Bits Command (SOPR)
+        ropr_duart      = duart_base + duart_ropr       ;Reset output Port Bits Command (ROPR)
+
 
         nxx1freq =3686400              ;X1 clock frequency in Hz
         nxctscal =nxx1freq/2           ;C/T scaled clock

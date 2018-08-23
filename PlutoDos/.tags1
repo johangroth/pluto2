@@ -4,3 +4,12 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+duart_init	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^duart_init: .proc$/;"	label	line:12
+l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^l1:$/;"	label	line:14
+duart_irq	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^duart_irq: .block$/;"	label	line:40
+rcva_duart	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^rcva_duart:$/;"	label	line:57
+xmta_duart	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^xmta_duart:$/;"	label	line:58
+stop_counter	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^stop_counter:$/;"	label	line:62
+done	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^done:$/;"	label	line:66
+delay	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^delay: .macro$/;"	label	line:74
+delay_counter	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^delay_counter:$/;"	label	line:75

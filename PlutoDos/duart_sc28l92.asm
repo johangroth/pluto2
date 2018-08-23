@@ -38,15 +38,31 @@ l1:
 ;;
 ;;;
 duart_irq: .block
-        lda duart_isr
-        and duart_imr
-        beq done
+        lda isr_duart   ;Load interrupt status register
+        and imr_duart   ;Check if DUART made an interrupt
+        beq done        ;
+
+; BIT	#%00000100	;Test for RHR having a character
+; BNE	UART_RCV	;If yes, put the character in the buffer
+; BIT	#%00000001	;Test for THR ready to receive a character
+; BNE	UART_XMT	;If yes, get character from buffer
+; BIT	#%00010000	;Test for Counter ready (RTC)
+; BNE	UART_RTC	;If yes, go increment RTC variables
+        bit #%00000010      ;Test for RxA interrupt
+        bne rcva_duart      ;Yes, put character in buffer
+        bit #%00000001      ;Test for TxD interrupt
+        bne xmta_duart      ;Yes, get character from buffer
+        bit #%00001000      ;Test for C/T interrupt
+        bne stop_counter    ;Yes, stop the counter, the delay is done
+rcva_duart:
+xmta_duart:
 
         ;Stop the counter by first disable timout out mode
         ;and then stop the counter.
+stop_counter:
         lda #duart_crtmd        ;Disable
-        sta duart_cra           ;time out mode
-        lda stop_cc             ;Stop counter command
+        sta cra_duart           ;time out mode
+        lda stopcc_duart        ;Stop counter command
 done:
         jmp irq_end
         .bend
