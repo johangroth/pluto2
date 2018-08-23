@@ -40,22 +40,33 @@ l1:
 duart_irq: .block
         lda isr_duart   ;Load interrupt status register
         and imr_duart   ;Check if DUART made an interrupt
-        beq done        ;
+        beq done        ;No, next interrupt service routine
+        bit #%00000010          ;Test for RxD interrupt
+        bne rcva_duart          ;Yes, put character in buffer
+        bit #%00000001          ;Test for TxD interrupt
+        bne xmta_duart          ;Yes, get character from buffer
+        bit #%00001000          ;Test for C/T interrupt
+        bne stop_counter        ;Yes, stop the counter, the delay is done
 
-; BIT	#%00000100	;Test for RHR having a character
-; BNE	UART_RCV	;If yes, put the character in the buffer
-; BIT	#%00000001	;Test for THR ready to receive a character
-; BNE	UART_XMT	;If yes, get character from buffer
-; BIT	#%00010000	;Test for Counter ready (RTC)
-; BNE	UART_RTC	;If yes, go increment RTC variables
-        bit #%00000010      ;Test for RxA interrupt
-        bne rcva_duart      ;Yes, put character in buffer
-        bit #%00000001      ;Test for TxD interrupt
-        bne xmta_duart      ;Yes, get character from buffer
-        bit #%00001000      ;Test for C/T interrupt
-        bne stop_counter    ;Yes, stop the counter, the delay is done
 rcva_duart:
+        lda rxfifoa_duart       ; Read datum
+        ldy in_buffer_counter   ; Get current number of characters in input buffer
+        bmi done                ; Branch if buffer is full
+        ldy in_buffer_tail      ; Get pointer in input buffer
+        sta in_buffer,y         ; Store character in input buffer
+        inc in_buffer_tail      ; Increment tail pointer
+        rmb 7,in_buffer_tail    ; Strip of bit 7. Buffer is only 128 bytes
+        inc in_buffer_counter   ; Increment character count
+
 xmta_duart:
+        lda out_buffer_counter  ; Get output buffer counter
+        beq done                ; Branch if there is nothing to transmit
+        ldy out_buffer_head     ; Get pointer in output buffer
+        lda out_buffer,y        ; Get character to transmit from output buffer
+        sta txfifoa_duart       ; Send character
+        inc out_buffer_head     ; Increment head pointer
+        rmb 7,out_buffer_head   ; Strip off bit 7. Buffer is only 128 bytes
+        dec out_buffer_counter  ; Decrement character count
 
         ;Stop the counter by first disable timout out mode
         ;and then stop the counter.
