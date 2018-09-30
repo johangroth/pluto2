@@ -6,6 +6,7 @@
 		<Comm>JTAG</Comm>
 		<Device>
 			<Pos>1</Pos>
+			<Ref>Pluto v2 Address Decoder</Ref>
 			<Vendor>Vantis</Vendor>
 			<Family>MACH4A</Family>
 			<Name>iM4A5-64/32</Name>
@@ -18,10 +19,10 @@
 				<BScanLen>1</BScanLen>
 				<BScanVal>0</BScanVal>
 			</Bypass>
-			<File>Z:\Pluto2\SBC\CPLD\pluto.jed</File>
-			<FileTime>08/24/18 18:29:48</FileTime>
-			<JedecChecksum>0x3153</JedecChecksum>
-			<Operation>Verify Only</Operation>
+			<File>Z:\Pluto2\SBC\ABEL_CPLD\pluto2abel.jed</File>
+			<FileTime>08/25/18 15:49:06</FileTime>
+			<JedecChecksum>0x4289</JedecChecksum>
+			<Operation>Erase,Program,Verify</Operation>
 			<Option>
 				<SVFVendor>JTAG STANDARD</SVFVendor>
 				<IOState>HighZ</IOState>

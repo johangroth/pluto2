@@ -647,12 +647,40 @@ l2:
         ; jsr acia_init         ;Deprecated (ACIA was a CDP/Rockwell 65C51 at 4 MHz)
         jsr duart_init          ;Initialise 28L92 (DUART at 4 MHz initially)
         jsr rtc_init            ;Initialise real time clock
-        ; jsr via_init          ;No VIA on Pluto v2
-        cli
+        jsr via_init          ;No VIA on Pluto v2 (well, right now 24/08/2018 one is connected to the expansion bus)
+        ;cli
+;;;
+;; test code of CPLD's decoding part.
+;; Blink a LED every second connected to PA0 on VIA.
+;;;
+        lda #$ff
+        sta via1ddra        ; set all PA pins to be outputs
+        ; 9c40 in delay will cause a delay of 10000 us
+        lda #$9c
+        sta delay_high
+        lda #$40
+        sta delay_low
+loop:
+        lda #1
+        sta via1ra
+        jsr one_sec_delay
+        lda #0
+        sta via1ra
+        jsr one_sec_delay
+        bra loop
+
+one_sec_delay:
+        ldx #100
+again:
+        jsr delay_via1
+        dex
+        bne again
+        rts
 
 ;;;
 ;; Initialise termnial
 ;;;
+        jsr delay_via1
         jsr bell
         lda #<clear_screen
         sta index_low
@@ -736,6 +764,8 @@ brk_irq: .block
 
 rtc_irq: .block
         ; jmp (acia_soft_vector)          ;Jump to next ISR
+        ;; rtc irq doesn't do anything at the moment so
+        ;; jump directly to duart ISR.
         jmp (duart_soft_vector)         ;Jump to DUART ISR
         .bend
 

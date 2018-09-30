@@ -39,6 +39,17 @@
         ;;              10, binary          TODO
         ;;              11, ASCII text
         ;;
+        ;;  bit 7 - used by delay routine
+        ;;          When counter reaches zero, ie delay is done, this flag will be set to 1.
+        ;;  76543210
+        ;;  ||||||||
+        ;;  ||||||++——————> 00 - hex input, 01 - decimal input, 10 - binary TODO, 11 - ASCII text
+        ;;  |||||+————————>
+        ;;  ||||+—————————>
+        ;;  |||+——————————>
+        ;;  ||+———————————>
+        ;;  |+————————————>
+        ;;  +—————————————> 0 - 28l92 is still counting down, 1 - counter in 28l92 has reached zero
         control_flags = zp_start + $29
         ;================================================================================
         ;
@@ -71,24 +82,25 @@
         ;
         ;
         lastblk =   address_high + $1                       ; flag for last block
-        blkno  =    address_high + $2                        ; block number
-        errcnt =    address_high + $3                        ; error counter 10 is the limit
-        bflag  =    address_high + $4                        ; block flag
+        blkno  =    address_high + $2                       ; block number
+        errcnt =    address_high + $3                       ; error counter 10 is the limit
+        bflag  =    address_high + $4                       ; block flag
 
-        crc    =    address_high + $5                        ; CRC lo byte  (two byte variable)
-        crch   =    address_high + $6                        ; CRC hi byte
+        crc    =    address_high + $5                       ; CRC lo byte  (two byte variable)
+        crch   =    address_high + $6                       ; CRC hi byte
 
-        ptr    =    address_high + $7                        ; data pointer (two byte variable)
-        ptrh   =    address_high + $8                        ;   "    "
+        ptr    =    address_high + $7                       ; data pointer (two byte variable)
+        ptrh   =    address_high + $8                       ;   "    "
 
-        eofp   =    address_high + $9                        ; end of file address pointer (2 bytes)
-        eofph  =    address_high + $a                        ;  "    "    "    "
+        eofp   =    address_high + $9                       ; end of file address pointer (2 bytes)
+        eofph  =    address_high + $a                       ;  "    "    "    "
 
-        retry  =    address_high + $b                        ; retry counter
-        retry2 =    address_high + $c                        ; 2nd counter
+        retry  =    address_high + $b                       ; retry counter
+        retry2 =    address_high + $c                       ; 2nd counter
 
         fill_length_low = retry2 + $1
         fill_length_high = fill_length_low +$1
         bcd = fill_length_high + $1
         bin = bcd + $4
+
         stack_page  = $100

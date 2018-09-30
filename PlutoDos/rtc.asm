@@ -61,7 +61,19 @@ l10:
         sta  io_rtc,x
         dey
         bpl  l10
-        #delay 366  ;To ensure a user register update a delay is needed. Datasheet says a ~366µs delay is enough
+        ; The macro can't be used as it relies on IRQ being active.
+        ; #delay 366  ;To ensure a user register update a delay is needed. Datasheet says a ~366µs delay is enough
+
+        ; This delay loop needs to be tuned better
+        ldy #$ff
+l1:
+        ldx #$ff
+l2:
+        dex
+        bne l2
+        dey
+        bne l1
+
         rts
        .pend
 ;;;

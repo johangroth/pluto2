@@ -7,7 +7,9 @@
 ;;
 ;;   Preparatory Ops: none
 ;;
-;;   Returned Values: a: destroyed
+;;   Returned Values:   a: used
+;;                      x: used
+;;                      y: used
 ;;;
 duart_init: .proc
         ldy #s_duart_tab - 2
@@ -38,9 +40,9 @@ l1:
 ;;
 ;;;
 duart_irq: .block
-        lda isr_duart   ;Load interrupt status register
-        and imr_duart   ;Check if DUART made an interrupt
-        beq done        ;No, next interrupt service routine
+        lda isr_duart           ;Load interrupt status register
+        and imr_duart           ;Check if DUART made an interrupt
+        beq done                ;No, next interrupt service routine
         bit #%00000010          ;Test for RxD interrupt
         bne rcva_duart          ;Yes, put character in buffer
         bit #%00000001          ;Test for TxD interrupt
@@ -74,6 +76,7 @@ stop_counter:
         lda #duart_crtmd        ;Disable
         sta cra_duart           ;time out mode
         lda stopcc_duart        ;Stop counter command
+        smb delay_bit, control_flags
 done:
         jmp irq_end
         .bend
@@ -83,12 +86,11 @@ done:
 ;; Time delay is given in µs
 ;;;
 delay: .macro
-delay_counter:
-        .word 3686400.0 / 2.0 / (1.0 / ( \1.0 / 1000000.0) )
-        lda #>delay_counter
-        sta duart_ctpu
-        lda #<delay_counter
-        sta duart_ctpl
-        ; start counter in SC28L92
-        ; wait for
+        lda #>(3686400.0 / 2.0 / (1.0 / ( \1.0 / 1000000.0) ))
+        sta ctpu_duart
+        lda #<(3686400.0 / 2.0 / (1.0 / ( \1.0 / 1000000.0) ))
+        sta ctpl_duart
+        lda startcc_duart
+wait:
+        bbr delay_bit, control_flags, wait
         .endm

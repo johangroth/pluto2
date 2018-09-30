@@ -4,14 +4,14 @@ TITLE 'Address decoding'
 	A5..A15   pin 40,38,36,31,29,27,18,16,14,9,33; " 65C02 Address bus
 	CLK	  pin 11;			       " Clock in
 	RW	  pin 7;			       " R/W signal from 65C02
-	MRD	  pin 41 istype 'com';		       " Read 
-	MWR	  pin 43 istype 'com';		       " Write
-	RAMSEL	  pin 15 istype 'com';		       " Select RAM
-	ROMSEL	  pin 21 istype 'com';		       " Select ROM
-	DUART	  pin 3  istype 'com';		       " $7FEX
-	IO1	  pin 8  istype 'com';		       " $7FCX
-	IO2	  pin 2  istype 'com';		       " $7FAX
-	RTC	  pin 6  istype 'com';		       " $7F8X
+	!MRD	  pin 41 istype 'com';		       " Read
+	!MWR	  pin 43 istype 'com';		       " Write
+	!RAMSEL	  pin 15 istype 'com';		       " Select RAM
+	!ROMSEL	  pin 21 istype 'com';		       " Select ROM
+	!DUART	  pin 3  istype 'com';		       " $7FEX
+	!IO1	  pin 8  istype 'com';		       " $7FCX
+	!IO2	  pin 2  istype 'com';		       " $7FAX
+	!RTC	  pin 6  istype 'com';		       " $7F8X
 
 	H,L,X	= 1,0,.X.;
 	Address = [A15,A14,A13,A12, A11,A10,A9,A8, A7,A6,A5,X, X,X,X,X];
@@ -19,14 +19,14 @@ TITLE 'Address decoding'
 
 
 EQUATIONS
-	!RAMSEL	= (Address <= ^h7EFF);
-	!ROMSEL = (Address >= ^h8000);
-	!DUART	= (Address >= ^h7FE0) & (Address <= ^h7FFF);
-	!IO1	= (Address >= ^h7FC0) & (Address <= ^h7FDF);
-	!IO2	= (Address >= ^h7FA0) & (Address <= ^h7FBF);
-	!RTC	= (Address >= ^h7F80) & (Address <= ^h7F9F);
-	!MWR	= !RW & CLK;
-	!MRD	= RW & CLK;
+	RAMSEL	= (Address <= ^h7EFF);
+	ROMSEL  = (Address >= ^h8000);
+	DUART	= (Address >= ^h7FE0) & (Address <= ^h7FFF);
+	IO1	= (Address >= ^h7FC0) & (Address <= ^h7FDF);
+	IO2	= (Address >= ^h7FA0) & (Address <= ^h7FBF);
+	RTC	= (Address >= ^h7F80) & (Address <= ^h7F9F);
+	MWR 	= CLK & !RW;
+	MRD 	= CLK & RW;
 
 TEST_VECTORS
 	(Address -> [ ROMSEL,	DUART,	IO1,	IO2,	RTC,	RAMSEL	])
@@ -51,4 +51,3 @@ TEST_VECTORS
 	[H, H]		-> [	H, 	L	];
 	[L, H]		-> [	L,	H	];
 END
-

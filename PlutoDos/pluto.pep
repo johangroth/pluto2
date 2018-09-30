@@ -10,7 +10,7 @@ Connected Programmers: 1
     Destination chip name: Atmel AT28C256-15PU
 
  ; File dialog:
-    FileName: /home/jgroth/dev/repos_github/PLUTO/PlutoDos/pluto.bin
+    FileName: /home/jgroth/dev/repos_github/pluto2/PlutoDos/pluto.bin
     MultiFileMode: False
     Checksum Algorithm: Sum
     Further information: False
@@ -20,7 +20,7 @@ Connected Programmers: 1
     Chip memory number: 0
     Memory used: True
     Real time clock option: NoChanges
-    Real time clock date time: 12/05/2018 12:14:47
+    Real time clock date time: 30/09/2018 12:42:45
     Real time clock calibration: 0
 
  ; Serial number settings:
@@ -102,7 +102,7 @@ Connected Programmers: 1
     Chip memory number: 0
     Memory used: True
     Real time clock option: NoChanges
-    Real time clock date time: 12/05/2018 12:14:47
+    Real time clock date time: 30/09/2018 12:42:45
     Real time clock calibration: 0
 
  ; Serial number settings:
@@ -207,7 +207,7 @@ Connected Programmers: 1
     Chip memory number: 0
     Memory used: True
     Real time clock option: NoChanges
-    Real time clock date time: 12/05/2018 12:14:47
+    Real time clock date time: 30/09/2018 12:42:45
     Real time clock calibration: 0
 
  ; Serial number settings:

@@ -1,0 +1,36 @@
+|--------------------------------------------|
+|- ispLEVER Fitter Report File              -|
+|- Version 2.0.00.17.20.15                       -|
+|- (c)Copyright, Lattice Semiconductor 2002 -|
+|--------------------------------------------|
+
+
+; Source file pluto2abel.tt4
+; FITTER-generated Placements.
+; DEVICE   mach463a
+; DATE     Sat Sep 29 15:16:22 2018
+
+
+Pin   40  A5
+Pin   38  A6
+Pin   36  A7
+Pin   31  A8
+Pin   29  A9
+Pin   27  A10
+Pin   18  A11
+Pin   16  A12
+Pin   14  A13
+Pin   9  A14
+Pin   33  A15
+Pin   11  CLK
+Pin   7  RW
+Pin   41  MRD Comb ; S6=1  S9=1  Pair 135
+Pin   43  MWR Comb ; S6=1  S9=1  Pair 117
+Pin   15  RAMSEL Comb ; S6=1  S9=1  Pair 75
+Pin   21  ROMSEL Comb ; S6=1  S9=1  Pair 69
+Pin   3  DUART Comb ; S6=1  S9=1  Pair 45
+Pin   8  IO1 Comb ; S6=1  S9=1  Pair 51
+Pin   2  IO2 Comb ; S6=1  S9=1  Pair 47
+Pin   6  RTC Comb ; S6=1  S9=1  Pair 57
+; Unused Pins & Nodes
+; -> None Found.

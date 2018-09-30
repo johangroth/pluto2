@@ -118,7 +118,7 @@
 ;
 ;
 ;   CT — counter/timer...
-;   These definitions is only here for reference if a jiffy timer
+;   These definitions are here only for reference if a jiffy timer
 ;   running at 100 Hz is enabled.
         hz = 100
         duart_ctdef =nxctscal/hz            ;HZ underflows per second
@@ -156,7 +156,7 @@
 ;
 ;   MR1 — mode 1 register...
 
-        duart_m1def =%11010011            ;...
+        duart_m1def =%11010011
 ;
 ;   11010011
 ;   ||||||||
@@ -192,7 +192,7 @@
 ;   Table entries are read in reverse order during device setup.
 ;   ————————————————————————————————————————————————————————————————————————
 ;
-        .align $60
+        .align $20,$ea
         ;* = * - 2   ;force table to cross page boundary
 duart_sutab:
         .byte duart_imr, duart_irqmask  ;IMR (enables IRQs)
@@ -231,3 +231,6 @@ duart_sutab:
         .byte duart_imr, 0         ;IMR (disable IRQs)
 
         s_duart_tab = * - duart_sutab
+
+
+        delay_bit = 7                   ;Delay bit in control_flags

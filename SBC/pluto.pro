@@ -1,4 +1,4 @@
-update=Wed 20 Dec 2017 22:30:58 GMT
+update=Sat 25 Aug 2018 14:02:32 BST
 version=1
 last_client=kicad
 [pcbnew]
@@ -25,16 +25,6 @@ version=1
 NetIExt=net
 [general]
 version=1
-[schematic_editor]
-version=1
-PageLayoutDescrFile=
-PlotDirectoryName=
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=
-SpiceForceRefPrefix=0
-SpiceUseNetNumbers=0
-LabSize=60
 [eeschema]
 version=1
 LibDir=../SBC
@@ -311,3 +301,13 @@ LibName269=/home/jgroth/C64/KiCadLibraries/kicad-library2/libs/VIN
 LibName270=/home/jgroth/C64/KiCadLibraries/kicad-library2/libs/VREG
 LibName271=/home/jgroth/C64/KiCadLibraries/kicad-library2/libs/VREG_VOUTCENTER
 LibName272=/home/jgroth/dev/repos_github/Saturn/HW/saturn
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60
