@@ -29,11 +29,10 @@ next:
 ;; e.g. delay_low = 100 and PHI2 clock is 4MHz will make the delay to be 100 / 4 = 25 µs.
 delay_via1:  .proc
         stz via1acr       ;select mode
-        lda delay_high
-        sta via1t2ch
-
         lda delay_low     ;delay duration
-        sta via1t2cl      ;low part=01hex.  start
+        sta via1t2cl      ;low part=01hex.
+        lda delay_high
+        sta via1t2ch      ;start
         lda #via_timer2_irq_mask    ;mask
 loop:
         bit via1ifr       ;time out?

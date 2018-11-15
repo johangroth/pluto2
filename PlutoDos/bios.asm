@@ -645,10 +645,10 @@ l2:
         dex
         bne l2
         ; jsr acia_init         ;Deprecated (ACIA was a CDP/Rockwell 65C51 at 4 MHz)
-        jsr duart_init          ;Initialise 28L92 (DUART at 4 MHz initially)
-        jsr rtc_init            ;Initialise real time clock
+        ; jsr duart_init          ;Initialise 28L92 (DUART at 4 MHz initially)
+        ; jsr rtc_init            ;Initialise real time clock
         jsr via_init          ;No VIA on Pluto v2 (well, right now 24/08/2018 one is connected to the expansion bus)
-        ;cli
+        cli
 ;;;
 ;; test code of CPLD's decoding part.
 ;; Blink a LED every second connected to PA0 on VIA.

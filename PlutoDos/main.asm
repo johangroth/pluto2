@@ -16,7 +16,7 @@
 
 ; =============================================================================
 ; IDE
-.include "ide_routines.asm"
+; .include "ide_routines.asm"
 
 ; =============================================================================
 ; CFS (Commodore File System, part of IDE64 project)

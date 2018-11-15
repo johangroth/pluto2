@@ -286,10 +286,10 @@ correct:
         ldx #1                  ;Day of week, 1 being Monday
         lda #<days_of_week      ;Initialise address pointer with days of week table address
         sta address_low
-        sta tmp                 ;Holds the index in the table
+        sta temp1                 ;Holds the index in the table
         lda #>days_of_week
         sta address_high
-        sta tmp+1
+        sta temp1+1
 
 ; Search for week day in table
 check_next_entry:
@@ -311,15 +311,15 @@ exit:
 next_entry_in_week_day_table: .proc
         ldy #4
 l1:
-        inc tmp
+        inc temp1
         bne done
-        inc tmp+1
+        inc temp1+1
 done:
         dey
         bne l1
-        lda tmp
+        lda temp1
         sta address_low
-        lda tmp+1
+        lda temp1+1
         sta address_high
         rts
         .pend
