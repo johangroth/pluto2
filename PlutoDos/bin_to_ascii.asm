@@ -111,11 +111,17 @@ s_wrkspc: = m_cbits/8                   ;conversion workspace size
 ;CONVERT 32-BIT BINARY TO NULL-TERMINATED ASCII NUMBER STRING
 ;
 binary_to_ascii: .proc
+        stz stridx                      ;initialise string index
         lda control_flags               ;get radix, 00=>HEX, 01=>DEC, 10=>BIN
         and #radix_mask                 ;keep only radix bits
         sta radix                       ;save radix index for later
-        stz stridx                      ;initialise string index
+.if emulator==true
+        bit #0
+        beq l06
+.else
         bbr 0,radix,l06                 ;branch if not converting to decimal
+.fi
+
 ;
 ;    ------------------------------
 ;    prepare for decimal conversion

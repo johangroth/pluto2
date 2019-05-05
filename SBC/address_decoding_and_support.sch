@@ -1,249 +1,6 @@
-EESchema Schematic File Version 2
-LIBS:pluto-rescue
-LIBS:power
-LIBS:device
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
-LIBS:65xx
-LIBS:4000-ic
-LIBS:7400-ic
-LIBS:analog-ic
-LIBS:avr-mcu
-LIBS:bluegiga
-LIBS:connector
-LIBS:diode-inc-ic
-LIBS:freescale-ic
-LIBS:ftdi-ic
-LIBS:led
-LIBS:maxim-ic
-LIBS:micrel-ic
-LIBS:microchip-ic
-LIBS:nxp-ic
-LIBS:on-semi-ic
-LIBS:regulator
-LIBS:rohm
-LIBS:sharp-relay
-LIBS:sparkfun
-LIBS:standard
-LIBS:stmicro-mcu
-LIBS:ti-ic
-LIBS:transistor
-LIBS:uln-ic
-LIBS:74xgxx
-LIBS:ac-dc
-LIBS:actel
-LIBS:allegro
-LIBS:Altera
-LIBS:analog_devices
-LIBS:battery_management
-LIBS:bbd
-LIBS:bosch
-LIBS:brooktre
-LIBS:cmos_ieee
-LIBS:dc-dc
-LIBS:diode
-LIBS:elec-unifil
-LIBS:ESD_Protection
-LIBS:ftdi
-LIBS:gennum
-LIBS:graphic
-LIBS:hc11
-LIBS:intersil
-LIBS:ir
-LIBS:Lattice
-LIBS:leds
-LIBS:LEM
-LIBS:logo
-LIBS:maxim
-LIBS:mechanical
-LIBS:microchip_dspic33dsc
-LIBS:microchip_pic10mcu
-LIBS:microchip_pic12mcu
-LIBS:microchip_pic16mcu
-LIBS:microchip_pic18mcu
-LIBS:microchip_pic24mcu
-LIBS:microchip_pic32mcu
-LIBS:modules
-LIBS:motor_drivers
-LIBS:motors
-LIBS:msp430
-LIBS:nordicsemi
-LIBS:nxp
-LIBS:nxp_armmcu
-LIBS:onsemi
-LIBS:Oscillators
-LIBS:powerint
-LIBS:Power_Management
-LIBS:pspice
-LIBS:references
-LIBS:relays
-LIBS:rfcom
-LIBS:RFSolutions
-LIBS:sensors
-LIBS:silabs
-LIBS:stm8
-LIBS:stm32
-LIBS:supertex
-LIBS:switches
-LIBS:transf
-LIBS:triac_thyristor
-LIBS:ttl_ieee
-LIBS:video
-LIBS:wiznet
-LIBS:Worldsemi
-LIBS:Xicor
-LIBS:zetex
-LIBS:Zilog
-LIBS:pluto
-LIBS:+1.8V
-LIBS:+3.3V
-LIBS:+5V
-LIBS:+9V
-LIBS:25AA02EXXX-XOT
-LIBS:74LVC8T245
-LIBS:4021
-LIBS:7408
-LIBS:74125
-LIBS:74138
-LIBS:74148
-LIBS:74151
-LIBS:74157
-LIBS:74541
-LIBS:ANT
-LIBS:AP6502
-LIBS:AUDIO-JACK-3
-LIBS:AUDIO-JACK-6
-LIBS:BATTERY
-LIBS:BELFUSE-08B0-1X1T-06-F
-LIBS:C
-LIBS:CP
-LIBS:CRYSTAL
-LIBS:CRYSTAL-14
-LIBS:CVAR
-LIBS:DIODE
-LIBS:DIODES-AP3211
-LIBS:DIODESCH
-LIBS:DIODEZENER
-LIBS:DMMT5401
-LIBS:EDISON-BULB-E10
-LIBS:EDISON-SOCKET-E10
-LIBS:ENC28J60
-LIBS:FTDI-PLUG
-LIBS:GNDPWR
-LIBS:~GNDPWR
-LIBS:INDUCTOR
-LIBS:INTEL-EDISON-COMPUTE-MODULE
-LIBS:IS31AP4066D
-LIBS:JTAG
-LIBS:JTAG10
-LIBS:LATTICE-LC4256
-LIBS:LED
-LIBS:LED-BI
-LIBS:LED-BI-COMMON-CATHODE
-LIBS:LM324
-LIBS:LM1875
-LIBS:MAX3221
-LIBS:MC33926
-LIBS:MC34063A
-LIBS:MCP49X1
-LIBS:MCP3204
-LIBS:MECH
-LIBS:MIC2039
-LIBS:MIC2288
-LIBS:MICROSD-AMPHENOL-114-00841-68
-LIBS:MOSFET-N
-LIBS:MOSFET-N-123
-LIBS:MOSFET-N-134
-LIBS:MOSFET-P
-LIBS:NPN
-LIBS:nRF8001
-LIBS:NXPUDA1334ATS
-LIBS:OPAMP-DUAL
-LIBS:P01
-LIBS:P02
-LIBS:P03
-LIBS:P05
-LIBS:P06
-LIBS:P06-MOTOR
-LIBS:P08
-LIBS:P10
-LIBS:P22
-LIBS:P24
-LIBS:PHOTO_TRANSISTOR
-LIBS:PIEZO
-LIBS:PNP
-LIBS:POLYFUSE
-LIBS:POT
-LIBS:PWR_FLAG
-LIBS:QRE1113
-LIBS:R
-LIBS:RASPBERRYPI
-LIBS:RASPBERRYPI2
-LIBS:RBUS8
-LIBS:RN4020
-LIBS:ROBOT-P10-IO
-LIBS:RS-232-DB-9-DTE
-LIBS:SEN-SHT3x-DIS
-LIBS:SERVO
-LIBS:SI4737-C40-GM
-LIBS:SI4737-GU
-LIBS:SKYWORKS-AAT1217-3.3
-LIBS:SPDT
-LIBS:SPST
-LIBS:SPST-4PIN
-LIBS:SST25VF032B-S2A
-LIBS:SST26VF032B
-LIBS:ST-LIS3MDL
-LIBS:STM32-32PIN
-LIBS:STM32-48PIN
-LIBS:STM32-64PIN
-LIBS:STM32SWDUART
-LIBS:ST-SWD
-LIBS:ST-TDA7266
-LIBS:SWD
-LIBS:TCS3472
-LIBS:TI-ADS7866
-LIBS:TICC3000
-LIBS:TIREF30XX
-LIBS:TP
-LIBS:TS5A623157
-LIBS:TSV631
-LIBS:TVS-DIODE
-LIBS:TXB0108-PW
-LIBS:USBAB
-LIBS:Vcc
-LIBS:Vdd
-LIBS:VIN
-LIBS:VREG
-LIBS:VREG_VOUTCENTER
-LIBS:saturn
+EESchema Schematic File Version 4
 LIBS:pluto-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -258,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L R_Network07 RN2
+L device:R_Network07 RN2
 U 1 1 58D6C524
 P 3950 1400
 F 0 "RN2" V 3550 1400 50  0000 C CNN
@@ -269,7 +26,7 @@ F 3 "" H 3950 1400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CXO_DIP8 X1
+L Oscillators:CXO_DIP8 X1
 U 1 1 58D6C921
 P 4350 6450
 F 0 "X1" H 4150 6700 50  0000 L CNN
@@ -280,7 +37,7 @@ F 3 "" H 4250 6450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L VCC #PWR09
+L power:VCC #PWR09
 U 1 1 58D6CEDE
 P 4350 6050
 F 0 "#PWR09" H 4350 5900 50  0001 C CNN
@@ -291,7 +48,7 @@ F 3 "" H 4350 6050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR010
+L power:GND #PWR010
 U 1 1 58D6CF02
 P 4350 6925
 F 0 "#PWR010" H 4350 6675 50  0001 C CNN
@@ -302,7 +59,7 @@ F 3 "" H 4350 6925 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L VCC #PWR011
+L power:VCC #PWR011
 U 1 1 58D6D2F3
 P 2050 2675
 F 0 "#PWR011" H 2050 2525 50  0001 C CNN
@@ -313,7 +70,7 @@ F 3 "" H 2050 2675 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L SW_Push SW1
+L switches:SW_Push SW1
 U 1 1 58D6D3A4
 P 1650 3650
 F 0 "SW1" H 1575 3550 50  0000 L CNN
@@ -374,7 +131,7 @@ Text HLabel 7800 3275 0    60   Output ~ 0
 Text HLabel 1975 6925 2    60   Output ~ 0
 ~KS
 $Comp
-L R_Network07 RN1
+L device:R_Network07 RN1
 U 1 1 594C05A8
 P 1350 6000
 F 0 "RN1" V 950 6000 50  0000 C CNN
@@ -385,7 +142,7 @@ F 3 "" H 1350 6000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L VCC #PWR013
+L power:VCC #PWR013
 U 1 1 594C0808
 P 1050 5800
 F 0 "#PWR013" H 1050 5650 50  0001 C CNN
@@ -398,7 +155,7 @@ $EndComp
 Text HLabel 1975 6400 2    60   Output ~ 0
 ~SO
 $Comp
-L VCC #PWR014
+L power:VCC #PWR014
 U 1 1 594C1459
 P 3650 1025
 F 0 "#PWR014" H 3650 875 50  0001 C CNN
@@ -409,7 +166,7 @@ F 3 "" H 3650 1025 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR015
+L power:GND #PWR015
 U 1 1 595DE156
 P 2650 7025
 F 0 "#PWR015" H 2650 6775 50  0001 C CNN
@@ -423,7 +180,7 @@ NoConn ~ 3850 6150
 NoConn ~ 3850 6550
 NoConn ~ 4050 6450
 $Comp
-L 74HC74 U8
+L pluto-rescue:74HC74 U8
 U 2 1 59EC7963
 P 5500 6450
 F 0 "U8" H 5650 6750 50  0000 C CNN
@@ -434,7 +191,7 @@ F 3 "" H 5500 6450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L 74HC74 U8
+L pluto-rescue:74HC74 U8
 U 1 1 59EC7994
 P 3250 6350
 F 0 "U8" H 3400 6650 50  0000 C CNN
@@ -445,7 +202,7 @@ F 3 "" H 3250 6350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR016
+L power:GND #PWR016
 U 1 1 59F107DB
 P 8700 4450
 F 0 "#PWR016" H 8700 4200 50  0001 C CNN
@@ -505,7 +262,7 @@ NoConn ~ 1050 6200
 Entry Wire Line
 	7475 2500 7575 2400
 $Comp
-L VCC #PWR017
+L power:VCC #PWR017
 U 1 1 59F10359
 P 8650 700
 F 0 "#PWR017" H 8650 550 50  0001 C CNN
@@ -516,7 +273,7 @@ F 3 "" H 8650 700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L VCC #PWR018
+L power:VCC #PWR018
 U 1 1 59F43AD4
 P 8750 700
 F 0 "#PWR018" H 8750 550 50  0001 C CNN
@@ -527,7 +284,7 @@ F 3 "" H 8750 700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR019
+L power:GND #PWR019
 U 1 1 59F43B3B
 P 8875 4450
 F 0 "#PWR019" H 8875 4200 50  0001 C CNN
@@ -538,7 +295,7 @@ F 3 "" H 8875 4450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR020
+L power:GND #PWR020
 U 1 1 59F43B5E
 P 8525 4450
 F 0 "#PWR020" H 8525 4200 50  0001 C CNN
@@ -549,7 +306,7 @@ F 3 "" H 8525 4450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C_Small C22
+L device:C_Small C22
 U 1 1 59F44526
 P 9375 4350
 F 0 "C22" V 9250 4300 50  0000 L CNN
@@ -560,7 +317,7 @@ F 3 "" H 9375 4350 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L C_Small C21
+L device:C_Small C21
 U 1 1 59F44553
 P 8175 4350
 F 0 "C21" V 8050 4300 50  0000 L CNN
@@ -583,7 +340,7 @@ A3
 Entry Wire Line
 	7475 2750 7575 2650
 $Comp
-L ispMACH4A5 U7
+L pluto:ispMACH4A5 U7
 U 1 1 59F0F447
 P 8700 2150
 F 0 "U7" H 8275 3275 60  0000 C CNN
@@ -616,7 +373,7 @@ A[0..15]
 Text HLabel 7800 2900 0    60   Output ~ 0
 ~7FEX
 $Comp
-L TL7705B U5
+L pluto:TL7705B U5
 U 1 1 5A37C438
 P 2850 3225
 F 0 "U5" H 3100 3675 50  0000 C CNN
@@ -627,7 +384,7 @@ F 3 "" H 2850 3225 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R_Small R2
+L device:R_Small R2
 U 1 1 5A37C778
 P 1650 2975
 F 0 "R2" H 1680 2995 50  0000 L CNN
@@ -638,7 +395,7 @@ F 3 "" H 1650 2975 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R_Small R3
+L device:R_Small R3
 U 1 1 5A37C7D7
 P 2050 3700
 F 0 "R3" H 2080 3720 50  0000 L CNN
@@ -651,7 +408,7 @@ $EndComp
 Text HLabel 4575 2725 2    60   Output ~ 0
 RES
 $Comp
-L CP_Small C4
+L device:CP_Small C4
 U 1 1 5A37EF31
 P 2050 4025
 F 0 "C4" H 2060 4095 50  0000 L CNN
@@ -662,7 +419,7 @@ F 3 "" H 2050 4025 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C_Small C6
+L device:C_Small C6
 U 1 1 5A37FB89
 P 3650 3625
 F 0 "C6" H 3650 3700 50  0000 L CNN
@@ -680,7 +437,7 @@ NoConn ~ 7975 3400
 NoConn ~ 9425 2025
 NoConn ~ 9425 2150
 $Comp
-L R_Small R4
+L device:R_Small R4
 U 1 1 5A3880A9
 P 3950 3475
 F 0 "R4" V 4025 3450 50  0000 L CNN
@@ -722,7 +479,7 @@ Wire Wire Line
 Wire Wire Line
 	4750 7000 5500 7000
 Wire Wire Line
-	4750 5900 4750 7000
+	4750 5900 4750 6150
 Wire Wire Line
 	4750 6150 4350 6150
 Wire Wire Line
@@ -741,7 +498,7 @@ Wire Wire Line
 Wire Wire Line
 	3250 5800 2650 5800
 Wire Wire Line
-	2650 5800 2650 7025
+	2650 5800 2650 6150
 Connection ~ 2650 6150
 Connection ~ 2650 6350
 Wire Wire Line
@@ -760,9 +517,9 @@ Wire Wire Line
 Wire Wire Line
 	7125 4350 7125 800 
 Wire Wire Line
-	8750 700  8750 900 
+	8750 700  8750 800 
 Wire Wire Line
-	8650 700  8650 900 
+	8650 700  8650 800 
 Wire Wire Line
 	7125 800  8650 800 
 Connection ~ 8650 800 
@@ -794,17 +551,17 @@ Wire Wire Line
 Wire Wire Line
 	9425 3775 9875 3775
 Wire Wire Line
-	8875 4275 8875 4450
+	8875 4275 8875 4350
 Wire Wire Line
 	9275 4350 8875 4350
 Connection ~ 8875 4350
 Wire Wire Line
-	8525 4275 8525 4450
+	8525 4275 8525 4350
 Wire Wire Line
 	8275 4350 8525 4350
 Connection ~ 8525 4350
 Wire Wire Line
-	8650 4275 8775 4275
+	8650 4275 8700 4275
 Wire Wire Line
 	8700 4450 8700 4275
 Connection ~ 8700 4275
@@ -865,8 +622,6 @@ Wire Wire Line
 Wire Wire Line
 	9425 1900 10000 1900
 Wire Bus Line
-	7475 1250 7475 2750
-Wire Bus Line
 	7475 1250 6475 1250
 Wire Wire Line
 	7975 2900 7800 2900
@@ -875,14 +630,14 @@ Wire Wire Line
 Wire Wire Line
 	1150 6925 1975 6925
 Wire Wire Line
-	3650 1600 3650 3000
+	3650 1600 3650 2575
 Wire Wire Line
 	3650 2575 4575 2575
 Connection ~ 3650 2575
 Wire Wire Line
 	2050 3000 2050 2675
 Wire Wire Line
-	1650 2675 2850 2675
+	1650 2675 2050 2675
 Wire Wire Line
 	2050 3225 1650 3225
 Wire Wire Line
@@ -892,25 +647,18 @@ Wire Wire Line
 Wire Wire Line
 	3650 3450 3650 3525
 Wire Wire Line
-	3650 3725 3650 3775
-Wire Wire Line
 	7975 3150 7800 3150
 Wire Wire Line
 	7975 3025 7800 3025
 Wire Wire Line
-	2850 3775 3950 3775
-Connection ~ 3650 3775
-Wire Wire Line
-	3950 3775 3950 3575
-Wire Wire Line
-	3950 2725 3950 3375
+	3950 2725 3950 3225
 Wire Wire Line
 	3950 2725 4575 2725
 Wire Wire Line
 	3650 3225 3950 3225
 Connection ~ 3950 3225
 $Comp
-L GND #PWR?
+L power:GND #PWR?
 U 1 1 5A4A00BC
 P 2850 4125
 F 0 "#PWR?" H 2850 3875 50  0001 C CNN
@@ -923,9 +671,9 @@ $EndComp
 Wire Wire Line
 	2850 4125 2850 3775
 Wire Wire Line
-	1650 4125 2850 4125
+	1650 4125 2050 4125
 Wire Wire Line
-	1650 3075 1650 3450
+	1650 3075 1650 3225
 Wire Wire Line
 	1650 3850 1650 4125
 Connection ~ 2050 4125
@@ -933,4 +681,44 @@ Connection ~ 1650 3225
 Wire Wire Line
 	1650 2875 1650 2675
 Connection ~ 2050 2675
+Wire Wire Line
+	4750 6150 4750 7000
+Wire Wire Line
+	2650 6150 2650 6350
+Wire Wire Line
+	2650 6350 2650 6900
+Wire Wire Line
+	2650 6900 2650 7025
+Wire Wire Line
+	8650 800  8650 900 
+Wire Wire Line
+	8750 800  8750 900 
+Wire Wire Line
+	8875 4350 8875 4450
+Wire Wire Line
+	8525 4350 8525 4450
+Wire Wire Line
+	8700 4275 8775 4275
+Wire Wire Line
+	3650 2575 3650 3000
+Wire Wire Line
+	3950 3225 3950 3375
+Wire Wire Line
+	2050 4125 2850 4125
+Wire Wire Line
+	1650 3225 1650 3450
+Wire Wire Line
+	2050 2675 2850 2675
+Wire Wire Line
+	2850 4125 3650 4125
+Wire Wire Line
+	3950 4125 3950 3575
+Connection ~ 2850 4125
+Wire Wire Line
+	3650 3725 3650 4125
+Wire Bus Line
+	7475 1250 7475 2750
+Connection ~ 3650 4125
+Wire Wire Line
+	3650 4125 3950 4125
 $EndSCHEMATC

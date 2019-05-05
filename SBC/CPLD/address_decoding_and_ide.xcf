@@ -19,9 +19,9 @@
 				<BScanVal>0</BScanVal>
 			</Bypass>
 			<File>Z:\Pluto2\SBC\CPLD\pluto.jed</File>
-			<FileTime>08/24/18 18:29:48</FileTime>
+			<FileTime>12/05/18 20:16:50</FileTime>
 			<JedecChecksum>0x3153</JedecChecksum>
-			<Operation>Verify Only</Operation>
+			<Operation>Erase,Program,Verify</Operation>
 			<Option>
 				<SVFVendor>JTAG STANDARD</SVFVendor>
 				<IOState>HighZ</IOState>

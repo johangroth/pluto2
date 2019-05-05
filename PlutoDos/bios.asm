@@ -133,19 +133,36 @@ l3:
         ; Check if buffer full
         ; If not, store character and echo
 l2:
+.if emulator==true
+        tax
+        lda control_flags
+        bit #1
+        bne check_buffer            ;Bit 1 is set which means any character is allowed, so try to store it
+        bit #0
+        bne decimal_input           ;Bit 0 is set which means decimal input
+        txa
+
+.else
         bbs 1,control_flags,check_buffer    ;Bit 1 is set which means any character is allowed, so try to store it
         bbs 0,control_flags,decimal_input   ;Bit 0 is set which means decimal input
+.fi
         ; Hexdecimal input
         cmp #'A'
         bcc decimal_input           ;Branch if character is < 'A' (check 0-9)
         cmp #'F'+1
         bcc check_buffer            ;Branch if character is < 'F'+1
 decimal_input:
+.if emulator==true
+        txa
+.fi
         cmp #'0'
         bcc ring_bell               ;Branch if character is < '0'
         cmp #'9'+1
         bcs ring_bell               ;Branch if character is >= '9'+1
 check_buffer:
+.if emulator == true
+        txa
+.fi
         ldy buffer_index            ;Is buffer
         cpy buffer_length           ;full
         bcc store_character         ;Branch if room in buffer
@@ -638,12 +655,12 @@ l1:
         bne  l1
         dex                     ;effectively ldx #$ff
         txs                     ;Initialise stack register
-        ldx  #n_soft_vectors    ;Initialise IRQ ISR soft vector table
+        ; ldx  #n_soft_vectors    ;Initialise IRQ ISR soft vector table
 l2:
-        lda initial_soft_vectors-1,x
-        sta soft_vector_table-1,x
-        dex
-        bne l2
+        ; lda initial_soft_vectors-1,x
+        ; sta soft_vector_table-1,x
+        ; dex
+        ; bne l2
         ; jsr acia_init         ;Deprecated (ACIA was a CDP/Rockwell 65C51 at 4 MHz)
         ; jsr duart_init          ;Initialise 28L92 (DUART at 4 MHz initially)
         ; jsr rtc_init            ;Initialise real time clock
@@ -655,28 +672,48 @@ l2:
 ;;;
         lda #$ff
         sta via1ddra        ; set all PA pins to be outputs
+        sta via1ddrb        ; set all PB ping to be outputs
         ; 9c40 in delay will cause a delay of 10000 us
-        lda #$9c
-        sta delay_high
-        lda #$40
-        sta delay_low
+        ; lda #$9c
+        ; sta delay_high
+        ; lda #$40
+        ; sta delay_low
 loop:
-        lda #1
+        lda #$ff
         sta via1ra
-        jsr one_sec_delay
+        sta via1rb
+        ; bra loop
+        jsr delay
         lda #0
         sta via1ra
-        jsr one_sec_delay
+        sta via1rb
+        jsr delay
         bra loop
 
-one_sec_delay:
-        ldx #100
-again:
-        jsr delay_via1
+delay: .proc
+        ldx #$ff
+loop1:
+        jsr one_sec_delay
         dex
-        bne again
+        bne loop1
         rts
+        .pend
 
+one_sec_delay: .proc
+        phx
+        phy
+        ldx #$ff
+loop1:
+        ldy #$ff
+loop2:
+        dey
+        bne loop2
+        dex
+        bne loop1
+        ply
+        plx
+        rts
+        .pend
 ;;;
 ;; Initialise termnial
 ;;;

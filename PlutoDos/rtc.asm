@@ -291,7 +291,7 @@ l2:
         bpl  l1         ;take care of next register
         pla             ;restore control register b
         sta  crb_rtc    ;turn on update of registers
-        #delay 366      ;To ensure a user register update takes place a delay is needed. Datasheet says a ~366µs delay is enough
+;        #delay 366      ;To ensure a user register update takes place a delay is needed. Datasheet says a ~366µs delay is enough
         plx
         pla
         rts

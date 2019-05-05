@@ -138,7 +138,15 @@ l08:
 l09:
 ;
         sta curntnum                    ;save processed numeral
+
+.if emulator==true
+        lda control_flags
+        bit #0
+        beq l11
+.else
         bbr 0,control_flags,l11         ;branch if not working in base 10
+.fi
+
 ;
 ;    -----------------------------------------------------------
 ;    Prior to combining the most recent numeral with the partial
@@ -178,7 +186,15 @@ l12:
         dex
         bne l12                         ;next shift
 ;
+
+.if emulator==true
+        lda control_flags
+        bit #0
+        beq l14
+.else
         bbr 0,control_flags,l14         ;branch if not working in base 10
+.fi
+
 ;
 ;    -------------------
 ;    compute (N*8)+(N*2)

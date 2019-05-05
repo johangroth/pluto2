@@ -237,7 +237,7 @@ set_date_time: .proc
 
 ;;;
 ;; Input date and time.
-;; No validations are made whether values are correct
+;; No validations are made to make sure values are correct
 ;;;
 input_time_date_info: .proc
         smb 0,control_flags     ;%01 in control_flags means decimal input.

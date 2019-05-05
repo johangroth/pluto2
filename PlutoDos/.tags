@@ -195,8 +195,6 @@ idebufwt	/home/jgroth/dev/repos_github/pluto2/PlutoDos/ide_core_v4_20_org_z80_co
 ide_setup_lba	/home/jgroth/dev/repos_github/pluto2/PlutoDos/ide_core_v4_20_org_z80_code.asm	/^ide_setup_lba$/;"	label	line:208
 master_slave_select	/home/jgroth/dev/repos_github/pluto2/PlutoDos/ide_core_v4_20_org_z80_code.asm	/^master_slave_select$/;"	label	line:231
 ide_mast	/home/jgroth/dev/repos_github/pluto2/PlutoDos/ide_core_v4_20_org_z80_code.asm	/^ide_mast:	pop hl$/;"	label	line:238
-INCLUDE_SRCS	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^INCLUDE_SRCS = include\/*.inc$/;"	macro	line:1
-ASM_SRCS	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^ASM_SRCS = *.asm$/;"	macro	line:2
 Rbuff	/home/jgroth/dev/repos_github/pluto2/PlutoDos/xmodem.asm	/^Rbuff  =    $037c                      ; temp 132 byte receive buffer$/;"	define	line:50
 SOH	/home/jgroth/dev/repos_github/pluto2/PlutoDos/xmodem.asm	/^SOH    =    $01                        ; start block$/;"	define	line:69
 EOT	/home/jgroth/dev/repos_github/pluto2/PlutoDos/xmodem.asm	/^EOT    =    $04                        ; end of text marker$/;"	define	line:70
@@ -314,13 +312,6 @@ l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/acia.asm	/^l1:$/;"	label	line:4
 transmit_char	/home/jgroth/dev/repos_github/pluto2/PlutoDos/acia.asm	/^transmit_char:$/;"	label	line:56
 l2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/acia.asm	/^l2:$/;"	label	line:65
 exit	/home/jgroth/dev/repos_github/pluto2/PlutoDos/acia.asm	/^exit:$/;"	label	line:68
-via_init	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^via_init: .proc$/;"	label	line:3
-via1_init	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^via1_init: .proc$/;"	label	line:8
-next	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^next:$/;"	label	line:10
-via2_init	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^via2_init: .proc$/;"	label	line:18
-next	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^next:$/;"	label	line:20
-delay_via1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^delay_via1:  .proc$/;"	label	line:30
-loop	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^loop:$/;"	label	line:38
 duart_init	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^duart_init: .proc$/;"	label	line:12
 l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^l1:$/;"	label	line:14
 duart_irq	/home/jgroth/dev/repos_github/pluto2/PlutoDos/duart_sc28l92.asm	/^duart_irq: .block$/;"	label	line:40
@@ -348,6 +339,15 @@ l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/rtc.asm	/^l1:$/;"	label	line:28
 l2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/rtc.asm	/^l2:$/;"	label	line:288
 get_system_up_time	/home/jgroth/dev/repos_github/pluto2/PlutoDos/rtc.asm	/^get_system_up_time: .proc$/;"	label	line:320
 user_time_delay	/home/jgroth/dev/repos_github/pluto2/PlutoDos/rtc.asm	/^user_time_delay: .proc$/;"	label	line:357
+INCLUDE_SRCS	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^INCLUDE_SRCS = include\/*.inc$/;"	macro	line:1
+ASM_SRCS	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^ASM_SRCS = *.asm$/;"	macro	line:2
+via_init	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^via_init: .proc$/;"	label	line:3
+via1_init	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^via1_init: .proc$/;"	label	line:8
+next	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^next:$/;"	label	line:10
+via2_init	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^via2_init: .proc$/;"	label	line:18
+next	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^next:$/;"	label	line:20
+delay_via1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^delay_via1:  .proc$/;"	label	line:30
+loop	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^loop:$/;"	label	line:37
 input_dec	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^input_dec: .proc$/;"	label	line:21
 input_hex	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^input_hex:  .proc$/;"	label	line:43
 input	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^input:  .proc$/;"	label	line:64
@@ -357,75 +357,78 @@ read_loop	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^read_loop:$/;
 l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^l1:$/;"	label	line:124
 l3	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^l3:$/;"	label	line:127
 l2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^l2:$/;"	label	line:135
-decimal_input	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^decimal_input:$/;"	label	line:143
-check_buffer	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^check_buffer:$/;"	label	line:148
-ring_bell	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^ring_bell:$/;"	label	line:152
-store_character	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^store_character:$/;"	label	line:155
-exit_read_line	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^exit_read_line:$/;"	label	line:160
-backspace	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^backspace: .proc$/;"	label	line:182
-sound_bell	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^sound_bell:$/;"	label	line:189
-exit	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^exit:$/;"	label	line:191
-read_character	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^read_character: .proc$/;"	label	line:210
-exit	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^exit:$/;"	label	line:216
-dec_index	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^dec_index:  .proc$/;"	label	line:234
-done	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^done:$/;"	label	line:238
-inc_index	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^inc_index:  .proc$/;"	label	line:256
-done	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^done:$/;"	label	line:260
-spacex	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^spacex: .proc$/;"	label	line:267
-space4	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^space4: .proc$/;"	label	line:277
-space2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^space2: .proc$/;"	label	line:284
-space	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^space: .proc$/;"	label	line:291
-colon	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^colon: .proc$/;"	label	line:312
-dollar	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^dollar: .proc$/;"	label	line:331
-cr2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^cr2:    .proc$/;"	label	line:350
-crout	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^crout:   .proc$/;"	label	line:367
-sendit	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^sendit:$/;"	label	line:372
-prout	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^prout:   .proc$/;"	label	line:397
-l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^l1:$/;"	label	line:399
-exit	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^exit:$/;"	label	line:405
-hex_address	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^hex_address: .proc$/;"	label	line:430
-hex_byte	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^hex_byte: .proc$/;"	label	line:468
-hex_mode	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^hex_mode: .proc$/;"	label	line:497
-leading_zeroes	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^leading_zeroes: .proc$/;"	label	line:518
-l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^l1:$/;"	label	line:527
-exit	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^exit:$/;"	label	line:531
-clear_number_buffer	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^clear_number_buffer: .proc$/;"	label	line:549
-l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^l1:$/;"	label	line:552
-bell	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^bell:   .proc$/;"	label	line:573
-chin_no_wait	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^chin_no_wait: .proc$/;"	label	line:582
-chin	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^chin:    .proc$/;"	label	line:591
-get_char	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^get_char:$/;"	label	line:594
-chout	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^chout:   .proc$/;"	label	line:608
-out_buffer_full	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^out_buffer_full:$/;"	label	line:610
-nmi	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^nmi:$/;"	label	line:624
-coldstart	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^coldstart: .block$/;"	label	line:631
-l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^l1:$/;"	label	line:635
-l2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^l2:$/;"	label	line:642
-loop	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^loop:$/;"	label	line:663
-one_sec_delay	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^one_sec_delay:$/;"	label	line:672
-again	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^again:$/;"	label	line:674
-irq	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^irq:$/;"	label	line:710
-do_break	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^do_break:$/;"	label	line:720
-irq_end	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^irq_end: .block$/;"	label	line:724
-brk_irq	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^brk_irq: .block$/;"	label	line:731
-rtc_irq	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^rtc_irq: .block$/;"	label	line:765
-b_input_hex	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_input_hex:    jmp input_hex           ;Binary number in number_buffer$/;"	label	line:775
-b_input_dec	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_input_dec:    jmp input_dec           ;Binary number in number_buffer$/;"	label	line:776
-b_read_char	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_read_char:    jmp read_character      ;Read character and convert to uppercase.$/;"	label	line:777
-b_read_line	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_read_line:    jmp read_line           ;Read .X number of characters$/;"	label	line:778
-b_chin_no_wait	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_chin_no_wait: jmp chin_no_wait        ;Read character but don't wait for input. Used by XMODEM$/;"	label	line:779
-b_bin_to_asc	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_bin_to_asc:   jmp binary_to_ascii     ;Convert a binary to ASCII$/;"	label	line:780
-b_dollar	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_dollar:       jmp dollar              ;Print '$'.$/;"	label	line:781
-b_colon	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_colon:        jmp colon               ;Print ':'$/;"	label	line:782
-b_chout	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_chout:        jmp chout               ;Send content .A to console$/;"	label	line:783
-b_chin	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_chin:         jmp chin                ;Read datum from console. Value will be in .A.$/;"	label	line:784
-b_crout	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_crout:        jmp crout               ;Send CR\/LF to console$/;"	label	line:785
-b_cr2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_cr2:          jmp cr2                 ;Send two CR\/LF to console$/;"	label	line:786
-b_prout	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_prout:        jmp prout               ;Send a zero terminated string to console$/;"	label	line:787
-b_bell	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_bell:         jmp bell                ;Send BELL to console$/;"	label	line:788
-b_space	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_space:        jmp space               ;Send space character to console$/;"	label	line:789
-b_space2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_space2:       jmp space2              ;Send two space character to console$/;"	label	line:790
-b_space4	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_space4:       jmp space4              ;Send four character to console$/;"	label	line:791
-b_spacex	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_spacex:       jmp spacex              ;Send .X space character to console$/;"	label	line:792
-b_hex_byte	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_hex_byte:     jmp hex_byte            ;Print a hex byte with leading zeroes. Byte should be stored in temp1.$/;"	label	line:793
-b_hex_address	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_hex_address:  jmp hex_address         ;Print a hex address with leading zeroes. Address should be stored in index_low and index_high.$/;"	label	line:794
+decimal_input	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^decimal_input:$/;"	label	line:154
+check_buffer	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^check_buffer:$/;"	label	line:162
+ring_bell	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^ring_bell:$/;"	label	line:169
+store_character	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^store_character:$/;"	label	line:172
+exit_read_line	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^exit_read_line:$/;"	label	line:177
+backspace	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^backspace: .proc$/;"	label	line:199
+sound_bell	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^sound_bell:$/;"	label	line:206
+exit	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^exit:$/;"	label	line:208
+read_character	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^read_character: .proc$/;"	label	line:227
+exit	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^exit:$/;"	label	line:233
+dec_index	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^dec_index:  .proc$/;"	label	line:251
+done	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^done:$/;"	label	line:255
+inc_index	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^inc_index:  .proc$/;"	label	line:273
+done	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^done:$/;"	label	line:277
+spacex	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^spacex: .proc$/;"	label	line:284
+space4	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^space4: .proc$/;"	label	line:294
+space2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^space2: .proc$/;"	label	line:301
+space	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^space: .proc$/;"	label	line:308
+colon	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^colon: .proc$/;"	label	line:329
+dollar	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^dollar: .proc$/;"	label	line:348
+cr2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^cr2:    .proc$/;"	label	line:367
+crout	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^crout:   .proc$/;"	label	line:384
+sendit	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^sendit:$/;"	label	line:389
+prout	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^prout:   .proc$/;"	label	line:414
+l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^l1:$/;"	label	line:416
+exit	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^exit:$/;"	label	line:422
+hex_address	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^hex_address: .proc$/;"	label	line:447
+hex_byte	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^hex_byte: .proc$/;"	label	line:485
+hex_mode	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^hex_mode: .proc$/;"	label	line:514
+leading_zeroes	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^leading_zeroes: .proc$/;"	label	line:535
+l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^l1:$/;"	label	line:544
+exit	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^exit:$/;"	label	line:548
+clear_number_buffer	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^clear_number_buffer: .proc$/;"	label	line:566
+l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^l1:$/;"	label	line:569
+bell	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^bell:   .proc$/;"	label	line:590
+chin_no_wait	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^chin_no_wait: .proc$/;"	label	line:599
+chin	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^chin:    .proc$/;"	label	line:608
+get_char	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^get_char:$/;"	label	line:611
+chout	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^chout:   .proc$/;"	label	line:625
+out_buffer_full	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^out_buffer_full:$/;"	label	line:627
+nmi	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^nmi:$/;"	label	line:641
+coldstart	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^coldstart: .block$/;"	label	line:648
+l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^l1:$/;"	label	line:652
+l2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^l2:$/;"	label	line:659
+loop	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^loop:$/;"	label	line:681
+delay	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^delay: .proc$/;"	label	line:693
+loop1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^loop1:$/;"	label	line:695
+one_sec_delay	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^one_sec_delay: .proc$/;"	label	line:702
+loop1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^loop1:$/;"	label	line:706
+loop2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^loop2:$/;"	label	line:708
+irq	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^irq:$/;"	label	line:747
+do_break	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^do_break:$/;"	label	line:757
+irq_end	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^irq_end: .block$/;"	label	line:761
+brk_irq	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^brk_irq: .block$/;"	label	line:768
+rtc_irq	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^rtc_irq: .block$/;"	label	line:802
+b_input_hex	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_input_hex:    jmp input_hex           ;Binary number in number_buffer$/;"	label	line:814
+b_input_dec	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_input_dec:    jmp input_dec           ;Binary number in number_buffer$/;"	label	line:815
+b_read_char	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_read_char:    jmp read_character      ;Read character and convert to uppercase.$/;"	label	line:816
+b_read_line	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_read_line:    jmp read_line           ;Read .X number of characters$/;"	label	line:817
+b_chin_no_wait	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_chin_no_wait: jmp chin_no_wait        ;Read character but don't wait for input. Used by XMODEM$/;"	label	line:818
+b_bin_to_asc	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_bin_to_asc:   jmp binary_to_ascii     ;Convert a binary to ASCII$/;"	label	line:819
+b_dollar	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_dollar:       jmp dollar              ;Print '$'.$/;"	label	line:820
+b_colon	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_colon:        jmp colon               ;Print ':'$/;"	label	line:821
+b_chout	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_chout:        jmp chout               ;Send content .A to console$/;"	label	line:822
+b_chin	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_chin:         jmp chin                ;Read datum from console. Value will be in .A.$/;"	label	line:823
+b_crout	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_crout:        jmp crout               ;Send CR\/LF to console$/;"	label	line:824
+b_cr2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_cr2:          jmp cr2                 ;Send two CR\/LF to console$/;"	label	line:825
+b_prout	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_prout:        jmp prout               ;Send a zero terminated string to console$/;"	label	line:826
+b_bell	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_bell:         jmp bell                ;Send BELL to console$/;"	label	line:827
+b_space	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_space:        jmp space               ;Send space character to console$/;"	label	line:828
+b_space2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_space2:       jmp space2              ;Send two space character to console$/;"	label	line:829
+b_space4	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_space4:       jmp space4              ;Send four character to console$/;"	label	line:830
+b_spacex	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_spacex:       jmp spacex              ;Send .X space character to console$/;"	label	line:831
+b_hex_byte	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_hex_byte:     jmp hex_byte            ;Print a hex byte with leading zeroes. Byte should be stored in temp1.$/;"	label	line:832
+b_hex_address	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_hex_address:  jmp hex_address         ;Print a hex address with leading zeroes. Address should be stored in index_low and index_high.$/;"	label	line:833

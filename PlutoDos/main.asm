@@ -51,12 +51,16 @@
 ;.include "miniassembler.asm"
 
 ; =============================================================================
-; via subroutines
+; 65C51 VIA subroutines
+.if emulator==false
 .include "via.asm"
+.fi
 
 ; =============================================================================
-; DUART subroutines
+; SC28L92 DUART subroutines
+.if emulator==false
 .include "duart_sc28l92.asm"
+.fi
 
 ; =============================================================================
 ; KERNEL
