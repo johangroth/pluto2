@@ -1104,3 +1104,507 @@ if [runCmd "\"$cpld_bin/lciedit\" @lattice_cmd.rs2"] {
 
 ########## Tcl recorder end at 09/30/18 08:47:21 ###########
 
+
+########## Tcl recorder starts at 06/21/19 19:46:46 ##########
+
+# Commands to make the Process: 
+# Compiler Listing
+if [runCmd "\"$cpld_bin/ahdl2blf\" address_decoding.abl -vec -ovec address_decoding.tmv -list  -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/21/19 19:46:46 ###########
+
+
+########## Tcl recorder starts at 06/21/19 19:46:54 ##########
+
+# Commands to make the Process: 
+# Check Syntax
+if [runCmd "\"$cpld_bin/ahdl2blf\" address_decoding.abl -mod address_decoding -syn  -ret -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/21/19 19:46:54 ###########
+
+
+########## Tcl recorder starts at 06/21/19 19:46:57 ##########
+
+# Commands to make the Process: 
+# Compiled Equations
+if [runCmd "\"$cpld_bin/blif2eqn\" address_decoding.bl0 -o address_decoding.eq0  -err automake.err"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/21/19 19:46:57 ###########
+
+
+########## Tcl recorder starts at 06/21/19 19:47:09 ##########
+
+# Commands to make the Process: 
+# Hierarchy Browser
+# - none -
+# Application to view the Process: 
+# Hierarchy Browser
+if [runCmd "\"$cpld_bin/hierbro\" pluto2abel.jid  address_decoding"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/21/19 19:47:09 ###########
+
+
+########## Tcl recorder starts at 06/21/19 20:41:06 ##########
+
+# Commands to make the Process: 
+# Compile Logic
+if [runCmd "\"$cpld_bin/ahdl2blf\" address_decoding.abl -mod address_decoding -ojhd compile -ret -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/21/19 20:41:06 ###########
+
+
+########## Tcl recorder starts at 06/21/19 20:41:11 ##########
+
+# Commands to make the Process: 
+# Check Syntax
+if [runCmd "\"$cpld_bin/ahdl2blf\" address_decoding.abl -mod address_decoding -syn  -ret -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/21/19 20:41:11 ###########
+
+
+########## Tcl recorder starts at 06/21/19 20:41:13 ##########
+
+# Commands to make the Process: 
+# Compiler Listing
+if [runCmd "\"$cpld_bin/ahdl2blf\" address_decoding.abl -mod address_decoding -syn -list  -ret -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/21/19 20:41:13 ###########
+
+
+########## Tcl recorder starts at 06/21/19 20:41:17 ##########
+
+# Commands to make the Process: 
+# Compiled Equations
+if [runCmd "\"$cpld_bin/blif2eqn\" address_decoding.bl0 -o address_decoding.eq0  -err automake.err"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/21/19 20:41:18 ###########
+
+
+########## Tcl recorder starts at 06/21/19 20:44:50 ##########
+
+# Commands to make the Process: 
+# Hierarchy Browser
+# - none -
+# Application to view the Process: 
+# Hierarchy Browser
+if [runCmd "\"$cpld_bin/hierbro\" pluto2abel.jid  address_decoding"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/21/19 20:44:50 ###########
+
+
+########## Tcl recorder starts at 06/21/19 20:45:00 ##########
+
+# Commands to make the Process: 
+# Compile Logic
+if [runCmd "\"$cpld_bin/ahdl2blf\" address_decoding.abl -mod address_decoding -ojhd compile -ret -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/21/19 20:45:00 ###########
+
+
+########## Tcl recorder starts at 06/21/19 20:45:22 ##########
+
+# Commands to make the Process: 
+# Compile Logic
+if [runCmd "\"$cpld_bin/ahdl2blf\" address_decoding.abl -mod address_decoding -ojhd compile -ret -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/21/19 20:45:22 ###########
+
+
+########## Tcl recorder starts at 06/21/19 20:45:58 ##########
+
+# Commands to make the Process: 
+# Constraint Editor
+if [runCmd "\"$cpld_bin/ahdl2blf\" address_decoding.abl -mod address_decoding -ojhd compile -ret -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblifopt\" address_decoding.bl0 -collapse none -reduce none -keepwires  -err automake.err"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblflink\" \"address_decoding.bl1\" -o \"pluto2abel.bl2\" -omod \"pluto2abel\"  -err \"automake.err\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/impsrc\"  -prj pluto2abel -lci pluto2abel.lct -log pluto2abel.imp -err automake.err -tti pluto2abel.bl2 -dir $proj_dir"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci pluto2abel.lct -blifopt  pluto2abel.b2_"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblifopt\" pluto2abel.bl2 -sweep -mergefb -err automake.err -o pluto2abel.bl3  @pluto2abel.b2_"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci pluto2abel.lct -dev mach4a -diofft  pluto2abel.d0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mdiofft\" pluto2abel.bl3 -pla -family AMDMACH -idev van -o pluto2abel.tt2 -oxrf pluto2abel.xrf -err automake.err  @pluto2abel.d0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/tt2tott3\" -prj pluto2abel -dir $proj_dir -log pluto2abel.log -tti pluto2abel.tt2 -tto pluto2abel.tt3"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci pluto2abel.lct -dev mach4a -prefit  pluto2abel.l0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/prefit\" -inp pluto2abel.tt3 -out pluto2abel.tt4 -err automake.err -log pluto2abel.log -percent pluto2abel.tte -mod address_decoding  @pluto2abel.l0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+# Application to view the Process: 
+# Constraint Editor
+if [catch {open lattice_cmd.rs2 w} rspFile] {
+	puts stderr "Cannot create response file lattice_cmd.rs2: $rspFile"
+} else {
+	puts $rspFile "-src pluto2abel.tt4 -type PLA -devfile \"$install_dir/ispcpld/dat/mach4a/mach463ace.dev\" -lci \"pluto2abel.lct\" -touch \"pluto2abel.tt4\"
+"
+	close $rspFile
+}
+if [runCmd "\"$cpld_bin/lciedit\" @lattice_cmd.rs2"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/21/19 20:45:58 ###########
+
+
+########## Tcl recorder starts at 06/21/19 20:46:57 ##########
+
+# Commands to make the Process: 
+# Optimization Constraint
+if [runCmd "\"$cpld_bin/ahdl2blf\" address_decoding.abl -mod address_decoding -ojhd compile -ret -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblifopt\" address_decoding.bl0 -collapse none -reduce none -keepwires  -err automake.err"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblflink\" \"address_decoding.bl1\" -o \"pluto2abel.bl2\" -omod \"pluto2abel\"  -err \"automake.err\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/impsrc\"  -prj pluto2abel -lci pluto2abel.lct -log pluto2abel.imp -err automake.err -tti pluto2abel.bl2 -dir $proj_dir"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+# Application to view the Process: 
+# Optimization Constraint
+if [catch {open opt_cmd.rs2 w} rspFile] {
+	puts stderr "Cannot create response file opt_cmd.rs2: $rspFile"
+} else {
+	puts $rspFile "-global -lci pluto2abel.lct -touch pluto2abel.imp
+"
+	close $rspFile
+}
+if [runCmd "\"$cpld_bin/optedit\" @opt_cmd.rs2"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/21/19 20:46:57 ###########
+
+
+########## Tcl recorder starts at 06/21/19 20:47:25 ##########
+
+# Commands to make the Process: 
+# Fit Design
+if [runCmd "\"$cpld_bin/ahdl2blf\" address_decoding.abl -vec -ovec address_decoding.tmv  -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/ahdl2blf\" address_decoding.abl -mod address_decoding -ojhd compile -ret -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblifopt\" address_decoding.bl0 -collapse none -reduce none -keepwires  -err automake.err"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblflink\" \"address_decoding.bl1\" -o \"pluto2abel.bl2\" -omod \"pluto2abel\"  -err \"automake.err\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/impsrc\"  -prj pluto2abel -lci pluto2abel.lct -log pluto2abel.imp -err automake.err -tti pluto2abel.bl2 -dir $proj_dir"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci pluto2abel.lct -blifopt  pluto2abel.b2_"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblifopt\" pluto2abel.bl2 -sweep -mergefb -err automake.err -o pluto2abel.bl3  @pluto2abel.b2_"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci pluto2abel.lct -dev mach4a -diofft  pluto2abel.d0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mdiofft\" pluto2abel.bl3 -pla -family AMDMACH -idev van -o pluto2abel.tt2 -oxrf pluto2abel.xrf -err automake.err  @pluto2abel.d0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/tt2tott3\" -prj pluto2abel -dir $proj_dir -log pluto2abel.log -tti pluto2abel.tt2 -tto pluto2abel.tt3"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci pluto2abel.lct -dev mach4a -prefit  pluto2abel.l0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/prefit\" -inp pluto2abel.tt3 -out pluto2abel.tt4 -err automake.err -log pluto2abel.log -percent pluto2abel.tte -mod address_decoding  @pluto2abel.l0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/blif2eqn\" pluto2abel.tte -o pluto2abel.eq3 -use_short -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/lci2vci\" -lci pluto2abel.lct -out pluto2abel.vct -log pluto2abel.l2v"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [catch {open pluto2abel.rsp w} rspFile] {
+	puts stderr "Cannot create response file pluto2abel.rsp: $rspFile"
+} else {
+	puts $rspFile "-inp \"pluto2abel.tt4\" -vci \"pluto2abel.vct\" -log \"pluto2abel.log\" -eqn \"pluto2abel.eq3\" -dev mach463a -dat \"$install_dir/ispcpld/dat/mach4a/\" -msg \"$install_dir/ispcpld/dat/\" -err automake.err -tmv \"address_decoding.tmv\" 
+"
+	close $rspFile
+}
+if [runCmd "\"$cpld_bin/machfitr\" \"@pluto2abel.rsp\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+file delete pluto2abel.rsp
+if [runCmd "\"$cpld_bin/lci2vci\" -vci pluto2abel.vco -out pluto2abel.lco -log pluto2abel.v2l"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/synsvf\" -exe \"$install_dir/ispvmsystem/ispufw\" -prj pluto2abel -if pluto2abel.jed -j2s -log pluto2abel.svl "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/21/19 20:47:25 ###########
+

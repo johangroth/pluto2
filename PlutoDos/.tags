@@ -339,8 +339,6 @@ l1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/rtc.asm	/^l1:$/;"	label	line:28
 l2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/rtc.asm	/^l2:$/;"	label	line:288
 get_system_up_time	/home/jgroth/dev/repos_github/pluto2/PlutoDos/rtc.asm	/^get_system_up_time: .proc$/;"	label	line:320
 user_time_delay	/home/jgroth/dev/repos_github/pluto2/PlutoDos/rtc.asm	/^user_time_delay: .proc$/;"	label	line:357
-INCLUDE_SRCS	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^INCLUDE_SRCS = include\/*.inc$/;"	macro	line:1
-ASM_SRCS	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^ASM_SRCS = *.asm$/;"	macro	line:2
 via_init	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^via_init: .proc$/;"	label	line:3
 via1_init	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^via1_init: .proc$/;"	label	line:8
 next	/home/jgroth/dev/repos_github/pluto2/PlutoDos/via.asm	/^next:$/;"	label	line:10
@@ -432,3 +430,16 @@ b_space4	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_space4:     
 b_spacex	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_spacex:       jmp spacex              ;Send .X space character to console$/;"	label	line:831
 b_hex_byte	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_hex_byte:     jmp hex_byte            ;Print a hex byte with leading zeroes. Byte should be stored in temp1.$/;"	label	line:832
 b_hex_address	/home/jgroth/dev/repos_github/pluto2/PlutoDos/bios.asm	/^b_hex_address:  jmp hex_address         ;Print a hex address with leading zeroes. Address should be stored in index_low and index_high.$/;"	label	line:833
+nmi	/home/jgroth/dev/repos_github/pluto2/PlutoDos/test_prg.asm	/^nmi:$/;"	label	line:5
+irq	/home/jgroth/dev/repos_github/pluto2/PlutoDos/test_prg.asm	/^irq:$/;"	label	line:6
+coldstart	/home/jgroth/dev/repos_github/pluto2/PlutoDos/test_prg.asm	/^coldstart: .block$/;"	label	line:11
+l2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/test_prg.asm	/^l2:$/;"	label	line:21
+loop	/home/jgroth/dev/repos_github/pluto2/PlutoDos/test_prg.asm	/^loop:$/;"	label	line:31
+delay	/home/jgroth/dev/repos_github/pluto2/PlutoDos/test_prg.asm	/^delay: .proc$/;"	label	line:41
+loop1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/test_prg.asm	/^loop1:$/;"	label	line:43
+one_sec_delay	/home/jgroth/dev/repos_github/pluto2/PlutoDos/test_prg.asm	/^one_sec_delay: .proc$/;"	label	line:50
+loop1	/home/jgroth/dev/repos_github/pluto2/PlutoDos/test_prg.asm	/^loop1:$/;"	label	line:52
+loop2	/home/jgroth/dev/repos_github/pluto2/PlutoDos/test_prg.asm	/^loop2:$/;"	label	line:54
+INCLUDE_SRCS	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^INCLUDE_SRCS = include\/*.inc$/;"	macro	line:1
+ASM_SRCS	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^ASM_SRCS = *.asm$/;"	macro	line:2
+Demulator	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^	64tass -Demulator=false -o test_prg.bin --nostart --no-monitor --line-numbers --tab-size=1 --list=test_prg.lst test_prg.asm$/;"	macro	line:11

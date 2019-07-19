@@ -1,1 +1,1 @@
--src pluto2abel.tt4 -type PLA -devfile "C:/ispLEVER_Classic2_0/ispcpld/dat/mach4a/mach463ace.dev" -postfit -lci pluto2abel.lco
+-src pluto2abel.tt4 -type PLA -devfile "C:/ispLEVER_Classic2_0/ispcpld/dat/mach4a/mach463ace.dev" -lci "pluto2abel.lct" -touch "pluto2abel.tt4"

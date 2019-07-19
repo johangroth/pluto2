@@ -1,5 +1,6 @@
 ;;; via1 device addresses:
-        via1base = $7fc0
+        via1base = $6000
+        ;;;via1base = $7fc0
         via1rb   = via1base+0     ; write output register b, read input register b
         via1ra   = via1base+1     ; write output register a, read input register a
         via1ddrb = via1base+2     ; data direction register b

@@ -1,4 +1,4 @@
 (fp_lib_table
-  (lib (name Housings_LCC)(type KiCad)(uri /home/jgroth/C64/KiCadLibraries/Housings_LCC.pretty)(options "")(descr ""))
   (lib (name Switches_THT)(type KiCad)(uri "$(KIPRJMOD)/Switches_THT.pretty")(options "")(descr ""))
+  (lib (name Grotto)(type KiCad)(uri /home/jgroth/dev/repos_github/kicad/footprints/grotto.pretty)(options "")(descr ""))
 )

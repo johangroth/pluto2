@@ -691,7 +691,7 @@ loop:
         bra loop
 
 delay: .proc
-        ldx #$ff
+        ldx #$20
 loop1:
         jsr one_sec_delay
         dex
