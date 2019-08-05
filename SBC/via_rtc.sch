@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:pluto-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -21,7 +21,7 @@ U 1 1 59074B76
 P 6575 3850
 F 0 "C5" V 6750 3800 50  0000 L CNN
 F 1 "0.1uF" V 6425 3750 50  0000 L CNN
-F 2 "Capacitors_ThroughHole:C_Disc_D4.7mm_W2.5mm_P5.00mm" H 6613 3700 50  0001 C CNN
+F 2 "Capacitor_THT:C_Disc_D4.7mm_W2.5mm_P5.00mm" H 6613 3700 50  0001 C CNN
 F 3 "" H 6575 3850 50  0001 C CNN
 	1    6575 3850
 	0    1    1    0   
@@ -104,7 +104,7 @@ Text HLabel 4750 3125 0    60   Input ~ 0
 Text HLabel 4750 3000 0    60   Input ~ 0
 ~MRD
 Text HLabel 4750 2875 0    60   Input ~ 0
-~7F8X
+~RTC
 Wire Wire Line
 	5075 2675 4750 2675
 Wire Wire Line
@@ -149,21 +149,17 @@ Wire Wire Line
 	6800 1825 5575 1825
 Wire Wire Line
 	6125 2275 6450 2275
-Wire Bus Line
-	6550 2175 6550 2875
 Wire Wire Line
 	5075 2275 4750 2275
-Wire Bus Line
-	4650 1300 4650 2575
 $Comp
-L saturn:DS1511Y+ U4
+L pluto-rescue:DS1511Y+-saturn U4
 U 1 1 58D61FB4
 P 5550 2850
 AR Path="/58D61FB4" Ref="U4"  Part="1" 
 AR Path="/58D58980/58D61FB4" Ref="U4"  Part="1" 
 F 0 "U4" H 5375 3575 60  0000 C CNN
 F 1 "DS1511Y+" V 5600 2850 60  0000 C CNN
-F 2 "Housings_DIP:DIP-28_W15.24mm_Socket" H 5300 3300 60  0001 C CNN
+F 2 "Package_DIP:DIP-28_W15.24mm_Socket" H 5300 3300 60  0001 C CNN
 F 3 "" H 5300 3300 60  0001 C CNN
 	1    5550 2850
 	1    0    0    -1  
@@ -173,7 +169,7 @@ Wire Wire Line
 Wire Wire Line
 	6125 3475 6250 3475
 Wire Wire Line
-	5500 3850 6425 3850
+	5500 3850 5625 3850
 Connection ~ 5625 3850
 Text HLabel 6450 3225 2    60   Input ~ 0
 ~KS
@@ -195,4 +191,12 @@ Wire Bus Line
 	6550 2175 7375 2175
 Wire Bus Line
 	4650 1300 7375 1300
+Wire Wire Line
+	5625 3850 6250 3850
+Wire Wire Line
+	6250 3850 6425 3850
+Wire Bus Line
+	4650 1300 4650 2575
+Wire Bus Line
+	6550 2175 6550 2875
 $EndSCHEMATC

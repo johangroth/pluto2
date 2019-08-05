@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:pluto-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -15,141 +15,56 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L mechanical:Mounting_Hole MK2
-U 1 1 59149E60
-P 1825 3025
-F 0 "MK2" H 1825 3225 50  0000 C CNN
-F 1 "Mounting_Hole" H 1825 3150 50  0000 C CNN
-F 2 "Mounting_Holes:MountingHole_3.2mm_M3_Pad" H 1825 3025 50  0001 C CNN
-F 3 "" H 1825 3025 50  0001 C CNN
-	1    1825 3025
-	1    0    0    -1  
-$EndComp
-$Comp
-L mechanical:Mounting_Hole MK3
+L pluto-rescue:Mounting_Hole-mechanical MK3
 U 1 1 59149E83
 P 1825 3450
 F 0 "MK3" H 1825 3650 50  0000 C CNN
 F 1 "Mounting_Hole" H 1825 3575 50  0000 C CNN
-F 2 "Mounting_Holes:MountingHole_3.2mm_M3_Pad" H 1825 3450 50  0001 C CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3_Pad" H 1825 3450 50  0001 C CNN
 F 3 "" H 1825 3450 50  0001 C CNN
 	1    1825 3450
 	1    0    0    -1  
 $EndComp
 $Comp
-L mechanical:Mounting_Hole MK1
+L pluto-rescue:Mounting_Hole-mechanical MK1
 U 1 1 5932DD04
-P 1125 3950
-F 0 "MK1" H 1125 4150 50  0000 C CNN
-F 1 "Mounting_Hole" H 1125 4075 50  0000 C CNN
-F 2 "Mounting_Holes:MountingHole_3.2mm_M3_Pad" H 1125 3950 50  0001 C CNN
-F 3 "" H 1125 3950 50  0001 C CNN
-	1    1125 3950
+P 2625 3925
+F 0 "MK1" H 2625 4125 50  0000 C CNN
+F 1 "Mounting_Hole" H 2625 4050 50  0000 C CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3_Pad" H 2625 3925 50  0001 C CNN
+F 3 "" H 2625 3925 50  0001 C CNN
+	1    2625 3925
 	1    0    0    -1  
 $EndComp
 $Comp
-L mechanical:Mounting_Hole MK4
+L pluto-rescue:Mounting_Hole-mechanical MK4
 U 1 1 5932DD62
 P 1825 3950
 F 0 "MK4" H 1825 4150 50  0000 C CNN
 F 1 "Mounting_Hole" H 1825 4075 50  0000 C CNN
-F 2 "Mounting_Holes:MountingHole_3.2mm_M3_Pad" H 1825 3950 50  0001 C CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3_Pad" H 1825 3950 50  0001 C CNN
 F 3 "" H 1825 3950 50  0001 C CNN
 	1    1825 3950
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X05 J8
-U 1 1 59F22BEE
-P 4275 3000
-F 0 "J8" H 4275 3300 50  0000 C CNN
-F 1 "JTAG" H 4275 2700 50  0000 C CNN
-F 2 "Connectors_IDC:IDC-Header_2x05_Pitch2.54mm_Straight" H 4275 1800 50  0001 C CNN
-F 3 "" H 4275 1800 50  0001 C CNN
-	1    4275 3000
-	1    0    0    -1  
-$EndComp
-Text HLabel 3775 3000 0    60   Output ~ 0
-TDI
-Text HLabel 3775 3100 0    60   Input ~ 0
-TDO
-Text HLabel 3775 2800 0    60   Output ~ 0
-TCK
-Text HLabel 3775 2900 0    60   Output ~ 0
-TMS
-Wire Wire Line
-	3775 2800 4025 2800
-Wire Wire Line
-	3775 2900 4025 2900
-Wire Wire Line
-	3775 3000 4025 3000
-Wire Wire Line
-	3775 3100 4025 3100
-Wire Wire Line
-	4525 2800 4775 2800
-Wire Wire Line
-	4775 2900 4525 2900
-Wire Wire Line
-	4525 3000 4900 3000
-Wire Wire Line
-	4775 3100 4525 3100
-Wire Wire Line
-	4775 2675 4775 2800
-Connection ~ 4775 2800
-$Comp
-L power:GND #PWR024
-U 1 1 59F407A0
-P 4775 2675
-F 0 "#PWR024" H 4775 2425 50  0001 C CNN
-F 1 "GND" H 4775 2525 50  0000 C CNN
-F 2 "" H 4775 2675 50  0001 C CNN
-F 3 "" H 4775 2675 50  0001 C CNN
-	1    4775 2675
-	-1   0    0    1   
-$EndComp
-$Comp
-L power:VCC #PWR025
-U 1 1 59F407C6
-P 4900 3000
-F 0 "#PWR025" H 4900 2850 50  0001 C CNN
-F 1 "VCC" V 4900 3175 50  0000 C CNN
-F 2 "" H 4900 3000 50  0001 C CNN
-F 3 "" H 4900 3000 50  0001 C CNN
-	1    4900 3000
-	0    1    1    0   
-$EndComp
-Connection ~ 4775 2900
-NoConn ~ 4525 3200
-NoConn ~ 4025 3200
-$Comp
-L mechanical:Mounting_Hole MK5
-U 1 1 59F424EE
-P 2600 3000
-F 0 "MK5" H 2600 3200 50  0000 C CNN
-F 1 "Mounting_Hole" H 2600 3125 50  0000 C CNN
-F 2 "Mounting_Holes:MountingHole_3.2mm_M3_Pad" H 2600 3000 50  0001 C CNN
-F 3 "" H 2600 3000 50  0001 C CNN
-	1    2600 3000
-	1    0    0    -1  
-$EndComp
-$Comp
-L mechanical:Mounting_Hole MK6
+L pluto-rescue:Mounting_Hole-mechanical MK6
 U 1 1 59F42548
 P 2600 3350
 F 0 "MK6" H 2600 3550 50  0000 C CNN
 F 1 "Mounting_Hole" H 2600 3475 50  0000 C CNN
-F 2 "Mounting_Holes:MountingHole_3.2mm_M3_Pad" H 2600 3350 50  0001 C CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3_Pad" H 2600 3350 50  0001 C CNN
 F 3 "" H 2600 3350 50  0001 C CNN
 	1    2600 3350
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_01X04 J4
+L pluto-rescue:CONN_01X04-conn J4
 U 1 1 5A1609CD
 P 7650 1725
 F 0 "J4" H 7650 1975 50  0000 C CNN
 F 1 "POWER" V 7750 1725 50  0000 C CNN
-F 2 "Connectors_Molex:Molex_NanoFit_1x04x2.50mm_Angled" H 7650 1725 50  0001 C CNN
+F 2 "Connector_Molex:Molex_Nano-Fit_105313-xx04_1x04_P2.50mm_Horizontal" H 7650 1725 50  0001 C CNN
 F 3 "" H 7650 1725 50  0001 C CNN
 	1    7650 1725
 	1    0    0    -1  
@@ -230,18 +145,18 @@ Connection ~ 7275 1675
 NoConn ~ 7450 1875
 Connection ~ 7375 1675
 $Comp
-L device:Fuse_Small F1
+L pluto-rescue:Fuse_Small-device F1
 U 1 1 5A30BB96
 P 6800 1575
 F 0 "F1" H 6800 1515 50  0000 C CNN
 F 1 "1Amp" H 6800 1635 50  0000 C CNN
-F 2 "Fuse_Holders_and_Fuses:Fuseholder5x20_horiz_open_Schurter_0031_8201" H 6800 1575 50  0001 C CNN
+F 2 "Fuse:Fuseholder_Cylinder-5x20mm_Schurter_0031_8201_Horizontal_Open" H 6800 1575 50  0001 C CNN
 F 3 "" H 6800 1575 50  0001 C CNN
 	1    6800 1575
 	1    0    0    -1  
 $EndComp
 $Comp
-L standard:SPDT S1
+L pluto-rescue:SPDT-standard S1
 U 1 1 5A30BD5A
 P 6425 1625
 F 0 "S1" H 6425 1775 60  0000 C CNN
@@ -268,12 +183,12 @@ F 3 "" H 5975 1625 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:R_Small R1
+L pluto-rescue:R_Small-device R1
 U 1 1 5A30C649
 P 5625 1625
 F 0 "R1" V 5700 1575 50  0000 L CNN
 F 1 "1kOhm" V 5525 1525 50  0000 L CNN
-F 2 "Resistors_ThroughHole:R_Axial_DIN0411_L9.9mm_D3.6mm_P12.70mm_Horizontal" H 5625 1625 50  0001 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P7.62mm_Vertical" H 5625 1625 50  0001 C CNN
 F 3 "" H 5625 1625 50  0001 C CNN
 	1    5625 1625
 	0    -1   -1   0   
@@ -296,67 +211,67 @@ Wire Wire Line
 Wire Wire Line
 	5425 1625 5525 1625
 $Comp
-L conn:TEST_1P J1
+L pluto-rescue:TEST_1P-conn J1
 U 1 1 5A30C731
 P 1450 5025
 F 0 "J1" H 1450 5295 50  0000 C CNN
 F 1 "VCC1" H 1450 5225 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm" H 1650 5025 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 1650 5025 50  0001 C CNN
 F 3 "" H 1650 5025 50  0001 C CNN
 	1    1450 5025
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:TEST_1P J3
+L pluto-rescue:TEST_1P-conn J3
 U 1 1 5A30C776
 P 1775 5025
 F 0 "J3" H 1775 5295 50  0000 C CNN
 F 1 "VCC2" H 1775 5225 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm" H 1975 5025 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 1975 5025 50  0001 C CNN
 F 3 "" H 1975 5025 50  0001 C CNN
 	1    1775 5025
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:TEST_1P J9
+L pluto-rescue:TEST_1P-conn J9
 U 1 1 5A30C7BB
 P 2125 5025
 F 0 "J9" H 2125 5295 50  0000 C CNN
 F 1 "VCC3" H 2125 5225 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm" H 2325 5025 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 2325 5025 50  0001 C CNN
 F 3 "" H 2325 5025 50  0001 C CNN
 	1    2125 5025
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:TEST_1P J2
+L pluto-rescue:TEST_1P-conn J2
 U 1 1 5A30C814
 P 1450 5625
 F 0 "J2" H 1450 5895 50  0000 C CNN
 F 1 "GND1" H 1450 5825 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm" H 1650 5625 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 1650 5625 50  0001 C CNN
 F 3 "" H 1650 5625 50  0001 C CNN
 	1    1450 5625
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:TEST_1P J5
+L pluto-rescue:TEST_1P-conn J5
 U 1 1 5A30C853
 P 1775 5625
 F 0 "J5" H 1775 5895 50  0000 C CNN
 F 1 "GND2" H 1775 5825 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm" H 1975 5625 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 1975 5625 50  0001 C CNN
 F 3 "" H 1975 5625 50  0001 C CNN
 	1    1775 5625
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:TEST_1P J10
+L pluto-rescue:TEST_1P-conn J10
 U 1 1 5A30C89C
 P 2125 5625
 F 0 "J10" H 2125 5895 50  0000 C CNN
 F 1 "GND3" H 2125 5825 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm" H 2325 5625 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 2325 5625 50  0001 C CNN
 F 3 "" H 2325 5625 50  0001 C CNN
 	1    2125 5625
 	1    0    0    -1  
@@ -412,10 +327,6 @@ Wire Wire Line
 Connection ~ 6200 1625
 Text Label 6950 1575 0    60   ~ 0
 PWR_IN
-Text HLabel 9400 4775 2    60   Output ~ 0
-~7FCX
-Text HLabel 9400 4875 2    60   Output ~ 0
-~7FAX
 Text HLabel 8100 4875 0    60   Input ~ 0
 ~IRQ
 Text HLabel 8100 4975 0    60   Output ~ 0
@@ -434,7 +345,7 @@ U 1 1 5A389077
 P 8700 4075
 F 0 "J11" H 8750 5075 50  0000 C CNN
 F 1 "Expansion Bus" V 8750 3925 50  0000 C CNN
-F 2 "Connectors_IDC:IDC-Header_2x20_Pitch2.54mm_Straight" H 8700 4075 50  0001 C CNN
+F 2 "Connector_IDC:IDC-Header_2x20_P2.54mm_Vertical" H 8700 4075 50  0001 C CNN
 F 3 "" H 8700 4075 50  0001 C CNN
 	1    8700 4075
 	1    0    0    -1  
@@ -576,8 +487,6 @@ Wire Wire Line
 Wire Wire Line
 	9000 4775 9400 4775
 Wire Wire Line
-	9000 4875 9400 4875
-Wire Wire Line
 	9000 4975 9400 4975
 Wire Wire Line
 	8500 4875 8100 4875
@@ -661,10 +570,6 @@ D6
 Text Label 9400 3975 2    60   ~ 0
 D7
 Wire Wire Line
-	4775 2800 4775 2900
-Wire Wire Line
-	4775 2900 4775 3100
-Wire Wire Line
 	7275 1675 7375 1675
 Wire Wire Line
 	7375 1675 7450 1675
@@ -676,6 +581,22 @@ Wire Wire Line
 	8750 2775 9000 2775
 Wire Wire Line
 	8750 5475 9000 5475
+NoConn ~ 9000 4875
+Text HLabel 9400 4775 2    60   Output ~ 0
+~IO
+$Comp
+L power:PWR_FLAG #FLG0101
+U 1 1 5D7FB0B7
+P 6200 1800
+F 0 "#FLG0101" H 6200 1875 50  0001 C CNN
+F 1 "PWR_FLAG" H 6200 1973 50  0000 C CNN
+F 2 "" H 6200 1800 50  0001 C CNN
+F 3 "~" H 6200 1800 50  0001 C CNN
+	1    6200 1800
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6200 1800 6200 1625
 Wire Bus Line
 	9500 3175 9500 3875
 Wire Bus Line

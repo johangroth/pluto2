@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:pluto-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -20,7 +20,7 @@ U 1 1 59ECC5AA
 P 3675 2800
 F 0 "U22" H 4200 4250 50  0000 R CNN
 F 1 "MAX238" H 3825 3450 50  0000 R CNN
-F 2 "Housings_DIP:DIP-24_W7.62mm_Socket" H 3725 1750 50  0001 L CNN
+F 2 "Package_DIP:DIP-24_W7.62mm_Socket" H 3725 1750 50  0001 L CNN
 F 3 "" H 3675 3000 50  0001 C CNN
 	1    3675 2800
 	-1   0    0    -1  
@@ -37,78 +37,78 @@ F 3 "" H 7075 3225 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X05 J6
+L pluto-rescue:CONN_02X05-conn J6
 U 1 1 59ECCE48
 P 1500 2750
 F 0 "J6" H 1500 3050 50  0000 C CNN
 F 1 "RS232a" H 1500 2450 50  0000 C CNN
-F 2 "Connectors_IDC:IDC-Header_2x05_Pitch2.54mm_Straight" H 1500 1550 50  0001 C CNN
+F 2 "Connector_IDC:IDC-Header_2x05_P2.54mm_Vertical" H 1500 1550 50  0001 C CNN
 F 3 "" H 1500 1550 50  0001 C CNN
 	1    1500 2750
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X05 J7
+L pluto-rescue:CONN_02X05-conn J7
 U 1 1 59ECCF01
 P 1500 3475
 F 0 "J7" H 1500 3775 50  0000 C CNN
 F 1 "RS232b" H 1500 3175 50  0000 C CNN
-F 2 "Connectors_IDC:IDC-Header_2x05_Pitch2.54mm_Straight" H 1500 2275 50  0001 C CNN
+F 2 "Connector_IDC:IDC-Header_2x05_P2.54mm_Vertical" H 1500 2275 50  0001 C CNN
 F 3 "" H 1500 2275 50  0001 C CNN
 	1    1500 3475
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:CP1_Small C18
+L pluto-rescue:CP1_Small-device C18
 U 1 1 59ECCF2A
 P 4650 1575
 F 0 "C18" H 4660 1645 50  0000 L CNN
 F 1 "1.0uF" H 4700 1500 50  0000 L CNN
-F 2 "Capacitors_ThroughHole:CP_Radial_Tantal_D4.5mm_P2.50mm" H 4650 1575 50  0001 C CNN
+F 2 "Capacitor_THT:CP_Radial_Tantal_D4.5mm_P2.50mm" H 4650 1575 50  0001 C CNN
 F 3 "" H 4650 1575 50  0001 C CNN
 	1    4650 1575
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:CP1_Small C19
+L pluto-rescue:CP1_Small-device C19
 U 1 1 59ECCF53
 P 4650 1975
 F 0 "C19" H 4660 2045 50  0000 L CNN
 F 1 "1.0uF" H 4700 1900 50  0000 L CNN
-F 2 "Capacitors_ThroughHole:CP_Radial_Tantal_D4.5mm_P2.50mm" H 4650 1975 50  0001 C CNN
+F 2 "Capacitor_THT:CP_Radial_Tantal_D4.5mm_P2.50mm" H 4650 1975 50  0001 C CNN
 F 3 "" H 4650 1975 50  0001 C CNN
 	1    4650 1975
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:CP1_Small C15
+L pluto-rescue:CP1_Small-device C15
 U 1 1 59ECCF86
 P 2750 1250
 F 0 "C15" H 2825 1325 50  0000 L CNN
 F 1 "1.0uF" H 2800 1175 50  0000 L CNN
-F 2 "Capacitors_ThroughHole:CP_Radial_Tantal_D4.5mm_P2.50mm" H 2750 1250 50  0001 C CNN
+F 2 "Capacitor_THT:CP_Radial_Tantal_D4.5mm_P2.50mm" H 2750 1250 50  0001 C CNN
 F 3 "" H 2750 1250 50  0001 C CNN
 	1    2750 1250
 	-1   0    0    1   
 $EndComp
 $Comp
-L device:CP1_Small C16
+L pluto-rescue:CP1_Small-device C16
 U 1 1 59ECCFE5
 P 2750 1775
 F 0 "C16" H 2875 1850 50  0000 L CNN
 F 1 "1.0uF" H 2800 1700 50  0000 L CNN
-F 2 "Capacitors_ThroughHole:CP_Radial_Tantal_D4.5mm_P2.50mm" H 2750 1775 50  0001 C CNN
+F 2 "Capacitor_THT:CP_Radial_Tantal_D4.5mm_P2.50mm" H 2750 1775 50  0001 C CNN
 F 3 "" H 2750 1775 50  0001 C CNN
 	1    2750 1775
 	-1   0    0    1   
 $EndComp
 $Comp
-L device:CP1_Small C17
+L pluto-rescue:CP1_Small-device C17
 U 1 1 59ECD006
 P 4325 1150
 F 0 "C17" V 4250 950 50  0000 L CNN
 F 1 "1.0uF" V 4400 900 50  0000 L CNN
-F 2 "Capacitors_ThroughHole:CP_Radial_Tantal_D4.5mm_P2.50mm" H 4325 1150 50  0001 C CNN
+F 2 "Capacitor_THT:CP_Radial_Tantal_D4.5mm_P2.50mm" H 4325 1150 50  0001 C CNN
 F 3 "" H 4325 1150 50  0001 C CNN
 	1    4325 1150
 	0    -1   -1   0   
@@ -225,12 +225,12 @@ A[0..3]
 Text HLabel 8575 3350 2    60   Input ~ 0
 A[0..15]
 $Comp
-L device:C_Small C20
+L pluto-rescue:C_Small-device C20
 U 1 1 59ED58A6
 P 7475 5525
 F 0 "C20" V 7600 5475 50  0000 L CNN
 F 1 "0.1uF" V 7350 5450 50  0000 L CNN
-F 2 "Capacitors_ThroughHole:C_Disc_D4.7mm_W2.5mm_P5.00mm" H 7475 5525 50  0001 C CNN
+F 2 "Capacitor_THT:C_Disc_D4.7mm_W2.5mm_P5.00mm" H 7475 5525 50  0001 C CNN
 F 3 "" H 7475 5525 50  0001 C CNN
 	1    7475 5525
 	0    1    1    0   
@@ -383,17 +383,17 @@ Text HLabel 8575 4625 2    60   Output ~ 0
 Wire Wire Line
 	8575 4625 7650 4625
 Text HLabel 8575 4250 2    60   Input ~ 0
-~7FEX
+~DUART
 Wire Wire Line
 	8575 4250 7650 4250
 NoConn ~ 7650 5000
 $Comp
-L Oscillators:CXO_DIP8 X2
+L pluto-rescue:CXO_DIP8-Oscillators X2
 U 1 1 59EDF126
 P 9675 4875
 F 0 "X2" H 9475 5125 50  0000 L CNN
 F 1 "3.6864MHz" H 9175 4600 50  0000 L CNN
-F 2 "Oscillators:Oscillator_DIP-8" H 10125 4525 50  0001 C CNN
+F 2 "Oscillator:Oscillator_DIP-8" H 10125 4525 50  0001 C CNN
 F 3 "" H 9575 4875 50  0001 C CNN
 	1    9675 4875
 	-1   0    0    -1  
@@ -401,12 +401,12 @@ $EndComp
 $Comp
 L power:VCC #PWR049
 U 1 1 59EE01CB
-P 9675 4575
-F 0 "#PWR049" H 9675 4425 50  0001 C CNN
-F 1 "VCC" H 9675 4725 50  0000 C CNN
-F 2 "" H 9675 4575 50  0001 C CNN
-F 3 "" H 9675 4575 50  0001 C CNN
-	1    9675 4575
+P 9675 4475
+F 0 "#PWR049" H 9675 4325 50  0001 C CNN
+F 1 "VCC" H 9675 4625 50  0000 C CNN
+F 2 "" H 9675 4475 50  0001 C CNN
+F 3 "" H 9675 4475 50  0001 C CNN
+	1    9675 4475
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -536,6 +536,8 @@ Wire Wire Line
 	3675 1150 3675 1200
 Wire Wire Line
 	3675 1150 4225 1150
+Wire Wire Line
+	9675 4575 9675 4475
 Wire Bus Line
 	8075 3350 8075 3850
 Wire Bus Line
