@@ -601,4 +601,6 @@ Wire Bus Line
 	9500 3175 9500 3875
 Wire Bus Line
 	8000 3175 8000 4675
+Text Notes 9625 4825 0    60   ~ 12
+IO ($7F60)
 $EndSCHEMATC

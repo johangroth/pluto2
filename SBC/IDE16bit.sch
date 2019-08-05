@@ -487,10 +487,10 @@ Entry Wire Line
 	6200 7000 6300 6900
 Wire Bus Line
 	4075 5550 6300 5550
-Text Notes 5200 2675 1    60   ~ 12
-VIA1
-Text Notes 10625 2600 1    60   ~ 12
-VIA2
+Text Notes 5225 2850 1    60   ~ 12
+VIA1 ($7FC0)
+Text Notes 10625 2775 1    60   ~ 12
+VIA2 ($7FA0)
 Entry Wire Line
 	11600 1900 11700 1800
 Entry Wire Line

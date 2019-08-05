@@ -1,0 +1,102 @@
+MODULE Pluto_GAL_Address_Decoding
+
+//P22V10G Chip Diagram:
+//--------------------------------------------------------------------------------
+//                                   P22V10G
+//
+//                         +---------\       /---------+
+//                         |          \     /          |
+//                         |           -----           |
+//                     CLK |  1                    24  | Vcc                     
+//                         |                           |
+//                     A15 |  2                    23  | RW                      
+//                         |                           |
+//                     A14 |  3                    22  | !MRD                    
+//                         |                           |
+//                     A13 |  4                    21  | !MWR                    
+//                         |                           |
+//                     A12 |  5                    20  | !VIA1                   
+//                         |                           |
+//                     A11 |  6                    19  | ROMSEL                  
+//                         |                           |
+//                     A10 |  7                    18  | RAMSEL                  
+//                         |                           |
+//                      A9 |  8                    17  | !DUART                  
+//                         |                           |
+//                      A8 |  9                    16  | !VIA2                   
+//                         |                           |
+//                      A7 | 10                    15  | !RTC                    
+//                         |                           |
+//                      A6 | 11                    14  | !IO                     
+//                         |                           |
+//                     GND | 12                    13  | A5                      
+//                         |                           |
+//                         |                           |
+//                         `---------------------------'
+
+
+
+TITLE 'Pluto GAL Address Decoding'
+
+	A5..A15 pin  ; 				" 65C02 Address bus
+	CLK	pin 1;				" Clock in
+	RW	pin 23;				" R/W signal from 65C02
+	!MRD	pin 22 istype 'com';		" Read
+	!MWR	pin 21 istype 'com';		" Write
+	!RAMSEL pin  istype 'com';		" Select RAM
+	!ROMSEL	pin  istype 'com';		" Select ROM
+	!DUART	pin  istype 'com';		" $7FEX, SC28L92
+	!VIA1	pin  istype 'com';		" $7FCX, 65C22, IDE D0-D15
+	!VIA2	pin  istype 'com';		" $7FAX, 65C22, IDE control signals
+	!RTC	pin  istype 'com';		" $7F8X, Real time clock
+	!IO	pin  istype 'com';		" $7F6X, Expansion
+	H,L,X = 1,0,.X.;
+	Address = [A15,A14,A13,A12, A11,A10,A9,A8, A7,A6,A5,X, X,X,X,X];
+
+EQUATIONS
+	RAMSEL	= Address <= ^h7EFF;
+	ROMSEL	= Address >= ^h8000;
+	DUART	= (Address >= ^h7FE0) & (Address <= ^h7FFF);
+	VIA1	= (Address >= ^h7FC0) & (Address <= ^h7FDF);
+	VIA2	= (Address >= ^h7FA0) & (Address <= ^h7FBF);
+	RTC	= (Address >= ^h7F80) & (Address <= ^h7F9F);
+	IO	= (Address >= ^h7F60) & (Address <= ^h7F7F);
+	MWR 	= CLK & !RW;
+	MRD 	= CLK & RW;
+
+TEST_VECTORS
+	
+	(Address -> [ ROMSEL,	DUART,	VIA2,	VIA1,	RTC,	RAMSEL,	IO])
+
+	^h0000	 -> [	H,	H,	H,	H,	H,	L,	H];
+
+	^h4000	 -> [	H,	H,	H,	H,	H,	L,	H];
+
+	^h7EFF   -> [	H,	H,	H,	H,	H,	L,	H];
+
+	^h7F60	 -> [	H,	H,	H,	H,	H,	H,	L];
+
+	^h7F7F	 -> [	H,	H,	H,	H,	H,	H,	L];
+
+	^h7F80	 -> [	H,	H,	H,	H,	L,	H,	H];
+
+	^h7F9F	 -> [	H,	H,	H,	H,	L,	H,	H];
+
+	^h7FA0	 -> [	H,	H,	H,	L,	H,	H,	H];
+
+	^h7FBF	 -> [	H,	H,	H,	L,	H,	H,	H];
+
+	^h7FC0	 -> [	H,	H,	L,	H,	H,	H,	H];
+
+	^h7FDF	 -> [	H,	H,	L,	H,	H,	H, 	H];
+
+	^h7FE0	 -> [	H,	L,	H,	H,	H,	H, 	H];
+
+	^h7FFF	 -> [	H,	L,	H,	H,	H,	H, 	H];
+
+	^h8000	 -> [	L,	H,	H,	H,	H,	H, 	H];
+
+	^hFFFF	 -> [	L,	H,	H,	H,	H,	H, 	H];
+
+END
+

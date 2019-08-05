@@ -542,4 +542,6 @@ Wire Bus Line
 	8075 3350 8075 3850
 Wire Bus Line
 	8075 1775 8075 3150
+Text Notes 7100 3350 1    60   ~ 12
+DUART ($7FE0)
 $EndSCHEMATC

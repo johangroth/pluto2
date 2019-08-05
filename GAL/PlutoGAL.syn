@@ -1,0 +1,11 @@
+JDF B
+// Created by Version 2.0 
+PROJECT PlutoGAL
+DESIGN plutogal Normal
+DEVKIT GAL22V10C-10LP
+ENTRY ABEL/Schematic
+MODULE plutogaladdressdecoding.abl
+MODSTYLE Pluto_GAL_Address_Decoding Normal
+SYNTHESIS_TOOL Synplify
+SIMULATOR_TOOL ActiveHDL
+TOPMODULE Pluto_GAL_Address_Decoding
