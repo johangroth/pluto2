@@ -7,29 +7,29 @@ MODULE Pluto_GAL_Address_Decoding
 //                         +---------\       /---------+
 //                         |          \     /          |
 //                         |           -----           |
-//                     CLK |  1                    24  | Vcc                     
+//                     CLK |  1                    24  | Vcc
 //                         |                           |
-//                     A15 |  2                    23  | RW                      
+//                     A15 |  2                    23  | RW
 //                         |                           |
-//                     A14 |  3                    22  | !MRD                    
+//                     A14 |  3                    22  | !MRD
 //                         |                           |
-//                     A13 |  4                    21  | !MWR                    
+//                     A13 |  4                    21  | !MWR
 //                         |                           |
-//                     A12 |  5                    20  | !VIA1                   
+//                     A12 |  5                    20  | !VIA1
 //                         |                           |
-//                     A11 |  6                    19  | ROMSEL                  
+//                     A11 |  6                    19  | ROMSEL
 //                         |                           |
-//                     A10 |  7                    18  | RAMSEL                  
+//                     A10 |  7                    18  | RAMSEL
 //                         |                           |
-//                      A9 |  8                    17  | !DUART                  
+//                      A9 |  8                    17  | !DUART
 //                         |                           |
-//                      A8 |  9                    16  | !VIA2                   
+//                      A8 |  9                    16  | !VIA2
 //                         |                           |
-//                      A7 | 10                    15  | !RTC                    
+//                      A7 | 10                    15  | !RTC
 //                         |                           |
-//                      A6 | 11                    14  | !IO                     
+//                      A6 | 11                    14  | !IO
 //                         |                           |
-//                     GND | 12                    13  | A5                      
+//                     GND | 12                    13  | A5
 //                         |                           |
 //                         |                           |
 //                         `---------------------------'
@@ -43,13 +43,13 @@ TITLE 'Pluto GAL Address Decoding'
 	RW	pin 23;				" R/W signal from 65C02
 	!MRD	pin 22 istype 'com';		" Read
 	!MWR	pin 21 istype 'com';		" Write
-	!RAMSEL pin  istype 'com';		" Select RAM
-	!ROMSEL	pin  istype 'com';		" Select ROM
-	!DUART	pin  istype 'com';		" $7FEX, SC28L92
-	!VIA1	pin  istype 'com';		" $7FCX, 65C22, IDE D0-D15
-	!VIA2	pin  istype 'com';		" $7FAX, 65C22, IDE control signals
-	!RTC	pin  istype 'com';		" $7F8X, Real time clock
-	!IO	pin  istype 'com';		" $7F6X, Expansion
+	!RAMSEL pin 18 istype 'com';		" Select RAM
+	!ROMSEL	pin 19 istype 'com';		" Select ROM
+	!DUART	pin 17 istype 'com';		" $7FEX, SC28L92
+	!VIA1	pin 20 istype 'com';		" $7FCX, 65C22, IDE D0-D15
+	!VIA2	pin 16 istype 'com';		" $7FAX, 65C22, IDE control signals
+	!RTC	pin 15 istype 'com';		" $7F8X, Real time clock
+	!IO	pin 14 istype 'com';		" $7F6X, Expansion
 	H,L,X = 1,0,.X.;
 	Address = [A15,A14,A13,A12, A11,A10,A9,A8, A7,A6,A5,X, X,X,X,X];
 
@@ -65,7 +65,7 @@ EQUATIONS
 	MRD 	= CLK & RW;
 
 TEST_VECTORS
-	
+
 	(Address -> [ ROMSEL,	DUART,	VIA2,	VIA1,	RTC,	RAMSEL,	IO])
 
 	^h0000	 -> [	H,	H,	H,	H,	H,	L,	H];
@@ -99,4 +99,3 @@ TEST_VECTORS
 	^hFFFF	 -> [	L,	H,	H,	H,	H,	H, 	H];
 
 END
-
