@@ -589,10 +589,10 @@ F 3 "" H 8375 2550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 8375 2550
-Wire Bus Line
-	7375 1025 7375 2025
 Text Notes 5925 2675 0    60   ~ 12
 RAM\nIO \nRTC\nVIA2\nVIA1\nDUART
 Text Notes 6225 2675 0    60   ~ 12
 $0000 - $7EFF\n$7F60 - $7F7F\n$7F80 - $7F9F\n$7FA0 - $7FBF\n$7FC0 - $7FDF\n$7FE0 - $7FFF
+Wire Bus Line
+	7375 1025 7375 2025
 $EndSCHEMATC

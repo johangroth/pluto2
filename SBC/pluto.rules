@@ -11,7 +11,7 @@
     (via_costs 50)
     (plane_via_costs 5)
     (start_ripup_costs 100)
-    (start_pass_no 16713)
+    (start_pass_no 19100)
     (layer_rule F.Cu
       (active on)
       (preferred_direction vertical)
@@ -100,6 +100,16 @@
     (rule
       (width 150.0)
     )
+    (layer_rule GND.Cu
+      (rule 
+        (width 0.0) 
+      )
+    )
+    (layer_rule VCC.Cu
+      (rule 
+        (width 0.0) 
+      )
+    )
     (circuit 
       (use_layer F.Cu B.Cu)
     )
@@ -133,6 +143,16 @@
     (rule
       (width 150.0)
     )
+    (layer_rule GND.Cu
+      (rule 
+        (width 0.0) 
+      )
+    )
+    (layer_rule VCC.Cu
+      (rule 
+        (width 0.0) 
+      )
+    )
     (circuit 
       (use_layer F.Cu B.Cu)
     )
@@ -143,6 +163,16 @@
     (via_rule GND)
     (rule
       (width 150.0)
+    )
+    (layer_rule GND.Cu
+      (rule 
+        (width 0.0) 
+      )
+    )
+    (layer_rule VCC.Cu
+      (rule 
+        (width 0.0) 
+      )
     )
     (circuit 
       (use_layer F.Cu B.Cu)
@@ -155,6 +185,16 @@
     (rule
       (width 1000.0)
     )
+    (layer_rule GND.Cu
+      (rule 
+        (width 0.0) 
+      )
+    )
+    (layer_rule VCC.Cu
+      (rule 
+        (width 0.0) 
+      )
+    )
     (circuit 
       (use_layer F.Cu B.Cu)
     )
@@ -165,6 +205,16 @@
     (via_rule VCC)
     (rule
       (width 150.0)
+    )
+    (layer_rule GND.Cu
+      (rule 
+        (width 0.0) 
+      )
+    )
+    (layer_rule VCC.Cu
+      (rule 
+        (width 0.0) 
+      )
     )
     (circuit 
       (use_layer F.Cu B.Cu)
