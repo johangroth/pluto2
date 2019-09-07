@@ -588,7 +588,7 @@ U 1 1 5932FB31
 P 3025 8100
 F 0 "R8" V 3105 8100 50  0000 C CNN
 F 1 "1K" V 3025 8100 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P7.62mm_Vertical" V 2955 8100 50  0001 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2955 8100 50  0001 C CNN
 F 3 "" H 3025 8100 50  0000 C CNN
 	1    3025 8100
 	0    1    1    0   
@@ -599,7 +599,7 @@ U 1 1 5932FB2F
 P 3025 7600
 F 0 "R6" V 3105 7600 50  0000 C CNN
 F 1 "3.3K" V 3025 7600 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P7.62mm_Vertical" V 2955 7600 50  0001 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" V 2955 7600 50  0001 C CNN
 F 3 "" H 3025 7600 50  0000 C CNN
 	1    3025 7600
 	0    1    1    0   
@@ -666,32 +666,10 @@ Text Label 12475 5175 2    60   ~ 0
 A[0..15]
 Text HLabel 13150 5175 2    60   Input ~ 0
 A[0..15]
-$Comp
-L Device:D_Schottky_Small D2
-U 1 1 5D4C1216
-P 6625 4475
-F 0 "D2" H 6600 4375 50  0000 C CNN
-F 1 "DIRQ1" H 6775 4425 50  0000 C CNN
-F 2 "Diode_THT:D_T-1_P5.08mm_Horizontal" V 6625 4475 50  0001 C CNN
-F 3 "~" V 6625 4475 50  0001 C CNN
-	1    6625 4475
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:D_Schottky_Small D4
-U 1 1 5D4C1BC7
-P 12025 4475
-F 0 "D4" H 12000 4375 50  0000 C CNN
-F 1 "DIRQ2" H 12175 4425 50  0000 C CNN
-F 2 "Diode_THT:D_T-1_P5.08mm_Horizontal" V 12025 4475 50  0001 C CNN
-F 3 "~" V 12025 4475 50  0001 C CNN
-	1    12025 4475
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
-	12125 4475 12425 4475
+	12225 4475 12425 4475
 Wire Wire Line
-	6725 4475 7025 4475
+	6825 4475 7025 4475
 Text HLabel 7025 4475 2    60   Output ~ 0
 ~IRQ
 Text HLabel 12425 4475 2    60   Output ~ 0
@@ -740,7 +718,7 @@ U 1 1 5D50750F
 P 5725 1550
 F 0 "C7" V 5600 1550 50  0000 C CNN
 F 1 "0.1uF" V 5850 1550 50  0000 C CNN
-F 2 "Capacitor_THT:C_Disc_D4.7mm_W2.5mm_P5.00mm" H 5725 1550 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 5725 1550 50  0001 C CNN
 F 3 "~" H 5725 1550 50  0001 C CNN
 	1    5725 1550
 	0    1    1    0   
@@ -751,7 +729,7 @@ U 1 1 5D50813F
 P 11100 1550
 F 0 "C8" V 11000 1550 50  0000 C CNN
 F 1 "0.1uF" V 11225 1550 50  0000 C CNN
-F 2 "Capacitor_THT:C_Disc_D4.7mm_W2.5mm_P5.00mm" H 11100 1550 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 11100 1550 50  0001 C CNN
 F 3 "~" H 11100 1550 50  0001 C CNN
 	1    11100 1550
 	0    1    1    0   
@@ -918,6 +896,57 @@ Wire Wire Line
 Connection ~ 2775 7600
 Wire Wire Line
 	3575 8100 5200 8100
+Entry Wire Line
+	9475 1800 9575 1900
+Entry Wire Line
+	9475 1900 9575 2000
+Entry Wire Line
+	9475 2000 9575 2100
+Text Label 8775 1800 0    60   ~ 0
+IDE-A[0..2]
+Entry Wire Line
+	6200 7900 6300 7800
+Wire Bus Line
+	7725 1800 9475 1800
+Entry Wire Line
+	4700 7900 4800 7800
+Entry Wire Line
+	4700 8000 4800 7900
+Wire Bus Line
+	4700 8450 7725 8450
+Wire Bus Line
+	7725 1800 7725 7800
+Wire Bus Line
+	6300 7800 7725 7800
+Connection ~ 7725 7800
+Wire Bus Line
+	7725 7800 7725 8450
+$Comp
+L Diode:BAT48JFILM D4
+U 1 1 5D6C1D60
+P 12075 4475
+F 0 "D4" H 12050 4375 50  0000 C CNN
+F 1 "DIRQ2" H 12250 4400 50  0000 C CNN
+F 2 "Diode_SMD:D_SOD-323" H 12075 4300 50  0001 C CNN
+F 3 "www.st.com/resource/en/datasheet/bat48.pdf" H 12075 4475 50  0001 C CNN
+	1    12075 4475
+	1    0    0    -1  
+$EndComp
+$Comp
+L Diode:BAT48JFILM D2
+U 1 1 5D6D7B96
+P 6675 4475
+F 0 "D2" H 6650 4375 50  0000 C CNN
+F 1 "DIRQ1" H 6850 4400 50  0000 C CNN
+F 2 "Diode_SMD:D_SOD-323" H 6675 4300 50  0001 C CNN
+F 3 "www.st.com/resource/en/datasheet/bat48.pdf" H 6675 4475 50  0001 C CNN
+	1    6675 4475
+	1    0    0    -1  
+$EndComp
+Wire Bus Line
+	9475 1800 9475 2000
+Wire Bus Line
+	4700 7900 4700 8450
 Wire Bus Line
 	11700 3075 11700 5175
 Wire Bus Line

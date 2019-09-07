@@ -20,7 +20,7 @@ U 1 1 59ECC5AA
 P 3675 2800
 F 0 "U22" H 4200 4250 50  0000 R CNN
 F 1 "MAX238" H 3825 3450 50  0000 R CNN
-F 2 "Package_DIP:DIP-24_W7.62mm_Socket" H 3725 1750 50  0001 L CNN
+F 2 "Package_SO:SOIC-24W_7.5x15.4mm_P1.27mm" H 3725 1750 50  0001 L CNN
 F 3 "" H 3675 3000 50  0001 C CNN
 	1    3675 2800
 	-1   0    0    -1  
@@ -64,7 +64,7 @@ U 1 1 59ECCF2A
 P 4650 1575
 F 0 "C18" H 4660 1645 50  0000 L CNN
 F 1 "1.0uF" H 4700 1500 50  0000 L CNN
-F 2 "Capacitor_THT:CP_Radial_Tantal_D4.5mm_P2.50mm" H 4650 1575 50  0001 C CNN
+F 2 "Capacitor_Tantalum_SMD:CP_EIA-3528-21_Kemet-B_Pad1.50x2.35mm_HandSolder" H 4650 1575 50  0001 C CNN
 F 3 "" H 4650 1575 50  0001 C CNN
 	1    4650 1575
 	1    0    0    -1  
@@ -75,7 +75,7 @@ U 1 1 59ECCF53
 P 4650 1975
 F 0 "C19" H 4660 2045 50  0000 L CNN
 F 1 "1.0uF" H 4700 1900 50  0000 L CNN
-F 2 "Capacitor_THT:CP_Radial_Tantal_D4.5mm_P2.50mm" H 4650 1975 50  0001 C CNN
+F 2 "Capacitor_Tantalum_SMD:CP_EIA-3528-21_Kemet-B_Pad1.50x2.35mm_HandSolder" H 4650 1975 50  0001 C CNN
 F 3 "" H 4650 1975 50  0001 C CNN
 	1    4650 1975
 	1    0    0    -1  
@@ -86,7 +86,7 @@ U 1 1 59ECCF86
 P 2750 1250
 F 0 "C15" H 2825 1325 50  0000 L CNN
 F 1 "1.0uF" H 2800 1175 50  0000 L CNN
-F 2 "Capacitor_THT:CP_Radial_Tantal_D4.5mm_P2.50mm" H 2750 1250 50  0001 C CNN
+F 2 "Capacitor_Tantalum_SMD:CP_EIA-3528-21_Kemet-B_Pad1.50x2.35mm_HandSolder" H 2750 1250 50  0001 C CNN
 F 3 "" H 2750 1250 50  0001 C CNN
 	1    2750 1250
 	-1   0    0    1   
@@ -97,7 +97,7 @@ U 1 1 59ECCFE5
 P 2750 1775
 F 0 "C16" H 2875 1850 50  0000 L CNN
 F 1 "1.0uF" H 2800 1700 50  0000 L CNN
-F 2 "Capacitor_THT:CP_Radial_Tantal_D4.5mm_P2.50mm" H 2750 1775 50  0001 C CNN
+F 2 "Capacitor_Tantalum_SMD:CP_EIA-3528-21_Kemet-B_Pad1.50x2.35mm_HandSolder" H 2750 1775 50  0001 C CNN
 F 3 "" H 2750 1775 50  0001 C CNN
 	1    2750 1775
 	-1   0    0    1   
@@ -108,7 +108,7 @@ U 1 1 59ECD006
 P 4325 1150
 F 0 "C17" V 4250 950 50  0000 L CNN
 F 1 "1.0uF" V 4400 900 50  0000 L CNN
-F 2 "Capacitor_THT:CP_Radial_Tantal_D4.5mm_P2.50mm" H 4325 1150 50  0001 C CNN
+F 2 "Capacitor_Tantalum_SMD:CP_EIA-3528-21_Kemet-B_Pad1.50x2.35mm_HandSolder" H 4325 1150 50  0001 C CNN
 F 3 "" H 4325 1150 50  0001 C CNN
 	1    4325 1150
 	0    -1   -1   0   
@@ -230,7 +230,7 @@ U 1 1 59ED58A6
 P 7475 5525
 F 0 "C20" V 7600 5475 50  0000 L CNN
 F 1 "0.1uF" V 7350 5450 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D4.7mm_W2.5mm_P5.00mm" H 7475 5525 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 7475 5525 50  0001 C CNN
 F 3 "" H 7475 5525 50  0001 C CNN
 	1    7475 5525
 	0    1    1    0   
@@ -388,17 +388,6 @@ Wire Wire Line
 	8575 4250 7650 4250
 NoConn ~ 7650 5000
 $Comp
-L pluto-rescue:CXO_DIP8-Oscillators X2
-U 1 1 59EDF126
-P 9675 4875
-F 0 "X2" H 9475 5125 50  0000 L CNN
-F 1 "3.6864MHz" H 9175 4600 50  0000 L CNN
-F 2 "Oscillator:Oscillator_DIP-8" H 10125 4525 50  0001 C CNN
-F 3 "" H 9575 4875 50  0001 C CNN
-	1    9675 4875
-	-1   0    0    -1  
-$EndComp
-$Comp
 L power:VCC #PWR049
 U 1 1 59EE01CB
 P 9675 4475
@@ -412,12 +401,12 @@ $EndComp
 $Comp
 L power:GND #PWR050
 U 1 1 59EE022C
-P 9675 5175
-F 0 "#PWR050" H 9675 4925 50  0001 C CNN
-F 1 "GND" H 9675 5025 50  0000 C CNN
-F 2 "" H 9675 5175 50  0001 C CNN
-F 3 "" H 9675 5175 50  0001 C CNN
-	1    9675 5175
+P 9675 5325
+F 0 "#PWR050" H 9675 5075 50  0001 C CNN
+F 1 "GND" H 9675 5175 50  0000 C CNN
+F 2 "" H 9675 5325 50  0001 C CNN
+F 3 "" H 9675 5325 50  0001 C CNN
+	1    9675 5325
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -435,7 +424,6 @@ F 3 "" H 8575 5125 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	8575 5125 7650 5125
-NoConn ~ 9975 4875
 NoConn ~ 1250 2550
 NoConn ~ 1750 2650
 NoConn ~ 1750 2750
@@ -538,10 +526,47 @@ Wire Wire Line
 	3675 1150 4225 1150
 Wire Wire Line
 	9675 4575 9675 4475
+Text Notes 7100 3350 1    60   ~ 12
+DUART ($7FE0)
+$Comp
+L Oscillator:SG-8002CA X2
+U 1 1 5D6A4602
+P 9675 4875
+F 0 "X2" H 9525 5125 50  0000 L CNN
+F 1 "3.6864MHz" H 9250 4625 50  0000 L CNN
+F 2 "Oscillator:Oscillator_SMD_SeikoEpson_SG8002CA-4Pin_7.0x5.0mm" H 10375 4525 50  0001 C CNN
+F 3 "https://support.epson.biz/td/api/doc_check.php?mode=dl&lang=en&Parts=SG-8002DC" H 9575 4875 50  0001 C CNN
+	1    9675 4875
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	9675 5175 9675 5325
+Wire Wire Line
+	9975 4875 9975 4475
+Wire Wire Line
+	9975 4475 9675 4475
+Connection ~ 9675 4475
+$Comp
+L pluto-rescue:C_Small-device C11
+U 1 1 5D6B187A
+P 10200 4475
+F 0 "C11" V 10325 4425 50  0000 L CNN
+F 1 "0.1uF" V 10075 4400 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 10200 4475 50  0001 C CNN
+F 3 "" H 10200 4475 50  0001 C CNN
+	1    10200 4475
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9975 4475 10100 4475
+Connection ~ 9975 4475
+Wire Wire Line
+	10300 4475 10300 5175
+Wire Wire Line
+	10300 5175 9675 5175
+Connection ~ 9675 5175
 Wire Bus Line
 	8075 3350 8075 3850
 Wire Bus Line
 	8075 1775 8075 3150
-Text Notes 7100 3350 1    60   ~ 12
-DUART ($7FE0)
 $EndSCHEMATC

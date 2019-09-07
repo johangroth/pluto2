@@ -9,22 +9,11 @@ Title "Clock, pullups and decoding logic"
 Date "2017-03-25"
 Rev "0.1"
 Comp "Linux Grotto"
-Comment1 "The decoding logic is a slightly modied version of Daryl Rictor's SBC-2 v2.5"
-Comment2 ""
-Comment3 ""
-Comment4 ""
+Comment1 "Decoding logic in an ATF22V10 GAL"
+Comment2 "Pullups for various signals"
+Comment3 "Clock generator"
+Comment4 "Reset and NMI logic."
 $EndDescr
-$Comp
-L pluto-rescue:CXO_DIP8-Oscillators X1
-U 1 1 58D6C921
-P 4350 6450
-F 0 "X1" H 4150 6700 50  0000 L CNN
-F 1 "8 MHz" H 4400 6200 50  0000 L CNN
-F 2 "Oscillator:Oscillator_DIP-8" H 4800 6100 50  0001 C CNN
-F 3 "" H 4250 6450 50  0001 C CNN
-	1    4350 6450
-	1    0    0    -1  
-$EndComp
 $Comp
 L power:VCC #PWR09
 U 1 1 58D6CEDE
@@ -103,24 +92,23 @@ $EndComp
 $Comp
 L power:GND #PWR015
 U 1 1 595DE156
-P 2650 7025
-F 0 "#PWR015" H 2650 6775 50  0001 C CNN
-F 1 "GND" H 2650 6875 50  0000 C CNN
-F 2 "" H 2650 7025 50  0001 C CNN
-F 3 "" H 2650 7025 50  0001 C CNN
-	1    2650 7025
+P 1825 7000
+F 0 "#PWR015" H 1825 6750 50  0001 C CNN
+F 1 "GND" H 1825 6850 50  0000 C CNN
+F 2 "" H 1825 7000 50  0001 C CNN
+F 3 "" H 1825 7000 50  0001 C CNN
+	1    1825 7000
 	1    0    0    -1  
 $EndComp
-NoConn ~ 3850 6150
-NoConn ~ 3850 6550
-NoConn ~ 4050 6450
+NoConn ~ 3025 6125
+NoConn ~ 3025 6525
 $Comp
 L pluto-rescue:74HC74 U8
 U 2 1 59EC7963
 P 5500 6450
 F 0 "U8" H 5650 6750 50  0000 C CNN
 F 1 "74HC74" H 5800 6155 50  0000 C CNN
-F 2 "Package_DIP:DIP-14_W7.62mm_Socket" H 5500 6450 50  0001 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 5500 6450 50  0001 C CNN
 F 3 "" H 5500 6450 50  0001 C CNN
 	2    5500 6450
 	1    0    0    -1  
@@ -128,12 +116,12 @@ $EndComp
 $Comp
 L pluto-rescue:74HC74 U8
 U 1 1 59EC7994
-P 3250 6350
-F 0 "U8" H 3400 6650 50  0000 C CNN
-F 1 "74HC74" H 3550 6055 50  0000 C CNN
-F 2 "Package_DIP:DIP-14_W7.62mm_Socket" H 3250 6350 50  0001 C CNN
-F 3 "" H 3250 6350 50  0001 C CNN
-	1    3250 6350
+P 2425 6325
+F 0 "U8" H 2575 6625 50  0000 C CNN
+F 1 "74HC74" H 2725 6030 50  0000 C CNN
+F 2 "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" H 2425 6325 50  0001 C CNN
+F 3 "" H 2425 6325 50  0001 C CNN
+	1    2425 6325
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -142,7 +130,7 @@ U 1 1 5A37C438
 P 2850 3225
 F 0 "U5" H 3100 3675 50  0000 C CNN
 F 1 "TL7705B" H 3150 2777 50  0000 C CNN
-F 2 "Package_DIP:DIP-8_W7.62mm_Socket" H 2850 3225 50  0001 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 2850 3225 50  0001 C CNN
 F 3 "" H 2850 3225 50  0001 C CNN
 	1    2850 3225
 	1    0    0    -1  
@@ -153,7 +141,7 @@ U 1 1 5A37C778
 P 1650 2975
 F 0 "R2" H 1680 2995 50  0000 L CNN
 F 1 "22k" V 1575 2900 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P7.62mm_Vertical" H 1650 2975 50  0001 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 1650 2975 50  0001 C CNN
 F 3 "" H 1650 2975 50  0001 C CNN
 	1    1650 2975
 	1    0    0    -1  
@@ -164,7 +152,7 @@ U 1 1 5A37C7D7
 P 2050 3700
 F 0 "R3" H 2080 3720 50  0000 L CNN
 F 1 "475" V 1975 3625 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P7.62mm_Vertical" H 2050 3700 50  0001 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 2050 3700 50  0001 C CNN
 F 3 "" H 2050 3700 50  0001 C CNN
 	1    2050 3700
 	1    0    0    -1  
@@ -177,7 +165,7 @@ U 1 1 5A37EF31
 P 2050 4025
 F 0 "C4" H 2060 4095 50  0000 L CNN
 F 1 "15uF" V 1950 3950 50  0000 L CNN
-F 2 "Capacitor_THT:CP_Radial_Tantal_D4.5mm_P2.50mm" H 2050 4025 50  0001 C CNN
+F 2 "Capacitor_Tantalum_SMD:CP_EIA-7343-31_Kemet-D_Pad2.25x2.55mm_HandSolder" H 2050 4025 50  0001 C CNN
 F 3 "" H 2050 4025 50  0001 C CNN
 	1    2050 4025
 	1    0    0    -1  
@@ -188,7 +176,7 @@ U 1 1 5A37FB89
 P 3650 3625
 F 0 "C6" H 3650 3700 50  0000 L CNN
 F 1 "0.1uF" H 3425 3550 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D4.7mm_W2.5mm_P5.00mm" H 3650 3625 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 3650 3625 50  0001 C CNN
 F 3 "" H 3650 3625 50  0001 C CNN
 	1    3650 3625
 	1    0    0    -1  
@@ -199,7 +187,7 @@ U 1 1 5A3880A9
 P 3950 3475
 F 0 "R4" V 4025 3450 50  0000 L CNN
 F 1 "3.3k" V 3875 3400 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0411_L9.9mm_D3.6mm_P7.62mm_Vertical" H 3950 3475 50  0001 C CNN
+F 2 "Resistor_SMD:R_1206_3216Metric_Pad1.42x1.75mm_HandSolder" H 3950 3475 50  0001 C CNN
 F 3 "" H 3950 3475 50  0001 C CNN
 	1    3950 3475
 	-1   0    0    1   
@@ -213,7 +201,7 @@ Wire Wire Line
 Wire Wire Line
 	4650 6450 4900 6450
 Wire Wire Line
-	4350 6750 4350 6925
+	4350 6750 4350 6825
 Wire Wire Line
 	4350 6150 4350 6050
 Wire Wire Line
@@ -236,14 +224,14 @@ Wire Wire Line
 Wire Wire Line
 	6100 6250 6475 6250
 Wire Wire Line
-	3250 5800 2650 5800
+	2425 5775 1825 5775
 Wire Wire Line
-	2650 5800 2650 6150
-Connection ~ 2650 6150
-Connection ~ 2650 6350
+	1825 5775 1825 6125
+Connection ~ 1825 6125
+Connection ~ 1825 6325
 Wire Wire Line
-	3250 6900 2650 6900
-Connection ~ 2650 6900
+	2425 6875 1825 6875
+Connection ~ 1825 6875
 Wire Wire Line
 	2050 3000 2050 2675
 Wire Wire Line
@@ -285,11 +273,11 @@ Connection ~ 2050 2675
 Wire Wire Line
 	4750 6150 4750 7000
 Wire Wire Line
-	2650 6150 2650 6350
+	1825 6125 1825 6325
 Wire Wire Line
-	2650 6350 2650 6900
+	1825 6325 1825 6875
 Wire Wire Line
-	2650 6900 2650 7025
+	1825 6875 1825 7000
 Wire Wire Line
 	2050 4125 2850 4125
 Wire Wire Line
@@ -338,7 +326,7 @@ U 1 1 5D76ADD1
 P 4050 1400
 F 0 "RN1" V 3550 1325 50  0000 L CNN
 F 1 "3.3k" V 4450 1300 50  0000 L CNN
-F 2 "Resistor_THT:R_Array_SIP9" V 4525 1400 50  0001 C CNN
+F 2 "Resistor_SMD:R_Array_Convex_8x0602" V 4525 1400 50  0001 C CNN
 F 3 "http://www.vishay.com/docs/31509/csc.pdf" H 4050 1400 50  0001 C CNN
 	1    4050 1400
 	1    0    0    -1  
@@ -361,7 +349,7 @@ U 1 1 5D779D75
 P 2650 5050
 F 0 "Q1" H 2841 5004 50  0000 L CNN
 F 1 "DS1813" H 2350 5200 50  0000 L CNN
-F 2 "Package_TO_SOT_THT:TO-92L_Inline" H 2850 5150 50  0001 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23_Handsoldering" H 2850 5150 50  0001 C CNN
 F 3 "~" H 2650 5050 50  0001 C CNN
 	1    2650 5050
 	-1   0    0    1   
@@ -548,7 +536,7 @@ U 1 1 5D79F10F
 P 8900 800
 F 0 "C9" V 8775 800 50  0000 C CNN
 F 1 "0.1uF" V 9025 800 50  0000 C CNN
-F 2 "Capacitor_THT:C_Disc_D4.7mm_W2.5mm_P5.00mm" H 8900 800 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 8900 800 50  0001 C CNN
 F 3 "~" H 8900 800 50  0001 C CNN
 	1    8900 800 
 	0    1    1    0   
@@ -590,9 +578,46 @@ F 3 "" H 8375 2550 50  0001 C CNN
 $EndComp
 Connection ~ 8375 2550
 Text Notes 5925 2675 0    60   ~ 12
-RAM\nIO \nRTC\nVIA2\nVIA1\nDUART
+RAM\nIO \nRTC\nVIA2\nVIA1\nDUART\nROM
 Text Notes 6225 2675 0    60   ~ 12
-$0000 - $7EFF\n$7F60 - $7F7F\n$7F80 - $7F9F\n$7FA0 - $7FBF\n$7FC0 - $7FDF\n$7FE0 - $7FFF
+$0000 - $7EFF\n$7F60 - $7F7F\n$7F80 - $7F9F\n$7FA0 - $7FBF\n$7FC0 - $7FDF\n$7FE0 - $7FFF\n$8000 - $FFFF
+$Comp
+L Oscillator:SG-8002CA X1
+U 1 1 5D6922F2
+P 4350 6450
+F 0 "X1" H 4175 6700 50  0000 L CNN
+F 1 "8MHz" H 4375 6200 50  0000 L CNN
+F 2 "Oscillator:Oscillator_SMD_SeikoEpson_SG8002CA-4Pin_7.0x5.0mm" H 5050 6100 50  0001 C CNN
+F 3 "https://support.epson.biz/td/api/doc_check.php?mode=dl&lang=en&Parts=SG-8002DC" H 4250 6450 50  0001 C CNN
+	1    4350 6450
+	1    0    0    -1  
+$EndComp
+Connection ~ 4350 6150
+Wire Wire Line
+	4050 6450 4050 6150
+Wire Wire Line
+	4050 6150 4350 6150
+$Comp
+L pluto-rescue:C_Small-device C10
+U 1 1 5D69CF17
+P 3875 6825
+F 0 "C10" V 3775 6775 50  0000 L CNN
+F 1 "0.1uF" V 4000 6750 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 3875 6825 50  0001 C CNN
+F 3 "" H 3875 6825 50  0001 C CNN
+	1    3875 6825
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3975 6825 4350 6825
+Connection ~ 4350 6825
+Wire Wire Line
+	4350 6825 4350 6925
+Wire Wire Line
+	3775 6825 3775 6150
+Wire Wire Line
+	3775 6150 4050 6150
+Connection ~ 4050 6150
 Wire Bus Line
 	7375 1025 7375 2025
 $EndSCHEMATC
