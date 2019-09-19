@@ -176,7 +176,7 @@ U 1 1 5A37FB89
 P 3650 3625
 F 0 "C6" H 3650 3700 50  0000 L CNN
 F 1 "0.1uF" H 3425 3550 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 3650 3625 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3650 3625 50  0001 C CNN
 F 3 "" H 3650 3625 50  0001 C CNN
 	1    3650 3625
 	1    0    0    -1  
@@ -196,8 +196,6 @@ Wire Wire Line
 	4350 1600 4350 1800
 Wire Wire Line
 	4350 1800 4675 1800
-Wire Wire Line
-	3650 1200 3650 1025
 Wire Wire Line
 	4650 6450 4900 6450
 Wire Wire Line
@@ -320,17 +318,6 @@ Wire Wire Line
 	3750 1600 3750 2400
 Wire Wire Line
 	3750 2400 4675 2400
-$Comp
-L Device:R_Network08 RN1
-U 1 1 5D76ADD1
-P 4050 1400
-F 0 "RN1" V 3550 1325 50  0000 L CNN
-F 1 "3.3k" V 4450 1300 50  0000 L CNN
-F 2 "Resistor_SMD:R_Array_Convex_8x0602" V 4525 1400 50  0001 C CNN
-F 3 "http://www.vishay.com/docs/31509/csc.pdf" H 4050 1400 50  0001 C CNN
-	1    4050 1400
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4675 2500 3650 2500
 Connection ~ 3650 2500
@@ -536,7 +523,7 @@ U 1 1 5D79F10F
 P 8900 800
 F 0 "C9" V 8775 800 50  0000 C CNN
 F 1 "0.1uF" V 9025 800 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 8900 800 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 8900 800 50  0001 C CNN
 F 3 "~" H 8900 800 50  0001 C CNN
 	1    8900 800 
 	0    1    1    0   
@@ -603,7 +590,7 @@ U 1 1 5D69CF17
 P 3875 6825
 F 0 "C10" V 3775 6775 50  0000 L CNN
 F 1 "0.1uF" V 4000 6750 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 3875 6825 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 3875 6825 50  0001 C CNN
 F 3 "" H 3875 6825 50  0001 C CNN
 	1    3875 6825
 	0    1    1    0   
@@ -618,6 +605,22 @@ Wire Wire Line
 Wire Wire Line
 	3775 6150 4050 6150
 Connection ~ 4050 6150
+$Comp
+L Grotto:R_Network08_SMD RN1
+U 1 1 5D847681
+P 4050 1400
+F 0 "RN1" V 3550 1325 50  0000 L CNN
+F 1 "3.3k" V 4450 1325 50  0000 L CNN
+F 2 "Resistor_SMD:R_Array_Convex_5x1206" V 4525 1400 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/AOC0000/AOC0000C12.pdf" H 4050 1400 50  0001 C CNN
+	1    4050 1400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3650 1200 3650 1025
+Wire Wire Line
+	4350 1200 3650 1200
+Connection ~ 3650 1200
 Wire Bus Line
 	7375 1025 7375 2025
 $EndSCHEMATC
