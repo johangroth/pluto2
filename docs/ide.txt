@@ -1,0 +1,994 @@
+   IDE SPECIFICATIONS Integrated Drive Electronics (IDE)
+   Hardware Reference & Information Document
+   
+   The information in this document is provided on an as is basis. I do
+   not claim it is accurate or correct. Use at your own risk. This
+   document contains no proprietary information. This is all ATA
+   specifications. Share and enjoy.
+   
+   This information is not intended for beginners. If you cannot make
+   sense of parts of this document read it again carefully. If you still
+   don't understand it, then this document was not written for you. Some
+   information presented here assumes prior knowledge of the subject.
+   Also information may be slightly out of order, so to understand a
+   particular section, you need to read later sections.
+   
+   Primary reference materials:
+   
+     * Quantum ProDrive 120/170/210AT OEM Hard Drive Reference.
+     * FUJITSU M2617T/M2618T Intelligent Disk Drive OEM Manual.
+       
+   
+     _________________________________________________________________
+   
+   IDE interface pin assignments:
+   
+
++-----+-------------+--------+--------+
+| Pin | Drive Cable | Signal | AT Bus |
+| No  | Signal Name |  Flow  |  Pin   |
++-----+-------------+--------+--------+
+|  1  | -Reset      |  <-    | B2     |
+|  2  |  Ground     |        | B1     |
+|  3  |  D7         |  <->   | A2     |
+|  4  |  D8         |  <->   | C11    |
+|  5  |  D6         |  <->   | A3     |
+|  6  |  D9         |  <->   | C12    |
+|  7  |  D5         |  <->   | A4     |
+|  8  |  D10        |  <->   | C13    |
+|  9  |  D4         |  <->   | A5     |
+| 10  |  D11        |  <->   | C14    |
+| 11  |  D3         |  <->   | A6     |
+| 12  |  D12        |  <->   | C15    |
+| 13  |  D2         |  <->   | A7     |
+| 14  |  D13        |  <->   | C16    |
+| 15  |  D1         |  <->   | A8     |
+| 16  |  D14        |  <->   | C17    |
+| 17  |  D0         |  <->   | A9     |
+| 18  |  D15        |  <->   | C18    |
+| 19  |  Ground     |        | B1     |
+| 20  |  KEY        |        |        |
+| 21  |  Reserved   |        |        |
+| 22  |  Ground     |        | B1     |
+| 23  | -IOW        |  <-    | B13    |
+| 24  |  Ground     |        | B1     |
+| 25  | -IOR        |  <-    | B14    |
+| 26  |  Ground     |        | B1     |
+| 27  | -IOCHRDY    |   ->   | A10    |
+| 28  |  SPSYNC/ALE |  <-    | B28    |
+| 29  |  Reserved   |        |        |
+| 30  |  Ground     |        | B1     |
+| 31  |  INTRQ      |   ->   | D7     |
+| 32  | -IOCS16     |   ->   | D2     |
+| 33  |  ADDR1      |  <-    | A30    |
+| 34  | -PDIAG      |        |        |
+| 35  |  ADDR0      |  <-    | A31    |
+| 36  |  ADDR2      |  <-    | A29    |
+| 37  | -CS1FX      |        |        |
+| 38  | -CS3FX      |        |        |
+| 39  | -DASP       |        |        |
+| 40  |  Ground     |        | B1     |
++-----+-------------+--------+--------+
+
+   
+   
+     _________________________________________________________________
+   
+   Register Address Decoding
+   
+   The host addresses the drive with programmed I/O. Host address lines
+   A0, A1, A2, chip select CS1FX- and CS3FX-, IOR- and IOW- address the
+   disk registers. Host address lines A3...A9 generate the two chip
+   selects: CS1FX- and CS3FX-.
+   
+   Chip select CS1FX- accesses the eight hard disk Command Block
+   Registers. Chip select CS3FX- is valid during 8 bit transfers to/from
+   the Control Block registers alternate status and Device Control, and
+   drive address.
+   
+   The drive selects the primary or alternate command block addresses
+   using address bit A7.
+   
+   (Note: What the above sentence means is that there is a provision for
+   a primary host adapter at I/O address 1FX/3FX and a secondary host
+   adapter at I/O adress 17X/37X. Each host adapter can have up to two
+   hard drives MASTER/SLAVED off it).
+   
+   See below for a graphical explanation:
+   
+
+HEX  BINARY          DESCRIPTION
+
+1FX  0001 1111 XXXX  Primary Command Registers
+3FX  0011 1111 XXXX  Primary Control Registers
+
+17X  0001 0111 XXXX  Alternate Command Registers
+37X  0011 0111 XXXX  Alternate Control Registers
+
+  ^
+  |
+  +--- Address bit A7
+
+   
+   X means "don't care" i.e. X can be 0h, 1h, 2h, ..., Dh, Eh, Fh or 0b,
+   1b).
+   
+   Data bus lines D8...D15 are valid only when IOCS16- is active and the
+   drive is transferring data. The transfer of ECC information occurs
+   only on data bus lines D0...D7 and data bus lines D8...D15 are invalid
+   during such transfer.
+   
+   Pin Descriptions:
+   
+   -RESET
+          is asserted for at least 25 microseconds after voltage levels
+          have stabilized during power on and negated thereafer unless
+          the drive needs to be reset at a later time.
+          
+   D0...D15
+          bidirectional data bus. D0...D7 are used during 8 bit data
+          transfers e.g. registers and ECC bytes.
+          
+   KEY
+          is not a connection. The connection pin is missing and forms
+          part of a mechanism that prevents the IDC connector from being
+          reverse connected.
+          
+   -IOW
+          is the Write strobe signal. The rising edge of -IOW clocks data
+          from from the host to the drive.
+          
+   -IOR
+          is the Read strobe signal. The falling edge of -IOR enables
+          data from the drive onto the host data bus.
+          
+   -IOCHRDY
+          is negated to extend the host transfer cycle of any host
+          register read/write access when the drive is not ready to
+          respond to a data transfer request. When not negated, it is in
+          a high impedance state.
+          
+   SPSYNC
+          spindle synchronization. This may be either input or output to
+          the drive depending on a vendor defined switch. If a drive is
+          set to MASTER the signal is output and if a drive is SLAVE the
+          signal is input. There is no requirement that each drive
+          implementation be plug compatible to the extent that a multiple
+          vendor drive subsystem be operable. However if drives are
+          designed to match the following recommendations then
+          controllers can operate drives with a single implementation:
+          
+          There can only be one MASTER drive at a time in a
+          configuration. The host or the drive designated as master can
+          generate SPSYNC at least once per revolution (it may be more
+          than onceper revolution).
+          
+          SPSYNC received by a drive is used as the synchronization
+          signal to lock the spindles in step. The time to achieve
+          synchronization varies and is indicated by the drive setting
+          DRDY. If the drive does not achieve synchronization, it will
+          not set DRDY.
+          
+          A master drive or a host generates SPSYNC and transmits it. A
+          slave does not generate SPSYNC and must be responsible to
+          synchronize its index to SPSYNC. If a drive does not support
+          synchronization, it will ignore SPSYNC. In the event that a
+          previously synchronized drive loses synchronization, it does
+          not clear DRDY.
+          
+          Prior to the introduction of this standard, this signal was
+          defined as ALE (Address Latch Enable) and was used for an
+          address valid indication from the host system. If used, the
+          host address and chip selects, ADDR0 through ADDR2, CS1FX- and
+          CS3FX- were valid at the negation of this signal and remained
+          valid while ALE was negated, therefore the drive did not need
+          to latch these signals with ALE.
+          
+   INTRQ
+          is used to interrupt the host system when the drive has a
+          pending interrupt, the drive is selected and the host has
+          enabled drive interrupts by clearing nIEN in the Device Control
+          Register.
+          
+          INTRQ is negated by:
+          
+          + assertion of -RESET.
+          + the setting of SRST in the Device Control Register.
+          + the host writing to the Command Register.
+          + the host reading the Status Register.
+            
+   
+          NOTE: Some drives may negate INTRQ on PIO data transfer
+          completion, except on a single sector read or on the last
+          sector of a multi-sector read. On PIO transfers INTRQ is
+          asserted at the begining of each data block to be transfered. A
+          data block is usually a single sector except when declared
+          otherwise via the Set Multiple Command. An exception occurs on
+          Format Track, Write Sector(s), Write Buffer and Write Long
+          commands and INTRQ will not be asserted at the begining of the
+          first data block to be transferred.
+          
+   -IOCS16
+          indicates to the host that the 16 bit data port has been
+          addressed and the drive is prepared to send/receive a 16 bit
+          data word. This signal is an open collector output. D8...D15
+          are only valid when -IOCS16 is active and the drive is
+          transferring data. The transfer of ECC data occurs only on
+          D0...D7 so D8...D15 are invalid during ECC transfers.
+          
+   ADDR0-2
+          used to select a register or a data port in the drive.
+          
+   -PDIAG
+          will be asserted by Drive 1 to indicate to Drive 0 that it has
+          passed diagnostics. Following a power-on reset or software
+          reset, Drive 1 will negate -PDIAG within 1 msec to indicate to
+          Drive 0 that it is busy.
+          
+          Drive 1 will then assert -PDIAG within 30 secs to indicate that
+          it is no longer busy and can provide status information. After
+          the assertion of -PDIAG, Drive 1 may be unable to accept
+          commands until it has finished its reset procedure and DRDY is
+          set.
+          
+          Following the receipt of a valid Execute Drive Diagnostics
+          command, Drive 1 will negate -PDIAG within 1 msec to indicate
+          to Drive 0 that it is busy and has not yet passed its drive
+          diagnostics. If Drive 1 is pressent, then Drive 0 will wait for
+          up to 5 msec from the receipt of a valid Execte Drive
+          Diagnostics command for Drive 1 to assert -PDIAG. Drive 1
+          should clear BUSY beforeasserting -PDIAG as -PDIAG is used to
+          indicate the Drive 1 has passed its diagnostics and is ready to
+          post status.
+          
+          If -DASP was not asserted by Drive 1 during reset
+          initialization, Drive 0 will post its own status immediately
+          after it completes its diagnostics and clear the Drive 1 Status
+          Register to 00h. Drive 0 may be unable to accept commands until
+          it has finished its reset procedure and DRDY is set.
+          
+   -CS1FX
+          is a chip select generated by address decoding circuitry from
+          host address lines A3...A9. Usually asserted during I/O
+          operations to ports 1F0 through 1F7. -CS1FX is used to access
+          the eight hard disk Command Block Registers.
+          
+   -CS3FX
+          is a chip select generated by address decoding circuitry from
+          host address lines A3...A9. Usually asserted during I/O
+          operations to ports 3F0 through 3F7. -CS3FX is valid during 8
+          bit transfers to/from the Control Block Registers, Alternate
+          Status Register, Device Control Register and drive address.
+          
+          NOTE: The primary host adapter is accessed via I/O addresses
+          1FX and 3FX while the secondary host adapter is accessed via
+          I/O addresses 17X and 37X. See Ed's note under the paragraph
+          "Register Address Decoding" above.
+          
+   -DASP
+          is a time multiplexed signal which indicates that a drive is
+          active or that Drive 1 is present. It is an open collector
+          output.
+          
+          During power-on initialization or after reset, -DASP will be
+          asserted by Drive 1 within 400 msec to indicate its presence.
+          Drive 0 will allow up to 450 msec for Drive 1 to assert -DASP.
+          If Drive 1 is not present, Drive 0 may use -DASP to drive an
+          activity LED.
+          
+          -DASP will be negated following acceptance of the first valid
+          command by Drive 1 or after 31 seconds, whichever comes first.
+          Any time after negation of -DASP, it may be used by either
+          drive as an activity indicator.
+          
+
+I/O Port Functions:
++----+------+------+---+---+---+----------------+---------------+
+|Addr|-CS1FX|-CS3FX|SA2|SA1|SA0| Read (-IOR)    | Write (-IOW)  |
++----+------+------+---+---+---+----------------+---------------+-----------+
+|    |  0   |  0   | X | X | X | ILLEGAL        | ILLEGAL       | <--+      |
+|    |  1   |  1   | X | X | X | High Impedance | Not Used      | Control   |
+|3FX |  1   |  0   | 0 | X | X | High Impedance | Not Used      | Block     |
+|3FX |  1   |  0   | 1 | 0 | X | High Impedance | Not Used      | Registers |
+|3F6 |  1   |  0   | 1 | 1 | 0 | Altern Status  | Device Control|    |      |
+|3F7 |  1   |  0   | 1 | 1 | 1 | Drive Address  | Not Used      | <--+      |
++----+------+------+---+---+---+----------------+---------------+-----------+
+|1F0 |  0   |  1   | 0 | 0 | 0 | Data Port      | Data Port     | <--+      |
+|1F1 |  0   |  1   | 0 | 0 | 1 | Error Register | Precomp       |    |      |
+|1F2 |  0   |  1   | 0 | 1 | 0 | Sector Count   | Sector Count  | Command   |
+|1F3 |  0   |  1   | 0 | 1 | 1 | Sector Number  | Sector Number | Block     |
+|1F4 |  0   |  1   | 1 | 0 | 0 | Cylinder Low   | Cylinder Low  | Registers |
+|1F5 |  0   |  1   | 1 | 0 | 1 | Cylinder High  | Cylinder High |    |      |
+|1F6 |  0   |  1   | 1 | 1 | 0 | Drive / Head   | Drive / Head  |    |      |
+|1F7 |  0   |  1   | 1 | 1 | 1 | Status         | Command       | <--+      |
++----+------+------+---+---+---+----------------+---------------+-----------+
+
+   
+   At power-up or after reset, the Command Block Registers are
+   initialized to the following values:
+   
+
+REGISTER          VALUE
+1F1 Error         : 01
+1F2 Sector Count  : 01
+1F3 Sector Number : 01
+1F4 Cylinder Low  : 00
+1F5 Cylinder High : 00
+1F6 Drive / Head  : 00
+
+   
+   Register Descriptions:
+   
+   1F0: Read/Write: DATA PORT REGISTER
+          All data transferred between the device data buffer and the
+          host passes through this register. Also, the port to which the
+          sector table is transferred during execution of the Format
+          command. Transfers of ECC bytes during the execution of
+          Read/Write Long commands are 8 bit transfers.
+          
+   1F1: Read: ERROR REGISTER
+          Contains status information about the last command executed by
+          the drive. The contents of this register are valid only when
+          the error bit (ERR) in the Status Register is set, except at
+          drive power-up or at the completion of the drive's internal
+          diagnostics, when the register contains a status code. When the
+          error bit (ERR) is set, Error Register bits are interpreted as
+          such:
+          
+
++-----+--------+-------------------------------------------------------------+
+| BIT | Mnemon | Description                                                 |
++-----+--------+-------------------------------------------------------------+
+|  7  |  BBK   | Bad block mark detected in the requested sector's ID field  |
+|  6  |  UNC   | Uncorrectable data error encountered                        |
+|  5  |        | Not used                                                    |
+|  4  |  IDNF  | Requested sector's ID field not found                       |
+|  3  |        | Not used                                                    |
+|  2  |  ABRT  | Command aborted due to drive status error or invalid command|
+|  1  |  TK0NF | Track 0 not found during execution of Recalibrate command   |
+|  0  |  AMNF  | Data address mark not found after correct ID field found    |
++-----+--------+-------------------------------------------------------------+
+
+   
+   1F1: Write: WRITE PRECOMPENSATION
+          The drive ignores the write precompensation value passed by the
+          host.
+          
+   1F2: Read/Write: SECTOR COUNT REGISTER
+          Defines the number of sectors of data to be transferred across
+          the host bus, for the subsequent command. If the value in this
+          register is zero, the sector count is 256 sectors. If the
+          command executes successfully, the value in this register at
+          command completion is zero. As each sector is transferred, the
+          Sector Count register is decremented by one to reflect the
+          number of sectors remaining to be transferred. If the command
+          execution is not successful, this register contains the number
+          of sectors that must be transferred to complete the original
+          request.
+          
+   1F3: Read/Write: SECTOR NUMBER REGISTER
+          Contains the ID number of the first sector to be accessed by
+          the subsequent command. The sector can be from one to the
+          maximum number of sectors per track. See the command
+          description for additional information about the contents of
+          the Sector Number Register following command completion whether
+          successful or unsuccessful.
+          
+   1F4: Read/Write: CYLINDER LOW REGISTER
+          Contains the eight low order bits of the starting cylinder
+          address for any disk access. On multiple sector transfers that
+          cross cylinder boundaries, this register is updated at the end
+          of the command to reflect the current cylinder number. The
+          least significant bits of the cylinder address are loaded into
+          the cylinder low register.
+          
+   d>1F5: Read/Write: CYLINDER HIGH REGISTER
+          Contains the eight high order bits of the starting cylinder
+          address for any disk access. On multiple sector transfers that
+          cross cylinder boundaries, this register is updated at hte end
+          of the command to reflect the current cylinder number. The most
+          significant bits of the cylinder address are loaded into the
+          cylinder high register.
+          
+   1F6: Read/Write: DRIVE/HEAD REGISTER
+          Contains the drive ID number and its head number for any disk
+          access. The contents of the Drive/Head Register are defined on
+          execution of the Initialize Drive Parameters command. The bits
+          are defined as follows:
+          
+
++-----+----------+---------------------------------------------------------+
+| BIT | Mnemonic | Description                                             |
++-----+----------+---------------------------------------------------------+
+|  7  | Reserved | Always one.                                             |
+|  6  | Reserved | Always zero.                                            |
+|  5  | Reserved | Always one.                                             |
+|  4  | DRV      | 0 to select primary drive, 1 to select secondary drive. |
+|  3  | HS3      | MSB of head number.                                     |
+|  2  | HS2      |                                                         |
+|  1  | HS1      |                                                         |
+|  0  | HS0      | LSB of head number.                                     |
++-----+----------+---------------------------------------------------------+
+
+   
+          Upon command completion this register is updated to refplect
+          the head number currently selected.
+          
+   1F7: Read: STATUS REGISTER
+          Contains information about the status of the drive and
+          controller. The contents of this register are updated at the
+          completion of each command. When the busy bit is set, no other
+          bits in the Command Block Registers are valid. When the busy
+          bit is not set, the information in the Status Register and
+          Command Block Registers is valid.
+          
+
++-----+----------+----------------------------------------------------------+
+| BIT | Mnemonic | Description                                              |
++-----+----------+----------------------------------------------------------+
+|  7  |  BUSY    | Busy bit. Set by the controller logic of the drive when  |
+|     |          | ever the drive has access to and the host is locked out  |
+|     |          | of the Command Block Registers. Set under the following  |
+|     |          | conditions:                                              |
+|     |          |  o Within 400 nsec after the negation of RESET or after  |
+|     |          |    SRST is set in the Device Control Register. After a   |
+|     |          |    reset it is recomended that BUSY be set no more than  |
+|     |          |    30 seconds.                                           |
+|     |          |  o Within 400 nsec of a host write to the Command        |
+|     |          |    Register with a Recalibrate, Read Long, Read Buffer,  |
+|     |          |    Read, Read Verify, Initialize Drive Parameters, Seek  |
+|     |          |    Identify Drive, or Execute Drive Diagnostic command.  |
+|     |          |  o Within 5 microseconds following the transfer of 512   |
+|     |          |    bytes of data during the execution of a Write, Write  |
+|     |          |    Buffer or Format Track command; or 512 bytes of data  |
+|     |          |    and the appropriate number of ECC bytes during the    |
+|     |          |    execution of a Write Long command.                    |
+|     |          |    When BUSY is set no Command Block Register can be     |
+|     |          |    written too and a read of any Command Block Register  |
+|     |          |    returns the contents of the Status Register.          |
+|     |          |                                                          |
+|  6  |  DRDY    | Drive Ready bit. Indicates that the drive is ready to    |
+|     |          | accept commands. When and error occurs, this bit stays   |
+|     |          | unchanged until the host reads the Status Register then  |
+|     |          | again indicates that hte drive is ready. On power up,    |
+|     |          | this bit should be cleared and should remain cleared     |
+|     |          | until the drive is up to speed and ready to accept a     |
+|     |          | command.                                                 |
+|     |          |                                                          |
+|  5  |  DWF     | Drive Write Fault bit. When an error occurs, this bit    |
+|     |          | remains unchanged until the host reads the Status        |
+|     |          | Register, then again indicates the current write fault   |
+|     |          | status.                                                  |
+|     |          |                                                          |
+|  4  |  DSC     | Drive Seek Complete bit. This bit is set when a seek     |
+|     |          | operation is complete and the heads are settled over a   |
+|     |          | track. When an error occurs, this bit remains unchanged  |
+|     |          | until the host reads the Status Register, then again it  |
+|     |          | indicates the current seek complete status.              |
+|     |          |                                                          |
+|  3  |  DRQ     | Data Request bit. When set it indicates that the drive   |
+|     |          | is ready to transfer a word or byte of data between the  |
+|     |          | host and the data port.                                  |
+|     |          |                                                          |
+|  2  |  CORR    | Corrected Data bit. When a correctable data error has    |
+|     |          | been encountered and the data has been corrected, this   |
+|     |          | bit is set. This condition does not terminate a multi    |
+|     |          | sector read operation.                                   |
+|     |          |                                                          |
+|  1  |  INDEX   | Index bit. Set when the index mark is detected once per  |
+|     |          | disk revolution.                                         |
+|     |          |                                                          |
+|  0  |  ERROR   | Error bit. When set indicates that the previous command  |
+|     |          | ended in an error. The other bits in the Error Register  |
+|     |          | and Status Register contain additional information about |
+|     |          | the cause of the error.                                  |
++-----+----------+----------------------------------------------------------+
+
+   
+   1F7: Write: COMMAND REGISTER
+          When the host request a command it is transferred to the hard
+          drive through an eight bit code written to the command
+          register. As soon as the drive receives a command in its
+          command register, it begins execution of the command. The
+          following table lists the commands in alphabetical order and
+          the parameters for each executable command:
+          
+
++--------+---------------------------------+-----------------+
+| Command| Command Description             | Parameters Used |
+| Code   |                                 | PC SC SN CY DH  |
++--------+---------------------------------+-----------------+
+| 98h  @ | Check Power Mode                |    V        D   |
+| E5h  @ | Check Power Mode (same as 98h)  |    V        D   |
+| 90h    | Execute Drive Diagnostic        |             D+  |
+| 50h    | Format Track                    |          V  V   |
+| ECh  @ | Identify Drive                  |             D   |
+| 97h  @ | Idle                            |    V        D   |
+| E3h  @ | Idle (same as 97h)              |    V        D   |
+| 95h  @ | Idle Immediate                  |             D   |
+| E1h  @ | Idle Immadiate (same as 95h)    |             D   |
+| 91h    | Initialize Drive Parameters     |    V        V   |
+| E4h  @ | Read Buffer                     |             D   |
+| C8h  @ | Read DMA With Retry             |  >> Unknown <<  |
+| C9h  @ | Read DMA                        |  >> Unknown <<  |
+| C4h  @ | Read Multiple                   |    V  V  V  V   |
+| 20h    | Read Sectors With Retry         |    V  V  V  V   |
+| 21h    | Read Sectors                    |    V  V  V  V   |
+| 22h    | Read Long With Retry            |    V  V  V  V   |
+| 23h    | Read Long                       |    V  V  V  V   |
+| 40h    | Read Verify Sectors With Retry  |    V  V  V  V   |
+| 41h    | Read Verify Sectors             |    V  V  V  V   |
+| 1Xh    | Recalibrate                     |             D   |
+| 7Xh    | Seek                            |          V  V   |
+| EFh  @ | Set Features                    |  V          D   |
+| C6h  @ | Set Multiple Mode               |    V        D   |
+| 99h  @ | Set Sleep Mode                  |             D   |
+| E6h  @ | Set Sleep Mode (same as 99h)    |             D   |
+| 96h  @ | Standby                         |    V        D   |
+| E2h  @ | Standby (same as 96h)           |    V        D   |
+| 94h  @ | Standby Immediate               |             D   |
+| E0h  @ | Standby Immediate (same as 94h) |             D   |
+| 8Xh    | Vendor Unique                   |  >> Unknown <<  |
+| 9Ah    | Vendor Unique                   |  >> Unknown <<  |
+| C0h    | Vendor Unique                   |  >> Unknown <<  |
+| C1h    | Vendor Unique                   |  >> Unknown <<  |
+| C2h    | Vendor Unique                   |  >> Unknown <<  |
+| C3h    | Vendor Unique                   |  >> Unknown <<  |
+| F5h    | Vendor Unique                   |  >> Unknown <<  |
+| F6h    | Vendor Unique                   |  >> Unknown <<  |
+| F7h    | Vendor Unique                   |  >> Unknown <<  |
+| F8h    | Vendor Unique                   |  >> Unknown <<  |
+| F9h    | Vendor Unique                   |  >> Unknown <<  |
+| FAh    | Vendor Unique                   |  >> Unknown <<  |
+| FBh    | Vendor Unique                   |  >> Unknown <<  |
+| FCh    | Vendor Unique                   |  >> Unknown <<  |
+| FDh    | Vendor Unique                   |  >> Unknown <<  |
+| FEh    | Vendor Unique                   |  >> Unknown <<  |
+| FFh    | Vendor Unique                   |  >> Unknown <<  |
+| E8h  @ | Write Buffer                    |             D   |
+| CAh  @ | Write DMA With Retry            |  >> Unknown <<  |
+| CBh  @ | Write DMA                       |  >> Unknown <<  |
+| C5h  @ | Write Multiple                  |    V  V  V  V   |
+| E9h  @ | Write Same                      |  >> Unknown <<  |
+| 30h    | Write Sectors With Retry        |    V  V  V  V   |
+| 31h    | Write Sectors                   |    V  V  V  V   |
+| 32h    | Write Long With Retry           |    V  V  V  V   |
+| 33h    | Write Long                      |    V  V  V  V   |
+| 3Ch  @ | Write Verify                    |    V  V  V  V   |
++--------+---------------------------------+-----------------+
+
+   
+          KEY FOR SYMBOLS IN ABOVE TABLE:
+          
+
+PC    Register 1F1: Write Precompensation
+SC    Register 1F2: Sector Count
+SN    Register 1F3: Sector Number
+CY    Register 1F4+1F5: Cylinder low + high
+DH    Register 1F6: Drive / Head
+
+@     These commands are optional and may not be supported by some drives.
+D     Only DRIVE parameter is valid, HEAD parameter is ignored.
+D+    Both drives execute this command regardless of the DRIVE parameter.
+V     Indicates that the register contains a valid paramterer.
+
+   
+          Commands with >> Unknown << Parameters are not described in
+          this document.
+          
+          If a parameter is blank, then the command does not require the
+          contents of that register.
+          
+   3F6: Read: Alternate Status Register
+          Contains the same information as the Status Register in the
+          Command Block. Reading the Alternate Status Register does not
+          imply an interrupt acknowledge from the host or clear a pending
+          interrupt. See the description of the Status Register above for
+          a definition of bits in this register.
+          
+   3F6: Write: Device Control Register
+          The bits in the Device Control Register are lister in the table
+          below:
+          
+
++-----+----------+----------------------------------------------------------+
+| BIT | Mnemonic | Description                                              |
++-----+----------+----------------------------------------------------------+
+|  7  | Reserved |                                                          |
+|  6  | Reserved |                                                          |
+|  5  | Reserved |                                                          |
+|  4  | Reserved |                                                          |
+|  3  | 1        | Always set.                                              |
+|  2  | SRST     | Host Software Reset bit. When this bit is set the drive  |
+|     |          | is held reset. If two drives are daisy chained on the    |
+|     |          | interface, this bit resets both drives simultaneously.   |
+|     |          |                                                          |
+|  1  | nIEN     | Drive Interrupt Enable bit. The enable bit for the drive |
+|     |          | interrupt to the host. When nIEN is 0 or the drive is    |
+|     |          | selected the host interrupt signal INTRQ is enabled      |
+|     |          | through a tri state buffer to the host. When nIEN is 1   |
+|     |          | or the drive is not selected the host interrupt signal   |
+|     |          | INTRQ is in a hig himpedance state regardless of the     |
+|     |          | presence or absence of a pending interrupt.              |
+|     |          |                                                          |
+|  0  | 0        | Always clear.                                            |
++-----+----------+----------------------------------------------------------+
+
+   
+   3F7: Read: Drive Address Register
+          This port returns the drive select and head select addresses
+          for the drive currently selected. The Drive Address bits are
+          listed in the table below:
+          
+
++-----+----------+------------------------------------------------------+
+| BIT | Mnemonic | Description                                          |
++-----+----------+------------------------------------------------------+
+|  7  | HiZ      | This bit is in high impedance when read.             |
+|  6  | nWTG     | Write Gate bit. When a write to the hard drive is in |
+|     |          | progress, nWTG is 0                                  |
+|  5  | nHS3     | Negated MSB of head number                           |
+|  4  | nHS2     |                                                      |
+|  3  | nHS1     |                                                      |
+|  2  | nHS0     | Negated LSB of head number.                          |
+|  1  | nDS1     | Drive 1 Select bit. When 0, Drive 1 is selected.     |
+|  0  | nDS0     | Drive 0 Select bit. When 0, Drive 0 is selected.     |
++-----+----------+------------------------------------------------------+
+
+   
+   COMMAND DESCRIPTIONS
+   
+   The drive decodes and executes commands loaded into the Command
+   Register. In applications involving two hard drives, both drives
+   receive all commands but only the selected drive executes commands.
+   The recommended procedure for executing a command on the selected
+   drive is:
+   
+    1. Wait for drive to clear BUSY.
+    2. Load required parameters in the Command Block Registers.
+    3. Activate the Interrupt Enable (nIEN) bit.
+    4. Wait for drive to set DRDY.
+    5. Write the command code to the Command Register.
+       
+   
+   Execution of the command begins as soon as the drive loads the Command
+   Block Register. The remainder of this section describes the function
+   of each command.
+   
+   90h: Execute Drive Diagnostic
+          Performs internal diagnostic tests implemented by the drive.
+          Drive 0 sets BUSY within 400 nsec of the receipt of the
+          command.
+          
+          If Drive 1 is present:
+          
+          + Both drives execute diagnostics.
+          + Drive 0 waits up to 5 seconds for Drive 1 to assert PDIAG-
+          + If Drive 1 does not assert PDIAG-, indicatinf a failure,
+            Drive 0 appends 80h with its own diagnostic status.
+          + If the host detects a Drive 1 diagnostic failure when reading
+            Drive 0 status it sets the DRV bit then reads the Drive 1
+            status.
+            
+   
+          If Drive 1 is not present:
+          
+          + Drive 0 reports only its own diagnostic results.
+          + Drive 0 clears BUSY and generates an interrupt.
+            
+   
+          If Drive 1 fails diagnostics, Drive 0 appends 80h with its own
+          diagnostic status and loads that code in the Error Register. If
+          Drive 1 passes its diagnostics or no Drive 1 is present, Drive
+          0 appends 00h with its own diagnostic status and loads that in
+          the Error Register.
+          
+          The Diagnostic Code written to the Error Register is a unique 8
+          bit code as listed below.
+          
+
++------+----------------------------------+
+| Code | Description                      |
++------+----------------------------------+
+|  01  | No error detected.               |
+|  02  | Formatter device error.          |
+|  03  | Sector buffer error.             |
+|  04  | ECC circuitry error.             |
+|  05  | Controller microprocessor error. |
+|  8X  | Drive 1 failed.                  |
++------+----------------------------------+
+
+   
+   50h: Format Track
+          The track address is specified in the Sector Count Register.
+          When the drive accepts this command, it sets the DRQ bit then
+          waits for the host to fill the sector buffer. When the buffer
+          is full, the drive clears DRQ, sets BUSY and begins command
+          execution.
+          
+   ECh: Identify Drive
+          This command enables the host to receive paramater information
+          from the drive. When the host issues this command, the drive
+          sets BUSY, stores the required parameter information in the
+          sector buffer, sets DRQ and generates an interrupt. The host
+          then reads the information from the sector buffer. The table
+          below defines the words stored in the buffer. All reserved
+          fields should be zeros.
+          
+
++-------+-----------------------------------------------------------------+
+|  Word | Description                                                     |
++-------+-----------------------------------------------------------------+
+|  00h  | Bit mapped general configuration information. True when bit set |
+|       | Bit 15: Reserved for non magnetic drives.                       |
+|       | Bit 14: Format speed tolerance gap not required.                |
+|       | Bit 13: Track offset option not available.                      |
+|       | Bit 12: Data strobe offset option not available.                |
+|       | Bit 11: Rotational speed tolerance is < 0.5%                    |
+|       | Bit 10: Disk transfer rate not > 10 MB/s                        |
+|       | Bit 09: Disk transfer rate > 5 MB/s and < 10 MB/s               |
+|       | Bit 08: Disk transfer rate > 5 MB/s                             |
+|       | Bit 07: Removable cartridge drive.                              |
+|       | Bit 06: Fixed drive.                                            |
+|       | Bit 05: Spindle motor control option not implemented.           |
+|       | Bit 04: Head switch time > 15 microseconds.                     |
+|       | Bit 03: Not MFM encoded.                                        |
+|       | Bit 02: Not soft sectored.                                      |
+|       | Bit 01: Hard Sectored.                                          |
+|       | Bit 00: Reserved.                                               |
+|       |                                                                 |
+|  01h  | Number of logical cylinders in the default translation mode.    |
+|       |                                                                 |
+|  02h  | Reserved.                                                       |
+|       |                                                                 |
+|  03h  | Number of logical heads in the default translation mode.        |
+|       |                                                                 |
+|  04h  | Number of unformatted bytes per logical track.                  |
+|       |                                                                 |
+|  05h  | Number of unformatted bytes per sector.                         |
+|       |                                                                 |
+|  06h  | Number of logical sectors per track.                            |
+|       |                                                                 |
+|  07h  | Bits 15...08: Inter Sector Gap after Index & before splice.     |
+|       | Bits 07...00: Inter Sector Gap bytes.                           |
+|       |                                                                 |
+|  08h  | Bits 15...08: Reserved.                                         |
+|       | Bits 07...00: Bytes in Phase Lock Oscillator field.             |
+|       |                                                                 |
+|  09h  | Number of vendor unique status words.                           |
+|       |                                                                 |
+|  0Ah  | Serial number, 20 ASCII chars, right aligned & padded with 20h. |
+|       |                                                                 |
+|  14h  | Controller type:                                                |
+|       | 0000h: Not specified.                                           |
+|       | 0001h: Single ported, single sector buffer capable of data      |
+|       |        transfers only to or from the host or the disk at one    |
+|       |        time.                                                    |
+|       | 0002h: Dual ported, multiple sector buffer capable of           |
+|       |        simultaneous data transfers to and from the host, or     |
+|       |        from the host and the disk.                              |
+|       | 0003h: Dual ported, multiple sector buffer capable of           |
+|       |        simultaneous data transfers with read caching.           |
+|       | 0004h-FFFFh: Reserved.                                          |
+|       |                                                                 |
+|  15h  | Buffer size in 512 byte increments.                             |
+|       |                                                                 |
+|  16h  | Number of ECC bytes passed to host on R/W long operations.      |
+|       |                                                                 |
+|  17h  | Firmware revision, 8 ASCII chars, left aligned & space padded.  |
+|       |                                                                 |
+|  1Bh  | Model Number, 40 ASCII chars, left aligned & space padded.      |
+|       |                                                                 |
+|  2Fh  | READ/WRITE multiples implemented.                               |
+|       |                                                                 |
+|  30h  | Supports double word I/O transfer.                              |
+|       |                                                                 |
+|  31h  | Reserved.                                                       |
+|       |                                                                 |
+|  32h  | Reserved.                                                       |
+|       |                                                                 |
+|  33h  | Minimum PIO data transfer cycle time in nsec.                   |
+|       |                                                                 |
+|  34h  | Minimum DMA data transfer cycle time in nsec.                   |
+|       |                                                                 |
+|  35h  | All words past this point are reserved.                         |
++-------+-----------------------------------------------------------------+
+
+   
+   91h: Initialize Drive Parameters
+          This command wnables the host to set the head switch and sector
+          wrap values for multi sector operations. Upon receipt of the
+          command the drive sets BUSY and generates an interrupt. The
+          only two registers used are the Sector Count Register which
+          specifies the number of sectors and the Drive/Head Register
+          which specifies the number of heads minus one. The DRV bit
+          assigns these values to Drive 0 or Drive 1 as appropriate.
+          
+          This command does not check the sector count and head values
+          for validity. If these values are invalid, the drive will not
+          report an error until another command causes an illegal access.
+          
+   1Xh: Recalibrate
+          This command moves the read/write heads from any location on
+          the disk to cylinder 0. Upon receipt of this command, the drive
+          sets BUSY and issues a seek to cylinder 0. The drive the waits
+          for the seel to complete, updates status, negates BUSY and
+          generates an interrupt.
+          
+   E4h: Read buffer
+          This command enables the host to read the current contents of
+          the drive's sector buffer. When the host issues this command,
+          the drive sets BUSY, sets up the sector buffer for a read
+          operation, sets DRQ, clears BUSY, and generates an interrupt.
+          The host then reads up to 512 bytes of data from the buffer.
+          
+          Read Buffer and Write Buffer commands are synchronizes so that
+          sequential Read Buffer and Write Buffer commands access the
+          same 512 bytes within the buffer.
+          
+   20h: Read Sectors with Retry
+          
+   21h: Read Sectors without Retry
+          The Read Sectors command reads from 1 to 256 sectors, beginning
+          at the specified sector. As specified in the Command Bloks
+          Register, a sector count equal to 0 requests 256 sectors. When
+          the drive accepts this command it sets BUSY and begins
+          execution of the command.
+          
+          For single sector reads, the drive performs an implicit seek if
+          it is not on the requested track. Once there it looks for the
+          appropriate ID field.
+          
+          For no retry commands, if two index pulses occur without an
+          error free read of the requested ID field, the drive posts an
+          ID not found error in the Error Register.
+          
+          For retry commands, the drive attempts to read the ID field up
+          to a vendor specific number of retries before reporting the
+          error.
+          
+          If the drive reads the requested ID field correctly, it must
+          recognize the data address mark within a specified number of
+          bytes or report a data address mark not found error. Once the
+          drive finds the data address mark it reads the data field into
+          the sector buffer. If an error occurs the drive sets the error
+          bits, sets DRQ and generates an interrupt. The drive always
+          sets DRQ regardles of the presence or absence of an error
+          condition at the end of the sector. Upon command completion the
+          Command Block Register contains the cylinder, head, sector of
+          the last sector read.
+          
+   22h: Read Long with Retry
+          
+   23h: Read Long without Retry
+          For multiple sector reads, the drive sets DRQ, clears BUSY and
+          generates an interrupt each time the drive is ready to sent a
+          sector to the host. When the sector transfer completes the
+          drive clears DRQ and on all except the last sector sets BUSY.
+          At the completion of the command, the Command Block Register
+          contains the cylinder, head, sector of the last sector read.
+          
+          If an uncorrectable error occurs during a multiple sector read,
+          the read terminates at the sector in which the error occured.
+          The Command Block Register contains the cylinder, head, sector
+          where the error occured. The host can then determine what error
+          occurred and where. Whether the error was correctable or
+          uncorrectable the drive loads the data in the sector buffer.
+          
+          When a Read Long command executes, data and ECC bytes contained
+          in the data field of the requested sector are returned in the
+          sector buffer. The drive does not check the ECC bytes to
+          determine if a data error has occured. Multi sector Read Long
+          opperations are supported.
+          
+   40h: Read Verify Sector with Retry
+          
+   41h: Read Verify Sector without Retry
+          The execution of this command is identical to the Read Sectors
+          command but the Read Verify command does not cause the drive to
+          set DRQ, and the drive transfers no data to the host. On
+          receipt of Read Verify commandm the drive sets BUSY. When the
+          requested sectors have been verified, the drive clears BUSY and
+          generates an interrupt. Upon command completion the Command
+          Block Register contains the cylinder, head, sector of the last
+          sector verified.
+          
+          If an error occurs during a multi sector verify, the verify
+          terminates at the sector in which the error occured and this
+          can be found in the Command Block Register.
+          
+   7Xh: Seek
+          The seek command initiates a seek to the track and selects the
+          head specified in the Command Block Register. It is not
+          necessary for the drive to be formatted for a seek to execute
+          properly. When the host issues a Seek command the drive sets
+          BUSY and generates an interrupt. The drive will not set DSC
+          until the seek is complete. A seek may net be complete before
+          the drive returns the interrupt. If the host issues a new
+          command to the drive while a seek is in progress, BUSY remains
+          set until the seek completes then the drive executes the new
+          command.
+          
+   EFh: Set Features
+          This command is used by the host to establish parameters that
+          effect the execution of certain drive features. When the drive
+          receives this command it sets BUSY, checks the contents of the
+          Features Register (Write Precomp Register), clears BUSY and
+          generates an interrupt. Features are drive specific and may
+          include:
+          
+          + 33h: retry inhibited
+          + 44h: 11 bytes ECC enabled
+          + 55h: disable read cache
+          + 77h: ECC disabled
+          + 88h: ECC enabled
+          + 99h: retry enabled
+          + AAh: read cache enabled
+          + BBh: 4 bytes ECC enabled
+            
+   
+          If the value in the Feature Register is not supported or is
+          invalid, the drive aborts the command.
+          
+   E8h: Write Buffer
+          This command enables the host to overwrite the contents of the
+          drive's sector buffer with any data pattern. On receipt of this
+          comand the drive sets BUSY within 400 nsec, sets up the sector
+          buffer for a write operation, sets DRQ and clears BUSY. The
+          host then writes up to 512 bytes of data to the buffer. The
+          Read Buffer and Write Buffer are synchronized so that back to
+          back Read Buffer and Write Buffer commands access the same 512
+          bytes within the buffer.
+          
+   30h: Write Sectors with Retry
+          
+   31h: Write Sectors without Retry
+          This command writes from 1 to 256 sectors beginning at the
+          specified sector and as stated earlier, a sector count of 0 in
+          the Command Block Register will request 256 sectors. When the
+          drive accepts this command it sets DRQ and wait for the host to
+          fill the sector buffer with the data to be written to disk. No
+          interrupt is generated to start the first buffer fill operation
+          and once the buffer is full the drive clears the DRQ, sets BUSY
+          and begins execution of the command.
+          
+          For single sector Write operations, the drive sets DRQ upon
+          receipt of the command and waits for the host to fill the
+          sector buffer. Once a sector has been transferred, the drive
+          sets BUSY and clears DRQ. If the drive is not on the requested
+          cylinder and head an inplied seek and/or head switch is
+          performed. Once the desired track is reached the drive searches
+          for the appropriate ID field.
+          
+          If the ID field is read correctly, the information in the
+          buffer, including the ECC bytes is written to the disk. When
+          the drive has processed the sector, it clears BUSY and
+          generated an interrupt. The host reads the Status Register. At
+          the completion of this command the Command Block Registers
+          contain the cylinder, head, sector of the last sector written.
+          
+          During multi sector Write operations, the drive sets DRQ,
+          clears BUSY and generated and interrupt on all but the first
+          sector when it is ready to receive a sector from the host. Once
+          the sector transfer comapletes, the drive clears DRQ, and sets
+          BUSY. When the last sector has been written to the disk, the
+          drive clears BUSY, DRQ is already clear, and generates an
+          interrupt. At the completion of the command, the Command Block
+          Registers contain the cylinder, head, sector of the last sector
+          written to disk.
+          
+          If an error occurs during a multi sector Write operation, the
+          write terminates at the sector in which the error occured. The
+          Command Block Register contains the cylinder, head, sector of
+          the sector in which the error occured. Ther host can then
+          determine which error occured and where.
+          
+   32h: Write Long Sectors with Retry
+          
+   33h: Write Long Sectors without Retry
+          When the Write Long command is executed, the drive writes the
+          data and ECC bytes from the sector buffer to disk. The drive
+          does not generate the ECC bytes itself. Multi sector Write Long
+          operations are supported. Operation is similar to the Write
+          Sector commands above.
+          
