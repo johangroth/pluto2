@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:pluto-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -37,7 +37,7 @@ F 3 "" H 7075 3225 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X05 J6
+L pluto-rescue:CONN_02X05-conn J6
 U 1 1 59ECCE48
 P 1500 2750
 F 0 "J6" H 1500 3050 50  0000 C CNN
@@ -48,7 +48,7 @@ F 3 "" H 1500 1550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X05 J7
+L pluto-rescue:CONN_02X05-conn J7
 U 1 1 59ECCF01
 P 1500 3475
 F 0 "J7" H 1500 3775 50  0000 C CNN
@@ -59,7 +59,7 @@ F 3 "" H 1500 2275 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:CP1_Small C18
+L pluto-rescue:CP1_Small-device C18
 U 1 1 59ECCF2A
 P 4650 1575
 F 0 "C18" H 4660 1645 50  0000 L CNN
@@ -70,7 +70,7 @@ F 3 "" H 4650 1575 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:CP1_Small C19
+L pluto-rescue:CP1_Small-device C19
 U 1 1 59ECCF53
 P 4650 1975
 F 0 "C19" H 4660 2045 50  0000 L CNN
@@ -81,7 +81,7 @@ F 3 "" H 4650 1975 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:CP1_Small C15
+L pluto-rescue:CP1_Small-device C15
 U 1 1 59ECCF86
 P 2750 1250
 F 0 "C15" H 2825 1325 50  0000 L CNN
@@ -92,7 +92,7 @@ F 3 "" H 2750 1250 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L device:CP1_Small C16
+L pluto-rescue:CP1_Small-device C16
 U 1 1 59ECCFE5
 P 2750 1775
 F 0 "C16" H 2875 1850 50  0000 L CNN
@@ -103,7 +103,7 @@ F 3 "" H 2750 1775 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L device:CP1_Small C17
+L pluto-rescue:CP1_Small-device C17
 U 1 1 59ECD006
 P 4325 1150
 F 0 "C17" V 4250 950 50  0000 L CNN
@@ -225,7 +225,7 @@ A[0..3]
 Text HLabel 8575 3350 2    60   Input ~ 0
 A[0..15]
 $Comp
-L device:C_Small C20
+L pluto-rescue:C_Small-device C20
 U 1 1 59ED58A6
 P 7475 5525
 F 0 "C20" V 7600 5475 50  0000 L CNN
@@ -388,7 +388,7 @@ Wire Wire Line
 	8575 4250 7650 4250
 NoConn ~ 7650 5000
 $Comp
-L Oscillators:CXO_DIP8 X2
+L pluto-rescue:CXO_DIP8-Oscillators X2
 U 1 1 59EDF126
 P 9675 4875
 F 0 "X2" H 9475 5125 50  0000 L CNN

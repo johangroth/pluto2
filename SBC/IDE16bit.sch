@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:pluto-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
@@ -188,7 +188,7 @@ D6
 Text Label 3900 6050 0    60   ~ 0
 D7
 $Comp
-L conn:CONN_02X20 P1
+L pluto-rescue:CONN_02X20-conn P1
 U 1 1 5932FB36
 P 10300 2825
 F 0 "P1" H 10300 3875 50  0000 C CNN

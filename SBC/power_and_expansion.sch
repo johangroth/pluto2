@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:pluto-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L mechanical:Mounting_Hole MK2
+L pluto-rescue:Mounting_Hole-mechanical MK2
 U 1 1 59149E60
 P 1825 3025
 F 0 "MK2" H 1825 3225 50  0000 C CNN
@@ -26,7 +26,7 @@ F 3 "" H 1825 3025 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L mechanical:Mounting_Hole MK3
+L pluto-rescue:Mounting_Hole-mechanical MK3
 U 1 1 59149E83
 P 1825 3450
 F 0 "MK3" H 1825 3650 50  0000 C CNN
@@ -37,7 +37,7 @@ F 3 "" H 1825 3450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L mechanical:Mounting_Hole MK1
+L pluto-rescue:Mounting_Hole-mechanical MK1
 U 1 1 5932DD04
 P 1125 3950
 F 0 "MK1" H 1125 4150 50  0000 C CNN
@@ -48,7 +48,7 @@ F 3 "" H 1125 3950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L mechanical:Mounting_Hole MK4
+L pluto-rescue:Mounting_Hole-mechanical MK4
 U 1 1 5932DD62
 P 1825 3950
 F 0 "MK4" H 1825 4150 50  0000 C CNN
@@ -59,7 +59,7 @@ F 3 "" H 1825 3950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_02X05 J8
+L pluto-rescue:CONN_02X05-conn J8
 U 1 1 59F22BEE
 P 4275 3000
 F 0 "J8" H 4275 3300 50  0000 C CNN
@@ -122,7 +122,7 @@ Connection ~ 4775 2900
 NoConn ~ 4525 3200
 NoConn ~ 4025 3200
 $Comp
-L mechanical:Mounting_Hole MK5
+L pluto-rescue:Mounting_Hole-mechanical MK5
 U 1 1 59F424EE
 P 2600 3000
 F 0 "MK5" H 2600 3200 50  0000 C CNN
@@ -133,7 +133,7 @@ F 3 "" H 2600 3000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L mechanical:Mounting_Hole MK6
+L pluto-rescue:Mounting_Hole-mechanical MK6
 U 1 1 59F42548
 P 2600 3350
 F 0 "MK6" H 2600 3550 50  0000 C CNN
@@ -144,7 +144,7 @@ F 3 "" H 2600 3350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:CONN_01X04 J4
+L pluto-rescue:CONN_01X04-conn J4
 U 1 1 5A1609CD
 P 7650 1725
 F 0 "J4" H 7650 1975 50  0000 C CNN
@@ -230,7 +230,7 @@ Connection ~ 7275 1675
 NoConn ~ 7450 1875
 Connection ~ 7375 1675
 $Comp
-L device:Fuse_Small F1
+L pluto-rescue:Fuse_Small-device F1
 U 1 1 5A30BB96
 P 6800 1575
 F 0 "F1" H 6800 1515 50  0000 C CNN
@@ -241,7 +241,7 @@ F 3 "" H 6800 1575 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L standard:SPDT S1
+L pluto-rescue:SPDT-standard S1
 U 1 1 5A30BD5A
 P 6425 1625
 F 0 "S1" H 6425 1775 60  0000 C CNN
@@ -268,7 +268,7 @@ F 3 "" H 5975 1625 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:R_Small R1
+L pluto-rescue:R_Small-device R1
 U 1 1 5A30C649
 P 5625 1625
 F 0 "R1" V 5700 1575 50  0000 L CNN
@@ -296,7 +296,7 @@ Wire Wire Line
 Wire Wire Line
 	5425 1625 5525 1625
 $Comp
-L conn:TEST_1P J1
+L pluto-rescue:TEST_1P-conn J1
 U 1 1 5A30C731
 P 1450 5025
 F 0 "J1" H 1450 5295 50  0000 C CNN
@@ -307,7 +307,7 @@ F 3 "" H 1650 5025 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:TEST_1P J3
+L pluto-rescue:TEST_1P-conn J3
 U 1 1 5A30C776
 P 1775 5025
 F 0 "J3" H 1775 5295 50  0000 C CNN
@@ -318,7 +318,7 @@ F 3 "" H 1975 5025 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:TEST_1P J9
+L pluto-rescue:TEST_1P-conn J9
 U 1 1 5A30C7BB
 P 2125 5025
 F 0 "J9" H 2125 5295 50  0000 C CNN
@@ -329,7 +329,7 @@ F 3 "" H 2325 5025 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:TEST_1P J2
+L pluto-rescue:TEST_1P-conn J2
 U 1 1 5A30C814
 P 1450 5625
 F 0 "J2" H 1450 5895 50  0000 C CNN
@@ -340,7 +340,7 @@ F 3 "" H 1650 5625 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:TEST_1P J5
+L pluto-rescue:TEST_1P-conn J5
 U 1 1 5A30C853
 P 1775 5625
 F 0 "J5" H 1775 5895 50  0000 C CNN
@@ -351,7 +351,7 @@ F 3 "" H 1975 5625 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:TEST_1P J10
+L pluto-rescue:TEST_1P-conn J10
 U 1 1 5A30C89C
 P 2125 5625
 F 0 "J10" H 2125 5895 50  0000 C CNN

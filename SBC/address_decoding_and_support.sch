@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:pluto-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L device:R_Network07 RN2
+L pluto-rescue:R_Network07-device RN2
 U 1 1 58D6C524
 P 3950 1400
 F 0 "RN2" V 3550 1400 50  0000 C CNN
@@ -26,7 +26,7 @@ F 3 "" H 3950 1400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Oscillators:CXO_DIP8 X1
+L pluto-rescue:CXO_DIP8-Oscillators X1
 U 1 1 58D6C921
 P 4350 6450
 F 0 "X1" H 4150 6700 50  0000 L CNN
@@ -70,7 +70,7 @@ F 3 "" H 2050 2675 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L switches:SW_Push SW1
+L pluto-rescue:SW_Push-switches SW1
 U 1 1 58D6D3A4
 P 1650 3650
 F 0 "SW1" H 1575 3550 50  0000 L CNN
@@ -131,7 +131,7 @@ Text HLabel 7800 3275 0    60   Output ~ 0
 Text HLabel 1975 6925 2    60   Output ~ 0
 ~KS
 $Comp
-L device:R_Network07 RN1
+L pluto-rescue:R_Network07-device RN1
 U 1 1 594C05A8
 P 1350 6000
 F 0 "RN1" V 950 6000 50  0000 C CNN
@@ -306,7 +306,7 @@ F 3 "" H 8525 4450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:C_Small C22
+L pluto-rescue:C_Small-device C22
 U 1 1 59F44526
 P 9375 4350
 F 0 "C22" V 9250 4300 50  0000 L CNN
@@ -317,7 +317,7 @@ F 3 "" H 9375 4350 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L device:C_Small C21
+L pluto-rescue:C_Small-device C21
 U 1 1 59F44553
 P 8175 4350
 F 0 "C21" V 8050 4300 50  0000 L CNN
@@ -384,7 +384,7 @@ F 3 "" H 2850 3225 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:R_Small R2
+L pluto-rescue:R_Small-device R2
 U 1 1 5A37C778
 P 1650 2975
 F 0 "R2" H 1680 2995 50  0000 L CNN
@@ -395,7 +395,7 @@ F 3 "" H 1650 2975 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:R_Small R3
+L pluto-rescue:R_Small-device R3
 U 1 1 5A37C7D7
 P 2050 3700
 F 0 "R3" H 2080 3720 50  0000 L CNN
@@ -408,7 +408,7 @@ $EndComp
 Text HLabel 4575 2725 2    60   Output ~ 0
 RES
 $Comp
-L device:CP_Small C4
+L pluto-rescue:CP_Small-device C4
 U 1 1 5A37EF31
 P 2050 4025
 F 0 "C4" H 2060 4095 50  0000 L CNN
@@ -419,7 +419,7 @@ F 3 "" H 2050 4025 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:C_Small C6
+L pluto-rescue:C_Small-device C6
 U 1 1 5A37FB89
 P 3650 3625
 F 0 "C6" H 3650 3700 50  0000 L CNN
@@ -437,7 +437,7 @@ NoConn ~ 7975 3400
 NoConn ~ 9425 2025
 NoConn ~ 9425 2150
 $Comp
-L device:R_Small R4
+L pluto-rescue:R_Small-device R4
 U 1 1 5A3880A9
 P 3950 3475
 F 0 "R4" V 4025 3450 50  0000 L CNN

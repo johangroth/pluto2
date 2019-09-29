@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:pluto-cache
-EELAYER 29 0
+EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -428,7 +428,7 @@ $EndComp
 Text HLabel 1300 2850 0    60   Input ~ 0
 ~SO
 $Comp
-L 65xx:WD65C02PLCC44 U1
+L pluto-rescue:WD65C02PLCC44-65xx U1
 U 1 1 59EBAA82
 P 2175 2600
 F 0 "U1" H 2175 1450 60  0000 C CNN
