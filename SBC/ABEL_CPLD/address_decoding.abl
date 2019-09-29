@@ -26,7 +26,7 @@ EQUATIONS
 	IO2	= (Address >= ^h7FA0) & (Address <= ^h7FBF);
 	RTC	= (Address >= ^h7F80) & (Address <= ^h7F9F);
 	MWR 	= CLK & !RW;
-	MRD 	= CLK & RW;
+	MRD 	= RW & CLK;
 
 TEST_VECTORS
 	(Address -> [ ROMSEL,	DUART,	IO1,	IO2,	RTC,	RAMSEL	])

@@ -8555,3 +8555,370 @@ if [runCmd "\"$cpld_bin/lciedit\" @lattice_cmd.rs2"] {
 
 ########## Tcl recorder end at 12/05/18 20:17:01 ###########
 
+
+########## Tcl recorder starts at 09/29/19 18:48:16 ##########
+
+set version "2.0"
+set proj_dir "Z:/HOME/dev/repos_github/pluto2/SBC/CPLD"
+cd $proj_dir
+
+# Get directory paths
+set pver $version
+regsub -all {\.} $pver {_} pver
+set lscfile "lsc_"
+append lscfile $pver ".ini"
+set lsvini_dir [lindex [array get env LSC_INI_PATH] 1]
+set lsvini_path [file join $lsvini_dir $lscfile]
+if {[catch {set fid [open $lsvini_path]} msg]} {
+	 puts "File Open Error: $lsvini_path"
+	 return false
+} else {set data [read $fid]; close $fid }
+foreach line [split $data '\n'] { 
+	set lline [string tolower $line]
+	set lline [string trim $lline]
+	if {[string compare $lline "\[paths\]"] == 0} { set path 1; continue}
+	if {$path && [regexp {^\[} $lline]} {set path 0; break}
+	if {$path && [regexp {^bin} $lline]} {set cpld_bin $line; continue}
+	if {$path && [regexp {^fpgapath} $lline]} {set fpga_dir $line; continue}
+	if {$path && [regexp {^fpgabinpath} $lline]} {set fpga_bin $line}}
+
+set cpld_bin [string range $cpld_bin [expr [string first "=" $cpld_bin]+1] end]
+regsub -all "\"" $cpld_bin "" cpld_bin
+set cpld_bin [file join $cpld_bin]
+set install_dir [string range $cpld_bin 0 [expr [string first "ispcpld" $cpld_bin]-2]]
+regsub -all "\"" $install_dir "" install_dir
+set install_dir [file join $install_dir]
+set fpga_dir [string range $fpga_dir [expr [string first "=" $fpga_dir]+1] end]
+regsub -all "\"" $fpga_dir "" fpga_dir
+set fpga_dir [file join $fpga_dir]
+set fpga_bin [string range $fpga_bin [expr [string first "=" $fpga_bin]+1] end]
+regsub -all "\"" $fpga_bin "" fpga_bin
+set fpga_bin [file join $fpga_bin]
+
+if {[string match "*$fpga_bin;*" $env(PATH)] == 0 } {
+   set env(PATH) "$fpga_bin;$env(PATH)" }
+
+if {[string match "*$cpld_bin;*" $env(PATH)] == 0 } {
+   set env(PATH) "$cpld_bin;$env(PATH)" }
+
+lappend auto_path [file join $install_dir "ispcpld" "tcltk" "lib" "ispwidget" "runproc"]
+package require runcmd
+
+# Commands to make the Process: 
+# JEDEC File
+if [runCmd "\"$cpld_bin/sch2blf\" -dev Lattice -sup ide.sch  -err automake.err"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblflink\" \"ide.bls\" -o \"ide.bl0\" -ipo  -family -err \"automake.err\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblifopt\" -i ide.bl0 -o ide.bl1 -collapse none -reduce none  -err automake.err -keepwires -family"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblflink\" \"ide.bl1\" -o \"pluto.bl2\" -omod \"pluto\"  -err \"automake.err\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/impsrc\"  -prj pluto -lci pluto.lct -log pluto.imp -err automake.err -tti pluto.bl2 -dir $proj_dir"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci pluto.lct -blifopt  pluto.b2_"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblifopt\" pluto.bl2 -sweep -mergefb -err automake.err -o pluto.bl3  @pluto.b2_"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci pluto.lct -dev mach4a -diofft  pluto.d0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mdiofft\" pluto.bl3 -pla -family AMDMACH -idev van -o pluto.tt2 -oxrf pluto.xrf -err automake.err  @pluto.d0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/tt2tott3\" -prj pluto -dir $proj_dir -log pluto.log -tti pluto.tt2 -tto pluto.tt3"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci pluto.lct -dev mach4a -prefit  pluto.l0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/prefit\" -inp pluto.tt3 -out pluto.tt4 -err automake.err -log pluto.log -percent pluto.tte -mod ide  @pluto.l0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/blif2eqn\" pluto.tte -o pluto.eq3 -use_short -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/lci2vci\" -lci pluto.lct -out pluto.vct -log pluto.l2v"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [catch {open pluto.rsp w} rspFile] {
+	puts stderr "Cannot create response file pluto.rsp: $rspFile"
+} else {
+	puts $rspFile "-inp \"pluto.tt4\" -vci \"pluto.vct\" -log \"pluto.log\" -eqn \"pluto.eq3\" -dev mach463a -dat \"$install_dir/ispcpld/dat/mach4a/\" -msg \"$install_dir/ispcpld/dat/\" -err automake.err -tmv \"NoInput.tmv\" 
+"
+	close $rspFile
+}
+if [runCmd "\"$cpld_bin/machfitr\" \"@pluto.rsp\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+file delete pluto.rsp
+if [runCmd "\"$cpld_bin/lci2vci\" -vci pluto.vco -out pluto.lco -log pluto.v2l"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/synsvf\" -exe \"$install_dir/ispvmsystem/ispufw\" -prj pluto -if pluto.jed -j2s -log pluto.svl "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 09/29/19 18:48:16 ###########
+
+
+########## Tcl recorder starts at 09/29/19 18:48:32 ##########
+
+# Commands to make the Process: 
+# Post-Fit Pinouts
+if [runCmd "\"$cpld_bin/sch2blf\" -dev Lattice -sup ide.sch  -err automake.err"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblflink\" \"ide.bls\" -o \"ide.bl0\" -ipo  -family -err \"automake.err\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblifopt\" -i ide.bl0 -o ide.bl1 -collapse none -reduce none  -err automake.err -keepwires -family"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblflink\" \"ide.bl1\" -o \"pluto.bl2\" -omod \"pluto\"  -err \"automake.err\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/impsrc\"  -prj pluto -lci pluto.lct -log pluto.imp -err automake.err -tti pluto.bl2 -dir $proj_dir"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci pluto.lct -blifopt  pluto.b2_"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblifopt\" pluto.bl2 -sweep -mergefb -err automake.err -o pluto.bl3  @pluto.b2_"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci pluto.lct -dev mach4a -diofft  pluto.d0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mdiofft\" pluto.bl3 -pla -family AMDMACH -idev van -o pluto.tt2 -oxrf pluto.xrf -err automake.err  @pluto.d0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/tt2tott3\" -prj pluto -dir $proj_dir -log pluto.log -tti pluto.tt2 -tto pluto.tt3"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci pluto.lct -dev mach4a -prefit  pluto.l0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/prefit\" -inp pluto.tt3 -out pluto.tt4 -err automake.err -log pluto.log -percent pluto.tte -mod ide  @pluto.l0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/blif2eqn\" pluto.tte -o pluto.eq3 -use_short -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/lci2vci\" -lci pluto.lct -out pluto.vct -log pluto.l2v"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [catch {open pluto.rsp w} rspFile] {
+	puts stderr "Cannot create response file pluto.rsp: $rspFile"
+} else {
+	puts $rspFile "-inp \"pluto.tt4\" -vci \"pluto.vct\" -log \"pluto.log\" -eqn \"pluto.eq3\" -dev mach463a -dat \"$install_dir/ispcpld/dat/mach4a/\" -msg \"$install_dir/ispcpld/dat/\" -err automake.err -tmv \"NoInput.tmv\" 
+"
+	close $rspFile
+}
+if [runCmd "\"$cpld_bin/machfitr\" \"@pluto.rsp\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+file delete pluto.rsp
+if [runCmd "\"$cpld_bin/lci2vci\" -vci pluto.vco -out pluto.lco -log pluto.v2l"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/synsvf\" -exe \"$install_dir/ispvmsystem/ispufw\" -prj pluto -if pluto.jed -j2s -log pluto.svl "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+# Application to view the Process: 
+# Post-Fit Pinouts
+if [catch {open lattice_cmd.rs2 w} rspFile] {
+	puts stderr "Cannot create response file lattice_cmd.rs2: $rspFile"
+} else {
+	puts $rspFile "-src pluto.tt4 -type PLA -devfile \"$install_dir/ispcpld/dat/mach4a/mach463ace.dev\" -postfit -lci pluto.lco
+"
+	close $rspFile
+}
+if [runCmd "\"$cpld_bin/lciedit\" @lattice_cmd.rs2"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 09/29/19 18:48:32 ###########
+
