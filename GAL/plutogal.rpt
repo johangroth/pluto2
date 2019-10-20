@@ -1,0 +1,192 @@
+
+
+                                                                      Page 1
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Mon Aug 05 11:26:53 2019
+
+Pluto GAL Address Decoding
+
+
+
+--------------------------------------------------------------------------------
+
+Module                   : 'pluto_gal_address_decoding'
+
+--------------------------------------------------------------------------------
+
+Input files:
+
+    ABEL PLA file        : plutogal.tt3
+    Device library       : P22V10G.dev
+
+Output files:
+
+    Report file          : plutogal.rpt
+    Programmer load file : plutogal.jed
+
+--------------------------------------------------------------------------------
+
+
+                                                                      Page 2
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Mon Aug 05 11:26:53 2019
+
+Pluto GAL Address Decoding
+
+P22V10G Programmed Logic:
+--------------------------------------------------------------------------------
+
+
+
+MRD     = !(  CLK & RW );
+
+MWR     = !(  CLK & !RW );
+
+RAMSEL     = (  A15 
+              #   A14 & A13 & A12 & A11 & A10 & A9 & A8 );
+
+ROMSEL     = (  !A15 );
+
+DUART     = !(  !A15 & A14 & A13 & A12 & A11 & A10 & A9 & A8 & A7 & A6 & A5 );
+
+VIA1     = !(  !A15 & A14 & A13 & A12 & A11 & A10 & A9 & A8 & A7 & A6 & !A5 );
+
+VIA2     = !(  !A15 & A14 & A13 & A12 & A11 & A10 & A9 & A8 & A7 & !A6 & A5 );
+
+RTC     = !(  !A15 & A14 & A13 & A12 & A11 & A10 & A9 & A8 & A7 & !A6 & !A5 );
+
+IO     = !(  !A15 & A14 & A13 & A12 & A11 & A10 & A9 & A8 & !A7 & A6 & A5 );
+
+
+
+                                                                      Page 3
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Mon Aug 05 11:26:53 2019
+
+Pluto GAL Address Decoding
+
+P22V10G Chip Diagram:
+--------------------------------------------------------------------------------
+
+
+
+
+                                   P22V10G
+
+                         +---------\       /---------+
+                         |          \     /          |
+                         |           -----           |
+                     CLK |  1                    24  | Vcc                     
+                         |                           |
+                     A15 |  2                    23  | RW                      
+                         |                           |
+                     A14 |  3                    22  | !MRD                    
+                         |                           |
+                     A13 |  4                    21  | !MWR                    
+                         |                           |
+                     A12 |  5                    20  | !VIA1                   
+                         |                           |
+                     A11 |  6                    19  | ROMSEL                  
+                         |                           |
+                     A10 |  7                    18  | RAMSEL                  
+                         |                           |
+                      A9 |  8                    17  | !DUART                  
+                         |                           |
+                      A8 |  9                    16  | !VIA2                   
+                         |                           |
+                      A7 | 10                    15  | !RTC                    
+                         |                           |
+                      A6 | 11                    14  | !IO                     
+                         |                           |
+                     GND | 12                    13  | A5                      
+                         |                           |
+                         |                           |
+                         `---------------------------'
+
+                        SIGNATURE: N/A
+
+
+                                                                      Page 4
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Mon Aug 05 11:26:53 2019
+
+Pluto GAL Address Decoding
+
+P22V10G Resource Allocations:
+--------------------------------------------------------------------------------
+
+
+
+        Device        | Resource  |   Design    |
+       Resources      | Available | Requirement | Unused
+======================|===========|=============|==============
+                      |           |             |
+Input Pins:           |           |             |
+                      |           |             |
+          Input:      |     12    |     12      |    0 (  0 %)
+                      |           |             |
+Output Pins:          |           |             |
+                      |           |             |
+          In/Out:     |     10    |     10      |    0 (  0 %)
+          Output:     |      -    |      -      |    -
+                      |           |             |
+Buried Nodes:         |           |             |
+                      |           |             |
+          Input Reg:  |      -    |      -      |    -
+          Pin Reg:    |     10    |      0      |   10 (100 %)
+          Buried Reg: |      -    |      -      |    -
+
+
+                                                                      Page 5
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Mon Aug 05 11:26:53 2019
+
+Pluto GAL Address Decoding
+
+P22V10G Product Terms Distribution:
+--------------------------------------------------------------------------------
+
+
+
+            Signal                       |    Pin   | Terms | Terms | Terms
+             Name                        | Assigned | Used  |  Max  | Unused
+=========================================|==========|=======|=======|=======
+MRD                                      |   22     |   1   |  10   |   9
+MWR                                      |   21     |   1   |  12   |  11
+RAMSEL                                   |   18     |   2   |  16   |  14
+ROMSEL                                   |   19     |   1   |  16   |  15
+DUART                                    |   17     |   1   |  14   |  13
+VIA1                                     |   20     |   1   |  14   |  13
+VIA2                                     |   16     |   1   |  12   |  11
+RTC                                      |   15     |   1   |  10   |   9
+IO                                       |   14     |   1   |   8   |   7
+
+
+     ==== List of Inputs/Feedbacks ====
+
+Signal Name                              | Pin      | Pin Type
+=========================================|==========|=========
+A15                                      |    2     | INPUT
+A14                                      |    3     | INPUT
+A13                                      |    4     | INPUT
+A12                                      |    5     | INPUT
+A11                                      |    6     | INPUT
+A10                                      |    7     | INPUT
+A9                                       |    8     | INPUT
+A8                                       |    9     | INPUT
+A7                                       |   10     | INPUT
+A6                                       |   11     | INPUT
+A5                                       |   13     | INPUT
+CLK                                      |    1     | CLK/IN
+RW                                       |   23     | BIDIR
+
+
+                                                                      Page 6
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Mon Aug 05 11:26:53 2019
+
+Pluto GAL Address Decoding
+
+P22V10G Unused Resources:
+--------------------------------------------------------------------------------
+
+
+
+ Pin   |  Pin   |   Product   | Flip-flop
+Number |  Type  |   Terms     |   Type
+=======|========|=============|==========
+   -   |    -   |     -       |    -

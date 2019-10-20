@@ -125,15 +125,9 @@ Wire Wire Line
 Wire Wire Line
 	5200 7200 4800 7200
 Wire Wire Line
-	5200 7300 4800 7300
-Wire Wire Line
-	5200 7400 4800 7400
-Wire Wire Line
 	5200 7500 4800 7500
 Wire Wire Line
 	5200 7800 4800 7800
-Wire Wire Line
-	5200 8000 4800 8000
 Wire Wire Line
 	5700 6300 6200 6300
 Wire Wire Line
@@ -160,8 +154,6 @@ Wire Wire Line
 	6475 7600 5700 7600
 Wire Wire Line
 	5700 7900 6200 7900
-Wire Wire Line
-	5700 8000 6200 8000
 Wire Wire Line
 	6475 8100 5700 8100
 Wire Wire Line
@@ -409,16 +401,6 @@ Wire Wire Line
 	9875 2000 9575 2000
 Wire Wire Line
 	9875 2100 9575 2100
-Wire Wire Line
-	9875 2200 9575 2200
-Wire Wire Line
-	9875 2300 9575 2300
-Wire Wire Line
-	9875 2400 9575 2400
-Wire Wire Line
-	9875 2500 9575 2500
-Wire Wire Line
-	9875 2600 9575 2600
 Wire Wire Line
 	9875 3650 8600 3725
 Wire Wire Line
@@ -927,7 +909,7 @@ U 1 1 5D6C1D60
 P 12075 4475
 F 0 "D4" H 12050 4375 50  0000 C CNN
 F 1 "DIRQ2" H 12250 4400 50  0000 C CNN
-F 2 "Diode_SMD:D_SOD-323" H 12075 4300 50  0001 C CNN
+F 2 "Diode_SMD:D_SOD-323_HandSoldering" H 12075 4300 50  0001 C CNN
 F 3 "www.st.com/resource/en/datasheet/bat48.pdf" H 12075 4475 50  0001 C CNN
 	1    12075 4475
 	1    0    0    -1  
@@ -938,15 +920,59 @@ U 1 1 5D6D7B96
 P 6675 4475
 F 0 "D2" H 6650 4375 50  0000 C CNN
 F 1 "DIRQ1" H 6850 4400 50  0000 C CNN
-F 2 "Diode_SMD:D_SOD-323" H 6675 4300 50  0001 C CNN
+F 2 "Diode_SMD:D_SOD-323_HandSoldering" H 6675 4300 50  0001 C CNN
 F 3 "www.st.com/resource/en/datasheet/bat48.pdf" H 6675 4475 50  0001 C CNN
 	1    6675 4475
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	7500 2200 7500 5700
+Wire Wire Line
+	7500 5700 4250 5700
+Wire Wire Line
+	4250 5700 4250 8000
+Wire Wire Line
+	7500 2200 9875 2200
+Wire Wire Line
+	8000 2300 8000 8000
+Wire Wire Line
+	5700 8000 8000 8000
+Wire Wire Line
+	8000 2300 9875 2300
+Wire Wire Line
+	7575 2500 7575 5800
+Wire Wire Line
+	7575 5800 4350 5800
+Wire Wire Line
+	4350 5800 4350 7400
+Wire Wire Line
+	4350 7400 5200 7400
+Wire Wire Line
+	7575 2500 9875 2500
+Wire Wire Line
+	7650 2400 7650 5900
+Wire Wire Line
+	7650 5900 4450 5900
+Wire Wire Line
+	4450 5900 4450 7300
+Wire Wire Line
+	4450 7300 5200 7300
+Wire Wire Line
+	7650 2400 9875 2400
+Wire Wire Line
+	7800 2600 7800 6000
+Wire Wire Line
+	7800 6000 4800 6000
+Wire Wire Line
+	4800 6000 4800 6200
+Wire Wire Line
+	7800 2600 9875 2600
 Wire Bus Line
 	9475 1800 9475 2000
 Wire Bus Line
 	4700 7900 4700 8450
+Wire Wire Line
+	4250 8000 5200 8000
 Wire Bus Line
 	11700 3075 11700 5175
 Wire Bus Line

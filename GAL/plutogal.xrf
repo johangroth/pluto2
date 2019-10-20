@@ -1,0 +1,17 @@
+ispLEVER Classic 2.0.00.17.20.15 Signal Name Cross Reference File
+Copyright(C), 1992-2015, Lattice Semiconductor Corp.
+All Rights Reserved.
+
+Design 'pluto_gal_address_decoding' created Mon Aug 05 11:26:52 2019
+
+Title:  Pluto GAL Address Decoding
+
+ LEGEND:  '>'  Functional Block Port Separator
+          '/'  Hierarchy Path Separator
+          '@'  Automatically Generated Node
+
+
+Short Name                              Hierarchical Name
+----------                              -----------------
+
+ *** Shortened names not required for this design. ***

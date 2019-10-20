@@ -1,0 +1,7 @@
+$DEVICE         p22v10g    fit    plutogal.tt3
+$PINS   22  IO:14   RTC:15   VIA2:16   VIA1:20   DUART:17   ROMSEL:19   RAMSEL:18   
+MWR:21   MRD:22   RW:23   CLK:1   A5:13   A6:11   A7:10   
+A8:9   A9:8   A10:7   A11:6   A12:5   A13:4   A14:3   
+A15:2   
+--------------------------------------------------------------
+
