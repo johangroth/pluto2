@@ -24,7 +24,7 @@
 
         via_timer2_irq_mask = %00100000
 
-via1_init_table
+via1_init_table:
         .byte   $00     ; PRB
         .byte   $00     ; PRA
         .byte   $00     ; DDRB
@@ -65,7 +65,7 @@ n_via1_registers=*-via1_init_table-1
         via2timer1mask = %00000110
         via2timer2mask = %00000101
 
-via2_init_table
+via2_init_table:
         .byte   $00     ; PRB
         .byte   $00     ; PRA
         .byte   $00     ; DDRB

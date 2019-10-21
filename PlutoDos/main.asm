@@ -1,7 +1,7 @@
 .pc02
 .segment    "CODE"
         .org $8000
-.define emulator 1
+.define emulator 0
 
 ; =============================================================================
 ; LOAD ASSEMBLER MACROS

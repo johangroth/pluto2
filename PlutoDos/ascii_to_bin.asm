@@ -144,7 +144,7 @@ l09:
         bit #0
         beq l11
 .else
-        bbr 0,control_flags,l11         ;branch if not working in base 10
+        bbr0 control_flags,l11         ;branch if not working in base 10
 .endif
 
 ;
@@ -192,7 +192,7 @@ l12:
         bit #0
         beq l14
 .else
-        bbr 0,control_flags,l14         ;branch if not working in base 10
+        bbr0 control_flags,l14         ;branch if not working in base 10
 .endif
 
 ;

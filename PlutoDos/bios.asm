@@ -18,11 +18,11 @@
 ;;             jsr input_dec  ;call subroutine
 ;;
 ;;;
-input_dec: .proc
-        smb 0,control_flags
-        rmb 1,control_flags
+.proc input_dec
+        smb0 control_flags
+        rmb1 control_flags
         jmp input
-        .pend
+.endproc
 
 ;;;
 ;;  INPUT_HEX: Request 1-8 ASCII hex numbers and convert to binary.
@@ -40,11 +40,11 @@ input_dec: .proc
 ;;             jsr input_hex  ;call subroutine
 ;;
 ;;;
-input_hex:  .proc
-        rmb 0,control_flags         ;Set flags ...
-        rmb 1,control_flags         ;... for hex input
+.proc input_hex
+        rmb0 control_flags         ;Set flags ...
+        rmb1 control_flags         ;... for hex input
         jmp input
-        .pend
+.endproc
 
 ;;;
 ;;  INPUT: Input characters from console, filtered by control_flags.
@@ -61,12 +61,12 @@ input_hex:  .proc
 ;;             jsr input                ;call input
 ;;
 ;;;
-input:  .proc
+.proc input
         lda #>input_buffer
         ldy #<input_buffer
         jsr read_line               ;x will contain number of characters read
         jmp ascii_to_bin            ;Convert ASCII in input_buffer to binary in number_buffer
-        .pend
+.endproc
 
 ;;;
 ;; READ_LINE subroutine: Read characters from terminal until CR is found or maximum characters have been read.
@@ -107,7 +107,7 @@ input:  .proc
 ;;              ldx #4
 ;;              jsr read_line
 ;;;
-read_line:  .proc
+.proc read_line
         sta buffer_address_high     ;Save high byte of input buffer address
         sty buffer_address_low      ;Save low byte of input buffer address
         stx buffer_length           ;Save maximum length
@@ -133,7 +133,7 @@ l3:
         ; Check if buffer full
         ; If not, store character and echo
 l2:
-.if emulator==true
+.if emulator=1
         tax
         lda control_flags
         bit #1
@@ -143,26 +143,26 @@ l2:
         txa
 
 .else
-        bbs 1,control_flags,check_buffer    ;Bit 1 is set which means any character is allowed, so try to store it
-        bbs 0,control_flags,decimal_input   ;Bit 0 is set which means decimal input
-.fi
+        bbs1 control_flags,check_buffer    ;Bit 1 is set which means any character is allowed, so try to store it
+        bbs0 control_flags,decimal_input   ;Bit 0 is set which means decimal input
+.endif
         ; Hexdecimal input
         cmp #'A'
         bcc decimal_input           ;Branch if character is < 'A' (check 0-9)
         cmp #'F'+1
         bcc check_buffer            ;Branch if character is < 'F'+1
 decimal_input:
-.if emulator==true
+.if emulator=1
         txa
-.fi
+.endif
         cmp #'0'
         bcc ring_bell               ;Branch if character is < '0'
         cmp #'9'+1
         bcs ring_bell               ;Branch if character is >= '9'+1
 check_buffer:
-.if emulator == true
+.if emulator = 1
         txa
-.fi
+.endif
         ldy buffer_index            ;Is buffer
         cpy buffer_length           ;full
         bcc store_character         ;Branch if room in buffer
@@ -177,7 +177,7 @@ store_character:
 exit_read_line:
         ldx buffer_index            ;Exit with X containing amount of characters read
         rts
-        .pend
+.endproc
 
 ;;;
 ;; BACKSPACE subroutine: Send BS, SPC, BS to terminal and decrement the readline input buffer index.
@@ -196,19 +196,19 @@ exit_read_line:
 ;;      Example:
 ;;              jsr dec_index
 ;;;
-backspace: .proc
+.proc backspace
         pha
         lda buffer_index            ;Check for empty buffer
         beq sound_bell              ;If no characters in buffer, branch
         dec buffer_index            ;Decrement the buffer index
-        #print_text destructive_backspace
+        print_text destructive_backspace
         bra exit
 sound_bell:
         jsr bell
 exit:
         pla
         rts
-        .pend
+.endproc
 
 ;;;
 ;; READ_CHARACTER subroutine: Read a character from terminal and convert it to uppercase.
@@ -224,7 +224,7 @@ exit:
 ;;      Example:
 ;;              jsr read_character
 ;;;
-read_character: .proc
+.proc read_character
         jsr chin
         and #extended_ascii_mask        ;Remove all ASCII codes above $7f
         cmp #'a'                        ;Is character less 'a'
@@ -232,7 +232,7 @@ read_character: .proc
         sbc #$20                        ;Otherwise substract $20 to convert character to uppercase
 exit:
         rts
-        .pend
+.endproc
 
 
 ;;;
@@ -248,14 +248,14 @@ exit:
 ;;      Example:
 ;;              jsr dec_index
 ;;;
-dec_index:  .proc
+.proc dec_index
         lda index_low       ;Is index_low being decremented from $00 to $ff?
         bne done            ;No, branch
         dec index_high      ;  Yes, decrement high
 done:
         dec index_low       ;Decrement low
         rts
-        .pend
+.endproc
 
 ;;;
 ;; INC_INDEX subroutine: Increment 16 bit variable index_low, index_high.
@@ -270,48 +270,48 @@ done:
 ;;      Example:
 ;;              jsr inc_index
 ;;;
-inc_index:  .proc
+.proc inc_index
         inc index_low       ;Increment low
         bne done            ;if no wrap-around from $ff to $00 take branch
         inc index_high      ;  yes, wrap-around so increment high
 done:
         rts
-        .pend
+.endproc
 
 ;;;
 ;; SPACEX subroutine: Send X space characters to terminal.
 ;;;
-spacex: .proc
+.proc spacex
         jsr space
         dex
         bne spacex
         rts
-        .pend
+.endproc
 
 ;;;
 ;; SPACE4 subroutine: Send four space characters to terminal.
 ;;;
-space4: .proc
+.proc space4
         jsr space2
-        .pend
+.endproc
 
 ;;;
 ;; SPACE2 subroutine: Send two space characters to terminal.
 ;;;
-space2: .proc
+.proc space2
         jsr space
-        .pend
+.endproc
 
 ;;;
 ;; SPACE subroutine: Send a space character to terminal.
 ;;;
-space: .proc
+.proc space
         pha
         lda #' '
         jsr chout
         pla
         rts
-        .pend
+.endproc
 
 ;;;
 ;; COLON subroutine: Send colon sign to terminal.
@@ -326,11 +326,11 @@ space: .proc
 ;;      Example:
 ;;              jsr crout
 ;;;
-colon: .proc
+.proc colon
         pha
         lda #':'
-        bra crout.sendit
-        .pend
+        bra sendit
+.endproc
 
 ;;;
 ;; DOLLAR subroutine: Send dollar sign to terminal.
@@ -345,11 +345,11 @@ colon: .proc
 ;;      Example:
 ;;              jsr crout
 ;;;
-dollar: .proc
+.proc dollar
         pha
         lda #'$'
-        bra crout.sendit
-        .pend
+        bra sendit
+.endproc
 
 ;;;
 ;; CR2 subroutine: Send CR/LF twice to terminal.
@@ -364,9 +364,9 @@ dollar: .proc
 ;;      Example:
 ;;              jsr cr2
 ;;;
-cr2:    .proc
+.proc cr2
         jsr crout
-        .pend
+.endproc
 
 ;;;
 ;; CROUT subroutine: Send CR/LF to terminal.
@@ -381,7 +381,7 @@ cr2:    .proc
 ;;      Example:
 ;;              jsr crout
 ;;;
-crout:   .proc
+.proc crout
         pha
         lda #a_cr
         jsr chout
@@ -390,7 +390,7 @@ sendit:
         jsr chout
         pla
         rts
-        .pend
+.endproc
 
 ;;;
 ;; PROUT subroutine: Send a zero terminated string to terminal.
@@ -411,7 +411,7 @@ sendit:
 ;;                  sta index_high
 ;;                  jsr prout
 ;;;
-prout:   .proc
+.proc prout
         pha                         ;Preserve A
 l1:
         lda (index_low)             ;Get character
@@ -422,7 +422,7 @@ l1:
 exit:
         pla                         ;Restore A
         rts
-        .pend
+.endproc
 
 ;;;
 ;; HEX_ADDRESS subroutine: Send an ASCII hex address to terminal.
@@ -444,7 +444,7 @@ exit:
 ;;      Terminal will show:
 ;;                  ABFC
 ;;;
-hex_address: .proc
+.proc hex_address
         pha
         phx
         phy
@@ -462,7 +462,7 @@ hex_address: .proc
         plx
         pla
         rts
-        .pend
+.endproc
 
 ;;;
 ;; HEX_BYTE subroutine: Send an ASCII hex byte to terminal.
@@ -482,7 +482,7 @@ hex_address: .proc
 ;;      Terminal will show:
 ;;                  0C
 ;;;
-hex_byte: .proc
+.proc hex_byte
         pha
         phy
         phx
@@ -496,7 +496,7 @@ hex_byte: .proc
         ply
         pla
         rts
-        .pend
+.endproc
 
 ;;;
 ;; HEX_MODE subroutine: Set control_flags to hex conversion.
@@ -511,11 +511,11 @@ hex_byte: .proc
 ;;      Example:
 ;;                  jsr hex_mode
 ;;;
-hex_mode: .proc
-        rmb 0,control_flags
-        rmb 1,control_flags
+.proc hex_mode
+        rmb0 control_flags
+        rmb1 control_flags
         rts
-        .pend
+.endproc
 
 ;;;
 ;; LEADING_ZEROES subroutine: Send ASCII '0' to terminal.
@@ -532,7 +532,7 @@ hex_mode: .proc
 ;;              ldx #2
 ;;              jsr leading_zeroes
 ;;;
-leading_zeroes: .proc
+.proc leading_zeroes
         pha
         sta temp2       ;Store number of characters to print
         txa             ;Transfer maximum number of leading zeroes to A
@@ -548,7 +548,7 @@ l1:
 exit:
         pla
         rts
-        .pend
+.endproc
 
 ;;;
 ;; CLEAR_NUMBER_BUFFER subroutine: Clear the number buffer.
@@ -563,7 +563,7 @@ exit:
 ;;      Example:
 ;;                  jsr clear_number_buffer
 ;;;
-clear_number_buffer: .proc
+.proc clear_number_buffer
         phx
         ldx #3
 l1:
@@ -572,7 +572,7 @@ l1:
         bpl l1
         plx
         rts
-        .pend
+.endproc
 
 ;;;
 ;; BELL subroutine: Send a bell sound to terminal.
@@ -587,25 +587,15 @@ l1:
 ;;      Example:
 ;;             jsr bell
 ;;;
-bell:   .proc
+.proc bell
         lda #a_bel
         bra chout
-        .pend
+.endproc
 
-
-;;;
-;; chin_no_wait subroutine: Get character from buffer. If no character is available
-;; carry is cleared, otherwise set. Returns character in A register.
-chin_no_wait: .proc
-        clc                         ; Indicate no character is available
-        lda in_buffer_counter
-        bne chin.get_char
-        rts
-        .pend
 
 ;;; CHIN subroutine: Wait for a character in input buffer, return character in A register.
 ;;; receive is interrupt driven and buffered with a size of 128 bytes.
-chin:    .proc
+.scope chin
         lda in_buffer_counter       ; Get number of characters in buffer
         beq chin                    ; If zero wait for characters
 get_char:
@@ -613,16 +603,27 @@ get_char:
         ldy in_buffer_head          ; Get in buffer head pointer
         lda in_buffer,y             ; Get the character from the in buffer
         inc in_buffer_head          ; Increment the buffer index
-        rmb 7,in_buffer_head        ; Reset bit 7 as buffer is only 128 bytes
+        rmb7 in_buffer_head        ; Reset bit 7 as buffer is only 128 bytes
         dec in_buffer_counter       ; Decrement the character counter
         ply                         ; Restore Y register
         sec                         ; Indicate character is available
         rts
-        .pend
+.endscope
+
+;;;
+;; chin_no_wait subroutine: Get character from buffer. If no character is available
+;; carry is cleared, otherwise set. Returns character in A register.
+.proc chin_no_wait
+        clc                         ; Indicate no character is available
+        lda in_buffer_counter
+        bne chin::get_char
+        rts
+.endproc
+
 
 ;;; CHOUT subroutine: Place register A in output buffer, register A is preserved.
 ;;; transmit is interrupt driven and buffered with a size of 128 bytes
-chout:   .proc
+.proc chout
         phy                         ; Preserve Y register
 out_buffer_full:
         ldy out_buffer_counter      ; Get number of characters in buffer
@@ -630,13 +631,13 @@ out_buffer_full:
         ldy out_buffer_tail         ; Get buffer tail pointer
         sta out_buffer,y            ; and store it in buffer
         inc out_buffer_tail         ; Increment the buffer index
-        rmb 7,out_buffer_tail       ; Reset bit 7 as buffer is only 128 bytes
+        rmb7 out_buffer_tail       ; Reset bit 7 as buffer is only 128 bytes
         inc out_buffer_counter      ; Increment the counter
         ;lda #rec_xmit_irq_enabled  ; Enable transmit interrupt (have noticed that transmit IRQ just stops working)
         ;sta siocom                 ; floobydust on 6502.org fixed this by turning on transmit interrupt here and off in ISR
         ply                         ; Restore Y register
         rts
-        .pend
+.endproc
 
 nmi:
         rti
@@ -645,7 +646,8 @@ nmi:
 ;; coldstart - initialises all hardware
 ;; power up and reset procedure.
 ;;;
-coldstart: .block
+coldstart:
+.scope coldstart
         sei                     ;Turn off interrupts
         cld                     ;Make sure MPU is in binary mode
         ldx  #0
@@ -690,16 +692,16 @@ loop:
         jsr delay
         bra loop
 
-delay: .proc
+.proc delay
         ldx #$20
 loop1:
         jsr one_sec_delay
         dex
         bne loop1
         rts
-        .pend
+.endproc
 
-one_sec_delay: .proc
+.proc one_sec_delay
         phx
         phy
         ldx #$ff
@@ -713,7 +715,7 @@ loop2:
         ply
         plx
         rts
-        .pend
+.endproc
 ;;;
 ;; Initialise termnial
 ;;;
@@ -739,13 +741,13 @@ loop2:
 ;;;
         jmp monitor_main_loop
 
-        .bend
+.endscope
 
 ;;;
 ;; IRQ interrupt service routine
 ;;;
 irq:
-        .block
+.scope
         pha
         phx
         phy
@@ -756,16 +758,16 @@ irq:
         jmp (rtc_soft_vector)   ;  no, jump to rtc ISR routine
 do_break:
         jmp (brk_soft_vector)   ;Handle brk instruction
-        .bend
+.endscope
 
-irq_end: .block
+.scope irq_end
         ply
         plx
         pla
         rti
-        .bend
+.endscope
 
-brk_irq: .block
+.scope brk_irq
         ply
         plx
         pla
@@ -797,14 +799,14 @@ brk_irq: .block
         stz in_buffer_tail
         stz in_buffer_head
         jmp (monitor_soft_vector)
-        .bend
+.endscope
 
-rtc_irq: .block
+.scope rtc_irq
         ; jmp (acia_soft_vector)          ;Jump to next ISR
         ;; rtc irq doesn't do anything at the moment so
         ;; jump directly to duart ISR.
         jmp (duart_soft_vector)         ;Jump to DUART ISR
-        .bend
+.endscope
 
 .segment    "JUMPTABLE"
         .org $ff00

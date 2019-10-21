@@ -11,7 +11,7 @@
 ;;                      x: used
 ;;                      y: used
 ;;;
-duart_init: .proc
+.proc duart_init
         ldy #s_duart_tab - 2
 l1:
         ldx duart_sutab,y
@@ -24,7 +24,7 @@ l1:
         nop
         bpl l1
         rts
-        .pend
+.endproc
 
 
 ;;;
@@ -39,7 +39,7 @@ l1:
 ;;   Returned Values: none
 ;;
 ;;;
-duart_irq: .block
+.proc duart_irq
         lda isr_duart           ;Load interrupt status register
         and imr_duart           ;Check if DUART made an interrupt
         beq done                ;No, next interrupt service routine
@@ -57,7 +57,7 @@ rcva_duart:
         ldy in_buffer_tail      ; Get pointer in input buffer
         sta in_buffer,y         ; Store character in input buffer
         inc in_buffer_tail      ; Increment tail pointer
-        rmb 7,in_buffer_tail    ; Strip of bit 7. Buffer is only 128 bytes
+        rmb7 in_buffer_tail    ; Strip of bit 7. Buffer is only 128 bytes
         inc in_buffer_counter   ; Increment character count
 
 xmta_duart:
@@ -67,7 +67,7 @@ xmta_duart:
         lda out_buffer,y        ; Get character to transmit from output buffer
         sta txfifoa_duart       ; Send character
         inc out_buffer_head     ; Increment head pointer
-        rmb 7,out_buffer_head   ; Strip off bit 7. Buffer is only 128 bytes
+        rmb7 out_buffer_head   ; Strip off bit 7. Buffer is only 128 bytes
         dec out_buffer_counter  ; Decrement character count
 
         ;Stop the counter by first disable timout out mode
@@ -76,21 +76,21 @@ stop_counter:
         lda #duart_crtmd        ;Disable
         sta cra_duart           ;time out mode
         lda stopcc_duart        ;Stop counter command
-        smb delay_bit, control_flags
+        smb7 control_flags
 done:
         jmp irq_end
-        .bend
+.endproc
 
 ;;;
 ;; DELAY
 ;; Time delay is given in µs
 ;;;
-delay: .macro
-        lda #>(3686400.0 / 2.0 / (1.0 / ( \1.0 / 1000000.0) ))
+.macro delay time
+        lda #>(3686400.0 / 2.0 / (1.0 / ( time / 1000000.0) ))
         sta ctpu_duart
-        lda #<(3686400.0 / 2.0 / (1.0 / ( \1.0 / 1000000.0) ))
+        lda #<(3686400.0 / 2.0 / (1.0 / ( time / 1000000.0) ))
         sta ctpl_duart
         lda startcc_duart
 wait:
-        bbr delay_bit, control_flags, wait
-        .endm
+        bbr7 control_flags, wait
+.endmacro

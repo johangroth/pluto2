@@ -119,7 +119,7 @@ s_wrkspc = m_cbits/8                   ;conversion workspace size
         bit #0
         beq l06
 .else
-        bbr 0,radix,l06                 ;branch if not converting to decimal
+        bbr0 radix,l06                 ;branch if not converting to decimal
 .endif
 
 ;
