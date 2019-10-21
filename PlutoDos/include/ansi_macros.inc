@@ -6,357 +6,357 @@
 
         .include "ascii.inc"
 
-ansi_cs         .macro
-                .text a_esc, "["
-                .endm
+.macro ansi_cs
+                .byte a_esc, "["
+.endmacro
 
-decawm          .macro
-		        #ansi_cs
-		        .text "?7h"	; auto-wrap mode on (default)
-                .endm
+.macro decawm
+		        ansi_cs
+		        .byte "?7h"	; auto-wrap mode on (default)
+.endmacro
 
-decawmo         .macro
-        		#ansi_cs
-        		.text "?7l"	; auto-wrap mode off
-                .endm
+.macro decawmo
+        		ansi_cs
+        		.byte "?7l"	; auto-wrap mode off
+.endmacro
 
-declrg          .macro
-                #ansi_cs
-                .text "?9l"     ;Set 36 lines per screen
-                .endm
+.macro declrg
+                ansi_cs
+                .byte "?9l"     ;Set 36 lines per screen
+.endmacro
 
-decsml          .macro
-                #ansi_cs        ;Set 24 lines per screen (default)
-                .text "?9h"
-                .endm
+.macro decsml
+                ansi_cs        ;Set 24 lines per screen (default)
+                .byte "?9h"
+.endmacro
 
-sgr0            .macro
-		        #ansi_cs
-		        .text "m"	;turn off character attributes
-                .endm
+.macro sgr0
+		        ansi_cs
+		        .byte "m"	;turn off character attributes
+.endmacro
 
-sgr0m           .macro
-		        #ansi_cs
-		        .text "0m"	;turn off character attributes
-                .endm
+.macro sgr0m
+		        ansi_cs
+		        .byte "0m"	;turn off character attributes
+.endmacro
 
-sgr3            .macro
-                #ansi_cs
-                .text "3m"      ;select font 2 (large characters)
-                .endm
+.macro sgr3
+                ansi_cs
+                .byte "3m"      ;select font 2 (large characters)
+.endmacro
 
-sgr4            .macro
-		        #ansi_cs
-                .text "4m"	;turn underline mode on
-                .endm
+.macro sgr4
+		        ansi_cs
+                .byte "4m"	;turn underline mode on
+.endmacro
 
-sgr6            .macro
-                #ansi_cs
-                .text "6m"	;select font 2 (jumbo characters)
-                .endm
+.macro sgr6
+                ansi_cs
+                .byte "6m"	;select font 2 (jumbo characters)
+.endmacro
 
-sgr7            .macro
-		        #ansi_cs
-                .text "7m"	;turn reverse video on
-                .endm
+.macro sgr7
+		        ansi_cs
+                .byte "7m"	;turn reverse video on
+.endmacro
 
-sgr8            .macro
-		        #ansi_cs
-                .text "8m"	;turn invisible text mode on
-                .endm
+.macro sgr8
+		        ansi_cs
+                .byte "8m"	;turn invisible text mode on
+.endmacro
 
-cuu             .macro
-                #ansi_cs
-                .text \1, "A"   ; move cursor up n lines
-                .endm
+.macro cuu n
+                ansi_cs
+                .byte n, "A"   ; move cursor up n lines
+.endmacro
 
-cud             .macro
-                #ansi_cs
-                .text \1, "B"	; move cursor down n lines
-                .endm
+.macro cud n
+                ansi_cs
+                .byte n, "B"	; move cursor down n lines
+.endmacro
 
-cuf             .macro
-                #ansi_cs
-                .text \1, "C"	;move cursor right n lines
-                .endm
+.macro cuf n
+                ansi_cs
+                .byte n, "C"	;move cursor right n lines
+.endmacro
 
-cub             .macro
-                #ansi_cs
-                .text \1, "D"	;move cursor left n lines
-                .endm
+.macro cub n
+                ansi_cs
+                .byte n, "D"	;move cursor left n lines
+.endmacro
 
-cursorhome      .macro
-		        #ansi_cs
-                .text "H"	;move cursor to upper left corner
-                .endm
+.macro cursorhome
+		        ansi_cs
+                .byte "H"	;move cursor to upper left corner
+.endmacro
 
-cursorhome1     .macro
-                #ansi_cs
-                .text ";H"	;move cursor to upper left corner
-                .endm
+.macro cursorhome1
+                ansi_cs
+                .byte ";H"	;move cursor to upper left corner
+.endmacro
 
-cup             .macro
-                #ansi_cs
-                .text \2, ";", \1, "H"	;move cursor to screen location x,y
-                .endm
+.macro cup x1, y1
+                ansi_cs
+                .byte y1, ";", x1, "H"	;move cursor to screen location x1, y1
+.endmacro
 
-hvhome          .macro
-                #ansi_cs
-                .text "f"	;move cursor to upper left corner
-                .endm
+.macro hvhome
+                ansi_cs
+                .byte "f"	;move cursor to upper left corner
+.endmacro
 
-hvhome1          .macro
-                 #ansi_cs
-                 .text ";f"	;move cursor to upper left corner
-                .endm
+.macro hvhome1
+                 ansi_cs
+                 .byte ";f"	;move cursor to upper left corner
+.endmacro
 
-cup1            .macro
-                #ansi_cs
-                .text \1, ";", \2, "f"	;move cursor to screen location v,h
-                .endm
+.macro cup1 v, h
+                ansi_cs
+                .byte v, ";", h, "f"	;move cursor to screen location v,h
+.endmacro
 
-ind             .macro
-                .text a_esc, "D"	;move/scroll window up one line
-                .endm
+.macro ind
+                .byte a_esc, "D"	;move/scroll window up one line
+.endmacro
 
-ri              .macro
-                .text a_esc, "M"	;move/scroll window down one line
-                .endm
+.macro ri
+                .byte a_esc, "M"	;move/scroll window down one line
+.endmacro
 
-nel             .macro
-                .text a_esc, "E"	;move to next line
-                .endm
+.macro nel
+                .byte a_esc, "E"	;move to next line
+.endmacro
 
-decsc           .macro
-                .text a_esc, "7"	;save cursor position and attributes
-                .endm
+.macro decsc
+                .byte a_esc, "7"	;save cursor position and attributes
+.endmacro
 
-decscr          .macro
-                .text a_esc, "8"	;restore cursor position and attributes
-                .endm
+.macro decscr
+                .byte a_esc, "8"	;restore cursor position and attributes
+.endmacro
 
-el01            .macro
-                #ansi_cs
-                .text "K"	;clear line from cursor right
-                .endm
+.macro el01
+                ansi_cs
+                .byte "K"	;clear line from cursor right
+.endmacro
 
-el02            .macro
-                #ansi_cs
-                .text "0K"	;clear line from cursor right
-                .endm
+.macro el02
+                ansi_cs
+                .byte "0K"	;clear line from cursor right
+.endmacro
 
-el1             .macro
-                #ansi_cs
-                .text "1K"	;clear line from cursor left
-                .endm
+.macro el1
+                ansi_cs
+                .byte "1K"	;clear line from cursor left
+.endmacro
 
-el2             .macro
-                #ansi_cs
-                .text "2K"	;clear entire line
-                .endm
-
-
-ed01            .macro
-                #ansi_cs
-                .text "J"	;clear screen from cursor down
-                .endm
-
-ed02            .macro
-                #ansi_cs
-                .text "0J"	;clear screen from cursor down
-                .endm
-
-ed1             .macro
-                #ansi_cs
-                .text "1J"	;clear screen from cursor up
-                .endm
-
-ed2             .macro
-                #ansi_cs
-                .text "2J"	;clear entire screen
-                .endm
+.macro el2
+                ansi_cs
+                .byte "2K"	;clear entire line
+.endmacro
 
 
-dsr             .macro
-                .text a_esc, "5n"	;device status report
+.macro ed01
+                ansi_cs
+                .byte "J"	;clear screen from cursor down
+.endmacro
+
+.macro ed02
+                ansi_cs
+                .byte "0J"	;clear screen from cursor down
+.endmacro
+
+.macro ed1
+                ansi_cs
+                .byte "1J"	;clear screen from cursor up
+.endmacro
+
+.macro ed2
+                ansi_cs
+                .byte "2J"	;clear entire screen
+.endmacro
+
+
+.macro dsr
+                .byte a_esc, "5n"	;device status report
                                         ;Esc0n	;response: terminal is ok
                                         ;Esc3n	;response: terminal is not ok
-                .endm
+.endmacro
 
-curpos          .macro
-                .text a_esc, "6n"	;get cursor position
+.macro curpos
+                .byte a_esc, "6n"	;get cursor position
                                         ;response is EscLine;ColumnR
-                .endm
+.endmacro
 
-rstterm         .macro
-                .text a_esc, "c"        ; reset terminal to initial state
-                .endm
+.macro rstterm
+                .byte a_esc, "c"        ; reset terminal to initial state
+.endmacro
 
-drawline        .macro                  ; draw a line from x1, y1 to x2, y2
-                #ansi_cs
-                .text "Z1;"
-                .text \1                ; x1
-                .text ";"
-                .text \2                ; y1
-                .text ";"
-                .text \3                ; x2
-                .text ";"
-                .text \4                ; y2
-                .text "Z"
-                .endm
+.macro drawline x1, y1, x2, y2                         ; draw a line from x1, y1 to x2, y2
+                ansi_cs
+                .byte "Z1;"
+                .byte x1                ; x1
+                .byte ";"
+                .byte y1                ; y1
+                .byte ";"
+                .byte x2                ; x2
+                .byte ";"
+                .byte y2                ; y2
+                .byte "Z"
+.endmacro
 
-drawbox         .macro                  ; draw a box with upper left corner x1, y2 and lower right corner x2, y2
-                #ansi_cs
-                .text "Z2;"
-                .text \1                ; x1
-                .text ";"
-                .text \2                ; y1
-                .text ";"
-                .text \3                ; x2
-                .text ";"
-                .text \4                ; y2
-                .text "Z"
-                .endm
+.macro drawbox x1, y1, x2, y2                          ; draw a box with upper left corner x1, y2 and lower right corner x2, y2
+                ansi_cs
+                .byte "Z2;"
+                .byte x1                ; x1
+                .byte ";"
+                .byte y1                ; y1
+                .byte ";"
+                .byte x2                ; x2
+                .byte ";"
+                .byte y2                ; y2
+                .byte "Z"
+.endmacro
 
-drawfbox        .macro                  ;draw a filled box with upper left corner x1, y2 and lower right corner x2, y2
-                #ansi_cs
-                .text "Z3;"
-                .text \1                ; x1
-                .text ";"
-                .text \2                ; y1
-                .text ";"
-                .text \3                ; x2
-                .text ";"
-                .text \4                ; y2
-                .text "Z"
-                .endm
+.macro drawfbox x1, y1, x2, y2                         ;draw a filled box with upper left corner x1, y2 and lower right corner x2, y2
+                ansi_cs
+                .byte "Z3;"
+                .byte x1                ; x1
+                .byte ";"
+                .byte y1                ; y1
+                .byte ";"
+                .byte x2                ; x2
+                .byte ";"
+                .byte y2                ; y2
+                .byte "Z"
+.endmacro
 
-drawcircle      .macro                  ;Draw a circle x, y, r
-                .text "Z4;"
-                .text \1                ; x
-                .text ";"
-                .text \2                ; y
-                .text ";"
-                .text \3                ; r
-                .text "Z"
-                .endm
+.macro drawcircle x1, y1, r                       ;Draw a circle x1, y1, r
+                .byte "Z4;"
+                .byte x1               ; x1
+                .byte ";"
+                .byte y1                ; y1
+                .byte ";"
+                .byte r                ; r
+                .byte "Z"
+.endmacro
 
-drawfcircle     .macro                  ;Draw a filled circle x, y, r
-                .text "Z5;"
-                .text \1                ; x
-                .text ";"
-                .text \2                ; y
-                .text ";"
-                .text \3                ; r
-                .text "Z"
-                .endm
+.macro drawfcircle x1, y1, r                      ;Draw a filled circle x, y, r
+                .byte "Z5;"
+                .byte x1               ; x
+                .byte ";"
+                .byte y1                ; y
+                .byte ";"
+                .byte r                ; r
+                .byte "Z"
+.endmacro
 
-up              .macro
-                #ansi_cs
-                .text "A"
-                .endm
+.macro up
+                ansi_cs
+                .byte "A"
+.endmacro
 
-down            .macro
-                #ansi_cs
-                .text "B"
-                .endm
+.macro down
+                ansi_cs
+                .byte "B"
+.endmacro
 
-left            .macro
-                #ansi_cs
-                .text "C"
-                .endm
+.macro left
+                ansi_cs
+                .byte "C"
+.endmacro
 
-right           .macro
-                #ansi_cs
-                .text "D"
-                .endm
+.macro right
+                ansi_cs
+                .byte "D"
+.endmacro
 
-home          .macro
-                #ansi_cs
-                .text "1~"
-                .endm
+.macro home
+                ansi_cs
+                .byte "1~"
+.endmacro
 
-inserts          .macro
-                #ansi_cs
-                .text "2~"
-                .endm
+.macro inserts
+                ansi_cs
+                .byte "2~"
+.endmacro
 
-del             .macro
-                #ansi_cs
-                .text "3~"
-                .endm
+.macro del
+                ansi_cs
+                .byte "3~"
+.endmacro
 
-end             .macro
-                #ansi_cs
-                .text "4~"
-                .endm
+.macro end
+                ansi_cs
+                .byte "4~"
+.endmacro
 
-pup             .macro
-                #ansi_cs
-                .text "5~"
-                .endm
+.macro pup
+                ansi_cs
+                .byte "5~"
+.endmacro
 
-pdown           .macro
-                #ansi_cs
-                .text "6~"
-                .endm
+.macro pdown
+                ansi_cs
+                .byte "6~"
+.endmacro
 
-f1              .macro
-                #ansi_cs
-                .text "11~"
-                .endm
+.macro f1
+                ansi_cs
+                .byte "11~"
+.endmacro
 
-f2              .macro
-                #ansi_cs
-                .text "12~"
-                .endm
+.macro f2
+                ansi_cs
+                .byte "12~"
+.endmacro
 
-f3              .macro
-                #ansi_cs
-                .text "13~"
-                .endm
+.macro f3
+                ansi_cs
+                .byte "13~"
+.endmacro
 
-f4              .macro
-                #ansi_cs
-                .text "14~"
-                .endm
+.macro f4
+                ansi_cs
+                .byte "14~"
+.endmacro
 
-f5              .macro
-                #ansi_cs
-                .text "15~"
-                .endm
+.macro f5
+                ansi_cs
+                .byte "15~"
+.endmacro
 
-f6              .macro
-                #ansi_cs
-                .text "17~"
-                .endm
+.macro f6
+                ansi_cs
+                .byte "17~"
+.endmacro
 
-f7              .macro
-                #ansi_cs
-                .text "18~"
-                .endm
+.macro f7
+                ansi_cs
+                .byte "18~"
+.endmacro
 
-f8              .macro
-                #ansi_cs
-                .text "19~"
-                .endm
+.macro f8
+                ansi_cs
+                .byte "19~"
+.endmacro
 
-f9              .macro
-                #ansi_cs
-                .text "20~"
-                .endm
+.macro f9
+                ansi_cs
+                .byte "20~"
+.endmacro
 
-f10             .macro
-                #ansi_cs
-                .text "21~"
-                .endm
+.macro f10
+                ansi_cs
+                .byte "21~"
+.endmacro
 
-f11             .macro
-                #ansi_cs
-                .text "23~"
-                .endm
+.macro f11
+                ansi_cs
+                .byte "23~"
+.endmacro
 
-f12             .macro
-                #ansi_cs
-                .text "24~"
-                .endm
+.macro f12
+                ansi_cs
+                .byte "24~"
+.endmacro

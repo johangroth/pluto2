@@ -64,10 +64,10 @@
 ;
 
 ;
-a_hexnum: = 'A'-'9'-1                   ;hex to decimal difference
-n_radix: = 3                            ;number of supported radixes
-radix_mask: = 3                         ;bit 0 and 1 in control_flags holds the radix
-s_fac:  = 4                             ;binary accumulator size
+a_hexnum = 'A'-'9'-1                   ;hex to decimal difference
+n_radix = 3                            ;number of supported radixes
+radix_mask = 3                         ;bit 0 and 1 in control_flags holds the radix
+s_fac  = 4                             ;binary accumulator size
 
 ;
 ;================================================================================
@@ -84,7 +84,7 @@ bits_per_digit_table: .byte 4,3,1       ;bits per digit per radix
 ;
 
 ;
-ascii_to_bin: .proc
+.proc ascii_to_bin
         cpx #0                          ; if x != 0 then
         bne convert                     ; convert characters to binary, so branch
         stz temp1                       ; else no characters to convert so return to caller.
@@ -139,13 +139,13 @@ l09:
 ;
         sta curntnum                    ;save processed numeral
 
-.if emulator==true
+.if emulator = 1
         lda control_flags
         bit #0
         beq l11
 .else
         bbr 0,control_flags,l11         ;branch if not working in base 10
-.fi
+.endif
 
 ;
 ;    -----------------------------------------------------------
@@ -187,13 +187,13 @@ l12:
         bne l12                         ;next shift
 ;
 
-.if emulator==true
+.if emulator=1
         lda control_flags
         bit #0
         beq l14
 .else
         bbr 0,control_flags,l14         ;branch if not working in base 10
-.fi
+.endif
 
 ;
 ;    -------------------
@@ -253,4 +253,4 @@ l17:
         lda #$ff                        ;Indicate a conversion has taken place
         sta temp1
         rts                             ;done
-        .pend
+        .endproc

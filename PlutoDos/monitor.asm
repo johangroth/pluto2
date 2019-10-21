@@ -1,15 +1,17 @@
+.pc02
+.include "include/strings.inc"
 ;;;
 ;; Initialise the monitor.
 ;;;
-monitor_initialiser: .proc
+.proc monitor_initialiser
         ;jsr prompt
         rts
-        .pend
+.endproc
 
 ;;;
 ;; Monitor main loop
 ;;;
-monitor_main_loop: .proc
+.proc monitor_main_loop
         jsr prompt
 l2:
         jsr b_read_char             ;Get char in uppercase from terminal
@@ -41,7 +43,7 @@ do_command:
 command_not_supported:
         jsr b_bell
         bra l2
-        .pend
+.endproc
 
 ;;;
 ;; Monitor commands
@@ -50,7 +52,7 @@ command_not_supported:
 ;;;
 ;; [D] Dumps 256 bytes of memory
 ;;;
-dump_memory: .proc
+.proc dump_memory
         jsr print_colon_dollar
         ldx #4                      ;Ask for up to 4...
         jsr b_input_hex             ;...characters
@@ -89,14 +91,14 @@ next_byte:
         ldx #$10                    ;16 hex numbers to print
         jsr print_byte_line         ;print $10 hex numbers starting with $00
         rts
-        .pend
+.endproc
 
 ;;;
 ;; [F] Fill memory with a value
 ;;;
-fill_memory: .proc
+.proc fill_memory
         jsr b_crout
-        #print_text fill_start
+        print_text p
         ldx #4                      ;Ask for up to 4 hex chars (fill start address)
         jsr b_input_hex             ;Address will be in number_buffer
         lda number_buffer           ;so move it to address_low/high
@@ -104,7 +106,7 @@ fill_memory: .proc
         lda number_buffer+1
         sta address_high
         jsr b_crout
-        #print_text fill_length
+        print_text fill_length
         ldx #4                      ;Ask for up to 4 hex char (number of bytes to fill)
         jsr b_input_hex             ;Length will be in number_buffer
         lda number_buffer           ;so move it to fill_length_low/high
@@ -112,7 +114,7 @@ fill_memory: .proc
         lda number_buffer+1
         sta fill_length_high
         jsr b_crout
-        #print_text fill_byte
+        print_text fill_byte
         ldx #2                      ;Ask for up to 2 hex chars (byte to fill memory with)
         jsr b_input_hex
         jsr b_crout
@@ -141,26 +143,26 @@ l1:
         bne l1                      ;Branch if partial page is not done
 exit:
         rts
-        .pend
+.endproc
 
 ;;;
 ;; [H] Print all commands
 ;;;
-print_all_commands: .proc
+.proc print_all_commands
         jsr b_crout
-        #print_text help_text
+        print_text help_text
         rts
-        .pend
+.endproc
 
 
 ;;;
 ;; [T] Display date and time
 ;;;
-display_date_time: .proc
+.proc display_date_time
         jsr b_crout
         jsr print_date_and_time
         rts
-        .pend
+.endproc
 
 ;;;
 ;; [CTRL-T] Set date and time
@@ -178,10 +180,10 @@ display_date_time: .proc
 ;;                      $07   year MSB    ($00-$39)
 ;;                    --------------
 ;;
-;; Input order will DDD dd mm yyyy hh MM ss
+;; Input order is DDD dd mm yyyy hh MM ss
 ;; Ring bell if DDD can't be found in days_of_week table
 ;;;
-set_date_time: .proc
+.proc set_date_time
         jsr display_date_time
         jsr b_crout
         ; input day of week
@@ -193,13 +195,13 @@ set_date_time: .proc
         sta temp2
         jsr input_time_date_info
         sta todbuf+4                ;Store day in month
-        #print_char '/'
+        print_char '/'
         ; input month
         lda #2
         sta temp2
         jsr input_time_date_info
         sta todbuf+5
-        #print_char '/'
+        print_char '/'
         ; input year, no validation
         lda #4                      ;Input of four numbers
         sta temp2
@@ -214,21 +216,21 @@ set_date_time: .proc
         sta todbuf+2
         jsr set_date_and_time
         ; input minutes
-        #print_char ':'
+        print_char ':'
         lda #2                      ;Input of two numbers
         sta temp2
         jsr input_time_date_info
         sta todbuf+1
         jsr set_date_and_time
         ; input seconds
-        #print_char ':'
+        print_char ':'
         lda #2                      ;Input of two numbers
         sta temp2
         jsr input_time_date_info
         sta todbuf
         jsr set_date_and_time
         rts
-        .pend
+.endproc
 
 
 ;;;
@@ -239,9 +241,9 @@ set_date_time: .proc
 ;; Input date and time.
 ;; No validations are made to make sure values are correct
 ;;;
-input_time_date_info: .proc
-        smb 0,control_flags     ;%01 in control_flags means decimal input.
-        rmb 1,control_flags
+.proc input_time_date_info
+        smb0 control_flags     ;%01 in control_flags means decimal input.
+        rmb1 control_flags
 read_date_again:
         ldy #<input_buffer
         lda #>input_buffer
@@ -258,20 +260,20 @@ read_date_again:
         lda bcd
         ldy bcd+1
         rts
-        .pend
+.endproc
 
 ;;;
 ;; Input day of week. BELL rings if day is not found.
 ;; Register A will hold day of week 1 being Monday
 ;;;
-input_day_of_week:  .proc
+.proc input_day_of_week
         phx
         phy
-        smb 0,control_flags     ;%11 in control_flags means ASCII input
-        smb 1,control_flags
+        smb0 control_flags     ;%11 in control_flags means ASCII input
+        smb1 control_flags
 read_week_day_again:
-        #print_text clear_line
-        #print_text beginning_of_line
+        print_text clear_line
+        print_text beginning_of_line
         ldy #<input_buffer      ;low byte of where read line will place input
         lda #>input_buffer      ;high byte of where read line will place input
         ldx #3                  ;Ask for three characters
@@ -306,9 +308,9 @@ exit:
         ply
         plx
         rts
-        .pend
+.endproc
 
-next_entry_in_week_day_table: .proc
+.proc next_entry_in_week_day_table
         ldy #4
 l1:
         inc temp1
@@ -322,13 +324,13 @@ done:
         lda temp1+1
         sta address_high
         rts
-        .pend
+.endproc
 
 ;;;
 ;; strcmp
 ;;;
 
-strcmp: .proc
+.proc strcmp
         pha
         phy
         ldy #0
@@ -349,13 +351,13 @@ exit:
         ply
         pla
         rts
-        .pend
+.endproc
 
 ;;;
 ;; Dump as ASCII, non-printable characters (ie <32 and >126)
 ;; are printed as inverted '?'
 ;;;
-dump_as_ascii: .proc
+.proc dump_as_ascii
         phy
         jsr b_space
         sec
@@ -375,18 +377,18 @@ loop:
         jsr b_chout
         bra next_char
 non_printable:
-        #print_text inverted_question_mark
+        print_text inverted_question_mark
 next_char:
         jsr inc_address
         dey
         bne loop
         ply
         rts
-        .pend
+.endproc
 ;;;
 ;; Print a row of '~'
 ;;;
-print_squiggly_line: .proc
+.proc print_squiggly_line
         pha
         phx
         lda #'~'
@@ -398,7 +400,7 @@ again:
         plx
         pla
         rts
-        .pend
+.endproc
 
 
 ;;;
@@ -416,13 +418,13 @@ again:
 ;;          Terminal output
 ;;                  :$
 ;;;
-print_colon_dollar: .proc
+.proc print_colon_dollar
         pha
         jsr b_colon
         jsr b_dollar
         pla
         rts
-        .pend
+.endproc
 
 
 ;;;
@@ -441,7 +443,7 @@ print_colon_dollar: .proc
 ;;          Terminal output
 ;;                  00 01 02 03
 ;;;
-print_byte_line: .proc
+.proc print_byte_line
         pha
         txa             ;protect X
         ldx #5          ;six spaces
@@ -456,35 +458,35 @@ loop:
         bne loop        ;branch if not done
         pla             ;restore calling value
         rts             ;"return to sender"
-        .pend
+.endproc
 
 ;;;
 ;; Print monitor prompt
 ;;;
-prompt: .proc
+.proc prompt
         jsr b_crout
-        #print_text_rts prompt_text
-        .pend
+        print_text_rts prompt_text
+.endproc
 
-abort_command: .proc
-        #print_text abort_command_text
+.proc abort_command
+        print_text abort_command_text
         jmp b_chin
-        .pend
+.endproc
 ;;;
 ;; Increment address with one.
 ;;;
-inc_address: .proc
+.proc inc_address
         inc address_low
         bne done
         inc address_high
 done:
         rts
-        .pend
+.endproc
 
 ;;;
 ;; Add A to address
 ;;;
-add_a_to_address: .proc
+.proc add_a_to_address
         clc
         adc address_low
         sta address_low
@@ -492,17 +494,17 @@ add_a_to_address: .proc
         adc address_high
         sta address_high
         rts
-        .pend
+.endproc
 ;;;
 ;; Table of all commands
 ;;;
 command_table:
-        .text "D"   ;[D] Dump 256 bytes memory
+        .byte "D"   ;[D] Dump 256 bytes memory
         .byte $04   ;[CTRL-D] Download file with XMODEM/CRC
-        .text "F"   ;[F] Fill memory
-        .text "H"   ;[H] Print all commands
-        .text $15   ;[CTRL-U] Upload file with XMODEM/CRC
-        .text "T"   ;[T] Display date and time
+        .byte "F"   ;[F] Fill memory
+        .byte "H"   ;[H] Print all commands
+        .byte $15   ;[CTRL-U] Upload file with XMODEM/CRC
+        .byte "T"   ;[T] Display date and time
         .byte $14   ;[CTRL-T] Set date and time
         .byte $ff   ;end of table
 

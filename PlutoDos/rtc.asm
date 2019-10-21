@@ -52,7 +52,7 @@ rtcparm:
 ;; rtc_init: Initialise DS1511Y
 ;;
 ;;;
-rtc_init: .proc
+.proc rtc_init
         lda  cra_rtc        ;interrupt request flag (irqf) is cleared by reading the flag register cra ($oe)
         ldy  #n_rtcreg-1
 l10:
@@ -75,7 +75,8 @@ l2:
         bne l1
 
         rts
-       .pend
+.endproc
+
 ;;;
 ;;print_date_and_time: print rtc date & time registers
 ;;
@@ -89,7 +90,7 @@ l2:
 ;;   example: jsr print_date_and_time
 ;;
 ;;;
-print_date_and_time: .proc
+.proc print_date_and_time
         pha
         jsr get_date_and_time
         stz index_high
@@ -129,16 +130,16 @@ print_date_and_time: .proc
         jsr bcdouta
         pla
         rts
-        .pend
+.endproc
 
 
 ;;;
 ;; send forward slash '/' to terminal
 ;;;
-slash:  .proc
+.proc slash
         lda #'/'
         jmp b_chout
-        .pend
+.endproc
 
 ;================================================================================
 ;
@@ -181,8 +182,8 @@ slash:  .proc
 ;             jsr alarm       ;set the alarm
 ;
 ;
-alarm:  .proc
-        .pend
+.proc alarm
+.endproc
 
 ;
 ;================================================================================
@@ -214,7 +215,7 @@ alarm:  .proc
 ;
 ;
 ;
-get_date_and_time: .proc
+.proc get_date_and_time
         pha
         phx
         lda  crb_rtc    ;load control register b
@@ -236,7 +237,7 @@ l2:
         plx
         pla
         rts
-        .pend
+.endproc
 
 ;
 ;================================================================================
@@ -270,7 +271,7 @@ l2:
 ;              ++++++++> entry values
 ;
 ;
-set_date_and_time:  .proc
+.proc set_date_and_time
         pha
         phx
         lda  crb_rtc    ;load control register b
@@ -295,7 +296,7 @@ l2:
         plx
         pla
         rts
-        .pend
+.endproc
 
 ;
 ;================================================================================
@@ -317,8 +318,8 @@ l2:
 ;              +++++> entry value
 ;
 ;
-get_system_up_time: .proc
-        .pend
+.proc get_system_up_time
+.endproc
 
 ;
 ;================================================================================
@@ -354,5 +355,5 @@ get_system_up_time: .proc
 ;             jsr utdelay
 ;
 ;
-user_time_delay: .proc
-        .pend
+.proc user_time_delay
+.endproc

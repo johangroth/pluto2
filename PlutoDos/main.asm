@@ -1,5 +1,7 @@
-        * = $8000
-        .cpu "w65c02"
+.pc02
+.segment    "CODE"
+        .org $8000
+.define emulator 1
 
 ; =============================================================================
 ; LOAD ASSEMBLER MACROS
@@ -52,15 +54,15 @@
 
 ; =============================================================================
 ; 65C51 VIA subroutines
-.if emulator==false
+.if emulator=0
 .include "via.asm"
-.fi
+.endif
 
 ; =============================================================================
 ; SC28L92 DUART subroutines
-.if emulator==false
+.if emulator=0
 .include "duart_sc28l92.asm"
-.fi
+.endif
 
 ; =============================================================================
 ; KERNEL

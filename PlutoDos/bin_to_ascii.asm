@@ -91,13 +91,13 @@
 ;ATOMIC CONSTANTS
 ;
 ;
-a_hexdec: = 'A'-'9'-2                   ;hex to decimal difference
-m_bits: = 32                            ;operand bit size
-m_cbits: = 48                           ;workspace bit size
-m_strlen: = m_bits+1                    ;maximum printable string length
-s_pfac: = m_bits/8                      ;primary accumulator size
-s_ptr:  = 2                             ;pointer size
-s_wrkspc: = m_cbits/8                   ;conversion workspace size
+a_hexdec = 'A'-'9'-2                   ;hex to decimal difference
+m_bits = 32                            ;operand bit size
+m_cbits = 48                           ;workspace bit size
+m_strlen = m_bits+1                    ;maximum printable string length
+s_pfac = m_bits/8                      ;primary accumulator size
+s_ptr  = 2                             ;pointer size
+s_wrkspc = m_cbits/8                   ;conversion workspace size
 ;
 ;================================================================================
 ;
@@ -110,17 +110,17 @@ s_wrkspc: = m_cbits/8                   ;conversion workspace size
 ;
 ;CONVERT 32-BIT BINARY TO NULL-TERMINATED ASCII NUMBER STRING
 ;
-binary_to_ascii: .proc
+.proc binary_to_ascii
         stz stridx                      ;initialise string index
         lda control_flags               ;get radix, 00=>HEX, 01=>DEC, 10=>BIN
         and #radix_mask                 ;keep only radix bits
         sta radix                       ;save radix index for later
-.if emulator==true
+.if emulator=1
         bit #0
         beq l06
 .else
         bbr 0,radix,l06                 ;branch if not converting to decimal
-.fi
+.endif
 
 ;
 ;    ------------------------------
@@ -292,4 +292,4 @@ facbcd08:
 bitstab: .byte 4,4,1                    ;bits per numeral
 lzsttab: .byte 3,2,9                    ;leading zero suppression thresholds
 numstab: .byte 12,12,48                 ;maximum numerals
-        .pend
+.endproc

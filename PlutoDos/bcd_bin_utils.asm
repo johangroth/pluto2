@@ -5,7 +5,7 @@
 ;
 ; Andrew Jacobs, 28-Feb-2004
 
-bin_to_bcd8:	.proc
+.proc bin_to_bcd8
 		sed				; switch to decimal mode
 		lda #0			; ensure the result is clear
 		sta bcd+0
@@ -24,7 +24,7 @@ convert_bit:
 		bne convert_bit
 		cld				; back to binary
 		rts
-		.pend
+.endproc
 
 ;Table for BCD -> BIN -> BCD conversion
 ;BCD representations of 1,2,4,8,16,32,64,128
@@ -54,7 +54,7 @@ table2: .byte  $00
 ;Exit:              BINOUT = binary data in big endian format
 ;
 ;Registers used:    A, P
-bcd2bin: .proc
+.proc bcd2bin
         byte = $fe
 start:
 		cld             ;clear decimal mode.
@@ -101,9 +101,9 @@ arnd:
         bra there       ;go back and put it in the binary number. then finish.
 out:
 		rts
-        .pend
+.endproc
 
-bin2bcd: .proc
+.proc bin2bcd
         sed             ;output gets added up in decimal.
         stz binout      ;inititalize output word as 0.
         stz binouth
@@ -123,7 +123,7 @@ l1:
         bpl loop        ;if still not done, go back for another loop.
         cld
         rts
-        .pend
+.endproc
 
 ; Convert an 16 bit binary value to BCD
 ;
@@ -137,7 +137,7 @@ l1:
 ;
 ; Andrew Jacobs, 28-Feb-2004
 
-bin_to_bcd16: .proc
+.proc bin_to_bcd16
         sed             ; switch to decimal mode
         lda #0          ; ensure the result is clear
         sta bcd+0
@@ -160,10 +160,10 @@ cnvbit:
         bne cnvbit
         cld             ; back to binary
 		rts
-        .pend
+.endproc
 
 ;Send BCD number in A to terminal
-bcdouta: .proc
+.proc bcdouta
         pha
         lsr             ;shift high digit to low digit, zero high digit
         lsr
@@ -181,4 +181,4 @@ bcdtoasc:
         clc             ;add ascii "0" to digit: convert bcd digit to ascii decimal digit
         adc  #$30
         jmp  b_chout       ;send converted digit to terminal
-        .pend
+.endproc

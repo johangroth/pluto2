@@ -92,7 +92,7 @@ ESC    =    $1b                        ; ESC to exit
 ;
 ;
 
-upload: .proc
+.proc upload
         jsr    PrintMsg                 ; send prompt and info
         stz    errcnt                   ; error counter set to 0
         stz    lastblk                  ; set flag to false
@@ -103,7 +103,7 @@ Wait4CRC:
         sta    retry2                   ;
         jsr    GetByte                  ;
         bcc    Wait4CRC                 ; wait for something to come in...
-        cmp    #"C"                     ; is it the "C" to start a CRC xfer?
+        cmp    #'C'                     ; is it the "C" to start a CRC xfer?
         beq    SetstAddr                ; yes
         cmp    #ESC                     ; is it a cancel? <Esc> Key
         bne    Wait4CRC                 ; No, wait for another character
@@ -199,18 +199,18 @@ PrtAbort:
         jsr    Flush                    ; yes, too many errors, flush buffer,
         jmp    Print_Err                ; print error msg and exit
 Done:   jmp    Print_Good               ; All Done..Print msg and exit
-        .pend
+.endproc
 ;
 ;
 ;
 
-download: .proc
+.proc download
         jsr    PrintMsg                 ; send prompt and info
         lda    #$01
         sta    blkno                    ; set block # to 1
         sta    bflag                    ; set flag to get address from block 1
 StartCrc:
-        lda    #"C"                     ; "C" start with CRC mode
+        lda    #'C'                     ; "C" start with CRC mode
         jsr    b_chout                  ; send it
         lda    #$FF
         sta    retry2                   ; set loop counter for ~3 sec delay
@@ -319,7 +319,7 @@ RDone:
         jsr    Flush                    ; get leftover characters, if any
         jsr    Print_Good               ;
         rts                             ;
-        .pend
+.endproc
 ;
 ;^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ;
@@ -327,7 +327,7 @@ RDone:
 ;
 ;
 ;
-GetByte: .proc
+.proc GetByte
         ; wait for chr input and cycle timing loop
         stz    retry                    ; set low value of timing loop
 StartCrcLp:
@@ -340,9 +340,9 @@ StartCrcLp:
         clc                             ; if loop times out, CLC, else SEC and return
 GetByte1:
         rts                             ; with character in "A"
-        .pend
+.endproc
 ;
-Flush: .proc
+.proc Flush
 FlushBuffer:
         lda    #$70                     ; flush receive buffer
         sta    retry2                   ; flush until empty for ~1 sec.
@@ -350,30 +350,30 @@ Flush1:
         jsr    GetByte                  ; read the port
         bcs    FlushBuffer              ; if chr recvd, wait for another
         rts                             ; else done
-        .pend
+.endproc
 ;
-PrintMsg: .proc
+.proc PrintMsg
         lda #<msg
         sta index_low
         lda #>msg
         sta index_high
         jmp b_prout
 Msg:
-        .null   "Begin XMODEM/CRC transfer.  Press <Esc> to abort...", CR, LF
-        .pend
+        .byte   "Begin XMODEM/CRC transfer.  Press <Esc> to abort...", CR, LF, $00
+.endproc
 
 ;
-Print_Err: .proc
+.proc Print_Err
         lda #<ErrMsg
         sta index_low
         lda #>ErrMsg
         sta index_high
         jmp b_prout
 ErrMsg:
-        .null     "Transfer Error!", CR, LF
-        .pend
+        .byte     "Transfer Error!", CR, LF, $00
+.endproc
 ;
-Print_Good: .proc
+.proc Print_Good
         lda #<GoodMsg
         sta index_low
         lda #>GoodMsg
@@ -381,8 +381,8 @@ Print_Good: .proc
         jmp b_prout
 GoodMsg:
         .byte   EOT,CR,LF,EOT,CR,LF,EOT,CR,LF,CR,LF
-        .null   "Transfer Successful!", CR, LF
-        .pend
+        .byte   "Transfer Successful!", CR, LF, $00
+.endproc
 ;
 ;
 ;=========================================================================
@@ -391,7 +391,7 @@ GoodMsg:
 ;  CRC subroutines
 ;
 ;
-CalcCRC: .proc
+.proc CalcCRC
         lda    #$00                     ; yes, calculate the CRC for the 128 bytes
         sta    crc                      ;
         sta    crch                     ;
@@ -409,7 +409,7 @@ CalcCRC1:
         cpy    #$82                     ; done yet?
         bne    CalcCRC1                 ; no, get next
         rts                             ; y=82 on exit
-        .pend
+.endproc
 
 ;
 ; Alternate solution is to build the two lookup tables at run-time.  This might

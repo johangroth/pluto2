@@ -1,6 +1,6 @@
         .include "include/bios.inc"
         .include "include/zp.inc"
-        .include "include/strings.inc"
+;;        .include "include/strings.inc"
 
 ;;;
 ;;  INPUT_DEC: Request 1-8 ASCII decimal numbers and convert to binary.
@@ -806,7 +806,8 @@ rtc_irq: .block
         jmp (duart_soft_vector)         ;Jump to DUART ISR
         .bend
 
-        * = $ff00
+.segment    "JUMPTABLE"
+        .org $ff00
 ;;;
 ;; BIOS jump table.
 ;; This table is the official API of the BIOS. Ideally no other routines should be used.
@@ -832,7 +833,8 @@ b_spacex:       jmp spacex              ;Send .X space character to console
 b_hex_byte:     jmp hex_byte            ;Print a hex byte with leading zeroes. Byte should be stored in temp1.
 b_hex_address:  jmp hex_address         ;Print a hex address with leading zeroes. Address should be stored in index_low and index_high.
 
-        * = $fffa
+.segment    "VECTORS"
+        .org $fffa
         .word   nmi         ;NMI
         .word   coldstart   ;RESET
         .word   irq         ;IRQ
