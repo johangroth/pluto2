@@ -98,7 +98,7 @@ next_byte:
 ;;;
 .proc fill_memory
         jsr b_crout
-        print_text p
+        print_text fill_start
         ldx #4                      ;Ask for up to 4 hex chars (fill start address)
         jsr b_input_hex             ;Address will be in number_buffer
         lda number_buffer           ;so move it to address_low/high

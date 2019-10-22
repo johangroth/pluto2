@@ -314,44 +314,6 @@ done:
 .endproc
 
 ;;;
-;; COLON subroutine: Send colon sign to terminal.
-;;      Preparation:
-;;              none
-;;
-;;      Effect on registers:
-;;              a - entry value
-;;              x - entry value
-;;              y - entry value
-;;
-;;      Example:
-;;              jsr crout
-;;;
-.proc colon
-        pha
-        lda #':'
-        bra sendit
-.endproc
-
-;;;
-;; DOLLAR subroutine: Send dollar sign to terminal.
-;;      Preparation:
-;;              none
-;;
-;;      Effect on registers:
-;;              a - entry value
-;;              x - entry value
-;;              y - entry value
-;;
-;;      Example:
-;;              jsr crout
-;;;
-.proc dollar
-        pha
-        lda #'$'
-        bra sendit
-.endproc
-
-;;;
 ;; CR2 subroutine: Send CR/LF twice to terminal.
 ;;      Preparation:
 ;;              none
@@ -390,6 +352,44 @@ sendit:
         jsr chout
         pla
         rts
+.endproc
+
+;;;
+;; COLON subroutine: Send colon sign to terminal.
+;;      Preparation:
+;;              none
+;;
+;;      Effect on registers:
+;;              a - entry value
+;;              x - entry value
+;;              y - entry value
+;;
+;;      Example:
+;;              jsr crout
+;;;
+.proc colon
+        pha
+        lda #':'
+        bra crout::sendit
+.endproc
+
+;;;
+;; DOLLAR subroutine: Send dollar sign to terminal.
+;;      Preparation:
+;;              none
+;;
+;;      Effect on registers:
+;;              a - entry value
+;;              x - entry value
+;;              y - entry value
+;;
+;;      Example:
+;;              jsr crout
+;;;
+.proc dollar
+        pha
+        lda #'$'
+        bra crout::sendit
 .endproc
 
 ;;;
@@ -595,7 +595,7 @@ l1:
 
 ;;; CHIN subroutine: Wait for a character in input buffer, return character in A register.
 ;;; receive is interrupt driven and buffered with a size of 128 bytes.
-.scope chin
+.proc chin
         lda in_buffer_counter       ; Get number of characters in buffer
         beq chin                    ; If zero wait for characters
 get_char:
@@ -608,7 +608,7 @@ get_char:
         ply                         ; Restore Y register
         sec                         ; Indicate character is available
         rts
-.endscope
+.endproc
 
 ;;;
 ;; chin_no_wait subroutine: Get character from buffer. If no character is available
@@ -760,6 +760,7 @@ do_break:
         jmp (brk_soft_vector)   ;Handle brk instruction
 .endscope
 
+irq_end:
 .scope irq_end
         ply
         plx
@@ -767,6 +768,7 @@ do_break:
         rti
 .endscope
 
+brk_irq:
 .scope brk_irq
         ply
         plx
@@ -801,6 +803,7 @@ do_break:
         jmp (monitor_soft_vector)
 .endscope
 
+rtc_irq:
 .scope rtc_irq
         ; jmp (acia_soft_vector)          ;Jump to next ISR
         ;; rtc irq doesn't do anything at the moment so

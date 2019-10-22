@@ -119,17 +119,17 @@ SetstAddr:
         sta    Rbuff+2                  ; into 3rd byte
         lda    ptrh                     ; load hi byte of start address
         sta    Rbuff+3                  ; into 4th byte
-        bra    Ldbuff1                  ; jump into buffer load routine
+        bra    LdBuff1                  ; jump into buffer load routine
 
 LdBuffer:
-        lda    Lastblk                  ; Was the last block sent?
+        lda    lastblk                  ; Was the last block sent?
         beq    LdBuff0                  ; no, send the next one
         jmp     Done                    ; yes, we're done
 LdBuff0:
         ldx    #$02                     ; init pointers
         ldy    #$00                     ;
-        inc    Blkno                    ; inc block counter
-        lda    Blkno                    ;
+        inc    blkno                    ; inc block counter
+        lda    blkno                    ;
         sta    Rbuff                    ; save in 1st byte of buffer
         eor    #$FF                     ;
         sta    Rbuff+1                  ; save 1's comp of blkno next
@@ -145,7 +145,7 @@ LdBuff2:
         lda    eofph                    ;
         sbc    ptrh                     ;
         bne    LdBuff4                  ;
-        inc    LastBlk                  ; Yes, Set last byte flag
+        inc    lastblk                  ; Yes, Set last byte flag
 LdBuff3:
         inx                             ;
         cpx    #$82                     ; Are we at the end of the 128 byte block?
@@ -358,7 +358,7 @@ Flush1:
         lda #>msg
         sta index_high
         jmp b_prout
-Msg:
+msg:
         .byte   "Begin XMODEM/CRC transfer.  Press <Esc> to abort...", CR, LF, $00
 .endproc
 
@@ -401,9 +401,9 @@ CalcCRC1:
         eor     crc+1                   ; Quick CRC computation with lookup tables
         tax                             ; updates the two bytes at crc & crc+1
         lda     crc                     ; with the byte send in the "A" register
-        eor     CRCHI,X
+        eor     crchi,X
         sta     crc+1
-        lda     CRCLO,X
+        lda     crclo,X
         sta     crc
         iny                             ;
         cpy    #$82                     ; done yet?

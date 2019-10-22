@@ -102,5 +102,9 @@
         fill_length_high = fill_length_low +$1
         bcd = fill_length_high + $1
         bin = bcd + $4
+        binout = bin + $1
+        binoutl = binout
+        binouth = binout + $1
+        bcdnum = binouth + $1
 
         stack_page  = $100
