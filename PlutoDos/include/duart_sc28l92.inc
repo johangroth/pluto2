@@ -22,7 +22,7 @@
         duart_stopcc    = %1111    ;stop counter command
 
         ;Write operation registers
-        ; duart_mra       = %      ;Mode Register A (MR0A, MR1A, MR2A)
+        duart_mra_w     = %0000    ;Mode Register A (MR0A, MR1A, MR2A)
         duart_csra      = %0001    ;Clock Select Register A (CSRA)
         duart_cra       = %0010    ;Command Register A (CRA)
         duart_txfifoa   = %0011    ;Tx Holding Register A (TxFIFOA)

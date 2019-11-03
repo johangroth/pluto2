@@ -35,10 +35,6 @@
 .include "bin_to_ascii.asm"
 
 ; =============================================================================
-; ACIA 65C51 subroutines
-; .include "acia.asm"
-
-; =============================================================================
 ; utils subroutines (bcd->bin->bcd and out)
 .include "bcd_bin_utils.asm"
 

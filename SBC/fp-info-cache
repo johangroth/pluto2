@@ -1,4 +1,4 @@
-16320809956051533
+16322441601917388
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -45261,48 +45261,6 @@ Fuse Fuseholder TR5 Littelfuse/Wickmann No. 460 No560
 0
 2
 2
-Grotto
-FUSE_0154004.DR
-
-
-0
-2
-2
-Grotto
-PLCC-32_THT-Socket
-PLCC, 32 pins, through hole
-plcc leaded
-0
-32
-32
-Grotto
-SOJ-28_7.585x18.12mm_P1.27mm
-SOJ, 28 Pin (http://www.issi.com/WW/pdf/61C256AL.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
-SOJ SO
-0
-28
-28
-Grotto
-SOJ-36
-28-Lead Plastic Small Outline (SO) - Wide, 7.50 mm X 18.7 mm Body [SOIC] (https://www.akm.com/akm/en/file/datasheet/AK5394AVS.pdf)
-SOIC 1.27
-0
-36
-36
-Grotto
-SOJ-36_10.16x23.49mm_P1.27mm
-SOJ, 36 Pin (http://www.issi.com/WW/pdf/61-64C5128AL.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
-SOJ SO
-0
-36
-36
-Grotto
-SW-SPDT-0900766b81587629
-
-
-0
-5
-3
 Heatsink
 Heatsink_35x26mm_1xFixation3mm_Fischer-SK486-35
 Heatsink, 35mm x 26mm, 1x Fixation 3mm, Fischer SK486-35
@@ -66919,13 +66877,6 @@ https://www.farnell.com/cad/316865.pdf?_ga=2.37208032.177107060.1530611323-24901
 0
 48
 48
-Switches_THT
-SW-SPDT-0900766b81587629
-
-
-0
-5
-3
 Symbol
 CE-Logo_8.5x6mm_SilkScreen
 CE marking
@@ -72939,3 +72890,59 @@ varistor SIOV
 0
 2
 2
+grotto
+Barrel Jack RS Pro DC Socket 2.5mm - SMT
+
+
+0
+4
+3
+grotto
+FUSE_0154004.DR
+
+
+0
+2
+2
+grotto
+PLCC-32_THT-Socket
+PLCC, 32 pins, through hole
+plcc leaded
+0
+32
+32
+grotto
+SOIC127P600X175-14N
+
+
+0
+14
+14
+grotto
+SOJ-28_7.585x18.12mm_P1.27mm
+SOJ, 28 Pin (http://www.issi.com/WW/pdf/61C256AL.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
+SOJ SO
+0
+28
+28
+grotto
+SOJ-36
+28-Lead Plastic Small Outline (SO) - Wide, 7.50 mm X 18.7 mm Body [SOIC] (https://www.akm.com/akm/en/file/datasheet/AK5394AVS.pdf)
+SOIC 1.27
+0
+36
+36
+grotto
+SOJ-36_10.16x23.49mm_P1.27mm
+SOJ, 36 Pin (http://www.issi.com/WW/pdf/61-64C5128AL.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
+SOJ SO
+0
+36
+36
+grotto
+SW-SPDT-0900766b81587629
+
+
+0
+5
+3

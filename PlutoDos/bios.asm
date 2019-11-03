@@ -647,7 +647,7 @@ nmi:
 ;;;
 coldstart: .block
         sei                     ;Turn off interrupts
-        cld                     ;Make sure MPU is in binary mode
+        cld                     ;Make sure MPU is in binary mode (only necessary for NMOS?)
         ldx  #0
 l1:
         stz  0,x                ;zero ZP
@@ -671,8 +671,13 @@ l2:
 ;; Blink a LED every second connected to PA0 on VIA.
 ;;;
         lda #$ff
-        sta via1ddra        ; set all PA pins to be outputs
-        sta via1ddrb        ; set all PB ping to be outputs
+        sta via1ddra        ; set all VIA1 PA pins to be outputs
+        sta via1ddrb        ; set all VIA1 PB ping to be outputs
+        sta via2ddra        ; set all VIA2 PA pins to be outputs
+        sta via2ddrb        ; set all VIA2 PB ping to be outputs
+        sta via2ra          ; set PA outputs of VIA2 to 1
+        sta via2rb          ; set PB outputs of VIA2 to 1
+
         ; 9c40 in delay will cause a delay of 10000 us
         ; lda #$9c
         ; sta delay_high
@@ -682,16 +687,19 @@ loop:
         lda #$ff
         sta via1ra
         sta via1rb
-        ; bra loop
+        dec via2ra
+        dec via2rb
         jsr delay
         lda #0
         sta via1ra
         sta via1rb
+        dec via2ra
+        dec via2rb
         jsr delay
         bra loop
 
 delay: .proc
-        ldx #$20
+        ldx #$5
 loop1:
         jsr one_sec_delay
         dex

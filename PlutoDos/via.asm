@@ -33,7 +33,7 @@ delay_via1:  .proc
         sta via1t2cl      ;low part=01hex.
         lda delay_high
         sta via1t2ch      ;start
-        lda #via_timer2_irq_mask    ;mask
+        lda #via1_timer2_irq_mask    ;mask
 loop:
         bit via1ifr       ;time out?
         beq loop

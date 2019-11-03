@@ -1,6 +1,6 @@
 ;;; via1 device addresses:
-        via1base = $6000
-        ;;;via1base = $7fc0
+        ; via1base = $6000
+        via1base = $7fc0
         via1rb   = via1base+0     ; write output register b, read input register b
         via1ra   = via1base+1     ; write output register a, read input register a
         via1ddrb = via1base+2     ; data direction register b
@@ -22,7 +22,7 @@
         via1timer1mask = %00000110
         via1timer2mask = %00000101
 
-        via_timer2_irq_mask = %00100000
+        via1_timer2_irq_mask = %00100000
 
 via1_init_table
         .byte   $00     ; PRB
