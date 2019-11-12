@@ -279,7 +279,16 @@ done:
         .pend
 
 ;;;
-;; SPACEX subroutine: Send X space characters to terminal.
+;; SPACEX subroutine: Send X space characters to terminal. X must not be 0.
+;;      Effect on registers:
+;;              a - entry value
+;;              x - used
+;;              y - entry value
+;;
+;;      Example:
+;;              ldx #$10
+;;              jsr spacex ;print 16 spaces
+;;
 ;;;
 spacex: .proc
         jsr space
@@ -290,6 +299,16 @@ spacex: .proc
 
 ;;;
 ;; SPACE4 subroutine: Send four space characters to terminal.
+;;      Preparation:
+;;              none
+;;
+;;      Effect on registers:
+;;              a - entry value
+;;              x - entry value
+;;              y - entry value
+;;
+;;      Example:
+;;              jsr space4
 ;;;
 space4: .proc
         jsr space2
@@ -297,6 +316,16 @@ space4: .proc
 
 ;;;
 ;; SPACE2 subroutine: Send two space characters to terminal.
+;;      Preparation:
+;;              none
+;;
+;;      Effect on registers:
+;;              a - entry value
+;;              x - entry value
+;;              y - entry value
+;;
+;;      Example:
+;;              jsr space2
 ;;;
 space2: .proc
         jsr space
@@ -304,6 +333,16 @@ space2: .proc
 
 ;;;
 ;; SPACE subroutine: Send a space character to terminal.
+;;      Preparation:
+;;              none
+;;
+;;      Effect on registers:
+;;              a - entry value
+;;              x - entry value
+;;              y - entry value
+;;
+;;      Example:
+;;              jsr space
 ;;;
 space: .proc
         pha
@@ -786,17 +825,17 @@ brk_irq: .block
         stx stack_pointer
         plx                     ;Pull low byte of return address
         stx program_counter_low
-        stx index_low           ;For disassemble line
+        stx pc_low           ;For disassemble line
         plx
         stx program_counter_high
-        stx index_high          ;For disassemble line
+        stx pc_high          ;For disassemble line
 ;
 ; The following 3 subroutines are contained in the base Monitor and S/O/S code
 ;	- if replaced with new code, either replace or remove these routines
 ;
-		;jsr	decindex      ;decrement index to show brk flag byte in register display
-		;jsr	prstat1	      ;display contents of all preset/result memory locations
-		;jsr	disline       ;disassemble then display instruction at address pointed to by index
+		jsr	dec_index             ;decrement index to show brk flag byte in register display
+		;jsr	prstat1	             ;display contents of all preset/result memory locations
+		jsr	disassemble_one_line  ;disassemble then display instruction at address pointed to by index
 
         lda #0      ;clear all processor status flags
         pha

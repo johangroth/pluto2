@@ -4,6 +4,42 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-INCLUDE_SRCS	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^INCLUDE_SRCS = include\/*.inc$/;"	macro	line:1
-ASM_SRCS	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^ASM_SRCS = *.asm$/;"	macro	line:2
-Demulator	/home/jgroth/dev/repos_github/pluto2/PlutoDos/Makefile	/^	64tass -Demulator=false -o test_prg.bin --nostart --no-monitor --line-numbers --tab-size=1 --list=test_prg.lst test_prg.asm$/;"	macro	line:11
+disass	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^disass: .proc$/;"	label	line:8
+next_line	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^next_line:$/;"	label	line:10
+disassemble_one_line	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^disassemble_one_line: .proc$/;"	label	line:21
+print_mnemonic	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^print_mnemonic .proc$/;"	label	line:48
+again	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^again:$/;"	label	line:52
+next	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^next:$/;"	label	line:68
+print_machine_code_store_address_mode_as_text	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^print_machine_code_store_address_mode_as_text: .proc$/;"	label	line:90
+next_three_bytes_token	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^next_three_bytes_token:$/;"	label	line:95
+two_bytes	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^two_bytes:$/;"	label	line:102
+next_two_bytes_token	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^next_two_bytes_token:$/;"	label	line:104
+one_byte	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^one_byte:$/;"	label	line:111
+print_three_bytes	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^print_three_bytes: .proc$/;"	label	line:115
+print_two_bytes	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^print_two_bytes: .proc$/;"	label	line:139
+print_one_byte	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^print_one_byte: .proc$/;"	label	line:157
+print_address_mode	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^print_address_mode: .proc$/;"	label	line:170
+check_immediate	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^check_immediate:$/;"	label	line:179
+check_absolute	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^check_absolute:$/;"	label	line:191
+check_aii	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^check_aii:$/;"	label	line:204
+check_aix	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^check_aix:$/;"	label	line:223
+check_aiy	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^check_aiy:$/;"	label	line:238
+check_ai	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^check_ai:$/;"	label	line:253
+check_pc_relative	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^check_pc_relative:$/;"	label	line:272
+negative_address	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^negative_address:$/;"	label	line:289
+address_out	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^address_out:$/;"	label	line:300
+check_zero_page	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^check_zero_page:$/;"	label	line:303
+check_zp_ii	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^check_zp_ii:$/;"	label	line:316
+check_zp_ix	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^check_zp_ix:$/;"	label	line:333
+check_zp_iy	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^check_zp_iy:$/;"	label	line:346
+check_zp_i	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^check_zp_i:$/;"	label	line:359
+check_zp_iiy	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^check_zp_iiy:$/;"	label	line:375
+check_bbr_bbs	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^check_bbr_bbs:$/;"	label	line:392
+check_rmb_smb	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^check_rmb_smb:$/;"	label	line:428
+exit	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^exit:$/;"	label	line:458
+inc_scratch	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^inc_scratch: .proc$/;"	label	line:462
+return	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^return:$/;"	label	line:466
+inc_pc	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^inc_pc: .proc$/;"	label	line:470
+done	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^done:$/;"	label	line:474
+print_indexed_with_x	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^print_indexed_with_x: .proc$/;"	label	line:478
+print_indexed_with_y	/home/jgroth/dev/repos_github/pluto2/PlutoDos/miniassembler.asm	/^print_indexed_with_y: .proc$/;"	label	line:483

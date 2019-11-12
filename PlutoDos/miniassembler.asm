@@ -16,7 +16,7 @@ next_line:
 
 ;;;
 ;; Disassemble one line in address pc_low/pc_high.
-;; Useful for BRK software interrupt and NMI panic button (no version of Pluto has a panic button though).
+;; Useful for BRK software interrupt and NMI panic button (only version 3 of Pluto has a panic button though).
 ;;;
 disassemble_one_line: .proc
         lda pc_low
@@ -395,8 +395,7 @@ check_bbr_bbs:
 ;;;
 ;; handle bbr and bbs
 ;;;
-        lda #1
-        sta control_flags       ; decimal mode for bin -> ascii conversion
+        smb 1, control_flags    ; decimal mode for bin -> ascii conversion
         jsr clear_number_buffer
         lda op_code
         and #$70                ; we're left with $00, $10, $20, $30, $40, $50, $60 or $70
