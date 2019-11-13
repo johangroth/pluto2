@@ -701,9 +701,9 @@ l2:
         ; dex
         ; bne l2
         ; jsr acia_init         ;Deprecated (ACIA was a CDP/Rockwell 65C51 at 4 MHz)
-        ; jsr duart_init          ;Initialise 28L92 (DUART at 4 MHz initially)
+        ; jsr duart_init          ;Initialise SC28L92 (DUART at 4 MHz initially)
         ; jsr rtc_init            ;Initialise real time clock
-        jsr via_init          ;No VIA on Pluto v2 (well, right now 24/08/2018 one is connected to the expansion bus)
+        ; jsr via_init          ;No VIA on Pluto v2 (well, right now 24/08/2018 one is connected to the expansion bus)
         cli
 ;;;
 ;; test code of CPLD's decoding part.
@@ -824,17 +824,17 @@ brk_irq: .block
         tsx
         stx stack_pointer
         plx                     ;Pull low byte of return address
-        stx program_counter_low
+        stx index_low
         stx pc_low           ;For disassemble line
         plx
-        stx program_counter_high
+        stx index_high
         stx pc_high          ;For disassemble line
 ;
 ; The following 3 subroutines are contained in the base Monitor and S/O/S code
 ;	- if replaced with new code, either replace or remove these routines
 ;
-		jsr	dec_index             ;decrement index to show brk flag byte in register display
-		;jsr	prstat1	             ;display contents of all preset/result memory locations
+        jsr	dec_index             ;decrement index to show brk flag byte in register display
+		jsr	registers.registers1  ;display contents of all preset/result memory locations
 		jsr	disassemble_one_line  ;disassemble then display instruction at address pointed to by index
 
         lda #0      ;clear all processor status flags

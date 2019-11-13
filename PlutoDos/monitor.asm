@@ -46,6 +46,25 @@ command_not_supported:
 ;;;
 ;; Monitor commands
 ;;;
+;;;
+;; [L] Lists (disassembles) 20 lines
+;;;
+disassemble: .proc
+        jsr print_colon_dollar
+        ldx #4
+        jsr b_input_hex
+        jsr b_crout
+        lda temp1                   ;if temp1 is zero
+        beq continue_list           ;branch as we want to continue where we left off
+        lda number_buffer           ;Address ends up in number_buffer
+        sta pc_low             ;so store it in address
+        lda number_buffer+1
+        sta pc_high
+continue_list:
+        jsr disass
+        rts
+        .pend
+
 
 ;;;
 ;; [D] Dumps 256 bytes of memory
@@ -230,7 +249,34 @@ set_date_time: .proc
         rts
         .pend
 
+;;;
+;; [R] REGISTERS
+;; Display contents of all preset/result memory locations
+;;;
+registers:  .proc
+        jsr b_crout
+registers1:
+        #print_text registers_text
+        jsr b_hex_address
+        jsr b_space
+        ldx #4
+loop:
+        lda mpu_status_register,x
+        sta temp1
+        jsr b_hex_byte
+        jsr space
+        dex
+        bne loop
 
+        jsr clear_number_buffer
+        lda #%10
+        sta control_flags               ; convert to ascii binary
+        lda mpu_status_register
+        sta number_buffer
+        jsr binary_to_ascii
+        jmp b_prout
+
+        .pend
 ;;;
 ;; Monitor support routines
 ;;;
@@ -501,6 +547,8 @@ command_table:
         .byte $04   ;[CTRL-D] Download file with XMODEM/CRC
         .text "F"   ;[F] Fill memory
         .text "H"   ;[H] Print all commands
+        .text "L"   ;[L] List (disassemble).Disassemble 20 lines
+        .text "R"   ;[R] Display all registers
         .text $15   ;[CTRL-U] Upload file with XMODEM/CRC
         .text "T"   ;[T] Display date and time
         .byte $14   ;[CTRL-T] Set date and time
@@ -514,6 +562,8 @@ command_pointers:
         .word download
         .word fill_memory
         .word print_all_commands
+        .word disassemble
+        .word registers
         .word upload
         .word display_date_time
         .word set_date_time

@@ -96,6 +96,8 @@ help_text:
         #crlf
         .text "H This text"
         #crlf
+        .text "R Display registers"
+        #crlf
         .text "T Display time and date"
         #crlf
         .text "CTRL-T Set time and date"
@@ -104,6 +106,11 @@ help_text:
 
 abort_command_text:
         .null "[ESC] to abort, any other to proceed"
+
+registers_text:
+        .text "   PC  AC XR YR SP NV-BDIZC"
+        #crlf
+        .byte $00
 
 ;;;
 ;; Date and time strings

@@ -1,17 +1,18 @@
 
         zp_start    = $80
-        ; Variables for storing MPU state after a BRK instruction
         delay_low               = zp_start
         delay_high              = zp_start + $1
-        accumulator             = zp_start + $2
-        x_register              = zp_start + $3
-        y_register              = zp_start + $4
-        mpu_status_register     = zp_start + $5
-        stack_pointer           = zp_start + $6
-        program_counter_low     = zp_start + $7
-        program_counter_high    = zp_start + $8
+        ; Variables for storing MPU state after a BRK instruction
+        pc                      = zp_start + $2
+        pc_low                  = zp_start + $2
+        pc_high                 = zp_start + $3
+        mpu_status_register     = zp_start + $4
+        stack_pointer           = zp_start + $5
+        y_register              = zp_start + $6
+        x_register              = zp_start + $7
+        accumulator             = zp_start + $8
 
-        ; 65C51 IRQ handler buffer pointers and counters
+        ; IRQ handler for input/output buffer, pointers and counters
         in_buffer_counter   = zp_start + $9     ; Keeps track of how many characters there are in the input buffer
         in_buffer_head      = zp_start + $a     ; Keeps track of where in the input buffer an incoming char should be placed
         in_buffer_tail      = zp_start + $b     ; Keeps track of where in the input buffer an incoming char should be taken from
@@ -103,4 +104,19 @@
         bcd = fill_length_high + $1
         bin = bcd + $4
 
+        ;===============================================================================
+        ;16-bit
+        ; zero page variables
+        ;
+        ;
+        scratch_low = bin + $1
+        scratch_high = scratch_low + $1
+        scratch = scratch_low
+
+        text_area = scratch_high + $1
+
+        ;===============================================================================
+        ; Start of stack
+        ;
+        ;
         stack_page  = $100
