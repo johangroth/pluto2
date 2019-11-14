@@ -700,14 +700,14 @@ l2:
         ; sta soft_vector_table-1,x
         ; dex
         ; bne l2
-        ; jsr acia_init         ;Deprecated (ACIA was a CDP/Rockwell 65C51 at 4 MHz)
-        ; jsr duart_init          ;Initialise SC28L92 (DUART at 4 MHz initially)
+        jsr duart_init          ;Initialise SC28L92 (DUART at 4 MHz initially)
         ; jsr rtc_init            ;Initialise real time clock
-        ; jsr via_init          ;No VIA on Pluto v2 (well, right now 24/08/2018 one is connected to the expansion bus)
+        ; jsr via_init          ;Two VIAs on Pluto v3 and no VIA on Pluto v2
         cli
 ;;;
-;; test code of CPLD's decoding part.
-;; Blink a LED every second connected to PA0 on VIA.
+;; test code of GAL's decoding part.
+;; Blink LEDs on both VIAs
+;; Send a character on channel A on DUART
 ;;;
         lda #$ff
         sta via1ddra        ; set all VIA1 PA pins to be outputs
@@ -717,11 +717,6 @@ l2:
         sta via2ra          ; set PA outputs of VIA2 to 1
         sta via2rb          ; set PB outputs of VIA2 to 1
 
-        ; 9c40 in delay will cause a delay of 10000 us
-        ; lda #$9c
-        ; sta delay_high
-        ; lda #$40
-        ; sta delay_low
 loop:
         lda #$ff
         sta via1ra
@@ -735,6 +730,7 @@ loop:
         dec via2ra
         dec via2rb
         jsr delay
+        jsr send_character
         bra loop
 
 delay: .proc
@@ -759,6 +755,16 @@ loop2:
         bne loop1
         ply
         plx
+        rts
+        .pend
+
+send_character: .proc
+        ;; enable XMIT
+        ;; Send char
+        ;; Check for Errors
+        ;; Error of any kind, set via ports to ZERO
+        ;; and wait 2 secs
+        ;; disable XMIT
         rts
         .pend
 ;;;

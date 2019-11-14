@@ -76,8 +76,8 @@
         ropr_duart      = duart_base + duart_ropr       ;Reset output Port Bits Command (ROPR)
 
 
-        nxx1freq =3686400              ;X1 clock frequency in Hz
-        nxctscal =nxx1freq/2           ;C/T scaled clock
+        nxx1freq = 3686400              ;X1 clock frequency in Hz
+        nxctscal = nxx1freq/2           ;C/T scaled clock
 ;
 ;
 ;   ACR — auxiliary control register
@@ -121,9 +121,9 @@
 ;   These definitions are here only for reference if a jiffy timer
 ;   running at 100 Hz is enabled.
         hz = 100
-        duart_ctdef =nxctscal/hz            ;HZ underflows per second
-        duart_ctdlo =<duart_ctdef           ;underflows/sec LSB
-        duart_ctdhi =>duart_ctdef           ;underflows/sec MSB
+        duart_ctdef = nxctscal/hz            ;HZ underflows per second
+        duart_ctdlo = <duart_ctdef           ;underflows/sec LSB
+        duart_ctdhi = >duart_ctdef           ;underflows/sec MSB
 ;
 ;
 ;   MR0 — mode 0 register...
