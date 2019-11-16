@@ -700,10 +700,10 @@ l2:
         ; sta soft_vector_table-1,x
         ; dex
         ; bne l2
-        jsr duart_init          ;Initialise SC28L92 (DUART at 4 MHz initially)
+        ; jsr duart_init          ;Initialise SC28L92 (DUART at 4 MHz initially)
         ; jsr rtc_init            ;Initialise real time clock
         ; jsr via_init          ;Two VIAs on Pluto v3 and no VIA on Pluto v2
-        cli
+        ; cli
 ;;;
 ;; test code of GAL's decoding part.
 ;; Blink LEDs on both VIAs
@@ -721,20 +721,20 @@ loop:
         lda #$ff
         sta via1ra
         sta via1rb
-        dec via2ra
-        dec via2rb
+        inc via2ra
+        inc via2rb
         jsr delay
         lda #0
         sta via1ra
         sta via1rb
-        dec via2ra
-        dec via2rb
+        inc via2ra
+        inc via2rb
         jsr delay
-        jsr send_character
+        ; jsr send_character
         bra loop
 
 delay: .proc
-        ldx #$5
+        ldx #$1
 loop1:
         jsr one_sec_delay
         dex
