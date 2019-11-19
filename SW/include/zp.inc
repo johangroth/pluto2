@@ -48,9 +48,10 @@
         ;;  |||||+————————>
         ;;  ||||+—————————>
         ;;  |||+——————————>
-        ;;  ||+———————————>
-        ;;  |+————————————>
+        ;;  ||+———————————> 0 - 28l92 Channel A transmitter is enabled, 1 - transmitter is disabled
+        ;;  |+————————————> 0 - 28l92 Channel B transmitter is enabled, 1 - transmitter is disabled
         ;;  +—————————————> 0 - 28l92 is still counting down, 1 - counter in 28l92 has reached zero
+        ch_a_transmitter = 5
         control_flags = zp_start + $29
         ;================================================================================
         ;

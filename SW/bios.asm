@@ -632,31 +632,38 @@ bell:   .proc
         .pend
 
 
-;;;
-;; chin_no_wait subroutine: Get character from buffer. If no character is available
-;; carry is cleared, otherwise set. Returns character in A register.
-chin_no_wait: .proc
-        clc                         ; Indicate no character is available
-        lda in_buffer_counter
-        bne chin.get_char
-        rts
-        .pend
-
-;;; CHIN subroutine: Wait for a character in input buffer, return character in A register.
-;;; receive is interrupt driven and buffered with a size of 128 bytes.
+;;; CHIN subroutine: get data from receive queue with immediate return.
+;
+;   Calling syntax: jsr chin
+;                   bcs no_datum
+;
+;   Exit registers: .A: datum or entry value
+;                   .X: entry value
+;                   .Y: entry value
+;                   SR: NV-BDIZC
+;                       ||||||||
+;                       |||||||+———> 0: datum returned
+;                       |||||||      1: queue empty
+;                       ++++++++———> undefined
+;
 chin:    .proc
-        lda in_buffer_counter       ; Get number of characters in buffer
-        beq chin                    ; If zero wait for characters
-get_char:
-        phy                         ; Preserve Y register
-        ldy in_buffer_head          ; Get in buffer head pointer
-        lda in_buffer,y             ; Get the character from the in buffer
-        inc in_buffer_head          ; Increment the buffer index
-        rmb 7,in_buffer_head        ; Reset bit 7 as buffer is only 128 bytes
-        dec in_buffer_counter       ; Decrement the character counter
-        ply                         ; Restore Y register
-        sec                         ; Indicate character is available
-        rts
+        phx                         ; preserve .X
+        phy                         ; preserve .Y
+        ldx in_buffer_head          ; fetch receive buffer "get" index
+        cpx in_buffer_tail          ; If zero wait for characters
+        beq done                    ; Receive queue is empty
+        lda in_buffer,x             ; Get the character from the receive queue
+        tay                         ; preserve datum
+        txa                         ; copy "get" index
+        ina                         ; increment it
+        and #$7f                    ; Wrap it (buffer only 128 characters big)
+        sta in_buffer_head          ; store it
+        tya                         ; copy datum
+        clc                         ; datum gotten
+done:
+        ply                         ; restore .Y
+        plx                         ; restore .X
+        rts                         ; return to caller
         .pend
 
 ;;; CHOUT subroutine: Place register A in output buffer, register A is preserved.
@@ -694,16 +701,16 @@ l1:
         bne  l1
         dex                     ;effectively ldx #$ff
         txs                     ;Initialise stack register
-        ; ldx  #n_soft_vectors    ;Initialise IRQ ISR soft vector table
+        ldx  #n_soft_vectors    ;Initialise IRQ ISR soft vector table
 l2:
-        ; lda initial_soft_vectors-1,x
-        ; sta soft_vector_table-1,x
-        ; dex
-        ; bne l2
-        ; jsr duart_init          ;Initialise SC28L92 (DUART at 4 MHz initially)
-        ; jsr rtc_init            ;Initialise real time clock
-        ; jsr via_init          ;Two VIAs on Pluto v3 and no VIA on Pluto v2
-        ; cli
+        lda initial_soft_vectors-1,x
+        sta soft_vector_table-1,x
+        dex
+        bne l2
+        jsr duart_init          ;Initialise SC28L92
+        ; jsr rtc_init          ;Initialise real time clock
+        jsr via_init            ;Two VIAs on Pluto v3 and no VIA on Pluto v2
+        cli
 ;;;
 ;; test code of GAL's decoding part.
 ;; Blink LEDs on both VIAs
@@ -733,8 +740,30 @@ loop:
         ; jsr send_character
         bra loop
 
+
+;;;
+;; delay of 0.025 ms (VIA) times .X
+;;;
 delay: .proc
-        ldx #$1
+        ldx #10
+loop:
+        stz via1acr
+        lda #$50            ; count $c350 (50,000) clock pulses
+        sta via1t2cl        ; clock is running at 2MHz
+        lda #$c3            ; so 50,000 clock pulses is 0.025s
+        sta via1t2ch
+        lda #$20            ; Mask bit 5 in ACR (T2 timer control, 0 = timed interrupt)
+counter:
+        bit via1ifr
+        beq counter         ; Loop until interrupt flag is 1
+        lda via1t2cl        ; Clear timer 2 interrupt
+        dex
+        bne loop
+        rts
+        .pend
+
+delay_old: .proc
+        ldx #$2
 loop1:
         jsr one_sec_delay
         dex
@@ -744,7 +773,6 @@ loop1:
 
 one_sec_delay: .proc
         phx
-        phy
         ldx #$ff
 loop1:
         ldy #$ff
@@ -753,7 +781,6 @@ loop2:
         bne loop2
         dex
         bne loop1
-        ply
         plx
         rts
         .pend
@@ -836,20 +863,20 @@ brk_irq: .block
         stx index_high
         stx pc_high          ;For disassemble line
 ;
-; The following 3 subroutines are contained in the base Monitor and S/O/S code
+; The following 3 subroutines are contained in the base Monitor
 ;	- if replaced with new code, either replace or remove these routines
 ;
         jsr	dec_index             ;decrement index to show brk flag byte in register display
 		jsr	registers.registers1  ;display contents of all preset/result memory locations
 		jsr	disassemble_one_line  ;disassemble then display instruction at address pointed to by index
 
-        lda #0      ;clear all processor status flags
+        lda #0                    ;clear all processor status flags
         pha
         plp
         stz in_buffer_counter
         stz in_buffer_tail
         stz in_buffer_head
-        jmp (monitor_soft_vector)
+        jmp (monitor_soft_vector)   ;jump back to monitor after handled BRK instruction
         .bend
 
 rtc_irq: .block
@@ -868,7 +895,7 @@ b_input_hex:    jmp input_hex           ;Binary number in number_buffer
 b_input_dec:    jmp input_dec           ;Binary number in number_buffer
 b_read_char:    jmp read_character      ;Read character and convert to uppercase.
 b_read_line:    jmp read_line           ;Read .X number of characters
-b_chin_no_wait: jmp chin_no_wait        ;Read character but don't wait for input. Used by XMODEM
+b_chin_no_wait: jmp chin                ;Read character but don't wait for input. Used by XMODEM
 b_bin_to_asc:   jmp binary_to_ascii     ;Convert a binary to ASCII
 b_dollar:       jmp dollar              ;Print '$'.
 b_colon:        jmp colon               ;Print ':'

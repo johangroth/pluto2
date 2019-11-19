@@ -40,3 +40,11 @@ loop:
         lda via1t2cl      ;clear timer 2 interrupt
         rts
         .pend
+
+via1_irq:   .proc
+        jmp (via2_soft_vector)
+        .pend
+
+via2_irq:   .proc
+        jmp irq_end
+        .pend

@@ -82,39 +82,71 @@
 ;
 ;   ACR — auxiliary control register
 ;
-        duart_arbrt = %00110000            ;...
+        duart_arbrt = %00110000            ;set mode to crystal or external clock (X1/CLK) divided by 16
 ;
 ;   a) Use baud rate table #5 —— see data sheet.
 ;   b) C/T acts as a counter.
 ;   c) C/T clock source is scaled to X1 ÷ 16.
 ;
-;
-;   CR — command register commands
-;
-         duart_crrxe = %00000001            ;enable receiver
-         duart_crrxd = %00000010            ;disable receiver
-         duart_crtxe = %00000100            ;enable transmitter
-         duart_crtxd = %00001000            ;disable transmitter
-         duart_crmr1 = %00010000            ;select MR1
-         duart_crrxr = %00100000            ;reset receiver
-         duart_crtxr = %00110000            ;reset transmitter
-         duart_cresr = %01000000            ;reset error status
-         duart_crbir = %01010000            ;reset received break change IRQ
-         duart_crbks = %01100000            ;start break
-         duart_crbke = %01110000            ;stop break
-         duart_crrsa = %10000000            ;assert request to send
-         duart_crrsd = %10010000            ;deassert request to send
-         duart_crtme = %10100000            ;select C/T timer mode
-         duart_crmr0 = %10110000            ;select MR0
-         duart_crtmd = %11000000            ;Disable time out mode.
-         duart_crpwd = %11100000            ;Power down mode on (used on 28L92?)
-         duart_crpwu = %11110000            ;Power up DUART (used on 28L92?)
+
+;;;
+;;   CRA — channel A command register commands
+;;;
+        ; CRA[3:0]
+        duart_cra_rxe = %00000001            ;enable receiver
+        duart_cra_rxd = %00000010            ;disable receiver
+        duart_cra_txe = %00000100            ;enable transmitter
+        duart_cra_txd = %00001000            ;disable transmitter
+
+        ; CRA[7:4]
+        duart_cra_mr1 = %00010000           ;select MR1 (p35)
+        duart_cra_rxr = %00100000           ;reset receiver as after HW reset
+        duart_cra_txr = %00110000           ;reset transmitter as after HW reset
+        duart_cra_esr = %01000000           ;reset error status (SRA[7:4])
+        duart_cra_abr = %01010000           ;reset channel A break change interrupt (ISR[2] = 0)
+        duart_cra_stb = %01100000           ;start break. Forces TxDA to LOW. (p36)
+        duart_cra_spb = %01110000           ;stop break
+        duart_cra_rsa = %10000000           ;assert request to send (RTSN)
+        duart_cra_rsd = %10010000           ;deassert request to send (RTSN)
+        duart_cra_eto = %10100000           ;enable time-out mode of C/T.
+        duart_cra_mr0 = %10110000           ;select MR0
+        duart_cra_dto = %11000000           ;disable time-out mode
+        duart_cra_nop = %11010000           ;NOT USED
+        duart_cra_epd = %11100000           ;power down mode. Stop oscillator thus suspending all functions depending on it.
+        duart_cra_dpd = %11110000           ;disable power down mode. Restarts the oscillator.
+
+;;;
+;;   CRB — channel B command register commands
+;;         Definitions are identical with CRA with the exception of $E and $F. Power down commands are not used
+;;         in channel B.
+;;;
+        ; CRB[3:0]
+        duart_crb_rxe = duart_cra_rxe            ;enable receiver
+        duart_crb_rxd = duart_cra_rxd            ;disable receiver
+        duart_crb_txe = duart_cra_txe            ;enable transmitter
+        duart_crb_txd = duart_cra_txd            ;disable transmitter
+
+        ; CRB[7:4]
+        duart_crb_mr1 = duart_cra_mr1
+        duart_crb_rxr = duart_cra_rxr
+        duart_crb_txr = duart_cra_txr
+        duart_crb_esr = duart_cra_esr
+        duart_crb_abr = duart_cra_abr
+        duart_crb_stb = duart_cra_stb
+        duart_crb_spb = duart_cra_spb
+        duart_crb_rsa = duart_cra_rsa
+        duart_crb_rsd = duart_cra_rsd
+        duart_crb_eto = duart_cra_eto
+        duart_crb_mr0 = duart_cra_mr0
+        duart_crb_dto = duart_cra_dto
+        duart_crb_nop = duart_cra_nop
+
 ;
 ;
 ;   ACR[7] = 0 and MR0[2] = 1 (Extended mode II), see table 35 (p. 33) in datasheet.
 ;   CSR — clock select register...
 ;
-        duart_csdef = %01100110             ;RxD & TxD at 115.2 Kbps...
+        duart_csrdef = %01100110             ;RxD & TxD at 115.2 baud...
 ;
 ;
 ;   CT — counter/timer...
@@ -128,26 +160,26 @@
 ;
 ;   MR0 — mode 0 register...
 ;
-        duart_m0def =%11001100            ;if using a 28L92 ...
+        duart_m0def =%11001100
 ;
 ;   11001100
 ;   ||||||||
-;   |||||+++———> extended baud rate #2
-;   ||||+——————> 16-deep FIFO
+;   |||||+++———> Baud rate extended mode II
+;   ||||+——————> 16 bytes FIFO
 ;   ||++———————> TxD interrupts only when FIFO is empty
-;   |+—————————> RxD interrupts only when FIFO is full (see also MR1:6)
+;   |+—————————> RxD interrupts only when FIFO is full (see also MR1[6])
 ;   +——————————> enable RxD watchdog timer
 ;
 ;   IMR = Interrupt Mask Register
 ;
-        duart_irqmask =%00001011
+        duart_irqmask =%00000011
 ;
 ;   00001011
 ;   ||||||||
 ;   |||||||+———> TxA interrupt enabled
 ;   ||||||+————> RxA interrupt enabled
 ;   |||||+—————> Channel A change in break disabled
-;   ||||+——————> Counter ready enabled
+;   ||||+——————> Counter ready disabled
 ;   |||+———————> TxB interrupt disabled
 ;   ||+————————> RxB interrupt disabled
 ;   |+—————————> Channel B change in break disabled
@@ -171,6 +203,13 @@
 ;
 
         duart_m2def =%00010111            ;normal mode, auto RTS
+;   00010111
+;   ||||||||
+;   ||||++++———> 1 stop bit
+;   |||+———————> CTS control enabled
+;   ||+————————> No RTS control (p30)
+;   ++—————————> normal mode (p29)
+;
 ;
 ;
 ;   OPCR — output port configuration register...
@@ -180,8 +219,12 @@
 ;
 ;   combined setup commands...
 ;
-        duart_crrtd =duart_crtxd|duart_crrxd    ;disable transmitter & receiver
-        duart_crrte =duart_crtxe|duart_crrxe    ;enable transmitter & receiver
+        duart_cra_rtd =duart_cra_txd | duart_cra_rxd    ;disable transmitter & receiver
+        duart_cra_rte =duart_cra_txe | duart_cra_rxe    ;enable transmitter & receiver
+
+;   same commands for channel B
+        duart_crb_rtd = duart_cra_rtd
+        duart_crb_rte = duart_cra_rte
 
 ;PHILIPS/NXP DUAL UART INITIALIZATION DATA
 ;
@@ -192,42 +235,42 @@
 ;   Table entries are read in reverse order during device setup.
 ;   ————————————————————————————————————————————————————————————————————————
 ;
-        .align $20,$ea
+        .align $100,$00                     ; page align table
         ;* = * - 2   ;force table to cross page boundary
 duart_sutab:
-        .byte duart_imr, duart_irqmask  ;IMR (enables IRQs)
-        .byte duart_ctu, duart_ctdhi    ;CTU
-        .byte duart_ctl, duart_ctdlo    ;CTL
-        .byte duart_crb, duart_crtxe    ;CRB
-        .byte duart_csrb,duart_csdef    ;CSRB
-        .byte duart_mrb, duart_m2def    ;MR2B
-        .byte duart_mrb, duart_m1def    ;MR1B
-        .byte duart_crb, duart_crmr1    ;CRB
-        .byte duart_mrb, duart_m0def    ;MR0B
-        .byte duart_crb, duart_crmr0    ;CRB
-        .byte duart_cra, duart_crrsa    ;CRA
-        .byte duart_cra, duart_crrte    ;CRA
-        .byte duart_csra,duart_csdef    ;CSRA
-        .byte duart_mra, duart_m2def    ;MR2A
-        .byte duart_mra, duart_m1def    ;MR1A
-        .byte duart_cra, duart_crmr1    ;CRA
-        .byte duart_mra, duart_m0def    ;MR0A
-        .byte duart_cra, duart_crmr0    ;CRA
-        .byte duart_acr, duart_arbrt    ;ACR
-        .byte duart_opcr,duart_opdef    ;OPCR
-        .byte duart_crb, duart_crtmd    ;CRB
-        .byte duart_crb, duart_cresr    ;CRB
-        .byte duart_crb, duart_crbir    ;CRB
-        .byte duart_crb, duart_crtxr    ;CRB
-        .byte duart_crb, duart_crrxr    ;CRB
-        .byte duart_crb, duart_crrsd    ;CRB
-        .byte duart_cra, duart_crtmd    ;CRA
-        .byte duart_cra, duart_cresr    ;CRA
-        .byte duart_cra, duart_crbir    ;CRA
-        .byte duart_cra, duart_crtxr    ;CRA
-        .byte duart_cra, duart_crrxr    ;CRA
-        .byte duart_cra, duart_crrsd    ;CRA
-        .byte duart_cra, duart_crpwd    ;CRA
+        ; .byte duart_imr, duart_irqmask      ;IMR (enables IRQs)
+        ; .byte duart_ctu, duart_ctdhi        ;CTU
+        ; .byte duart_ctl, duart_ctdlo        ;CTL
+        .byte duart_crb, duart_crb_txe      ;CRB enable transmitter
+        .byte duart_csrb,duart_csrdef       ;CSRB 115200 baud
+        .byte duart_mrb, duart_m2def        ;MR2B CTS on and 1 stop bit
+        .byte duart_mrb, duart_m1def        ;MR1B RTS on, no parity, 8 bits
+        .byte duart_crb, duart_crb_mr1      ;CRB select MR1
+        .byte duart_mrb, duart_m0def        ;MR0B See above
+        .byte duart_crb, duart_crb_mr0      ;CRB select MR0
+        .byte duart_cra, duart_cra_rsa      ;CRA assert RTS
+        .byte duart_cra, duart_cra_rte      ;CRA enable transmitter and receiver
+        .byte duart_csra,duart_csrdef       ;CSRA 115200 baud
+        .byte duart_mra, duart_m2def        ;MR2A CTS on and 1 stop bit
+        .byte duart_mra, duart_m1def        ;MR1A RTS on, no parity, 8 bits
+        .byte duart_cra, duart_cra_mr1      ;CRA select MR1
+        .byte duart_mra, duart_m0def        ;MR0A See above
+        .byte duart_cra, duart_cra_mr0      ;CRA select MR0
+        .byte duart_acr, duart_arbrt        ;ACR external clock (X1/CLK) / 16
+        .byte duart_opcr,duart_opdef        ;OPCR no operation
+        .byte duart_crb, duart_crb_dto      ;CRB disable time-out mode
+        .byte duart_crb, duart_crb_esr      ;CRB reset error status (SRB[7:4])
+        .byte duart_crb, duart_crb_abr      ;CRB reset channel B break change interrupt (ISR[6] = 0)
+        .byte duart_crb, duart_crb_txr      ;CRB reset transmitter
+        .byte duart_crb, duart_crb_rxr      ;CRB reset receiver
+        .byte duart_crb, duart_crb_rsd      ;CRB dassert RTS
+        .byte duart_cra, duart_cra_dto      ;CRA disable time-out mode
+        .byte duart_cra, duart_cra_esr      ;CRA reset error status (SRA[7:4])
+        .byte duart_cra, duart_cra_abr      ;CRA reset channel A break change interrupt (ISR[2] = 0)
+        .byte duart_cra, duart_cra_txr      ;CRA reset transmitter
+        .byte duart_cra, duart_cra_rxr      ;CRA reset receiver
+        .byte duart_cra, duart_cra_rsd      ;CRA dassert RTS
+        ; .byte duart_cra, duart_crpwd    ;CRA
         .byte duart_imr, 0         ;IMR (disable IRQs)
 
         s_duart_tab = * - duart_sutab
