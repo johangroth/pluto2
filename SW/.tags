@@ -575,3 +575,33 @@ b_space4	/home/jgroth/dev/repos_github/pluto2/SW/bios.asm	/^b_space4:       jmp 
 b_spacex	/home/jgroth/dev/repos_github/pluto2/SW/bios.asm	/^b_spacex:       jmp spacex              ;Send .X space character to console$/;"	label	line:911
 b_hex_byte	/home/jgroth/dev/repos_github/pluto2/SW/bios.asm	/^b_hex_byte:     jmp hex_byte            ;Print a hex byte with leading zeroes. Byte should be stored in temp1.$/;"	label	line:912
 b_hex_address	/home/jgroth/dev/repos_github/pluto2/SW/bios.asm	/^b_hex_address:  jmp hex_address         ;Print a hex address with leading zeroes. Address should be stored in index_low and index_high.$/;"	label	line:913
+a_hexdec	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^a_hexdec: = 'A'-'9'-2                   ;hex to decimal difference$/;"	define	line:100
+m_bits	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^m_bits: = 32                            ;operand bit size$/;"	define	line:101
+m_cbits	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^m_cbits: = 48                           ;workspace bit size$/;"	define	line:102
+m_strlen	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^m_strlen: = m_bits+1                    ;maximum printable string length$/;"	define	line:103
+s_pfac	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^s_pfac: = m_bits\/8                      ;primary accumulator size$/;"	define	line:104
+s_ptr	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^s_ptr:  = 2                             ;pointer size$/;"	define	line:105
+s_wrkspc	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^s_wrkspc: = m_cbits\/8                   ;conversion workspace size$/;"	define	line:106
+binary_to_ascii	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^binary_to_ascii: .proc$/;"	label	line:119
+l06	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^l06:$/;"	label	line:143
+l07	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^l07:$/;"	label	line:146
+l08	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^l08:$/;"	label	line:153
+l09	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^l09:$/;"	label	line:162
+l10	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^l10:$/;"	label	line:176
+l11	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^l11:$/;"	label	line:179
+l12	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^l12:$/;"	label	line:182
+l13	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^l13:$/;"	label	line:196
+l14	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^l14:$/;"	label	line:200
+l15	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^l15:$/;"	label	line:206
+facbcd	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^facbcd:$/;"	label	line:239
+facbcd01	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^facbcd01:$/;"	label	line:241
+facbcd02	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^facbcd02:$/;"	label	line:248
+facbcd03	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^facbcd03:$/;"	label	line:256
+facbcd04	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^facbcd04:$/;"	label	line:259
+facbcd05	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^facbcd05:$/;"	label	line:266
+facbcd06	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^facbcd06:$/;"	label	line:273
+facbcd07	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^facbcd07:$/;"	label	line:275
+facbcd08	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^facbcd08:$/;"	label	line:284
+bitstab	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^bitstab: .byte 4,4,1                    ;bits per numeral$/;"	label	line:298
+lzsttab	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^lzsttab: .byte 3,2,9                    ;leading zero suppression thresholds$/;"	label	line:299
+numstab	/home/jgroth/dev/repos_github/pluto2/SW/bin_to_ascii.asm	/^numstab: .byte 12,12,48                 ;maximum numerals$/;"	label	line:300

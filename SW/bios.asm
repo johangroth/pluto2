@@ -723,19 +723,22 @@ l2:
         sta via2ddrb        ; set all VIA2 PB ping to be outputs
         sta via2ra          ; set PA outputs of VIA2 to 1
         sta via2rb          ; set PB outputs of VIA2 to 1
-
 loop:
         lda #$ff
         sta via1ra
         sta via1rb
         inc via2ra
         inc via2rb
+        lda #'A'
+        sta duart_txfifoa
         jsr delay
         lda #0
         sta via1ra
         sta via1rb
         inc via2ra
         inc via2rb
+        lda #'B'
+        sta duart_txfifoa
         jsr delay
         ; jsr send_character
         bra loop
