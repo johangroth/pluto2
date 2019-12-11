@@ -16,13 +16,15 @@ duart_init: .proc
 l1:
         ldx duart_sutab-2,y             ;table is page aligned so force a page break
         lda duart_sutab-2+1,y           ;to fix 65c02 absolute indexed addressing bug
-        sta duart_base,x
+        sta duart_base,x                ;Initialise DUART register .X with data in .A
+        nop                             ;Give DUART enough time to update its registers.
         nop
         nop
         nop
         nop
-        nop
-        bpl l1
+        dey                             ;Decrement table pointer to
+        dey                             ;to next register and data for that register.
+        bpl l1                          ;Loop back if we still got registers to initialse.
         rts
         .pend
 
@@ -106,6 +108,7 @@ done:
 
 ;;;
 ;; DELAY
+;; Delay macro using timer in DUART. Requires some code in ISR.
 ;; Time delay is given in µs
 ;;;
 delay: .macro
