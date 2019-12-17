@@ -1,6 +1,0 @@
-At RESET:
-A HIGH level clears internal registers (SRA, SRB, IMR, ISR,
-OPR and OPCR), puts OP0 to OP7 in the HIGH state, stops the
-counter/timer, and puts channels A and B in the inactive state, with the
-TxDA and TxDB outputs in the mark (HIGH) state. Sets MR pointer to
-MR1. 
