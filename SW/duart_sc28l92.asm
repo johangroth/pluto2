@@ -28,7 +28,6 @@ l1:
         rts
         .pend
 
-
 ;;;
 ;;  duart_irq: DUART ISR
 ;;   This block is responsible for receving and transmitting characters using
