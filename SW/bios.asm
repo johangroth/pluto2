@@ -730,7 +730,7 @@ loop:
         inc via2ra
         inc via2rb
         lda #'A'
-        sta duart_txfifoa
+        sta txfifoa_duart
         jsr delay
         lda #0
         sta via1ra
@@ -738,7 +738,7 @@ loop:
         inc via2ra
         inc via2rb
         lda #'B'
-        sta duart_txfifoa
+        sta txfifoa_duart
         jsr delay
         ; jsr send_character
         bra loop

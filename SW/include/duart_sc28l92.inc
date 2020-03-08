@@ -235,8 +235,7 @@
 ;   Table entries are read in reverse order during device setup.
 ;   ————————————————————————————————————————————————————————————————————————
 ;
-        .align $100,$00                     ; page align table
-        ;* = * - 2   ;force table to cross page boundary
+
 duart_sutab:
         ; .byte duart_imr, duart_irqmask      ;IMR (enables IRQs)
         ; .byte duart_ctu, duart_ctdhi        ;CTU
