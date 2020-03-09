@@ -238,8 +238,8 @@
 
 duart_sutab:
         ; .byte duart_imr, duart_irqmask      ;IMR (enables IRQs)
-        ; .byte duart_ctu, duart_ctdhi        ;CTU
-        ; .byte duart_ctl, duart_ctdlo        ;CTL
+        .byte duart_ctu, duart_ctdhi        ;CTU
+        .byte duart_ctl, duart_ctdlo        ;CTL
         .byte duart_crb, duart_crb_txe      ;CRB enable transmitter
         .byte duart_csrb,duart_csrdef       ;CSRB 115200 baud
         .byte duart_mrb, duart_m2def        ;MR2B CTS on and 1 stop bit
@@ -269,8 +269,8 @@ duart_sutab:
         .byte duart_cra, duart_cra_txr      ;CRA reset transmitter
         .byte duart_cra, duart_cra_rxr      ;CRA reset receiver
         .byte duart_cra, duart_cra_rsd      ;CRA dassert RTS
-        ; .byte duart_cra, duart_crpwd    ;CRA
-        .byte duart_imr, 0         ;IMR (disable IRQs)
+        .byte duart_cra, duart_cra_dpd      ;CRA disable power down mode - CRA only
+        .byte duart_imr, 0                  ;IMR (disable IRQs)
 
         s_duart_tab = * - duart_sutab
 

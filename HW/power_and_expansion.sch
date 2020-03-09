@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:pluto-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -653,10 +652,6 @@ Wire Wire Line
 	5125 1625 5425 1625
 Wire Wire Line
 	5425 1625 5425 1825
-Wire Bus Line
-	9500 3175 9500 3875
-Wire Bus Line
-	8000 3175 8000 4675
 Wire Wire Line
 	5425 2025 5425 2400
 Connection ~ 5425 1625
@@ -665,4 +660,8 @@ Wire Wire Line
 Connection ~ 5425 2400
 Wire Wire Line
 	5425 2400 5775 2400
+Wire Bus Line
+	9500 3175 9500 3875
+Wire Bus Line
+	8000 3175 8000 4675
 $EndSCHEMATC

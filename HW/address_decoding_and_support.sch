@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:pluto-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -533,9 +532,11 @@ RAM\nIO \nRTC\nVIA2\nVIA1\nDUART\nROM
 Text Notes 6225 2675 0    60   ~ 12
 $0000 - $7EFF\n$7F60 - $7F7F\n$7F80 - $7F9F\n$7FA0 - $7FBF\n$7FC0 - $7FDF\n$7FE0 - $7FFF\n$8000 - $FFFF
 $Comp
-L Oscillator:SG-8002CA X1
+L pluto-rescue:SG-8002CA-Oscillator X1
 U 1 1 5D6922F2
 P 4350 6450
+AR Path="/5D6922F2" Ref="X1"  Part="1" 
+AR Path="/58D589A4/5D6922F2" Ref="X1"  Part="1" 
 F 0 "X1" H 4175 6700 50  0000 L CNN
 F 1 "16MHz" H 4375 6200 50  0000 L CNN
 F 2 "Oscillator:Oscillator_SMD_SeikoEpson_SG8002CA-4Pin_7.0x5.0mm" H 5050 6100 50  0001 C CNN
@@ -663,8 +664,6 @@ Wire Wire Line
 	1125 6800 1125 6000
 Wire Wire Line
 	1125 6000 1675 6000
-Wire Bus Line
-	7375 1025 7375 2025
 $Comp
 L power:GND #PWR0102
 U 1 1 5DA2AC52
@@ -689,4 +688,6 @@ F 3 "" H 1675 6000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 1675 6000
+Wire Bus Line
+	7375 1025 7375 2025
 $EndSCHEMATC

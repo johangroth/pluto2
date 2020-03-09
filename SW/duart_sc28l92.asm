@@ -1,6 +1,6 @@
         .include "include/duart_sc28l92.inc"
 
-        ;; .align $100,$00                     ; page align code to force a page break when accessing
+        .align $100,$00                     ; page align code to force a page break when accessing
                                             ; the setup table. Necessary workaround for WDC 65C02
                                             ; indexed absolute addressing mode.
 ;;;

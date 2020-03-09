@@ -1,5 +1,5 @@
 (sym_lib_table
   (lib (name pluto-rescue)(type Legacy)(uri ${KIPRJMOD}/pluto-rescue.lib)(options "")(descr ""))
   (lib (name pluto)(type Legacy)(uri ${KIPRJMOD}/pluto.lib)(options "")(descr ""))
-  (lib (name Grotto)(type Legacy)(uri /home/jgroth/dev/repos_github/kicad/symbols/grotto.lib)(options "")(descr ""))
+  (lib (name Grotto)(type Legacy)(uri /home/jgroth/Documents/dev/github/kicad/symbols/grotto.lib)(options "")(descr ""))
 )

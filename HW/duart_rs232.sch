@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:pluto-cache
 EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
@@ -529,9 +528,11 @@ Wire Wire Line
 Text Notes 7100 3350 1    60   ~ 12
 DUART ($7FE0)
 $Comp
-L Oscillator:SG-8002CA X2
+L pluto-rescue:SG-8002CA-Oscillator X2
 U 1 1 5D6A4602
 P 9675 4875
+AR Path="/5D6A4602" Ref="X2"  Part="1" 
+AR Path="/59ECC1E1/5D6A4602" Ref="X2"  Part="1" 
 F 0 "X2" H 9525 5125 50  0000 L CNN
 F 1 "3.6864MHz" H 9250 4625 50  0000 L CNN
 F 2 "Oscillator:Oscillator_SMD_SeikoEpson_SG8002CA-4Pin_7.0x5.0mm" H 10375 4525 50  0001 C CNN
