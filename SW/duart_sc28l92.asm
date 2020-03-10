@@ -1,6 +1,6 @@
         .include "include/duart_sc28l92.inc"
 
-        .align $100,$00                     ; page align code to force a page break when accessing
+        ; .align $100,$00                     ; page align code to force a page break when accessing
                                             ; the setup table. Necessary workaround for WDC 65C02
                                             ; indexed absolute addressing mode.
 ;;;
@@ -15,11 +15,13 @@
 ;;                      y: used
 ;;;
 duart_init: .proc
-        ldy #s_duart_tab
+        ldy #s_duart_tab-2
 l1:
-        ldx duart_sutab-2,y             ;table is page aligned so force a page break
-        lda duart_sutab-2+1,y           ;to fix 65c02 absolute indexed addressing bug
-        sta duart_base,x                ;Initialise DUART register .X with data in .A
+        duart_addr = (duart_base & $7f00) - 2
+
+        ldx duart_sutab,y             ;table is page aligned so force a page break
+        lda duart_sutab+1,y           ;to fix 65c02 absolute indexed addressing bug
+        sta duart_addr,x                ;Initialise DUART register .X with data in .A
         nop                             ;Give DUART enough time to update its registers.
         nop
         nop
