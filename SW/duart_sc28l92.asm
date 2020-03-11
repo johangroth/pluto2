@@ -4,7 +4,7 @@
                                             ; the setup table. Necessary workaround for WDC 65C02
                                             ; indexed absolute addressing mode.
 ;;;
-;; Initialise DUART
+;; Initialise DUART (SC28L92)
 ;;  Communication will be set to 115kBAUD, no parity, 8 bits, 1 stop bit.
 ;;  16 byte FIFO, transmit and receive interrupt are enabled.
 ;;
@@ -17,12 +17,21 @@
 duart_init: .proc
         ldy #s_duart_tab-2
 l1:
-        duart_addr = (duart_base & $7f00) - 2
-
-        ldx duart_sutab,y             ;table is page aligned so force a page break
-        lda duart_sutab+1,y           ;to fix 65c02 absolute indexed addressing bug
-        sta duart_addr,x                ;Initialise DUART register .X with data in .A
-        nop                             ;Give DUART enough time to update its registers.
+        lda #<(duart_base)              ; Store the
+        sta index_low                   ; base address to
+        lda #>(duart_base)              ; DUART in
+        sta index_high                  ; index_low/index_high
+        ldx duart_sutab,y               ; Load .X with the register to initialse.
+        clc                             ; Prepare for addition.
+        txa                             ; Move register number to .A.
+        adc index_low                   ; Add register number to base address
+        sta index_low                   ; and store the result in index_low.
+        lda #0                          ; Add any
+        adc index_high                  ; carry that might have been
+        sta index_high                  ; produced from the above addition.
+        lda duart_sutab+1,y             ; Load .A with SC28L92 register value
+        sta (index_low)                 ; Set register
+        nop                             ; Some NOPs to give DUART enough time to update its registers.
         nop
         nop
         nop
