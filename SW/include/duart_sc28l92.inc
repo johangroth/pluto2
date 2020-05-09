@@ -82,9 +82,20 @@
 ;
 ;   ACR — auxiliary control register
 ;
-        duart_arbrt = %00110000            ;set mode to crystal or external clock (X1/CLK) divided by 16
+        duart_arbrt = %00110000            ; set mode to crystal or external clock (X1/CLK) divided by 16
+                                           ; disable all IPx COS interrupts
+                                           ; select Baud Rate Generator table
 ;
-;   a) Use baud rate table #5 —— see data sheet.
+      ; 00110000
+      ; ||||||||
+      ; |||||||+—> disable IP0 COS interrupt
+      ; ||||||+——> disable IP1 COS interrupt
+      ; |||||+———> disable IP2 COS interrupt
+      ; ||||+————> disable IP3 COS interrupt
+      ; |+++—————> counter/timer mode and clock source select
+      ; +————————> BRG set select to
+; —>
+;   a) Use baud rate table Extended mode II —— see data sheet.
 ;   b) C/T acts as a counter.
 ;   c) C/T clock source is scaled to X1 ÷ 16.
 ;
@@ -255,7 +266,7 @@ duart_sutab:
         .byte duart_cra, duart_cra_mr1      ;CRA select MR1
         .byte duart_mra, duart_m0def        ;MR0A See above
         .byte duart_cra, duart_cra_mr0      ;CRA select MR0
-        .byte duart_acr, duart_arbrt        ;ACR external clock (X1/CLK) / 16
+        .byte duart_acr, duart_arbrt        ;ACR external clock (X1/CLK) / 16, BRG table select to 0
         .byte duart_opcr,duart_opdef        ;OPCR no operation
         .byte duart_crb, duart_crb_dto      ;CRB disable time-out mode
         .byte duart_crb, duart_crb_esr      ;CRB reset error status (SRB[7:4])

@@ -718,9 +718,9 @@ l2:
 ;;;
         lda #$ff
         sta via1ddra        ; set all VIA1 PA pins to be outputs
-        sta via1ddrb        ; set all VIA1 PB ping to be outputs
+        sta via1ddrb        ; set all VIA1 PB pins to be outputs
         sta via2ddra        ; set all VIA2 PA pins to be outputs
-        sta via2ddrb        ; set all VIA2 PB ping to be outputs
+        sta via2ddrb        ; set all VIA2 PB pins to be outputs
         sta via2ra          ; set PA outputs of VIA2 to 1
         sta via2rb          ; set PB outputs of VIA2 to 1
 loop:

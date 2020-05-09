@@ -15,30 +15,130 @@
 ;;                      y: used
 ;;;
 duart_init: .proc
-        ldy #s_duart_tab-2
-l1:
-        lda #<(duart_base)              ; Store the
-        sta index_low                   ; base address to
-        lda #>(duart_base)              ; DUART in
-        sta index_high                  ; index_low/index_high
-        ldx duart_sutab,y               ; Load .X with the register to initialse.
-        clc                             ; Prepare for addition.
-        txa                             ; Move register number to .A.
-        adc index_low                   ; Add register number to base address
-        sta index_low                   ; and store the result in index_low.
-        lda #0                          ; Add any
-        adc index_high                  ; carry that might have been
-        sta index_high                  ; produced from the above addition.
-        lda duart_sutab+1,y             ; Load .A with SC28L92 register value
-        sta (index_low)                 ; Set register
-        nop                             ; Some NOPs to give DUART enough time to update its registers.
-        nop
-        nop
-        nop
-        nop
-        dey                             ;Decrement table pointer to
-        dey                             ;to next register and data for that register.
-        bpl l1                          ;Loop back if we still got registers to initialse.
+;         ldy #s_duart_tab-2
+; l1:
+;         lda #<(duart_base)              ; Store the
+;         sta index_low                   ; base address to
+;         lda #>(duart_base)              ; DUART in
+;         sta index_high                  ; index_low/index_high
+;         ldx duart_sutab,y               ; Load .X with the register to initialse.
+;         clc                             ; Prepare for addition.
+;         txa                             ; Move register number to .A.
+;         adc index_low                   ; Add register number to base address
+;         sta index_low                   ; and store the result in index_low.
+;         lda #0                          ; Add any
+;         adc index_high                  ; carry that might have been
+;         sta index_high                  ; produced from the above addition.
+;         lda duart_sutab+1,y             ; Load .A with SC28L92 register value
+;         sta (index_low)                 ; Set register
+;         nop                             ; Some NOPs to give DUART enough time to update its registers.
+;         nop
+;         nop
+;         nop
+;         nop
+;         dey                             ;Decrement table pointer to
+;         dey                             ;to next register and data for that register.
+;         bpl l1                          ;Loop back if we still got registers to initialse.
+        lda #0
+        sta imr_duart
+        jsr some_nops
+        lda #duart_cra_dpd      ; %11110000
+        sta cra_duart
+        jsr some_nops
+        lda #duart_cra_rsd      ; %10010000
+        sta cra_duart
+        jsr some_nops
+        lda #duart_cra_rxr      ; %00100000
+        sta cra_duart
+        jsr some_nops
+        lda #duart_cra_txr      ; %00110000
+        sta cra_duart
+        jsr some_nops
+        lda #duart_cra_abr      ; %01010000
+        sta cra_duart
+        jsr some_nops
+        lda #duart_cra_esr      ; %01000000
+        sta cra_duart
+        jsr some_nops
+        lda #duart_cra_dto      ; %11000000
+        sta cra_duart
+        jsr some_nops
+        lda #duart_crb_rsd      ; %10010000
+        sta crb_duart
+        jsr some_nops
+        lda #duart_crb_rxr      ; %00100000
+        sta crb_duart
+        jsr some_nops
+        lda #duart_crb_txr      ; %00110000
+        sta crb_duart
+        jsr some_nops
+        lda #duart_crb_abr      ; %01010000
+        sta crb_duart
+        jsr some_nops
+        lda #duart_crb_esr      ; %01000000
+        sta crb_duart
+        jsr some_nops
+        lda #duart_crb_dto      ; %11000000
+        sta crb_duart
+        jsr some_nops
+        lda #duart_opdef        ; %00000000
+        sta opcr_duart
+        jsr some_nops
+        lda #duart_arbrt        ; %00110000
+        sta acr_duart
+        jsr some_nops
+        lda #duart_cra_mr0      ; %10110000
+        sta cra_duart
+        jsr some_nops
+        lda #duart_m0def        ; %11001100
+        sta mra_duart
+        jsr some_nops
+        lda #duart_cra_mr1      ; %10100000
+        sta cra_duart
+        jsr some_nops
+        lda #duart_m1def        ; %11010011
+        sta mra_duart
+        jsr some_nops
+        lda #duart_m2def        ; %00010111
+        sta mra_duart
+        jsr some_nops
+        lda #duart_csrdef       ; %01100110
+        sta csra_duart
+        jsr some_nops
+        lda #duart_cra_rte      ; %00000101
+        sta cra_duart
+        jsr some_nops
+        lda #duart_cra_rsa      ; %10000000
+        sta cra_duart
+        jsr some_nops
+        lda #duart_crb_mr0      ; %10110000
+        sta crb_duart
+        jsr some_nops
+        lda #duart_m0def        ; %11001100
+        sta mrb_duart
+        jsr some_nops
+        lda #duart_crb_mr1      ; %00010000
+        sta crb_duart
+        jsr some_nops
+        lda #duart_m1def        ; %11010011
+        sta mrb_duart
+        jsr some_nops
+        lda #duart_m2def        ; %00010111
+        sta mrb_duart
+        jsr some_nops
+        lda #duart_csrdef       ; %01100110
+        sta csrb_duart
+        jsr some_nops
+        lda #duart_crb_txe      ; %00000100
+        sta crb_duart
+        jsr some_nops
+        lda #duart_ctdlo        ; %00000000
+        sta ctl_duart
+        jsr some_nops
+        lda #duart_ctdhi        ; %01001000
+        sta ctu_duart
+        jsr some_nops
+
         rts
         .pend
 
@@ -55,6 +155,11 @@ l1:
 ;;
 ;;;
 duart_irq: .block
+        bra done ;;;;;;;;;;;;;;;
+        ;;;;;;;;;;;;;;;;;;;;;;;;
+        ;;;;;;;;; remove when duart works
+        ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
         lda isr_duart           ;Get DUART interrupt status register
         beq done                ;If not DUART interrupting, skip ahead
 
@@ -119,17 +224,11 @@ done:
         jmp (via1_soft_vector)
         .bend
 
-;;;
-;; DELAY
-;; Delay macro using timer in DUART. Requires some code in ISR.
-;; Time delay is given in µs
-;;;
-delay: .macro
-        lda #>(3686400.0 / 2.0 / (1.0 / ( \1.0 / 1000000.0) ))
-        sta ctpu_duart
-        lda #<(3686400.0 / 2.0 / (1.0 / ( \1.0 / 1000000.0) ))
-        sta ctpl_duart
-        lda startcc_duart
-wait:
-        bbr delay_bit, control_flags, wait
-        .endm
+some_nops:  .proc
+        nop
+        nop
+        nop
+        nop
+        nop
+        rts
+        .pend
