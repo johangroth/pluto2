@@ -12,7 +12,8 @@ initial_soft_vectors:
 rtc_vector:
         .word   rtc_irq
 duart_vector:
-        .word   duart_irq
+        ; .word   duart_irq
+        .word   uart_irq
 via1_vector:
         .word   via1_irq
 via2_vector:

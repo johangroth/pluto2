@@ -707,7 +707,8 @@ l2:
         sta soft_vector_table-1,x
         dex
         bne l2
-        jsr duart_init          ;Initialise SC28L92
+        jsr uart_init          ; Initialise ST16C550
+        ; jsr duart_init          ;Initialise SC28L92
         ; jsr rtc_init          ;Initialise real time clock
         jsr via_init            ;Two VIAs on Pluto v3 and no VIA on Pluto v2
         cli
@@ -729,16 +730,22 @@ loop:
         sta via1rb
         inc via2ra
         inc via2rb
-        lda #'A'
-        sta txfifoa_duart
+        ; lda #'A'
+        jsr uart_input
+        jsr uart_output
+        ; sta uart_thr
+        ; sta txfifoa_duart
         jsr delay
         lda #0
         sta via1ra
         sta via1rb
         inc via2ra
         inc via2rb
-        lda #'B'
-        sta txfifoa_duart
+        ; lda #'B'
+        jsr uart_input
+        jsr uart_output
+        ; sta uart_thr
+        ; sta txfifoa_duart
         jsr delay
         ; jsr send_character
         bra loop
