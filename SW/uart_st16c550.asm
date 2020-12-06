@@ -60,7 +60,7 @@ uart_scan:  .proc
         clc
         lda   uart_lsr        ; Serial port status
         and   #$01               ; mask rcvr full bit
-        beq   uart_scan2
+        beq   uart_scan2        ; branch if no character to get
         lda   uart_rhr           ; get chr
         sec
 uart_scan2:
