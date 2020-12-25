@@ -143,6 +143,27 @@ duart_init: .proc
         .pend
 
 ;;;
+;;---------------------------------------------------------------------
+;; Non-waiting get character routine
+;; Scan for input (no wait), C=1 char, C=0 no character
+;;;
+duart_receive: .proc
+        clc
+        lda #%00000010          ;Load interrupt mask for channel A RxD interrupt
+        bit isr_duart           ;RHR empty?
+        bne duart_receive_end          ;Yes, skip ahead
+        lda rxfifoa_duart       ; Read datum
+        sec
+duart_receive_end:
+        rts
+        .pend
+
+duart_send: .proc
+        lda #%100
+        rts
+        .pend
+
+;;;
 ;;  duart_irq: DUART ISR
 ;;   This block is responsible for receving and transmitting characters using
 ;;   two fixed 128 byte buffers (right now just channel A). It is also responsible
