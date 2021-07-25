@@ -11,7 +11,7 @@
     (via_costs 50)
     (plane_via_costs 5)
     (start_ripup_costs 100)
-    (start_pass_no 35269)
+    (start_pass_no 212)
     (layer_rule F.Cu
       (active on)
       (preferred_direction horizontal)
@@ -100,57 +100,36 @@
     (rule
       (width 150.0)
     )
-    (layer_rule GND.Cu
-      (rule 
-        (width 0.0) 
-      )
-    )
-    (layer_rule VCC.Cu
-      (rule 
-        (width 0.0) 
-      )
-    )
     (circuit 
       (use_layer F.Cu B.Cu)
     )
   )
   (class "kicad_default"
     "Net-(C15-Pad1)" "Net-(C16-Pad2)" "Net-(C18-Pad1)" "Net-(C18-Pad2)" "Net-(C19-Pad1)" "Net-(C19-Pad2)" "/16bit IDE interface/~IRQ" "Net-(D3-Pad2)"
-    "Net-(J6-Pad2)" "Net-(J6-Pad3)" "Net-(J6-Pad7)" "Net-(J6-Pad8)" "Net-(J7-Pad2)" "Net-(J7-Pad3)" "Net-(J7-Pad7)" "Net-(J7-Pad8)"
-    "/16bit IDE interface/~RES" "/16bit IDE interface/IDE-D7" "/16bit IDE interface/IDE-D8" "/16bit IDE interface/IDE-D6" "/16bit IDE interface/IDE-D9" "/16bit IDE interface/IDE-D5" "/16bit IDE interface/IDE-D10" "/16bit IDE interface/IDE-D4"
-    "/16bit IDE interface/IDE-D11" "/16bit IDE interface/IDE-D3" "/16bit IDE interface/IDE-D12" "/16bit IDE interface/IDE-D2" "/16bit IDE interface/IDE-D13" "/16bit IDE interface/IDE-D1" "/16bit IDE interface/IDE-D14" "/16bit IDE interface/IDE-D0"
-    "/16bit IDE interface/IDE-D15" "/16bit IDE interface/A1" "/16bit IDE interface/A0" "/16bit IDE interface/A2" "/Address decoding and support section/~SO" "/Address decoding and support section/~KS" "/Address decoding and support section/RDY" "/Address decoding and support section/~PWR"
-    "/Address decoding and support section/BE" "/Address decoding and support section/~NMI" "Net-(U1-Pad39)" "/Address decoding and support section/A5" "/CPU, ROM and RAM/A4" "/Address decoding and support section/A6" "/Address decoding and support section/A8" "/Address decoding and support section/A10"
-    "/Address decoding and support section/A12" "/Address decoding and support section/A14" "/16bit IDE interface/D7" "/Address decoding and support section/A7" "/Address decoding and support section/A9" "/Address decoding and support section/A11" "/Address decoding and support section/A13" "/Address decoding and support section/A15"
-    "/16bit IDE interface/D6" "/16bit IDE interface/D4" "/16bit IDE interface/D2" "/16bit IDE interface/D0" "/16bit IDE interface/D5" "/16bit IDE interface/D3" "/16bit IDE interface/D1" "/Address decoding and support section/~ROMSEL"
-    "/Address decoding and support section/~RAMSEL" "/Address decoding and support section/RES" "Net-(U22-Pad4)" "Net-(U22-Pad5)" "/DUART and RS232/CTSb" "Net-(U22-Pad6)" "Net-(U22-Pad18)" "/DUART and RS232/RTSa"
-    "/DUART and RS232/RTSb" "/DUART and RS232/CTSa" "Net-(U23-Pad40)" "Net-(U23-Pad36)" "/Address decoding and support section/~MRD" "/Address decoding and support section/~MWR" "Net-(J4-Pad4)" "Net-(J6-Pad1)"
-    "Net-(J6-Pad4)" "Net-(J6-Pad6)" "Net-(J6-Pad9)" "Net-(J6-Pad10)" "Net-(J7-Pad1)" "Net-(J7-Pad4)" "Net-(J7-Pad6)" "Net-(J7-Pad9)"
-    "Net-(J7-Pad10)" "Net-(P1-Pad20)" "/16bit IDE interface/DMARQ" "/16bit IDE interface/IORDY" "Net-(P1-Pad28)" "Net-(P1-Pad34)" "Net-(U1-Pad43)" "Net-(U1-Pad2)"
-    "Net-(U1-Pad4)" "Net-(U1-Pad6)" "Net-(U1-Pad8)" "Net-(U1-Pad12)" "Net-(U4-Pad23)" "Net-(U23-Pad1)" "Net-(U23-Pad3)" "Net-(U23-Pad43)"
-    "Net-(U23-Pad41)" "Net-(U23-Pad42)" "Net-(U23-Pad16)" "Net-(U23-Pad15)" "Net-(U23-Pad17)" "Net-(U23-Pad23)" "Net-(U23-Pad30)" "Net-(U23-Pad34)"
-    "Net-(U23-Pad29)" "Net-(U23-Pad31)" "Net-(U23-Pad37)" "Net-(C4-Pad1)" "Net-(C6-Pad1)" "Net-(J11-Pad30)" "Net-(J11-Pad32)" "Net-(R3-Pad1)"
-    "Net-(S1-Pad3)" "Net-(D2-Pad1)" "/16bit IDE interface/~IDE-DASP" "Net-(D4-Pad1)" "/16bit IDE interface/A3" "/16bit IDE interface/R-~W" "/Address decoding and support section/~IO" "Net-(J11-Pad36)"
-    "/16bit IDE interface/CLK" "Net-(J12-Pad3)" "Net-(J12-Pad4)" "Net-(J12-Pad5)" "Net-(J12-Pad6)" "Net-(J12-Pad7)" "Net-(J12-Pad8)" "Net-(J12-Pad9)"
-    "Net-(J12-Pad10)" "Net-(J12-Pad11)" "Net-(J12-Pad12)" "/16bit IDE interface/~IDE-RES" "/16bit IDE interface/~DIOW" "/16bit IDE interface/~DIOR" "/16bit IDE interface/~IDE-DMACK" "/16bit IDE interface/IDE-A1"
-    "/16bit IDE interface/IDE-A0" "/16bit IDE interface/IDE-A2" "/16bit IDE interface/~IDE-CS0" "/16bit IDE interface/~IDE-CS1" "Net-(R2-Pad2)" "/Address decoding and support section/~RTC" "/16bit IDE interface/~VIA2SEL" "/Address decoding and support section/~DUART"
-    "/16bit IDE interface/~VIA1SEL" "Net-(U7-Pad33)" "Net-(U7-Pad38)" "Net-(U7-Pad22)" "Net-(U7-Pad20)" "Net-(U7-Pad19)" "Net-(U7-Pad11)" "Net-(U7-Pad44)"
-    "Net-(U7-Pad43)" "Net-(U9-Pad43)" "Net-(U9-Pad44)" "Net-(U9-Pad11)" "Net-(U9-Pad22)" "Net-(U9-Pad38)" "Net-(U9-Pad33)" "Net-(U2-Pad1)"
-    "Net-(U2-Pad12)" "Net-(U2-Pad17)" "Net-(U2-Pad26)" "Net-(D1-Pad2)" "Net-(U8-Pad2)" "Net-(U8-Pad3)" "Net-(U8-Pad8)" "Net-(U8-Pad9)"
+    "Net-(J6-Pad2)" "Net-(J6-Pad3)" "Net-(J6-Pad7)" "Net-(J6-Pad8)" "/16bit IDE interface/~RES" "/16bit IDE interface/IDE-D7" "/16bit IDE interface/IDE-D8" "/16bit IDE interface/IDE-D6"
+    "/16bit IDE interface/IDE-D9" "/16bit IDE interface/IDE-D5" "/16bit IDE interface/IDE-D10" "/16bit IDE interface/IDE-D4" "/16bit IDE interface/IDE-D11" "/16bit IDE interface/IDE-D3" "/16bit IDE interface/IDE-D12" "/16bit IDE interface/IDE-D2"
+    "/16bit IDE interface/IDE-D13" "/16bit IDE interface/IDE-D1" "/16bit IDE interface/IDE-D14" "/16bit IDE interface/IDE-D0" "/16bit IDE interface/IDE-D15" "/16bit IDE interface/A1" "/16bit IDE interface/A0" "/16bit IDE interface/A2"
+    "/Address decoding and support section/~SO" "/Address decoding and support section/~KS" "/Address decoding and support section/RDY" "/Address decoding and support section/~PWR" "/Address decoding and support section/BE" "/Address decoding and support section/~NMI" "Net-(U1-Pad39)" "/Address decoding and support section/A5"
+    "/CPU, ROM and RAM/A4" "/Address decoding and support section/A6" "/Address decoding and support section/A8" "/Address decoding and support section/A10" "/Address decoding and support section/A12" "/Address decoding and support section/A14" "/16bit IDE interface/D7" "/Address decoding and support section/A7"
+    "/Address decoding and support section/A9" "/Address decoding and support section/A11" "/Address decoding and support section/A13" "/Address decoding and support section/A15" "/16bit IDE interface/D6" "/16bit IDE interface/D4" "/16bit IDE interface/D2" "/16bit IDE interface/D0"
+    "/16bit IDE interface/D5" "/16bit IDE interface/D3" "/16bit IDE interface/D1" "/Address decoding and support section/~ROMSEL" "/Address decoding and support section/~RAMSEL" "/Address decoding and support section/RES" "/Address decoding and support section/~MRD" "/Address decoding and support section/~MWR"
+    "Net-(J4-Pad4)" "Net-(J6-Pad1)" "Net-(J6-Pad4)" "Net-(J6-Pad6)" "Net-(J6-Pad9)" "Net-(J6-Pad10)" "Net-(P1-Pad20)" "/16bit IDE interface/DMARQ"
+    "/16bit IDE interface/IORDY" "Net-(P1-Pad28)" "Net-(P1-Pad34)" "Net-(U1-Pad43)" "Net-(U1-Pad2)" "Net-(U1-Pad4)" "Net-(U1-Pad6)" "Net-(U1-Pad8)"
+    "Net-(U1-Pad12)" "Net-(U4-Pad23)" "Net-(C4-Pad1)" "Net-(C6-Pad1)" "Net-(J11-Pad30)" "Net-(J11-Pad32)" "Net-(R3-Pad1)" "Net-(S1-Pad3)"
+    "Net-(D2-Pad1)" "/16bit IDE interface/~IDE-DASP" "Net-(D4-Pad1)" "/16bit IDE interface/A3" "/16bit IDE interface/R-~W" "/Address decoding and support section/~IO" "Net-(J11-Pad36)" "/16bit IDE interface/CLK"
+    "Net-(J12-Pad3)" "Net-(J12-Pad4)" "Net-(J12-Pad5)" "Net-(J12-Pad6)" "Net-(J12-Pad7)" "Net-(J12-Pad8)" "Net-(J12-Pad9)" "Net-(J12-Pad10)"
+    "Net-(J12-Pad11)" "Net-(J12-Pad12)" "/16bit IDE interface/~IDE-RES" "/16bit IDE interface/~DIOW" "/16bit IDE interface/~DIOR" "/16bit IDE interface/~IDE-DMACK" "/16bit IDE interface/IDE-A1" "/16bit IDE interface/IDE-A0"
+    "/16bit IDE interface/IDE-A2" "/16bit IDE interface/~IDE-CS0" "/16bit IDE interface/~IDE-CS1" "Net-(R2-Pad2)" "/Address decoding and support section/~RTC" "/16bit IDE interface/~VIA2SEL" "/Address decoding and support section/~DUART" "/16bit IDE interface/~VIA1SEL"
+    "Net-(U7-Pad33)" "Net-(U7-Pad38)" "Net-(U7-Pad22)" "Net-(U7-Pad20)" "Net-(U7-Pad19)" "Net-(U7-Pad11)" "Net-(U7-Pad44)" "Net-(U7-Pad43)"
+    "Net-(U9-Pad43)" "Net-(U9-Pad44)" "Net-(U9-Pad11)" "Net-(U9-Pad22)" "Net-(U9-Pad38)" "Net-(U9-Pad33)" "Net-(U2-Pad1)" "Net-(U2-Pad12)"
+    "Net-(U2-Pad17)" "Net-(U2-Pad26)" "Net-(D1-Pad2)" "Net-(U8-Pad2)" "Net-(U8-Pad3)" "Net-(U8-Pad8)" "Net-(U8-Pad9)" "Net-(C22-Pad2)"
+    "Net-(C22-Pad1)" "/DUART and RS232/RX" "/DUART and RS232/TX" "/DUART and RS232/RTS" "/DUART and RS232/CTS" "Net-(U11-Pad37)" "Net-(U11-Pad35)" "Net-(U11-Pad33)"
+    "Net-(U11-Pad38)" "Net-(U11-Pad34)" "Net-(U11-Pad32)" "Net-(U11-Pad26)" "Net-(U11-Pad18)" "Net-(U11-Pad27)" "Net-(U11-Pad23)" "Net-(U11-Pad19)"
+    "Net-(U11-Pad10)" "Net-(U11-Pad12)" "Net-(U11-Pad42)" "Net-(U11-Pad41)" "Net-(U11-Pad43)" "Net-(U11-Pad1)"
     (clearance_class "kicad_default")
     (via_rule kicad_default)
     (rule
       (width 150.0)
-    )
-    (layer_rule GND.Cu
-      (rule 
-        (width 0.0) 
-      )
-    )
-    (layer_rule VCC.Cu
-      (rule 
-        (width 0.0) 
-      )
     )
     (circuit 
       (use_layer F.Cu B.Cu)
@@ -163,16 +142,6 @@
     (rule
       (width 150.0)
     )
-    (layer_rule GND.Cu
-      (rule 
-        (width 0.0) 
-      )
-    )
-    (layer_rule VCC.Cu
-      (rule 
-        (width 0.0) 
-      )
-    )
     (circuit 
       (use_layer F.Cu B.Cu)
     )
@@ -184,16 +153,6 @@
     (rule
       (width 1000.0)
     )
-    (layer_rule GND.Cu
-      (rule 
-        (width 0.0) 
-      )
-    )
-    (layer_rule VCC.Cu
-      (rule 
-        (width 0.0) 
-      )
-    )
     (circuit 
       (use_layer F.Cu B.Cu)
     )
@@ -204,16 +163,6 @@
     (via_rule VCC)
     (rule
       (width 150.0)
-    )
-    (layer_rule GND.Cu
-      (rule 
-        (width 0.0) 
-      )
-    )
-    (layer_rule VCC.Cu
-      (rule 
-        (width 0.0) 
-      )
     )
     (circuit 
       (use_layer F.Cu B.Cu)

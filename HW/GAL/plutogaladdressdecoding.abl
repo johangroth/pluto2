@@ -48,8 +48,8 @@ TITLE 'Pluto GAL Address Decoding'
 	!DUART	pin 17 istype 'com';		" $7FEX, SC28L92
 	!VIA1	pin 20 istype 'com';		" $7FCX, 65C22, IDE D0-D15
 	!VIA2	pin 16 istype 'com';		" $7FAX, 65C22, IDE control signals
-	!RTC	pin 15 istype 'com';		" $7F8X, Real time clock
-	!IO	pin 14 istype 'com';		" $7F6X, Expansion
+	!IO		pin 14 istype 'com';		" $7F8X, Expansion
+	!RTC	pin 15 istype 'com';		" $7F6X, Real time clock
 	H,L,X = 1,0,.X.;
 	Address = [A15,A14,A13,A12, A11,A10,A9,A8, A7,A6,A5,X, X,X,X,X];
 
@@ -59,8 +59,8 @@ EQUATIONS
 	DUART	= (Address >= ^h7FE0) & (Address <= ^h7FFF);
 	VIA1	= (Address >= ^h7FC0) & (Address <= ^h7FDF);
 	VIA2	= (Address >= ^h7FA0) & (Address <= ^h7FBF);
-	RTC	= (Address >= ^h7F80) & (Address <= ^h7F9F);
-	IO	= (Address >= ^h7F60) & (Address <= ^h7F7F);
+	IO		= (Address >= ^h7F80) & (Address <= ^h7F9F);
+	RTC		= (Address >= ^h7F60) & (Address <= ^h7F7F);
 	MWR 	= CLK & !RW;
 	MRD 	= CLK & RW;
 
