@@ -58,6 +58,8 @@
 .include "uart_st16c550.asm"
 .fi
 
+.include "rc2014/16c550_irq.asm"
+; .include "rc2014/16c550_buffer.asm"
 ; =============================================================================
 ; KERNEL
 .include "bios.asm"
