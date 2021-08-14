@@ -86,13 +86,13 @@ uart_out1:
 ;---------------------------------------------------------------------
 ; Enable autoflow control
 AFE_16C550:     .proc
-                lda     #$87                  ; Trigger level, FIFO enable, reset FIFO
-                sta     uart_fcr
-                ; Use this to enable autoflow control
-                lda     #$22                  ; Modem control register
-                sta     uart_mcrw    ; Enable AFE
-                rts
-                .pend
+        lda     #$87                  ; Trigger level, FIFO enable, reset FIFO
+        sta     uart_fcr
+        ; Use this to enable autoflow control
+        lda     #$22                  ; Modem control register
+        sta     uart_mcrw    ; Enable AFE
+        rts
+        .pend
 ;
 
 uart_irq:   .block
